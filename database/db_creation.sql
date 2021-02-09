@@ -201,3 +201,13 @@ CREATE TABLE Users_Certificates (
     FOREIGN KEY (user_id) REFERENCES Users (id_user) ON DELETE CASCADE,
     FOREIGN KEY (course_id) REFERENCES Courses (id_course) ON DELETE CASCADE
 );
+
+CREATE TABLE Users_Upvotes (
+	id_user_upvote INT NOT NULL AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    comment_id INT NOT NULL,
+    
+    PRIMARY KEY (id_user_upvote),
+    FOREIGN KEY (user_id) REFERENCES Users (id_user) ON DELETE CASCADE,
+    FOREIGN KEY (comment_id) REFERENCES Comments (id_comment) ON DELETE CASCADE
+);
