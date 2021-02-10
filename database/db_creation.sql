@@ -117,6 +117,7 @@ CREATE TABLE Certificates (
 	id_certificate BINARY(16) NOT NULL,
     user_name NVARCHAR(150) NOT NULL,
     instructor_name NVARCHAR(150) NOT NULL,
+    course_title NVARCHAR(70) NOT NULL,
     expedition_date DATE NOT NULL,
     
     PRIMARY KEY (id_certificate)

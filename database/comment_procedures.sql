@@ -100,7 +100,9 @@ CREATE PROCEDURE GetLessonComments (
 )
 BEGIN
 	SELECT
-		C.id_comment,
+		UC.user_id,
+        U.username,
+        C.id_comment,
 		C.comment_body,
 		C.comment_upvotes,
 		C.comment_date,
@@ -109,6 +111,7 @@ BEGIN
 	FROM
 		Comments AS C
         INNER JOIN Users_Comments AS UC ON UC.comment_id = C.id_comment
+        INNER JOIN Users AS U ON U.id_user = UC.user_id
 	WHERE
 		UC.lesson_id = id_lesson;
 END $$
