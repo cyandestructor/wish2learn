@@ -18,18 +18,27 @@ CREATE TABLE Users (
     PRIMARY KEY (id_user)
 );
 
+CREATE TABLE Products (
+	id_product INT NOT NULL AUTO_INCREMENT,
+    product_name NVARCHAR(70),
+    product_price DECIMAL(15, 2),
+    
+    PRIMARY KEY (id_product)
+);
+
 CREATE TABLE Courses (
 	id_course INT NOT NULL AUTO_INCREMENT,
     course_title NVARCHAR(70) NOT NULL,
     course_description TEXT,
     course_image MEDIUMBLOB,
-    course_price DECIMAL(15, 2),
+    product_id INT NOT NULL,
     instructor_id INT NOT NULL,
     publication_date DATETIME,
     last_update DATETIME,
     published BIT DEFAULT 1,
     
     PRIMARY KEY (id_course),
+    FOREIGN KEY (product_id) REFERENCES Products (id_product),
     FOREIGN KEY (instructor_id) REFERENCES Users (id_user) ON DELETE CASCADE
 );
 
@@ -46,10 +55,11 @@ CREATE TABLE Sections (
     section_title NVARCHAR(50) NOT NULL,
     section_is_free BIT DEFAULT 0,
     course_id INT NOT NULL,
-    section_price DECIMAL(15, 2),
+    product_id INT,
     published BIT DEFAULT 1,
     
     PRIMARY KEY (id_section),
+	FOREIGN KEY (product_id) REFERENCES Products (id_product),
     FOREIGN KEY (course_id) REFERENCES Courses (id_course) ON DELETE CASCADE
 );
 
@@ -152,6 +162,17 @@ CREATE TABLE Users_Sections (
     PRIMARY KEY (id_user_section),
     FOREIGN KEY (user_id) REFERENCES Users (id_user) ON DELETE CASCADE,
     FOREIGN KEY (section_id) REFERENCES Sections (id_section) ON DELETE CASCADE
+);
+
+CREATE TABLE Users_Lessons (
+	id_user_lesson INT NOT NULL AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    lesson_id INT NOT NULL,
+    lesson_completed BIT DEFAULT 0,
+    
+    PRIMARY KEY (id_user_lesson),
+    FOREIGN KEY (user_id) REFERENCES Users (id_user) ON DELETE CASCADE,
+    FOREIGN KEY (lesson_id) REFERENCES Lessons (id_lesson) ON DELETE CASCADE
 );
 
 CREATE TABLE Users_Comments (
