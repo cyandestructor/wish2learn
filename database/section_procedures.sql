@@ -9,15 +9,32 @@ CREATE PROCEDURE AddSection (
     IN section_price DECIMAL(15, 2)
 )
 BEGIN
-	INSERT INTO Sections (
+	DECLARE product_id INT;
+    
+    IF section_price IS NULL OR section_price <= 0 THEN
+		INSERT INTO Products (
+			product_name,
+            product_price
+        )
+        VALUES (
+			CONCAT('Course #', course_id, ' Section: ', section_title),
+            section_price
+        );
+        
+        SET product_id = LAST_INSERT_ID();
+	ELSE
+		SET product_id = NULL;
+	END IF;
+    
+    INSERT INTO Sections (
 		section_title,
 		course_id,
-		section_price
+		product_id
     )
     VALUES (
 		section_title,
 		course_id,
-		section_price
+		product_id
     );
     
     UPDATE Courses
@@ -45,6 +62,15 @@ BEGIN
 		section_price = section_price
 	WHERE
 		id_section = id_section;
+        
+	UPDATE
+		Products AS P
+        INNER JOIN Sections AS S ON S.product_id = P.id_product
+	SET
+		P.product_title = CONCAT('Course #', course_id, ' Section: ', section_title),
+        P.product_price = section_price
+	WHERE
+		S.id_section = id_section;
 END $$
 DELIMITER ;
 
@@ -107,8 +133,39 @@ BEGIN
 		section_price,
 		published
 	FROM
-		Sections
+		SectionsInfo
 	WHERE
 		course_id = id_course;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS GetUserCourseSections $$
+
+CREATE PROCEDURE GetUserCourseSections (
+	IN id_course INT,
+    IN id_user INT
+)
+BEGIN
+	SELECT
+		SI.id_section,
+		SI.section_title,
+		SI.section_is_free,
+		SI.section_price,
+		SI.published,
+        IF(
+			EXISTS(
+				SELECT
+					US.id_user_section
+				FROM
+					Users_Sections AS US
+				WHERE
+					US.section_id = SI.id_section
+                    AND US.user_id = id_user),
+			1, 0) AS user_access
+	FROM
+		SectionsInfo AS SI
+	WHERE
+		SI.course_id = id_course;
 END $$
 DELIMITER ;
