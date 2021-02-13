@@ -302,6 +302,41 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
+DROP PROCEDURE IF EXISTS GetUserEnrolledCourses $$
+
+CREATE PROCEDURE GetUserEnrolledCourses (
+	IN id_user INT
+)
+BEGIN
+	SELECT 
+		CI.id_course,
+		CI.course_title,
+		CI.course_description,
+		CI.course_image,
+		CI.course_price,
+		CI.instructor_id,
+		CI.publication_date,
+		CI.last_update,
+		CI.course_grade,
+        CI.total_lessons,
+		CI.published,
+        UC.enroll_date,
+        (SELECT
+			COUNT(*)
+		FROM
+			Users_Lessons AS UL
+            INNER JOIN CoursesLessons AS CL ON CL.id_lesson = UL.lesson_id
+		WHERE
+			CL.id_course = CI.id_course) AS completed_lessons
+	FROM
+		CoursesInfo AS CI
+        INNER JOIN Users_Courses AS UC ON UC.course_id = CI.id_course
+	WHERE
+		UC.user_id = id_user;
+END $$
+DELIMITER ;
+
+DELIMITER $$
 DROP PROCEDURE IF EXISTS AddCategory $$
 
 CREATE PROCEDURE AddCategory (
@@ -317,5 +352,19 @@ BEGIN
 		id_course,
         id_category
     );
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS DeleteCategory $$
+
+CREATE PROCEDURE DeleteCategory (
+	IN id_course INT,
+    IN id_category INT
+)
+BEGIN
+	DELETE FROM Courses_Categories
+    WHERE
+		id_course = id_course AND id_category = id_category;
 END $$
 DELIMITER ;

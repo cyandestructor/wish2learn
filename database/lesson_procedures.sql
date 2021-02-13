@@ -22,6 +22,14 @@ BEGIN
 		lesson_text,
 		section_id
     );
+    
+    UPDATE
+		Courses AS C
+        INNER JOIN Sections AS S ON S.course_id = C.id_course
+	SET
+		C.last_update = CURRENT_TIMESTAMP()
+	WHERE
+		S.id_section = section_id;
 END $$
 DELIMITER ;
 
@@ -31,7 +39,6 @@ DROP PROCEDURE IF EXISTS EditLesson $$
 CREATE PROCEDURE EditLesson (
 	IN id_lesson INT,
 	IN lesson_title NVARCHAR(50),
-    IN content_type TINYINT,
     IN lesson_text MEDIUMTEXT
 )
 BEGIN
@@ -45,19 +52,61 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
-drop procedure if exists HideLesson $$
+DROP PROCEDURE IF EXISTS DeleteLesson $$
 
-create procedure HideLesson (
-	in id_lesson int,
-    in hide bit
+CREATE PROCEDURE DeleteLesson (
+	IN id_lesson INT
 )
-begin
-	update Lessons
-    set
+BEGIN
+	DELETE FROM Lessons
+	WHERE id_lesson = id_lesson;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS HideLesson $$
+
+CREATE PROCEDURE HideLesson (
+	IN id_lesson INT,
+    IN hide BIT
+)
+BEGIN
+	UPDATE Lessons
+    SET
 		published = hide
-    where
+    WHERE
 		id_lesson = id_lesson;
-end $$
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS SetLessonCompleted $$
+
+CREATE PROCEDURE SetLessonCompleted (
+	IN id_user INT,
+    IN id_lesson INT,
+    IN completed BIT
+)
+BEGIN
+	IF EXISTS(SELECT id_user_lesson FROM Users_Lessons WHERE user_id = id_user AND lesson_id = id_lesson) THEN
+		UPDATE Users_Lessons
+		SET
+			lesson_completed = completed
+		WHERE
+			user_id = id_user AND lesson_id = id_lesson;
+	ELSE
+		INSERT INTO Users_Lessons (
+			user_id,
+			lesson_id,
+			lesson_completed
+        )
+        VALUES (
+			id_user,
+			id_lesson,
+			completed
+        );
+	END IF;
+END $$
 DELIMITER ;
 
 DELIMITER $$
@@ -72,11 +121,37 @@ BEGIN
 		lesson_title,
 		content_type,
 		lesson_text,
-		published
+		published,
+        video_address,
+        lesson_duration
 	FROM
-		Lessons
+		LessonsInfo
 	WHERE
-		section_id = id_section;
+		section_id = id_section AND published = 1;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS GetSectionUserLessons $$
+
+CREATE PROCEDURE GetSectionUserLessons (
+	IN id_user INT,
+    IN id_section INT
+)
+BEGIN
+	SELECT
+		id_lesson,
+		lesson_title,
+		content_type,
+		lesson_text,
+		published,
+        video_address,
+        lesson_duration,
+        lesson_completed
+	FROM
+		UsersLessonsInfo
+	WHERE
+		id_section = id_section AND id_user = id_user;
 END $$
 DELIMITER ;
 
@@ -88,17 +163,16 @@ CREATE PROCEDURE GetLessonInfo (
 )
 BEGIN
 	SELECT
-		L.id_lesson,
-		L.lesson_title,
-		L.content_type,
-		L.lesson_text,
-		L.published,
-        V.video_address,
-		coalesce(V.video_duration, 0) as lesson_duration -- TODO: CALCULATE DURATION DEPENDING OF THE WORDS
+		id_lesson,
+		lesson_title,
+		content_type,
+		lesson_text,
+		published,
+        video_address,
+		lesson_duration
 	FROM
-		Lessons as L
-        left join Videos as V on V.lesson_id = L.id_lesson
+		LessonsInfo
 	WHERE
-		L.id_lesson = id_lesson;
+		id_lesson = id_lesson;
 END $$
 DELIMITER ;

@@ -51,6 +51,7 @@ BEGIN
 		R.review_date,
         CR.user_id,
         U.username,
+        U.user_image,
 		CR.grade
 	FROM
 		Reviews AS R

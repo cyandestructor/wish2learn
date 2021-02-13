@@ -24,6 +24,12 @@ AS
 			Users_Courses AS UC
 		WHERE
 			UC.course_id = C.id_course) AS total_students,
+		(select
+			count(*)
+		from
+			CoursesLessons as CL
+		where
+			CL.id_course = C.id_course) as total_lessons,
 		C.published
 	FROM
 		Courses AS C

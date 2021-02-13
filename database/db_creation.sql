@@ -141,7 +141,7 @@ CREATE TABLE Users_Courses (
     
     PRIMARY KEY (id_user_course),
     FOREIGN KEY (user_id) REFERENCES Users (id_user) ON DELETE CASCADE,
-    FOREIGN KEY (course_id) REFERENCES Courses (id_course) ON DELETE CASCADE
+	FOREIGN KEY (course_id) REFERENCES Courses (id_course) ON DELETE CASCADE
 );
 
 CREATE TABLE Courses_Categories (

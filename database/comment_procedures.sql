@@ -100,19 +100,50 @@ CREATE PROCEDURE GetLessonComments (
 )
 BEGIN
 	SELECT
-		UC.user_id,
-        U.username,
-        C.id_comment,
-		C.comment_body,
-		C.comment_upvotes,
-		C.comment_date,
-		C.comment_parent_id,
-		C.published
+		user_id,
+        username,
+        id_comment,
+		comment_body,
+		comment_upvotes,
+		comment_date,
+		comment_parent_id,
+		published
 	FROM
-		Comments AS C
-        INNER JOIN Users_Comments AS UC ON UC.comment_id = C.id_comment
-        INNER JOIN Users AS U ON U.id_user = UC.user_id
+		CommentsInfo
 	WHERE
-		UC.lesson_id = id_lesson;
+		lesson_id = id_lesson;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS GetUserLessonComments $$
+
+CREATE PROCEDURE GetUserLessonComments (
+	in id_user int,
+    IN id_lesson INT
+)
+BEGIN
+	SELECT
+		CI.user_id,
+        CI.username,
+        CI.id_comment,
+		CI.comment_body,
+		CI.comment_upvotes,
+		CI.comment_date,
+		CI.comment_parent_id,
+		CI.published,
+        if(
+			exists(
+				select
+					UU.id_user_upvote
+				from
+					Users_Upvotes as UU
+				where
+					UU.user_id = id_user and UU.comment_id = CI.id_comment),
+			1, 0) as comment_upvoted
+	FROM
+		CommentsInfo as CI
+	WHERE
+		CI.lesson_id = id_lesson;
 END $$
 DELIMITER ;
