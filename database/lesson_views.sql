@@ -32,7 +32,7 @@ AS
         COALESCE(UL.lesson_completed, 0) AS lesson_completed
 	FROM
 		LessonsInfo AS LI
-        INNER JOIN Users_Lessons AS UL ON UL.lesson_id = LI.id_lesson;
+        LEFT JOIN Users_Lessons AS UL ON UL.lesson_id = LI.id_lesson;
         
 DROP VIEW IF EXISTS CoursesLessons;
 CREATE VIEW CoursesLessons

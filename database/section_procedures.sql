@@ -153,16 +153,13 @@ BEGIN
 		SI.section_is_free,
 		SI.section_price,
 		SI.published,
-        IF(
-			EXISTS(
-				SELECT
-					US.id_user_section
-				FROM
-					Users_Sections AS US
-				WHERE
-					US.section_id = SI.id_section
-                    AND US.user_id = id_user),
-			1, 0) AS user_access
+        EXISTS(
+			SELECT
+				US.id_user_section
+			FROM
+				Users_Sections AS US
+			WHERE
+				US.section_id = SI.id_section AND US.user_id = id_user) AS user_access
 	FROM
 		SectionsInfo AS SI
 	WHERE

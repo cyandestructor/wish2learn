@@ -75,6 +75,19 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
+DROP PROCEDURE IF EXISTS DeleteUser $$
+
+CREATE PROCEDURE DeleteUser (
+	IN user_id INT
+)
+BEGIN
+	DELETE FROM Users
+    WHERE
+		id_user = user_id;
+END $$
+DELIMITER ;
+
+DELIMITER $$
 DROP PROCEDURE IF EXISTS GetUserInfo $$
 
 CREATE PROCEDURE GetUserInfo (
@@ -96,6 +109,27 @@ BEGIN
 		Users
     WHERE
 		id_user = id_user;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS EnrollUser $$
+
+CREATE PROCEDURE EnrollUser (
+	IN id_user INT,
+    IN id_course INT
+)
+BEGIN
+	INSERT INTO Users_Courses (
+		user_id,
+        course_id,
+        enroll_date
+    )
+    VALUES (
+		id_user,
+        id_course,
+        CURRENT_DATE()
+    );
 END $$
 DELIMITER ;
 
