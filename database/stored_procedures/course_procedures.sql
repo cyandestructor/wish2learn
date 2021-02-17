@@ -116,6 +116,7 @@ BEGIN
 			course_image,
 			course_price,
 			instructor_id,
+            instructor_name,
 			publication_date,
 			last_update,
             course_grade,
@@ -133,6 +134,7 @@ BEGIN
 			course_image,
 			course_price,
 			instructor_id,
+            instructor_name,
 			publication_date,
 			last_update,
 			course_grade,
@@ -158,6 +160,7 @@ BEGIN
 		course_image,
 		course_price,
 		instructor_id,
+        instructor_name,
 		publication_date,
 		last_update,
 		course_grade,
@@ -187,6 +190,7 @@ BEGIN
 		course_image,
 		course_price,
 		instructor_id,
+        instructor_name,
 		publication_date,
 		last_update,
 		course_grade,
@@ -216,6 +220,7 @@ BEGIN
 		course_image,
 		course_price,
 		instructor_id,
+        instructor_name,
 		publication_date,
 		last_update,
 		course_grade,
@@ -245,6 +250,7 @@ BEGIN
 		course_image,
 		course_price,
 		instructor_id,
+        instructor_name,
 		publication_date,
 		last_update,
 		course_grade,
@@ -260,7 +266,7 @@ DELIMITER ;
 DELIMITER $$
 DROP PROCEDURE IF EXISTS GetUserCourses $$
 
-CREATE PROCEDURE GetCourses (
+CREATE PROCEDURE GetUserCourses (
 	IN id_user INT,
 	IN only_published BIT
 )
@@ -315,6 +321,7 @@ BEGIN
 		CI.course_image,
 		CI.course_price,
 		CI.instructor_id,
+        CI.instructor_name,
 		CI.publication_date,
 		CI.last_update,
 		CI.course_grade,
@@ -333,6 +340,50 @@ BEGIN
         INNER JOIN Users_Courses AS UC ON UC.course_id = CI.id_course
 	WHERE
 		UC.user_id = id_user;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS SearchCourses $$
+
+CREATE PROCEDURE SearchCourses (
+	IN search_input TINYTEXT
+)
+BEGIN
+	SELECT
+		CI.id_course,
+		CI.course_title,
+		CI.course_description,
+		CI.course_image,
+		CI.course_price,
+		CI.instructor_id,
+		CI.publication_date,
+		CI.last_update,
+		CI.course_grade,
+        CI.total_lessons,
+		CI.published
+	FROM
+		(SELECT
+			ids.course_id
+		FROM	
+			(SELECT
+				CCI.course_id
+			FROM
+				CoursesCategoriesInfo AS CCI
+			WHERE
+				CCI.category_name = search_input
+			UNION
+			SELECT
+				C.id_course
+			FROM
+				Courses AS C
+				INNER JOIN Users AS U ON U.id_user = C.instructor_id
+			WHERE
+				MATCH(C.course_title, U.username, U.account_name, U.account_lastname)
+                AGAINST(search_input IN NATURAL LANGUAGE MODE)) AS ids
+		GROUP BY
+			ids.course_id) AS results
+		INNER JOIN CoursesInfo AS CI ON CI.id_course = results.course_id;
 END $$
 DELIMITER ;
 

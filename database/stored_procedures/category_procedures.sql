@@ -44,3 +44,21 @@ BEGIN
 		Categories;
 END $$
 DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS GetCourseCategories $$
+
+CREATE PROCEDURE GetCourseCategories (
+	IN id_course INT
+)
+BEGIN
+    SELECT
+		CCI.category_id,
+		CCI.category_name,
+		CCI.category_description
+	FROM
+		CoursesCategoriesInfo AS CCI
+	WHERE
+		CCI.course_id = id_course;
+END $$
+DELIMITER ;

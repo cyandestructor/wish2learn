@@ -10,6 +10,7 @@ AS
 		C.course_image,
 		P.product_price AS course_price,
 		C.instructor_id,
+        concat(U.account_name, ' ', U.account_lastname) as instructor_name,
 		C.publication_date,
 		C.last_update,
 		(SELECT
@@ -24,13 +25,14 @@ AS
 			Users_Courses AS UC
 		WHERE
 			UC.course_id = C.id_course) AS total_students,
-		(select
-			count(*)
-		from
-			CoursesLessons as CL
-		where
-			CL.id_course = C.id_course) as total_lessons,
+		(SELECT
+			COUNT(*)
+		FROM
+			CoursesLessons AS CL
+		WHERE
+			CL.id_course = C.id_course) AS total_lessons,
 		C.published
 	FROM
 		Courses AS C
-        INNER JOIN Products AS P ON P.id_product = C.product_id;
+        INNER JOIN Products AS P ON P.id_product = C.product_id
+        INNER JOIN Users AS U ON U.id_user = C.instructor_id;

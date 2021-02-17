@@ -15,7 +15,8 @@ CREATE TABLE Users (
     last_change_date DATETIME,
     account_state TINYINT DEFAULT 1,
     
-    PRIMARY KEY (id_user)
+    PRIMARY KEY (id_user),
+    FULLTEXT (username, account_name, account_lastname)
 );
 
 CREATE TABLE Products (
@@ -39,7 +40,9 @@ CREATE TABLE Courses (
     
     PRIMARY KEY (id_course),
     FOREIGN KEY (product_id) REFERENCES Products (id_product),
-    FOREIGN KEY (instructor_id) REFERENCES Users (id_user) ON DELETE CASCADE
+    FOREIGN KEY (instructor_id) REFERENCES Users (id_user) ON DELETE CASCADE,
+    
+    FULLTEXT (course_title)
 );
 
 CREATE TABLE Categories (
