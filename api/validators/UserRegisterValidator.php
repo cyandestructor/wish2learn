@@ -1,9 +1,12 @@
 <?php
+    require_once('ValidatorInterface.php');
+    require_once('Validations.php');
+
     class UserRegisterValidator implements ValidatorInterface
     {
         private $data;
         private $errors = [];
-        private static $fields = ["username", "name", "lastname", "email", "password"];
+        private static $fields = ['username', 'name', 'lastname', 'email', 'password'];
 
         public function __constructor($post_data)
         {
@@ -31,71 +34,55 @@
 
         private function validateUsername()
         {
-            $field = "username";
+            $field = 'username';
             $username = trim($this->$data[$field]);
 
-            if (empty($username)) {
-                $this->addError($field, "The username cannot be empty");
-            }
-            else {
-                if (!preg_match("/^[a-zA-Z0-9]{6-20}$/")) {
-                    $this->addError($field, "The username must be alphanumeric and 6-20 characters long");
-                }
-            }
+            Validations::validate($username, $field, $this->$errors)
+                .alphanumeric('The username must be alphanumeric')
+                .minLength(6, 'The username must be at least 6 characters long')
+                .maxLength(30, 'The username must be less than 30 characters long')
+                .required('The username cannot be empty');
         }
 
         private function validateEmail()
         {
-            $field = "email";
+            $field = 'email';
             $email = trim($this->$data[$field]);
 
-            if(empty($email)){
-                $this->addError($field, "The email cannot be empty");
-            }
-            else {
-                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $this->addError($field, "The email must be a valid email");
-                }
-            }
+            Validations::validate($email, $field, $this->$errors)
+                .email('The email must be a valid email')
+                .required('The email cannot be empty');
         }
 
         private function validateName()
         {
-            $field = "name";
-            $name = trim($this->$data[$name_field]);
+            $field = 'name';
+            $name = trim($this->$data[$field]);
 
-            if (empty($name)) {
-                $this->addError($field, "The name cannot be empty");
-            }
-            else {
-
-            }
+            Validations::validate($name, $field, $this->$errors)
+                .alphabeticSpaces('The name must be alphabetic')
+                .required('The name cannot be empty');
         }
 
         private function validateLastname()
         {
-            
+            $field = 'lastname';
+            $lastname = trim($this->$data[$field]);
+
+            Validations::validate($lastname, $field, $this->$errors)
+                .alphabeticSpaces('The last name must be alphabetic')
+                .required('The last name cannot be empty');
         }
 
         private function validatePassword()
         {
-            $field = "password";
+            $field = 'password';
             $password = trim($this->$data[$field]);
 
-            if (empty($password)) {
-                $this->addError($field, "Password cannot be empty");
-            }
-            else {
-                # TODO: Change the regex
-                if (!preg_match("/^[a-zA-Z0-9]{8-}$/")) {
-                    $this->addError($field, "The password must include alphanumeric characters and least one special character and 8 characters long");
-                }
-            }
-        }
-
-        private function addError($key, $value)
-        {
-            $this->$errors[$key] = $value;
+            Validations::validate($password, $field, $this->$errors)
+                .matchExpression('/.*(?=.*[A-Z])(?=.*\d)(?=.*\W).*/', 'The password must have at least one uppercase, one number and one special character')
+                .minLength(8, 'The password must be at least 8 characters long')
+                .required('The password cannot be empty');
         }
     }  
 ?>
