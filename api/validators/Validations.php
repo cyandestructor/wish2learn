@@ -5,11 +5,11 @@
         private $field;
         private $errors;
 
-        private function __constructor($value, $field_name, &$errors_array)
+        private function __construct($value, $field_name, &$errors_array)
         {
-            $this->$value = $value;
-            $this->$field = $field_name;
-            $this->$errors =& $errors_array;
+            $this->value = $value;
+            $this->field = $field_name;
+            $this->errors = &$errors_array;
         }
 
         public static function validate($value, $field_name, &$errors_array)
@@ -17,72 +17,72 @@
             return new Validations($value, $field_name, $errors_array);
         }
 
-        public &function alphabetic($error_msg)
+        public function& alphabetic($error_msg)
         {
-            if (!preg_match('/[a-zA-Z]/', $this->$value)) {
+            if (!preg_match('/^[a-zA-Z]+$/', $this->value)) {
                 $this->addError($error_msg);
             }
 
             return $this;
         }
 
-        public &function alphabeticSpaces($error_msg)
+        public function& alphabeticSpaces($error_msg)
         {
-            if (!preg_match('/[a-zA-Z ]/', $this->$value)) {
+            if (!preg_match('/^[a-zA-Z\s]+$/', $this->value)) {
                 $this->addError($error_msg);
             }
 
             return $this;
         }
 
-        public &function numeric($error_msg)
+        public function& numeric($error_msg)
         {
-            if (!preg_match('/\d/', $this->$value)) {
+            if (!preg_match('/^\d+$/', $this->value)) {
                 $this->addError($error_msg);
             }
 
             return $this;
         }
 
-        public &function alphanumeric($error_msg)
+        public function& alphanumeric($error_msg)
         {
-            if (!preg_match('/[a-zA-Z\d]/', $this->$value)) {
+            if (!preg_match('/^[a-zA-Z\d]+$/', $this->value)) {
                 $this->addError($error_msg);
             }
 
             return $this;
         }
 
-        public &function minLength($min, $error_msg)
+        public function& minLength($min, $error_msg)
         {
-            if (strlen($this->$value) < $min) {
+            if (strlen($this->value) < $min) {
                 $this->addError($error_msg);
             }
 
             return $this;
         }
 
-        public &function maxLength($max, $error_msg)
+        public function& maxLength($max, $error_msg)
         {
-            if (strlen($this->$value) > $max) {
+            if (strlen($this->value) > $max) {
                 $this->addError($error_msg);
             }
 
             return $this;
         }
 
-        public &function email($error_msg)
+        public function& email($error_msg)
         {
-            if (!filter_var($this->$value, FILTER_VALIDATE_EMAIL)) {
+            if (!filter_var($this->value, FILTER_VALIDATE_EMAIL)) {
                 $this->addError($error_msg);
             }
 
             return $this;
         }
 
-        public &function matchExpression($expression, $error_msg)
+        public function& matchExpression($expression, $error_msg)
         {
-            if (!preg_match($expression, $this->$value)) {
+            if (!preg_match($expression, $this->value)) {
                 $this->addError($error_msg);
             }
 
@@ -91,21 +91,21 @@
 
         public function required($error_msg)
         {
-            if (empty($this->$value)) {
+            if (empty($this->value)) {
                 $this->addError($error_msg);
             }
         }
 
         public function notRequired()
         {
-            if (empty($this->$value) && isset($this->errors[$this->$field])) {
-                unset($this->$errors[$this->$field]);
+            if (empty($this->value) && isset($this->errors[$this->field])) {
+                unset($this->errors[$this->field]);
             }
         }
 
         private function addError($value)
         {
-            $this->$errors[$this->$field] = $value;
+            $this->errors[$this->field] = $value;
         }
     }
 ?>
