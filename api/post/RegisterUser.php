@@ -4,11 +4,11 @@
     header('Access-Control-Allow-Methods: POST');
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
     
-    require_once('../validators/UserRegisterValidator.php');
+    require_once('../validators/user/UserValidator.php');
 
     $data = json_decode(file_get_contents('php://input'), TRUE);
 
-    $validation = new UserRegisterValidator($data);
+    $validation = new UserValidator($data);
     $errors = $validation->validateForm();
 
     $result = [];
@@ -23,4 +23,3 @@
     }
 
     echo json_encode($result);
-?>
