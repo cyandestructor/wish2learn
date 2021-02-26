@@ -5,6 +5,8 @@ export default class UserValidator
     #user;
     #errors = {};
 
+    static #fields = ['username', 'name', 'lastname', 'email', 'password'];
+
     constructor(user)
     {
         this.#user = user;
@@ -44,6 +46,12 @@ export default class UserValidator
 
     validate()
     {
+        UserValidator.#fields.forEach(field => {
+            if (!this.#user.hasOwnProperty(field)) {
+                throw new Error(`${field} is not present in the user`);
+            }
+        });
+
         this.#validateUsername();
         this.#validateEmail();
         this.#validateName();
