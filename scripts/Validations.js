@@ -73,6 +73,8 @@ export default class Validations
         {
             this.#error = Validations.Error.MinValue;
         }
+
+        return this;
     }
 
     maxValue(value)
@@ -81,6 +83,8 @@ export default class Validations
         {
             this.#error = Validations.Error.MaxValue;
         }
+
+        return this;
     }
 
     minLength(length)
@@ -89,6 +93,8 @@ export default class Validations
         {
             this.#error = Validations.Error.MinLength;
         }
+
+        return this;
     }
 
     maxLength(length)
@@ -97,6 +103,8 @@ export default class Validations
         {
             this.#error = Validations.Error.MaxLength;
         }
+
+        return this;
     }
 
     required()
