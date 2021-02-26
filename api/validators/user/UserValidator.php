@@ -77,7 +77,7 @@
         protected function validatePassword()
         {
             $field = 'password';
-            $password = trim($this->data[$field]);
+            $password = $this->data[$field];
 
             Validations::validate($password, $field, $this->errors)
                 ->matchExpression('/.*(?=.*[A-Z])(?=.*\d)(?=.*\W).*/', 'The password must have at least one uppercase, one number and one special character')
