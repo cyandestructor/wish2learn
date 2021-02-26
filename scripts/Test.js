@@ -1,7 +1,7 @@
-import Validations from "./Validations.js"
+import Validations from './validators/Validations.js'
 
 function interpretError(field, error) {
-    let message = "";
+    let message = '';
     
     switch (error) {
         case Validations.Error.Alphabetic:
@@ -32,24 +32,24 @@ function interpretError(field, error) {
             message = `${field} must not be empty`;
             break;
         default:
-            message = "Unknown error";
+            message = 'Unknown error';
             break;
     }
 
     return message;
 }
 
-let value = "ma!A1";
+let value = 'ma!A1';
 let validate = new Validations(value.trim());
 
 validate.match(/.*(?=.*[A-Z])(?=.*\d)(?=.*\W).*/);
 
 let error = validate.lastError;
 if (error !== Validations.Error.None) {
-    let message = interpretError("value", error);
+    let message = interpretError('value', error);
     alert(message);
 }
 else
 {
-    alert("Information is correct");
+    alert('Information is correct');
 }

@@ -18,14 +18,15 @@ export default class Validations
         MaxValue: 6,
         MinLength: 7,
         MaxLength: 8,
-        Required: 9
+        Email: 9,
+        Required: 10
     }
 
     alphabetic(spaces = false)
     {
-        let exp = spaces ? /^[a-zA-Z\s]+$/ : /^[a-zA-Z]+$/;
+        let exp = spaces ? /^[a-zA-Z\s]+$/g : /^[a-zA-Z]+$/g;
 
-        if(!this.#value.match(exp))
+        if(!exp.test(this.#value))
         {
             this.#error = Validations.Error.Alphabetic;
         }
@@ -35,9 +36,9 @@ export default class Validations
 
     numeric(spaces = false)
     {
-        let exp = spaces ? /^[\d\s]+$/ : /^\d+$/;
+        let exp = spaces ? /^[\d\s]+$/g : /^\d+$/g;
 
-        if(!this.#value.match(exp))
+        if(!exp.test(this.#value))
         {
             this.#error = Validations.Error.Numeric;
         }
@@ -47,9 +48,9 @@ export default class Validations
 
     alphanumeric(spaces = false)
     {
-        let exp = spaces ? /^[a-zA-Z\d\s]+$/ : /^[a-zA-Z\d]+$/;
+        let exp = spaces ? /^[a-zA-Z\d\s]+$/g : /^[a-zA-Z\d]+$/g;
 
-        if(!this.#value.match(exp))
+        if(!exp.test(this.#value))
         {
             this.#error = Validations.Error.Alphanumeric;
         }
@@ -62,6 +63,19 @@ export default class Validations
         if(!this.#value.match(exp))
         {
             this.#error = Validations.Error.Match;
+        }
+
+        return this;
+    }
+
+    email()
+    {
+        // https://emailregex.com/
+        const exp = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/g
+
+        if(!exp.test(this.#value))
+        {
+            this.#error = Validations.Error.Email;
         }
 
         return this;
