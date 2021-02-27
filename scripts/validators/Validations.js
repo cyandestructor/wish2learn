@@ -19,7 +19,8 @@ export default class Validations
         MinLength: 7,
         MaxLength: 8,
         Email: 9,
-        Required: 10
+        Number: 10,
+        Required: 11
     }
 
     alphabetic(spaces = false)
@@ -53,6 +54,17 @@ export default class Validations
         if(!exp.test(this.#value))
         {
             this.#error = Validations.Error.Alphanumeric;
+        }
+
+        return this;
+    }
+
+    number()
+    {
+        // https://github.com/angular/angular/blob/4.3.x/packages/common/src/pipes/number_pipe.ts#L172
+        if(isNaN(this.#value - parseFloat(this.#value)))
+        {
+            this.#error = Validations.Error.Number;
         }
 
         return this;

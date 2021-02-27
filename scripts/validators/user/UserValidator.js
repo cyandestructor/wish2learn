@@ -1,4 +1,5 @@
 import Validations from '../Validations.js';
+import { interpretError } from '../ValidationsUtility.js';
 
 export default class UserValidator
 {
@@ -12,36 +13,14 @@ export default class UserValidator
         this.#user = user;
     }
 
-    static #interpretError(field, error, minLength = 0, maxLength = 0) {
-        let message = '';
-        
-        switch (error) {
-            case Validations.Error.Alphabetic:
-                message = `${field} must be alphabetic`;
-                break;
-            case Validations.Error.Numeric:
-                message = `${field} must be numeric`;
-                break;
-            case Validations.Error.Alphanumeric:
-                message = `${field} must be alphanumeric`;
-                break;
-            case Validations.Error.Required:
-                message = `${field} must not be empty`;
-                break;
-            case Validations.Error.MinLength:
-                message = `The ${field} must be at least ${minLength} characters long`;
-                break;
-            case Validations.Error.MaxLength:
-                message = `The ${field} must be less than ${maxLength} characters long`;
-                break;
-            case Validations.Error.Email:
-                message = `The ${field} must be a valid email`;
-                break;
-            default:
-                break;
-        }
-    
-        return message;
+    get errors()
+    {
+        return this.#errors;
+    }
+
+    get user()
+    {
+        return this.#user;
     }
 
     validate()
@@ -52,16 +31,16 @@ export default class UserValidator
             }
         });
 
-        this.#validateUsername();
-        this.#validateEmail();
-        this.#validateName();
-        this.#validateLastname();
-        this.#validatePassword();
+        this.validateUsername();
+        this.validateEmail();
+        this.validateName();
+        this.validateLastname();
+        this.validatePassword();
 
         return this.#errors;
     }
 
-    #validateUsername()
+    validateUsername()
     {
         const field = 'username';
         let username = String(this.#user[field]).trim();
@@ -78,12 +57,12 @@ export default class UserValidator
         
         let error = validate.lastError;
         if (error !== Validations.Error.None) {
-            let message = UserValidator.#interpretError(field, error, minLength, maxLength);
-            this.#addError(field, message);
+            let message = interpretError(field, error, minLength, maxLength);
+            this.addError(field, message);
         }
     }
 
-    #validateName()
+    validateName()
     {
         const field = 'name';
         let name = String(this.#user[field]).trim();
@@ -95,12 +74,12 @@ export default class UserValidator
 
         let error = validate.lastError;
         if (error !== Validations.Error.None) {
-            let message = UserValidator.#interpretError(field, error);
-            this.#addError(field, message);
+            let message = interpretError(field, error);
+            this.addError(field, message);
         }
     }
 
-    #validateLastname()
+    validateLastname()
     {
         const field = 'lastname';
         let lastname = String(this.#user[field]).trim();
@@ -113,11 +92,11 @@ export default class UserValidator
         let error = validate.lastError;
         if (error !== Validations.Error.None) {
             let message = UserValidator.#interpretError(field, error);
-            this.#addError(field, message);
+            this.addError(field, message);
         }
     }
 
-    #validatePassword()
+    validatePassword()
     {
         const field = 'password';
         let password = this.#user[field];
@@ -135,13 +114,13 @@ export default class UserValidator
                 message = 'The password must have at least one uppercase, one number and one special character';
             }
             else {
-                message = UserValidator.#interpretError(field, error, 8);
+                message = interpretError(field, error, 8);
             }
-            this.#addError(field, message);
+            this.addError(field, message);
         }
     }
 
-    #validateEmail()
+    validateEmail()
     {
         const field = 'email';
         let email = String(this.#user[field]).trim();
@@ -153,12 +132,12 @@ export default class UserValidator
 
         let error = validate.lastError;
         if (error !== Validations.Error.None) {
-            let message = UserValidator.#interpretError(field, error);
-            this.#addError(field, message);
+            let message = interpretError(field, error);
+            this.addError(field, message);
         }
     }
 
-    #addError(key, value)
+    addError(key, value)
     {
         this.#errors[key] = value;
     }
