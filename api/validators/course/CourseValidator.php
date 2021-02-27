@@ -1,5 +1,5 @@
 <?php
-    require_once('../ValidatorInterface.php');)
+    require_once('../ValidatorInterface.php');
     require_once('../Validations.php');
 
     class CourseValidator implements ValidatorInterface
