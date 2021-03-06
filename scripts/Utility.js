@@ -1,5 +1,13 @@
 export default class Utility
 {
+    static objectIsEmpty(object)
+    {
+        // Based on:
+        // https://www.samanthaming.com/tidbits/94-how-to-check-if-object-is-empty/
+        
+        return Object.keys(object).length === 0 && object.constructor === Object;
+    }
+
     static formDataToObject(formData, multiFields = null)
     {
         // Based on:
@@ -15,5 +23,28 @@ export default class Utility
         }
 
         return object;
+    }
+
+    static setInputFilter(textbox, inputFilter)
+    {
+        // Based on:
+        // https://stackoverflow.com/questions/469357/html-text-input-allow-only-numeric-input
+
+        ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function (event) {
+            textbox.addEventListener(event, function () {
+                if (inputFilter(this.value)) {
+                    this.oldValue = this.value;
+                    this.oldSelectionStart = this.selectionStart;
+                    this.oldSelectionEnd = this.selectionEnd;
+                }
+                else if (this.hasOwnProperty("oldValue")) {
+                    this.value = this.oldValue;
+                    this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                }
+                else {
+                    this.value = "";
+                }
+            });
+        });
     }
 }

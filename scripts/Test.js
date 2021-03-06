@@ -1,19 +1,15 @@
 import UserValidator from './validators/user/UserValidator.js'
+import Utility from './Utility.js';
 
-const user = {
-    username: 'cyandestructor',
-    name: 'Bryan',
-    lastname: 'Duarte',
-    email: 'myemail.55@mail.com',
-    password: 'Camera11!'
-};
+document.getElementById('userRegistration').addEventListener('submit', (e) =>{
+    const form = e.target;
+    const user = Utility.formDataToObject(new FormData(form));
+    
+    let userValidator = new UserValidator(user);
+    let errors = userValidator.validate();
 
-let userValidator = new UserValidator(user);
-let errors = userValidator.validate();
-
-if (Object.keys(errors).length) {
-    console.log(errors);
-}
-else {
-    console.log('The information is correct');
-}
+    if (!Utility.objectIsEmpty(errors)) {
+        console.log(errors);
+        e.preventDefault();
+    }
+});

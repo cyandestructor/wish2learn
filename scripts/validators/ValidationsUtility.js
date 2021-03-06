@@ -5,16 +5,16 @@ export function interpretError(field, error, minLength = 0, maxLength = 0, minVa
     
     switch (error) {
         case Validations.Error.Alphabetic:
-            message = `${field} must be alphabetic`;
+            message = `The ${field} must be alphabetic`;
             break;
         case Validations.Error.Numeric:
-            message = `${field} must be numeric`;
+            message = `The ${field} must be numeric`;
             break;
         case Validations.Error.Alphanumeric:
-            message = `${field} must be alphanumeric`;
+            message = `The ${field} must be alphanumeric`;
             break;
         case Validations.Error.Required:
-            message = `${field} must not be empty`;
+            message = `The ${field} must not be empty`;
             break;
         case Validations.Error.MinLength:
             message = `The ${field} must be at least ${minLength} characters long`;

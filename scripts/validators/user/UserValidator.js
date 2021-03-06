@@ -91,7 +91,7 @@ export default class UserValidator
 
         let error = validate.lastError;
         if (error !== Validations.Error.None) {
-            let message = UserValidator.#interpretError(field, error);
+            let message = interpretError(field, error);
             this.addError(field, message);
         }
     }
