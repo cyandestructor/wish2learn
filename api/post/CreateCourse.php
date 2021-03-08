@@ -4,11 +4,11 @@
     header('Access-Control-Allow-Methods: POST');
     header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
     
-    require_once($_SERVER['DOCUMENT_ROOT'] . '/api/validators/user/UserValidator.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/api/validators/course/CourseCreationValidator.php');
 
     $data = json_decode(file_get_contents('php://input'), TRUE);
 
-    $validation = new UserValidator($data);
+    $validation = new CourseCreationValidator($data);
     $errors = $validation->validateForm();
 
     $result = [];
