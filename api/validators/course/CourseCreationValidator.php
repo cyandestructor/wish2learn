@@ -1,5 +1,5 @@
 <?php
-    require_once('CourseValidator.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/api/validators/course/CourseValidator.php');
 
     class CourseCreationValidator extends CourseValidator
     {

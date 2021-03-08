@@ -1,6 +1,6 @@
 <?php
-    require_once('../ValidatorInterface.php');
-    require_once('../Validations.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/api/validators/ValidatorInterface.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/api/validators/Validations.php');
 
     class LessonValidator implements ValidatorInterface
     {
