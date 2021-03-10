@@ -47,4 +47,17 @@ export default class Utility
             });
         });
     }
+
+    static displayErrors(id, errors) {
+        const container = document.getElementById(id);
+    
+        container.innerHTML = '';
+    
+        for (const key in errors) {
+            if (Object.hasOwnProperty.call(errors, key)) {
+                const error = errors[key];
+                container.innerHTML += (error + '<br>');
+            }
+        }
+    }
 }
