@@ -19,6 +19,24 @@ CREATE TABLE Users (
     FULLTEXT (username, account_name, account_lastname)
 );
 
+CREATE TABLE Users (
+	id_user INT NOT NULL AUTO_INCREMENT,
+    username NVARCHAR(50) NOT NULL UNIQUE,
+    account_name NVARCHAR(50) NOT NULL,
+    account_lastname NVARCHAR(50) NOT NULL,
+    user_description TEXT,
+    user_email NVARCHAR(60) NOT NULL UNIQUE,
+    user_password VARCHAR(255) NOT NULL,
+    user_image MEDIUMBLOB,
+    user_role TINYINT DEFAULT 1,
+    account_creation_date DATE,
+    last_change_date DATETIME,
+    account_state TINYINT DEFAULT 1,
+    
+    PRIMARY KEY (id_user),
+    FULLTEXT (username, account_name, account_lastname)
+);
+
 CREATE TABLE Products (
 	id_product INT NOT NULL AUTO_INCREMENT,
     product_name NVARCHAR(70),
