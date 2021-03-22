@@ -1372,3 +1372,62 @@ button .nav-link:first-child{
 #moradito{
   background-color: #5B00BC!important;
 }
+/*ACTUALIZACIONES MARTES*/
+#sidebar-container2{
+  width: 100%;
+}
+.panel-collapse{
+  color: white;
+}
+.ajustardrop > a{
+  width: 100%!important;
+}
+.ajustardrop{
+  width: 100%!important;
+}
+ 
+#v-pills-tab > .nav-link{
+ 
+}
+ 
+.sidenav2 {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #5B00BC;
+   overflow-x: hidden; 
+  transition: 0.5s;
+  padding-top: 60px;
+}
+.sidenav2 a {
+ /* padding: 8px 8px 8px 32px; */
+  text-decoration: none;
+  font-size: 25px;
+  color: blue;
+  /*display: block;*/
+ /* transition: 0.3s; */
+  width: 100%;
+  display: inline-block;
+  color:white;
+  transition: all 0.7s;
+}
+ 
+.todoaltoDiv{
+  height: 100%;
+}
+ 
+#v-pills-tabContent > .tab-pane {
+  height: 100vh;
+}
+ 
+.marginbtm2, .margintp2{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+ 
+.sidenav2 a.dropdown-item {
+  color: black;
+}

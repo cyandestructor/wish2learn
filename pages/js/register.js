@@ -28,11 +28,13 @@ document.getElementById('userRegisterForm').addEventListener('submit', e => {
     let validator = new UserValidator(user);
     let errors = validator.validate();
 
-    if (!Utility.objectIsEmpty(errors)) {
-        Utility.displayErrors('registerErrors', errors);
-        e.preventDefault();
-    }
-    else {
-        registerUser(user)
-    }
+    registerUser(user);
+    e.preventDefault();
+    // if (!Utility.objectIsEmpty(errors)) {
+    //     Utility.displayErrors('registerErrors', errors);
+    //     e.preventDefault();
+    // }
+    // else {
+    //     registerUser(user)
+    // }
 });

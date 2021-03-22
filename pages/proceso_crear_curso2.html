@@ -13,9 +13,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
-    <title>Whish2Know</title>
+    <title>Hello, world!</title>
   </head>
-  <body>
+  <body >
     
     <!-- AQUI EMPIEZA EL SIDEBAR-->
     <div class="d-flex">
@@ -25,7 +25,7 @@
             </div>
             <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
               <h5>Planificación</h5>
-              <button class="nav-link " id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Objetivos</button>
+              <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Objetivos</button>
               <h5>Crea tu contenido</h5>
               <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Multimedia y Datos</button>
               <h5>Publica tu curso</h5>
@@ -39,7 +39,7 @@
         <div class="container-fluid">
           <div class="d-flex align-items-start">
             <div class="tab-content container " id="v-pills-tabContent">
-              <div class="tab-pane fade " id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+              <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                 <div class="container">
                   <h5>Llega a tus estudiantes</h5>
                   <div class="form-group">
@@ -78,84 +78,135 @@
                 </div>
               </div>
               <!-- CREA TU CONTENIDO -->
-              <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                <div class="container">
-                  <h5>Programa</h5>
-                  <p>Empieza a dar forma a tu curso creando secciones, clases y ejercicios prácticos (cuestionarios, ejercicios de codificación y tareas).</p>
-                  <div class="card">
-                    <div onmouseover="myOverFunction()" onmouseout="myOutOverFunction()" class="card-body">
-                      <h5 class="card-title">Sección 1</h5>
-                      <input class="form-control" id="pruebaplace" type="text" placeholder="Introduccion">
-                      <div class="displayagregar">
-                        <div class="agregarmas isloaded">
-                          <button class="btn btn-info" onclick="nuevovalor()"><i class="bi bi-pencil-square"></i></button> 
-                          <button class="btn btn-info" onclick="borrarvalor()"><i class="bi bi-trash"></i></button>
-                          <button class="btn btn-info" onclick="desplegardescrip()"><i class="bi bi-caret-down-fill"></i></button>
-                        </div>
+              <div class="tab-pane fade " id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                <h5>Programa</h5>
+                <p>Empieza a dar forma a tu curso creando secciones, clases y ejercicios prácticos (cuestionarios, ejercicios de codificación y tareas).</p>
+                
+                <div class="container-fluid fondonegro">
+                  <div class="row">
+                  <div class="panel-group" id="accordion">
+                    <div id="padreLecciones" class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                          Título</a>
+                          <div class="form-group">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Escribe algo genial">
+                          </div>
+                        </h4>
                       </div>
-                      <br>
-                      <ul id="descripciondesplegar" class="list-group list-group-flush">
-                       <!-- <li class="list-group-item">Descripción</li>-->
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Describe esta sección</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                          
-                            <!-- MENU PESTAÑAS-->
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Archivo descargable</a>
-                            </li>
-                            <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Recurso externo</a>
-                            </li>
-                        
-                        </ul>
-                        <div class="tab-content container-fluid" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                      <div id="collapse1" class="panel-collapse collapse in">
+                        <div class="card">
+                          <div onmouseover="myOverFunction()" onmouseout="myOutOverFunction()" class="card-body">
+                            <h5 class="card-title">Sección 1</h5>
+                            <input class="form-control" id="pruebaplace" type="text" placeholder="Introduccion">
+                            <div class="displayagregar">
+                              <div class="agregarmas isloaded">
+                                <button class="btn btn-info" onclick="nuevovalor()"><i class="bi bi-pencil-square"></i></button> 
+                                <button class="btn btn-info" onclick="borrarvalor()"><i class="bi bi-trash"></i></button>
+                                <button class="btn btn-info" onclick="desplegardescrip()"><i class="bi bi-caret-down-fill"></i></button>
+                              </div>
+                            </div>
+                            <br>
+                            <ul id="descripciondesplegar" class="list-group list-group-flush">
+                             <!-- <li class="list-group-item">Descripción</li>-->
+                              <div class="form-group">
+                                  <label for="exampleFormControlTextarea1">Describe esta sección</label>
+                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                              </div>
                                 
-                                <label class="form-label" for="customFile">Default file input example</label>
-                                <input type="file" class="form-control" id="customFile" />
-                            </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <form>
-                                    <div class="form-row">
-                                        <div class="form-group">
-                                            <label for="inputAddress">Título</label>
-                                            <input type="text" class="form-control" id="inputTitle" placeholder="Conceptos básicos">
+                                  <!-- MENU PESTAÑAS-->
+                              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                  <li class="nav-item">
+                                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Archivo descargable</a>
+                                  </li>
+                                  <li class="nav-item">
+                                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Recurso externo</a>
+                                  </li>
+                              
+                              </ul>
+                              <div class="tab-content container-fluid" id="myTabContent">
+                                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                      
+                                      <label class="form-label" for="customFile">Default file input example</label>
+                                      <input type="file" class="form-control" id="customFile" />
+                                  </div>
+                                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                      <form>
+                                          <div class="form-row">
+                                              <div class="form-group">
+                                                  <label for="inputAddress">Título</label>
+                                                  <input type="text" class="form-control" id="inputTitle" placeholder="Conceptos básicos">
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="inputAddress2">URL</label>
+                                                  <input type="text" class="form-control" id="inputAddress2" placeholder="youtube.com">
+                                                </div>
+                                                <button class="btn btn-info">Añadir enlace</button>
                                           </div>
-                                          <div class="form-group">
-                                            <label for="inputAddress2">URL</label>
-                                            <input type="text" class="form-control" id="inputAddress2" placeholder="youtube.com">
-                                          </div>
-                                          <button class="btn btn-info">Añadir enlace</button>
-                                    </div>
-                                </form>
-                            </div>
+                                      </form>
+                                  </div>
+                              </div>
+                              <!--AQUI TERMINA MENU PESTAÑAS-->
+                              <br>
+                              <button class="btn btn-info">Guardar</button>
+                              <button type="button" onclick="canceldesplegardescrip()" class="btn btn-warning">Cancelar</button>
+                              <br>
+                            </ul>
+                            <br>
+                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                          </div>
                         </div>
-                        <!--AQUI TERMINA MENU PESTAÑAS-->
-                        <br>
-                        <button class="btn btn-info">Guardar</button>
-                        <button type="button" onclick="canceldesplegardescrip()" class="btn btn-warning">Cancelar</button>
-                        <br>
-                      </ul>
-                      <br>
-                      <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="card-link">Card link</a>
-                      <a href="#" class="card-link">Another link</a>
-                    </div>
-                  </div>
-                    <div class="agregarmas2">
-                      <input type="button" id="btndinamic"value="agregar" href="#" onclick="crearmascards()" class="tamanoicon btn-info"><i class="bi bi-node-plus"></i>
-                    </div> 
-                </div>
-              </div>
-              <div id="agregando" class=" container-fluid" >
-                    <div>
 
+                        <div class=""> <!--agregarmas2 -->
+                          <a type="button" id="btndinamic" href="#" onclick="crearmascards()" class="tamanoicon btn-info"><i class="bi bi-node-plus"></i></a> 
+                          <h4>Crea mas secciones</h4>
+                        </div> 
+
+                        <div id="agregando" class=" container-fluid" >
+                          <div>
+        
+                          </div>
+                        </div>
+                      </div> <!-- FINALIZA EL DESPLEGABLE-->
+                      
+                      
                     </div>
+
+                  <!-- <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                            ¿Para quién es este curso?</a>
+                        </h4>
+                      </div>
+                      <div id="collapse2" class="panel-collapse collapse">
+                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat.</div>
+                      </div>
+                    </div> -->
+                  </div>
+                  
+                  </div>
+                </div><!-- TERMINA FONDO NEGRO-->
+                <div>
+                  <a type="button" id="btndinamicLecciones" href="#" onclick="crearlec()" class="tamanoicon btn-success"><i class="bi bi-node-plus"></i></a> 
+                
                 </div>
+                    
+                <div id="agregandoLecciones" class="container-fluid">
+                  <div class="">
+                   
+                  </div>
+                </div>
+                
+              </div> <!-- TERMINA LA SECCION PESTAÑA 1 -->
+              
               <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                 <div class="container-fluid">
                   <h1>Página de inicio del curso</h1>

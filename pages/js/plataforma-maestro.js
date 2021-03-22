@@ -204,86 +204,6 @@ function myOutOverFunction() {
     m[n].style.display = "none";
   }
 }
-function openNav() {
-  demoId = document.getElementById("v-pills-home-tab");
-  demoId.innerHTML = `<i class="bi bi-file-earmark-slides flexc"></i><span class="textside prueba33">Cursos</span>`;
-
-  demoId2 = document.getElementById("v-pills-profile-tab");
-  demoId2.innerHTML = `<i class="bi bi-chat-dots flexc"></i><span class="textside prueba33">Comunicación</span>`;
-
-  demoId3 = document.getElementById("v-pills-messages-tab");
-  demoId3.innerHTML = ` <i class="bi bi-bar-chart-line flexc"></i><span class="textside prueba33">Rendimiento</span>`;
-
-  demoId4 = document.getElementById("v-pills-settings-tab");
-  demoId4.innerHTML = ` <i class="bi bi-tools flexc"></i><span class="textside prueba33">Herramientas</span>`;
-
-  document.getElementById("mySidenav").style.width = "26%";
-  document.getElementById("main").style.marginLeft = "26%";
-  var x = document.getElementsByClassName("prueba22");
-  var i;
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "inline";
-  }
-
-  var y = document.getElementsByClassName("last-wrapper");
-  var j;
-  for (j = 0; j < y.length; j++) {
-    y[j].style.maxWidth = "100%";
-    y[j].style.transition = "3s";
-  }
-  var g = document.getElementsByClassName("last-wrapper2");
-  var h;
-  for (h = 0; h < g.length; h++) {
-    g[h].style.maxWidth = "100%";
-    g[h].style.transition = "3s";
-  }
-  var e = document.getElementsByClassName("prueba33");
-  var f;
-  for (e = 0; e < f.length; e++) {
-    e[f].style.display = "inline";
-  }
-}
-
-function closeNav() {
-  demoId = document.getElementById("v-pills-home-tab");
-  demoId.innerHTML = `<i class="bi bi-file-earmark-slides flexc"></i>`;
-
-  demoId2 = document.getElementById("v-pills-profile-tab");
-  demoId2.innerHTML = `<i class="bi bi-chat-dots flexc"></i>`;
-
-  demoId3 = document.getElementById("v-pills-messages-tab");
-  demoId3.innerHTML = ` <i class="bi bi-bar-chart-line flexc"></i> `;
-
-  demoId4 = document.getElementById("v-pills-settings-tab");
-  demoId4.innerHTML = ` <i class="bi bi-tools flexc"></i>`;
-
-  document.getElementById("mySidenav").style.width = "9%";
-  document.getElementById("main").style.marginLeft = "9%";
-  var y = document.getElementsByClassName("last-wrapper");
-  var j;
-  for (j = 0; j < y.length; j++) {
-    y[j].style.maxWidth = "0";
-    y[j].style.transition = ".5s";
-    y[j].style.overflow = "hidden";
-  }
-  var x = document.getElementsByClassName("prueba22");
-  var i;
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  var g = document.getElementsByClassName("last-wrapper2");
-  var h;
-  for (h = 0; h < g.length; h++) {
-    g[h].style.maxWidth = "100%";
-    g[h].style.transition = ".5s";
-    g[h].style.overflow = "hidden";
-  }
-  var e = document.getElementsByClassName("prueba33");
-  var f;
-  for (e = 0; e < f.length; e++) {
-    e[f].style.display = "none";
-  }
-}
 
 /* VALIDACIONES */
 
@@ -692,4 +612,167 @@ function crearlec() {
      
    </div>
                     `;
+}
+
+function openNavOriginal() {
+  demoId = document.getElementById("v-pills-home-tab");
+  demoId.innerHTML = `<i class="bi bi-file-earmark-slides flexc"></i><span class="textside prueba33">Cursos</span>`;
+
+  demoId2 = document.getElementById("v-pills-profile-tab");
+  demoId2.innerHTML = `<i class="bi bi-chat-dots flexc"></i><span class="textside prueba33">Comunicación</span>`;
+
+  demoId3 = document.getElementById("v-pills-messages-tab");
+  demoId3.innerHTML = ` <i class="bi bi-bar-chart-line flexc"></i><span class="textside prueba33">Rendimiento</span>`;
+
+  demoId4 = document.getElementById("v-pills-settings-tab");
+  demoId4.innerHTML = ` <i class="bi bi-tools flexc"></i><span class="textside prueba33">Herramientas</span>`;
+
+  document.getElementById("mySidenav").style.width = "26%";
+  document.getElementById("main").style.marginLeft = "26%";
+  var x = document.getElementsByClassName("prueba22");
+  var i;
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "inline";
+  }
+
+  var y = document.getElementsByClassName("last-wrapper");
+  var j;
+  for (j = 0; j < y.length; j++) {
+    y[j].style.maxWidth = "100%";
+    y[j].style.transition = "3s";
+  }
+  var g = document.getElementsByClassName("last-wrapper2");
+  var h;
+  for (h = 0; h < g.length; h++) {
+    g[h].style.maxWidth = "100%";
+    g[h].style.transition = "3s";
+  }
+  var e = document.getElementsByClassName("prueba33");
+  var f;
+  for (e = 0; e < f.length; e++) {
+    e[f].style.display = "inline";
+  }
+}
+
+function closeNavOriginal() {
+  demoId = document.getElementById("v-pills-home-tab");
+  demoId.innerHTML = `<i class="bi bi-file-earmark-slides flexc"></i>`;
+
+  demoId2 = document.getElementById("v-pills-profile-tab");
+  demoId2.innerHTML = `<i class="bi bi-chat-dots flexc"></i>`;
+
+  demoId3 = document.getElementById("v-pills-messages-tab");
+  demoId3.innerHTML = ` <i class="bi bi-bar-chart-line flexc"></i> `;
+
+  demoId4 = document.getElementById("v-pills-settings-tab");
+  demoId4.innerHTML = ` <i class="bi bi-tools flexc"></i>`;
+
+  document.getElementById("mySidenav").style.width = "9%";
+  document.getElementById("main").style.marginLeft = "9%";
+  var y = document.getElementsByClassName("last-wrapper");
+  var j;
+  for (j = 0; j < y.length; j++) {
+    y[j].style.maxWidth = "0";
+    y[j].style.transition = ".5s";
+    y[j].style.overflow = "hidden";
+  }
+  var x = document.getElementsByClassName("prueba22");
+  var i;
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  var g = document.getElementsByClassName("last-wrapper2");
+  var h;
+  for (h = 0; h < g.length; h++) {
+    g[h].style.maxWidth = "100%";
+    g[h].style.transition = ".5s";
+    g[h].style.overflow = "hidden";
+  }
+  var e = document.getElementsByClassName("prueba33");
+  var f;
+  for (e = 0; e < f.length; e++) {
+    e[f].style.display = "none";
+  }
+}
+
+function openNav() {
+  demoId = document.getElementById("v-pills-home-tab");
+  demoId.innerHTML = `<span class="textside prueba33">Tema #2</span>`;
+
+  demoId2 = document.getElementById("v-pills-profile-tab");
+  demoId2.innerHTML = `<span class="textside prueba33">Tema #3</span>`;
+
+  demoId3 = document.getElementById("v-pills-home-tab");
+  demoId3.innerHTML = `<span class="textside prueba33">Subtema #3</span>`;
+
+  document.getElementById("mySidenav").style.width = "26%";
+  document.getElementById("main").style.marginLeft = "26%";
+  var x = document.getElementsByClassName("prueba22");
+  var i;
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "inline";
+  }
+
+  var y = document.getElementsByClassName("last-wrapper");
+  var j;
+  for (j = 0; j < y.length; j++) {
+    y[j].style.maxWidth = "100%";
+    y[j].style.transition = "3s";
+  }
+  var g = document.getElementsByClassName("last-wrapper2");
+  var h;
+  for (h = 0; h < g.length; h++) {
+    g[h].style.maxWidth = "100%";
+    g[h].style.transition = "3s";
+  }
+  var e = document.getElementsByClassName("prueba33");
+  var f;
+  for (e = 0; e < f.length; e++) {
+    e[f].style.display = "inline";
+  }
+  var d = document.getElementsByClassName("panel-group");
+  var f;
+  for (f = 0; f < d.length; f++) {
+    d[f].style.display = "inline";
+  }
+}
+
+function closeNav() {
+  demoId = document.getElementById("v-pills-home-tab");
+  demoId.innerHTML = `<i class="bi bi-file-earmark-slides flexc"></i>`;
+
+  demoId2 = document.getElementById("v-pills-profile-tab");
+  demoId2.innerHTML = `<i class="bi bi-chat-dots flexc"></i>`;
+
+  document.getElementById("mySidenav").style.width = "9%";
+  document.getElementById("main").style.marginLeft = "9%";
+  var y = document.getElementsByClassName("last-wrapper");
+  var j;
+  for (j = 0; j < y.length; j++) {
+    y[j].style.maxWidth = "0";
+    y[j].style.transition = ".5s";
+    y[j].style.overflow = "hidden";
+  }
+  var x = document.getElementsByClassName("prueba22");
+  var i;
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  var g = document.getElementsByClassName("last-wrapper2");
+  var h;
+  for (h = 0; h < g.length; h++) {
+    g[h].style.maxWidth = "100%";
+    g[h].style.transition = ".5s";
+    g[h].style.overflow = "hidden";
+  }
+  var e = document.getElementsByClassName("prueba33");
+  var f;
+  for (e = 0; e < f.length; e++) {
+    e[f].style.display = "none";
+  }
+  var d = document.getElementsByClassName("panel-group");
+  var s;
+  for (s = 0; s < d.length; s++) {
+    d[s].style.display = "none";
+  }
 }
