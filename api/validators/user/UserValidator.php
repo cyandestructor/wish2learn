@@ -1,11 +1,11 @@
 <?php
-    require_once('ValidatorInterface.php');
-    require_once('Validations.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/api/validators/ValidatorInterface.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/api/validators/Validations.php');
 
-    class UserRegisterValidator implements ValidatorInterface
+    class UserValidator implements ValidatorInterface
     {
-        private $data;
-        private $errors = [];
+        protected $data;
+        protected $errors = [];
         private static $fields = ['username', 'name', 'lastname', 'email', 'password'];
 
         public function __construct($post_data)
@@ -15,7 +15,6 @@
 
         public function validateForm()
         {
-            
             foreach(self::$fields as $field)
             {
                 if (!array_key_exists($field, $this->data)) {
@@ -33,7 +32,7 @@
             return $this->errors;
         }
 
-        private function validateUsername()
+        protected function validateUsername()
         {
             $field = 'username';
             $username = trim($this->data[$field]);
@@ -45,7 +44,7 @@
                 ->required('The username cannot be empty');
         }
 
-        private function validateEmail()
+        protected function validateEmail()
         {
             $field = 'email';
             $email = trim($this->data[$field]);
@@ -55,7 +54,7 @@
                 ->required('The email cannot be empty');
         }
 
-        private function validateName()
+        protected function validateName()
         {
             $field = 'name';
             $name = trim($this->data[$field]);
@@ -65,7 +64,7 @@
                 ->required('The name cannot be empty');
         }
 
-        private function validateLastname()
+        protected function validateLastname()
         {
             $field = 'lastname';
             $lastname = trim($this->data[$field]);
@@ -75,15 +74,14 @@
                 ->required('The last name cannot be empty');
         }
 
-        private function validatePassword()
+        protected function validatePassword()
         {
             $field = 'password';
-            $password = trim($this->data[$field]);
+            $password = $this->data[$field];
 
             Validations::validate($password, $field, $this->errors)
                 ->matchExpression('/.*(?=.*[A-Z])(?=.*\d)(?=.*\W).*/', 'The password must have at least one uppercase, one number and one special character')
                 ->minLength(8, 'The password must be at least 8 characters long')
                 ->required('The password cannot be empty');
         }
-    }  
-?>
+    }
