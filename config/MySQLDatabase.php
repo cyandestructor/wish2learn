@@ -23,7 +23,7 @@
                 // Throw an exception when an error occurs
                 $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 // Fetch the data as an associative array
-                $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FECH_ASSOC);
+                $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             } catch (PDOException $e) {
                 echo('Connection Error: ' . $e->getMessage());
             }

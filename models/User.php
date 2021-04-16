@@ -12,16 +12,32 @@
 
         public function register($user)
         {
-            $sql = 'EXEC RegisterUser(?, ?, ?, ?, ?)';
+            $userID = -1;
             
-            $statement = $this->connection->prepare($sql);
-            $statement->execute([
-                $user['username'],
-                $user['name'],
-                $user['lastname'],
-                $user['email'],
-                $user['password']
-            ]);
+            try {
+                $sql = 'CALL RegisterUser(?, ?, ?, ?, ?)';
+            
+                $statement = $this->connection->prepare($sql);
+                
+                $hashedPassword = password_hash($user['password'], PASSWORD_DEFAULT);
+                
+                $statement->execute([
+                    $user['username'],
+                    $user['name'],
+                    $user['lastname'],
+                    $user['email'],
+                    $hashedPassword
+                ]);
+
+                $statement->bindColumn(1, $userID, PDO::PARAM_INT);
+                $statement->fetch(PDO::FETCH_BOUND);
+
+            } catch (PDOException $e) {
+                echo($e->getMessage());
+                $userID = -1;
+            }
+
+            return $userID;
         }
     }
     

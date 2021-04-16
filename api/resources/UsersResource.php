@@ -1,6 +1,8 @@
 <?php
     require_once($_SERVER['DOCUMENT_ROOT'] . '/config/MySQLDatabase.php');
     require_once($_SERVER['DOCUMENT_ROOT'] . '/api/manager/ResourceInterface.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/api/manager/HttpRequest.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/api/manager/HttpResponse.php');
     require_once($_SERVER['DOCUMENT_ROOT'] . '/api/validators/user/UserValidator.php');
     require_once($_SERVER['DOCUMENT_ROOT'] . '/models/User.php');
 

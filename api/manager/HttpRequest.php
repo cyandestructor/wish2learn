@@ -9,7 +9,7 @@
 
         public function __construct()
         {
-            $this->headers = getRequestHeaders();
+            $this->headers = $this->getRequestHeaders();
             $this->contentType = (isset($_SERVER['CONTENT_TYPE'])) ? $_SERVER['CONTENT_TYPE'] : null;
             $this->body = file_get_contents('php://input');
             $this->parameters = $_GET;
