@@ -4,13 +4,49 @@
     require_once($_SERVER['DOCUMENT_ROOT'] . '/api/manager/HttpRequest.php');
     require_once($_SERVER['DOCUMENT_ROOT'] . '/api/manager/HttpResponse.php');
     require_once($_SERVER['DOCUMENT_ROOT'] . '/api/validators/user/UserValidator.php');
-    require_once($_SERVER['DOCUMENT_ROOT'] . '/models/User.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/models/UserDAO.php');
 
     class UsersResource implements ResourceInterface
     {
         public function get(HttpRequest $request)
         {
+            $response = new HttpResponse();
+            
+            $result = [];
 
+            $userID = $request->getParameter('userId'); // Try to get the id from the request parameters
+            if(!isset($userID)){
+                $response->addHeader('Content-Type: application/json');
+                $response->setStatusCode(400);
+                $result['message'] = 'The userId was not specified in the request parameters or is incorrect';
+                $response->setBody(json_encode($result));
+                return $response;
+            }
+
+            $userDAO = new UserDAO(new MySQLDatabase());
+            $user = $userDAO->getUser($userID);
+            if(isset($user)){
+                $response->addHeader('Content-Type: application/json');
+                $response->setStatusCode(200);
+
+                $result['id'] = $user['id'];
+                $result['username'] = $user['username'];
+                $result['name'] = $user['name'];
+                $result['lastname'] = $user['lastname'];
+                $result['description'] = $user['description'];
+                $result['role'] = $user['role'];
+                $result['creationDate'] = $user['creationDate'];
+                $result['lastChangeDate'] = $user['lastChangeDate'];
+                $result['accountState'] = $user['accountState'];
+                $result['avatar'] = "/users/$userID/avatar";
+
+                $response->setBody(json_encode($result));
+            }
+            else{
+                $response->setStatusCode(404);                
+            }
+
+            return $response;
         }
 
         public function post(HttpRequest $request)
@@ -40,7 +76,7 @@
             }
 
             // User registration
-            $user = new User(new MySQLDatabase());
+            $user = new UserDAO(new MySQLDatabase());
             $id = $user->register($data);
             if($id != -1){
                 $response->setStatusCode(201);

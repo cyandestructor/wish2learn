@@ -25,7 +25,9 @@
                 // Fetch the data as an associative array
                 $this->connection->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             } catch (PDOException $e) {
-                echo('Connection Error: ' . $e->getMessage());
+                error_log($e->getMessage());
+                header('Content-Type: application/json', true, 500);
+                die(json_encode(array('message' => 'Database connection failed')));
             }
 
             return $this->connection;

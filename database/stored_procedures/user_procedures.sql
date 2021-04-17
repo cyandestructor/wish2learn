@@ -97,20 +97,19 @@ CREATE PROCEDURE GetUserInfo (
 )
 BEGIN
 	SELECT
-		id_user,
-		username,
-		account_name,
-		account_lastname,
-		user_description,
-		user_image,
-		user_role,
-		account_creation_date,
-		last_change_date,
-		account_state
+		U.id_user,
+		U.username,
+		U.account_name,
+		U.account_lastname,
+		U.user_description,
+		U.user_role,
+		U.account_creation_date,
+		U.last_change_date,
+		U.account_state
     FROM
-		Users
+		Users as U
     WHERE
-		id_user = id_user;
+		U.id_user = id_user;
 END $$
 DELIMITER ;
 
