@@ -3,8 +3,6 @@
 
     class UserEditionValidator extends UserValidator
     {
-        private static $fields = ['name', 'lastname', 'description'];
-
         public function __construct($post_data)
         {
             $this->data = $post_data;
@@ -12,17 +10,29 @@
 
         public function validateForm()
         {
-            foreach(self::$fields as $field)
-            {
-                if (!array_key_exists($field, $this->data)) {
-                    trigger_error("$field is not present in the data");
-                    return;
-                }
+            if(array_key_exists('username', $this->data)){
+                $this->validateUsername();    
             }
 
-            $this->validateName();
-            $this->validateLastname();
-            $this->validateDescription();
+            if(array_key_exists('email', $this->data)){
+                $this->validateEmail();   
+            }
+
+            if(array_key_exists('name', $this->data)){
+                $this->validateName();   
+            }
+
+            if(array_key_exists('lastname', $this->data)){
+                $this->validateLastname();
+            }
+
+            if(array_key_exists('description', $this->data)){
+                $this->validateDescription();
+            }
+
+            if(array_key_exists('password', $this->data)){
+                $this->validatePassword();
+            }
 
             return $this->errors;
         }

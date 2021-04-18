@@ -56,6 +56,7 @@
                     $user['username'] = $row['username'];
                     $user['name'] = $row['account_name'];
                     $user['lastname'] = $row['account_lastname'];
+                    $user['email'] = $row['user_email'];
                     $user['description'] = $row['user_description'];
                     $user['role'] = $row['user_role'];
                     $user['creationDate'] = $row['account_creation_date'];
@@ -73,6 +74,29 @@
             }
 
             return $user;
+        }
+
+        public function editUser($user)
+        {
+            try {
+                $sql = 'CALL EditUser(?, ?, ?, ?, ?, ?)';
+            
+                $statement = $this->connection->prepare($sql);
+                
+                $statement->execute([
+                    $user['id'],
+                    $user['username'],
+                    $user['name'],
+                    $user['lastname'],
+                    $user['email'],
+                    $user['description']
+                ]);
+
+            } catch (PDOException $e) {
+                error_log($e->getMessage());
+                header('Content-Type: application/json', true, 500);
+                die(json_encode(array('message' => 'A database method failed')));
+            }
         }
     }
     

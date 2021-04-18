@@ -46,16 +46,16 @@ CREATE PROCEDURE EditUser (
     IN user_description TEXT
 )
 BEGIN
-	UPDATE Users
+	UPDATE Users as U
     SET
-        username = username,
-        account_name = account_name,
-        account_lastname = account_lastname,
-        user_email = user_email,
-        user_description = user_description,
-        last_change_date = CURRENT_TIMESTAMP()
+        U.username = username,
+        U.account_name = account_name,
+        U.account_lastname = account_lastname,
+        U.user_email = user_email,
+        U.user_description = user_description,
+        U.last_change_date = CURRENT_TIMESTAMP()
 	WHERE
-		id_user = id_user;
+		U.id_user = id_user;
 END $$
 DELIMITER ;
 
@@ -101,6 +101,7 @@ BEGIN
 		U.username,
 		U.account_name,
 		U.account_lastname,
+        U.user_email,
 		U.user_description,
 		U.user_role,
 		U.account_creation_date,
