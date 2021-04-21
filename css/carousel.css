@@ -4,7 +4,6 @@
 
 body {
   padding-top: 3rem;
-  padding-bottom: 3rem;
   color: #5a5a5a;
 }
 
@@ -105,25 +104,7 @@ body {
   }
 }
 
-/*NAVBAR */
 
-.navderbtns{
-    display: inherit;
-  margin: 0!important;
-  margin-left: 20px!important;
-}
-
-.navbar-nav{
-
-  flex-direction: inherit!important;
-}
-
-ul{
-  list-style-type: none;
-}
-.navderbtns >li{
-  margin-right: 20px;
-}
 
 
 /*ESTILOS DEL CARRUSEL */
@@ -350,3 +331,189 @@ width: 100%;
 }
 /*ESTILOS DE LAS CARDS DE LOS CURSOS */
 /*ESTILOS DEL CARRUSEL */
+
+
+/*ESTILOS DE LOS CARDS JS INDEX */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid transparent;
+  border-radius: 0;
+}
+
+.row.marginbtm { 
+  justify-content: center!important;
+}
+
+.marginbtm{
+  margin-bottom: 50px;
+}
+/*TERMINA ESTILOS DE LOS CARDS JS INDEX */
+
+/*ESTILOS ACCEDE DESDE CUALQUIER DISPOSITIVO*/
+.containersito3 {
+  position: relative;
+  width: 200px;
+  height: 340px;
+  /* margin-top: 120px; */
+  background: rgba(0,0,0,0);
+  /* margin-bottom: 120px; */
+  /* transform: translate(100px,-50px)rotate(
+-30deg
+) skew(
+25deg
+) scale(.8); */
+  transition: 0.5s;
+}
+
+.tresde3 {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* height: 100vh; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.containersito3 img,.containersito3 img
+{
+  position: absolute;
+  width: 100%;
+  transition: 0.5s;
+}
+.containersito3:hover img:nth-child(4) ,.containersito3:hover img:nth-child(4)
+{
+  transform: translate(160px,-160px);		
+  opacity: 1;
+}
+.containersito3:hover img:nth-child(3),.containersito3:hover img:nth-child(3)
+{
+  transform: translate(120px,-120px);		
+  opacity: .8;
+}
+.containersito3:hover img:nth-child(2), .containersito3:hover img:nth-child(2)
+{
+  transform: translate(80px,-80px);		
+  opacity: .6;
+}
+.containersito3:hover img:nth-child(1), .containersito3:hover img:nth-child(1)
+{
+  transform: translate(40px,-40px);		
+  opacity: .4;
+}
+/*TERMINA ACCEDE DESDE CUJALQUEIR DISPOSITOV+*/
+
+.jumbotron{
+  margin-top: 60px;
+}
+
+/*ESTILOS CAROUSEL CURSOS RECIENTES */
+
+.carousel-multi-item .carousel-indicators li {
+  width: 1.56rem;
+  max-width: 1.56rem;
+  height: 1.56rem;
+  margin-bottom: -3.75rem;
+  background-color: #4285f4;
+}
+.carousel .carousel-indicators li {
+  width: 1.56rem;
+  max-width: 1.56rem;
+  height: 1.56rem;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.carousel-multi-item .carousel-indicators .active {
+  width: 1.56rem;
+  max-width: 1.56rem;
+  height: 1.56rem;
+  background-color: #4285f4;
+  border-radius: 50%;
+}
+.carousel-indicators li {
+  color: red;
+  box-sizing: content-box;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  width: 30px;
+  height: 3px;
+  margin-right: 3px;
+  margin-left: 3px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: #fff;
+  background-clip: padding-box;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  opacity: .5;
+  transition: opacity .6s ease;
+}
+/*CIRCULOS*/
+.carousel-multi-item .controls-top {
+  margin-bottom: 1.88rem;
+  text-align: center;
+}
+.carousel-multi-item .controls-top .btn-floating {
+  background: #4285f4;
+}
+a.waves-effect, a.waves-light {
+  display: inline-block;
+}
+.btn-floating {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding: 0;
+  margin: 10px;
+  overflow: hidden;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
+  box-shadow: 0 5px 11px 0 rgb(0 0 0 / 18%), 0 4px 15px 0 rgb(0 0 0 / 15%);
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  width: 47px;
+  height: 47px;
+}
+
+.waves-effect {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-floating i {
+  display: inline-block;
+  width: inherit;
+  color: #fff;
+  text-align: center;
+}
+.btn-floating i {
+  font-size: 1.25rem;
+  line-height: 47px;
+}
+
+
+
+.carousel-multi-item .controls-top .btn-floating {
+    background: #4285f4;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: inline-block;
+    justify-content: center;
+    font-size: 20px;
+}
