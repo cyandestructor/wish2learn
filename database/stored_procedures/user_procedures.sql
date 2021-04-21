@@ -67,12 +67,28 @@ CREATE PROCEDURE SetUserImage (
     IN user_image MEDIUMBLOB
 )
 BEGIN
-	UPDATE Users
+	UPDATE Users as U
 	SET
-		user_image = user_image,
-        last_change_date = CURRENT_TIMESTAMP()
+		U.user_image = user_image,
+        U.last_change_date = CURRENT_TIMESTAMP()
     WHERE
-		id_user = id_user;
+		U.id_user = id_user;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS GetUserImage $$
+
+CREATE PROCEDURE GetUserImage (
+	IN id_user INT
+)
+BEGIN
+	SELECT
+		U.user_image
+	FROM
+		Users as U
+	WHERE
+		U.id_user = id_user;
 END $$
 DELIMITER ;
 

@@ -98,5 +98,49 @@
                 die(json_encode(array('message' => 'A database method failed')));
             }
         }
+
+        public function setAvatar($userID, $picture)
+        {
+            try {
+                $sql = 'CALL SetUserImage(?, ?)';
+            
+                $statement = $this->connection->prepare($sql);
+                
+                $statement->execute([
+                    $userID,
+                    $picture
+                ]);
+
+            } catch (PDOException $e) {
+                error_log($e->getMessage());
+                header('Content-Type: application/json', true, 500);
+                die(json_encode(array('message' => 'A database method failed')));
+            }
+        }
+
+        public function getAvatar($userID)
+        {
+            try {
+                $sql = 'CALL GetUserImage(?)';
+            
+                $statement = $this->connection->prepare($sql);
+                
+                $statement->execute([
+                    $userID
+                ]);
+
+                if($row = $statement->fetch()){
+                    return $row['user_image'];
+                }
+                else{
+                    return null;
+                }
+
+            } catch (PDOException $e) {
+                error_log($e->getMessage());
+                header('Content-Type: application/json', true, 500);
+                die(json_encode(array('message' => 'A database method failed')));
+            }
+        }
     }
     

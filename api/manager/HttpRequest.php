@@ -5,6 +5,7 @@
         private $contentType;
         private $body;
         private $parameters;
+        private $files;
         private $method;
 
         public function __construct()
@@ -13,6 +14,7 @@
             $this->contentType = (isset($_SERVER['CONTENT_TYPE'])) ? $_SERVER['CONTENT_TYPE'] : null;
             $this->body = file_get_contents('php://input');
             $this->parameters = $_GET;
+            $this->files = $_FILES;
             $this->method = $_SERVER['REQUEST_METHOD'];
         }
 
@@ -29,6 +31,11 @@
         public function getBody()
         {
             return $this->body;
+        }
+
+        public function getFile($name)
+        {
+            return isset($this->files[$name]) ? $this->files[$name] : null;
         }
 
         public function getParameter($name)
