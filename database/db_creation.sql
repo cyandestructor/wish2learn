@@ -41,8 +41,8 @@ CREATE TABLE Products (
     PRIMARY KEY (id_product)
 );
 alter table Products modify column id_product INT comment 'Codigo numerico que identifica a los productos';
-alter table Products modify column product_name INT comment 'Un producto es una porcion de un curso, que puede ser adquirida por un estudiante';
-alter table Products modify column product_price DECIMAL comment 'Precio en pesos mexicanos del producto';
+alter table Products modify column product_name NVARCHAR(70) comment 'Un producto es una porcion de un curso, que puede ser adquirida por un estudiante';
+alter table Products modify column product_price DECIMAL(15, 2) comment 'Precio en pesos mexicanos del producto';
 
 
 CREATE TABLE Courses (
@@ -63,8 +63,8 @@ CREATE TABLE Courses (
     FULLTEXT (course_title)
 );
 alter table Courses modify column course_title NVARCHAR(70) comment 'Titulo que asigna un instructor para definir las caracteristicas y aprendizajes de un curso';
-alter table Courses modify column  course_description TEXT comment 'Precio en pesos mexicanos del producto';
-alter table Courses modify column  course_image MEDIUMBLOB comment 'Precio en pesos mexicanos del producto';
+alter table Courses modify column  course_description TEXT comment 'Descripcion que proporciona un instructor acerca del curso';
+alter table Courses modify column  course_image MEDIUMBLOB comment 'Imagen que describe en forma general el contenido del curso';
 alter table Courses modify column  product_id INT comment 'Codigo numerico que identifica el numero del producto';
 alter table Courses modify column  instructor_id INT comment 'Codigo numerico que identifica al creador del curso';
 alter table Courses modify column  publication_date DATETIME comment 'Fecha de publicacion pública del curso';
@@ -112,10 +112,10 @@ CREATE TABLE Lessons (
     FOREIGN KEY (section_id) REFERENCES Sections (id_section) ON DELETE CASCADE
 );
 alter table Lessons modify column lesson_title NVARCHAR(50) comment 'Titulo de la leccion';
-alter table Lessons modify column content_type TINYINT comment 'Tipo de contenido'; /* **************************** PENDIENTE   ************************ */
+alter table Lessons modify column content_type TINYINT comment 'Tipo de contenido, por ejemplo pdf, texto, entre otros formatos'; /* **************************** PENDIENTE   ************************ */
 alter table Lessons modify column lesson_text MEDIUMTEXT comment 'Texto de la lección que introduce el instructor';
 alter table Lessons modify column section_id INT comment 'Codigo de la seccion a la que pertenece';
-alter table Lessons modify column published BIT comment 'Estado de publicacion de la seccion es decir si esta publicada o no';
+alter table Lessons modify column published BIT comment 'Estado de publicacion de la leccion es decir si esta publicada o no';
 
 CREATE TABLE Resources (
 	id_resource INT NOT NULL AUTO_INCREMENT,
@@ -124,8 +124,8 @@ CREATE TABLE Resources (
     PRIMARY KEY (id_resource),
     FOREIGN KEY (lesson_id) REFERENCES Lessons (id_lesson) ON DELETE CASCADE
 );
-alter table Resources modify column resource_content BIT comment 'Contenido de los recursos, archivos necesarios para llevar a cabo las practicas';
-alter table Resources modify column resource_content BIT comment 'Codigo para saber a que leccion pertenece el recurso';
+alter table Resources modify column resource_content LONGBLOB comment 'Contenido de los recursos, archivos necesarios para cumplir con el aprendizaje esperado';
+alter table Resources modify column lesson_id BIT comment 'Codigo para saber a que leccion pertenece el recurso';
 
 CREATE TABLE Comments (
 	id_comment INT NOT NULL AUTO_INCREMENT,
@@ -175,9 +175,10 @@ CREATE TABLE Reviews (
     
     PRIMARY KEY (id_review)
 );
-alter table Reviews modify column review_body INT comment 'Contenido del mensaje enviado entre usuarios'; /*  ************************ PENDIENTE ******************/
-alter table Reviews modify column review_date INT comment 'Fecha de envio de un mensaje';
-alter table Reviews modify column published INT comment 'Estado de la publicacion';
+alter table Reviews modify column review_body TEXT comment 'Contenido de los comentarios con valoraciones que ponen los usuarios a un curso'; /*  ************************ PENDIENTE ******************/
+alter table Reviews modify column review_date DATETIME comment 'Fecha de envio comentario con valoracion';
+alter table Reviews modify column published BIT comment 'Estado de la publicacion, publicado u oculto';
+
 CREATE TABLE Certificates (
 	id_certificate BINARY(16) NOT NULL,
     user_name NVARCHAR(150) NOT NULL,
@@ -286,7 +287,7 @@ CREATE TABLE Courses_Reviews (
     FOREIGN KEY (user_id) REFERENCES Users (id_user) ON DELETE CASCADE
 );
 alter table Courses_Reviews modify column course_id INT comment 'Codigo del curso';
-alter table Courses_Reviews modify column review_id INT comment ' del curso'; /************************** PENDIENTE *******************************/
+alter table Courses_Reviews modify column review_id INT comment 'Codigo del comentario con valoracion del curso'; /************************** PENDIENTE *******************************/
 alter table Courses_Reviews modify column user_id INT comment 'Codigo del usuario que califica el curso';
 alter table Courses_Reviews modify column grade TINYINT comment 'Puntuación que califica del curso';
 CREATE TABLE Users_Certificates (
