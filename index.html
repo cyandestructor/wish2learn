@@ -1,46 +1,599 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <title>Index</title>
-</head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/carousel.css">
+    <link rel="stylesheet" href="css/barranav.css">
+    <link href="css/all.css" rel="stylesheet"> <!--load all styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <form id="form">
-                    <div class="form-group">
-                        <label>Username</label>
-                        <input type="text" name="username" class="form-control">
-                        <label>Name</label>
-                        <input type="text" name="name" class="form-control">
-                        <label>Lastname</label>
-                        <input type="text" name="lastname" class="form-control">
-                        <label>Email</label>
-                        <input type="text" name="email" class="form-control">
-                        <label>Password</label>
-                        <input type="password" name="password" class="form-control">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
-            </div>
+     <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
+
+    
+
+    Bootstrap core CSS
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+   
+    
+    <!-- Custom styles for this template -->
+    <link href="css/carousel.css" rel="stylesheet">
+  </head>
+  <body>
+    
+
+
+    <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand black" href="#">Wish2Know</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <form class="d-flex">
+            <input id="busqueda" class="form-control me-2" type="text" placeholder="Busca tu sueño aquí" aria-label="Search">
+              <!--  <button class="btn btn-outline-success" type="submit">Search</button>-->
+              <button  class="btn btn-outline-success" type="button" onclick="validarBuscar()">Buscar</button>
+           </form>
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item dropdown menu-area active">
+              <a class="nav-link " href="#" id="mega-one" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categorias </a>
+             
+              <div class="dropdown-menu mega-area" aria-labelledby="mega-one">
+                <div class="row">
+                  <div class="col-sm-6">
+                      <h4>Desarrollo</h4>
+                      <a href="#" class="dropdown-item">Desarrollo móvil</a>
+                      <a href="#" class="dropdown-item">Desarrollo de base de datos</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                  </div>
+                  <div class="col-sm-6">
+                    <h4>Prueba 2</h4>
+                    <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    <a href="#" class="dropdown-item">Subcategoria 1</a>
+                  </div>
+                  <div class="col-sm-6">
+                    <h4>Prueba 3</h4>
+                    <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    <a href="#" class="dropdown-item">Subcategoria 1</a>
+                  </div>
+                  <div class="col-sm-6">
+                    <h4>Prueba 4</h4>
+                    <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    <a href="#" class="dropdown-item">Subcategoria 1</a>
+                  </div>
+                </div>  
+              </div> <!-- dropdown-mega-menu.// -->
+          </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Enseña en W2L</a>
+            </li>
+            
+           
+          </ul>
+         
+          <ul class="navderbtns">
+            <li>     
+               <a href="registro.html" class="btn btn-outline-success" role="button">Registrarse</a>
+            </li> 
+            <li>   
+             <!-- <button class="btn btn-outline-success morado" type="submit">Iniciar sesión</button> -->
+              <a class="btn btn-outline-success morado" href="iniciar_sesion.html" role="button">Iniciar sesión</a>
+            </li> 
+            
+          </ul>
+
+          <ul class="navderbtns">
+            <li class="nav-item ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+              <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
+            </svg>
+            </li>
+          </ul>
+         
         </div>
-        <div class="row mt-2">
-            <div id="error-list" style="color: tomato;">
-                <!-- Error list for form -->
-            </div>
-        </div>
+      </div>
+    </nav>
+
+
+  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-        crossorigin="anonymous"></script>
-    <script type="module" src="./scripts/Test.js"></script>
-</body>
+    <div class="carousel-inner">
+    <!-- ELEMENTO DEL CARRUSEL -->
+      <div class="carousel-item active">
+        <div class="container todo_el_alto carou">
+          <div class="carousel-caption">
+            <h1>Los cursos con mejor calificación</h1>
+      
+          </div>
+          <div class="row todo_el_alto separate"> 
+             <div class="col-md-2 col-xs-12 todo_el_ancho cuadritos">
+                 <img src="img/carousel/rigging.jpg" class="img-fluid" alt="rigging"> 
+                 <button class="btn">Button</button>
+             </div>
+             <div class="col-md-2 todo_el_ancho cuadritos masalto2">
+                 <img src="img/carousel/rigging.jpg" class="img-fluid" alt="rigging"> 
+                 <button class="btn">Button</button>
+             </div>
+             <div class="col-md-2 todo_el_ancho cuadritos masalto">
+                 <img src="img/carousel/rigging.jpg" class="img-fluid" alt="rigging"> 
+                 <button class="btn">Button</button>
+             </div>
+             <div class="col-md-2 todo_el_ancho cuadritos masalto2">
+                 <img src="img/carousel/rigging.jpg" class="img-fluid" alt="rigging"> 
+                 <button class="btn">Button</button>
+             </div>
+             <div class="col-md-2 todo_el_ancho cuadritos">
+               <img src="img/carousel/rigging.jpg" class="img-fluid" alt="rigging"> 
+               <button class="btn">Button</button>
+           </div>
+         </div>    <!--div del row--> 
+   <!--<div class="carousel-caption text-start">
+         <h1>Example headline.</h1>
+         <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+         <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+       </div>-->
+     </div>
+      </div>
 
+       <!--TERMINA ELEMENTO DEL CARRUSEL -->
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+
+        <div class="container">
+          <div class="carousel-caption">
+            <h1>Another example headline.</h1>
+            <p>Some representative placeholder content for the second slide of the carousel.</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/fcfm.jpg" alt="FCFM" class="bd-placeholder-img">
+        <div class="container">
+          <div class="carousel-caption text-end">
+            <h1>La mejor comunidad estudiantil</h1>
+            <p>Esta comunidad te prepara para el mundo real, codifica con seguridad</p>
+            <p><a class="btn btn-lg btn-primary" href="#">Asesorias de alumnos</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item ">
+        <div class="container nosalirtedelcontainer">
+          <div class="row">
+            <div class="col-md-6 ocultar">
+              <div class="tresde">
+                <div class="containersito pruebatamano">
+                 <img src="https://res.cloudinary.com/websway/image/upload/v1538242836/img_vkgzwy.png">
+                 <img src="https://res.cloudinary.com/websway/image/upload/v1538242836/img_vkgzwy.png">
+                 <img src="https://res.cloudinary.com/websway/image/upload/v1538242836/img_vkgzwy.png">
+                 <img src="https://res.cloudinary.com/websway/image/upload/v1538242836/img_vkgzwy.png">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 padre">
+              <div class="card hijo">
+                <div class="card-header align-middle">
+                  Featured
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Especialidades</h5>
+                  <p class="card-text">Profundiza en las herramientas del momento</p>
+                  <a href="#" class="btn btn-primary">Photoshop</a>
+                </div>
+              </div>
+            </div>
+
+          </div> 
+        </div>
+      </div> 
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+  <!-- TERMINA EL CARRUSEL -->
+  <!-- cards comienzan-->
+  
+  <div class="row marginbtm">
+    
+      <div class="col-md-3 card" style="width: 18rem;">
+        <img class="card-img-top" src="img/cursos.jpg" alt="img-thumbnail">
+        <div class="card-body">
+          <h5 class="card-title">Técnicas de aprendizaje</h5>
+          <p class="card-text">Erika Aranda</p>
+          <a href="#" class="btn btn-primary">Agregar a la mochila</a>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg></li>
+          <li class="list-group-item">Gratis</li>
+        
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">Soft skills</a>
+        </div>
+      </div>
+      <div class="col-md-3 card" style="width: 18rem;">
+        <img class="card-img-top" src="./img/courses/js-course.jpg" alt="img-thumbnail">
+        <div class="card-body">
+          <h5 class="card-title">Principios de JavaScript</h5>
+          <p class="card-text">Erika Aranda</p>
+          <a href="#" class="btn btn-primary">Agregar a la mochila</a>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg></li>
+          <li class="list-group-item">$150.00</li>
+        
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">JavaScript</a>
+        </div>
+      </div>
+      <div class="col-md-3 card" style="width: 18rem;">
+        <img class="card-img-top" src="./img/courses/c-plus-plus-course.jpg" alt="img-thumbnail">
+        <div class="card-body">
+          <h5 class="card-title">C++ Intermedio</h5>
+          <p class="card-text">Bryan Duarte</p>
+          <a href="#" class="btn btn-primary">Agregar a la mochila</a>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg></li>
+          <li class="list-group-item">$150.00</li>
+        
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">C++</a>
+        </div>
+      </div>
+      <div class="col-md-3 card" style="width: 18rem;">
+        <img class="card-img-top" src="./img/courses/c-sharp-course.jpg" alt="img-thumbnail">
+        <div class="card-body">
+          <h5 class="card-title">C# avanzado</h5>
+          <p class="card-text">Bryan Duarte</p>
+          <a href="#" class="btn btn-primary">Agregar a la mochila</a>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg></li>
+          <li class="list-group-item">$150.00</li>
+        
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">C#</a>
+        </div>
+      </div>
+    
+  </div> 
+  <!--fin del row de cards JS-->
+  
+    <!-- EFECTO 3D -->
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="tresde3">
+            <div class="containersito3">
+             <img src="https://res.cloudinary.com/websway/image/upload/v1538242836/img_vkgzwy.png">
+             <img src="https://res.cloudinary.com/websway/image/upload/v1538242836/img_vkgzwy.png">
+             <img src="https://res.cloudinary.com/websway/image/upload/v1538242836/img_vkgzwy.png">
+             <img src="https://res.cloudinary.com/websway/image/upload/v1538242836/img_vkgzwy.png">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 textoderecho">
+          <h2>Accede en cualquier momento desde tu dispositivo móvil</h2>
+        </div>
+      </div>
+    </div>
+    <!-- TERMINA EFECTO 3D-->
+
+    <!-- CURSOS AGREGADOS RECIENTEMENTE-->
+
+    <div class="jumbotron">
+      <div class="container my-4">
+        <h1>Nuevos cursos</h1>
+      </div>
+    </div>
+    
+    <div class="container my-4">
+
+      <!--Carousel Wrapper-->
+      <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+    
+        <!--Controls-->
+        <div class="controls-top">
+          <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="bi bi-chevron-left"></i></a>
+          <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="bi bi-chevron-right"></i></a>
+        </div>
+        <!--/.Controls-->
+    
+        <!--Indicators-->
+        <ol class="carousel-indicators">
+          <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+          <li data-target="#multi-item-example" data-slide-to="1"></li>
+          <li data-target="#multi-item-example" data-slide-to="2"></li>
+        </ol>
+        <!--/.Indicators-->
+    
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+    
+          <!--First slide-->
+          <div class="carousel-item active">
+    
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card mb-2">
+                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
+                       alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                      card's content.</p>
+                    <a class="btn btn-primary">Button</a>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-md-4 clearfix d-none d-md-block">
+                <div class="card mb-2">
+                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
+                       alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                      card's content.</p>
+                    <a class="btn btn-primary">Button</a>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-md-4 clearfix d-none d-md-block">
+                <div class="card mb-2">
+                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
+                       alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                      card's content.</p>
+                    <a class="btn btn-primary">Button</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+          <!--/.First slide-->
+    
+          <!--Second slide-->
+          <div class="carousel-item">
+    
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card mb-2">
+                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
+                       alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                      card's content.</p>
+                    <a class="btn btn-primary">Button</a>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-md-4 clearfix d-none d-md-block">
+                <div class="card mb-2">
+                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
+                       alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                      card's content.</p>
+                    <a class="btn btn-primary">Button</a>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-md-4 clearfix d-none d-md-block">
+                <div class="card mb-2">
+                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
+                       alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                      card's content.</p>
+                    <a class="btn btn-primary">Button</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+          <!--/.Second slide-->
+    
+          <!--Third slide-->
+          <div class="carousel-item">
+    
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card mb-2">
+                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"
+                       alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                      card's content.</p>
+                    <a class="btn btn-primary">Button</a>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-md-4 clearfix d-none d-md-block">
+                <div class="card mb-2">
+                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
+                       alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                      card's content.</p>
+                    <a class="btn btn-primary">Button</a>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="col-md-4 clearfix d-none d-md-block">
+                <div class="card mb-2">
+                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
+                       alt="Card image cap">
+                  <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                      card's content.</p>
+                    <a class="btn btn-primary">Button</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+          <!--/.Third slide-->
+    
+        </div>
+        <!--/.Slides-->
+    
+      </div>
+      <!--/.Carousel Wrapper-->
+    
+    
+    </div>
+  <!--TERMINAN CARDS -->
+ <!-- Footer -->
+ <footer class="bg-light text-center text-lg-start">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <h5 class="text-uppercase">Hechos por expertos</h5>
+
+        <p>
+         Conocemos las necesidades del medio para proveerte cursos especializados.
+        </p>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-uppercase">Inicio</h5>
+
+        <ul class="list-unstyled mb-0">
+          <li>
+            <a href="#!" class="text-dark">Categorias</a>
+          </li>
+          <li>
+            <a href="#!" class="text-dark">Link 2</a>
+          </li>
+          <li>
+            <a href="#!" class="text-dark">Link 3</a>
+          </li>
+          <li>
+            <a href="#!" class="text-dark">Conviertete en instructor</a>
+          </li>
+        </ul>
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+    © 2020 Copyright Wish2Know
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="jquery3.min.js"></script>
+    <script src="js/plataforma-maestro.js"></script>
+    <script src="js/bootstrap.min.js" ></script>
+<!-- Optional JavaScript; choose one of the two! -->
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+ 
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+  
+  </body>
 </html>

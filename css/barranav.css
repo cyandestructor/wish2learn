@@ -1,0 +1,28 @@
+.navbar-expand-md {
+    justify-content: space-between!important;
+}
+
+/*NAVBAR */
+
+.navderbtns{
+    display: inherit;
+  margin: 0!important;
+  margin-left: 20px!important;
+}
+
+.navbar-nav{
+
+  flex-direction: inherit!important;
+}
+
+ul{
+  list-style-type: none;
+}
+.navderbtns >li{
+  margin-right: 20px;
+}
+
+.morado {
+    color: #5B00BC!important;
+    border-color: #5B00BC!important;
+}
