@@ -39,7 +39,7 @@
                 $result['creationDate'] = $user['creationDate'];
                 $result['lastChangeDate'] = $user['lastChangeDate'];
                 $result['accountState'] = $user['accountState'];
-                $result['avatar'] = "/users/$userID/avatar";
+                $result['avatar'] = "/api/users/$userID/avatar";
 
                 $response->setBody(json_encode($result));
             }

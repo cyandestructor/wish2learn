@@ -99,16 +99,17 @@
             }
         }
 
-        public function setAvatar($userID, $picture)
+        public function setAvatar($userID, $picture, $contentType)
         {
             try {
-                $sql = 'CALL SetUserImage(?, ?)';
+                $sql = 'CALL SetUserImage(?, ?, ?)';
             
                 $statement = $this->connection->prepare($sql);
                 
                 $statement->execute([
                     $userID,
-                    $picture
+                    $picture,
+                    $contentType
                 ]);
 
             } catch (PDOException $e) {
@@ -130,7 +131,7 @@
                 ]);
 
                 if($row = $statement->fetch()){
-                    return $row['user_image'];
+                    return array('data' => $row['user_image'], 'contentType' => $row['image_content_type']);
                 }
                 else{
                     return null;

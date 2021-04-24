@@ -25,9 +25,9 @@
             $avatar = $userDAO->getAvatar($userID);
 
             if(isset($avatar)){
-                $response->addHeader('Content-Type: image/jpeg');
+                $response->addHeader('Content-Type: ' . $avatar['contentType']);
                 $response->setStatusCode(200);
-                $response->setBody($avatar);
+                $response->setBody($avatar['data']);
             }
             else{
                 $response->setStatusCode(404);
@@ -44,6 +44,13 @@
         public function put(HttpRequest $request)
         {
             $response = new HttpResponse();
+
+            $supportedMediaTypes = ['image/jpeg', 'image/png'];
+            $contentType = $request->getContentType();
+            if(!isset($contentType) || !in_array($contentType, $supportedMediaTypes)){
+                $response->setStatusCode(415);
+                return $response;
+            }
 
             $userID = $request->getParameter('userId'); // Try to get the id from the request parameters
             if(!isset($userID) || !is_numeric($userID)){
@@ -67,7 +74,7 @@
             }
             
             $userDAO = new UserDAO(new MySQLDatabase());
-            $userDAO->setAvatar($userID, $avatar);
+            $userDAO->setAvatar($userID, $avatar, $contentType);
 
             $response->setStatusCode(200);
             return $response;

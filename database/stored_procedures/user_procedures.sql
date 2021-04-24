@@ -46,7 +46,7 @@ CREATE PROCEDURE EditUser (
     IN user_description TEXT
 )
 BEGIN
-	UPDATE Users as U
+	UPDATE Users AS U
     SET
         U.username = username,
         U.account_name = account_name,
@@ -64,12 +64,14 @@ DROP PROCEDURE IF EXISTS SetUserImage $$
 
 CREATE PROCEDURE SetUserImage (
 	IN id_user INT,
-    IN user_image MEDIUMBLOB
+    IN user_image MEDIUMBLOB,
+    IN content_type VARCHAR(50)
 )
 BEGIN
-	UPDATE Users as U
+	UPDATE Users AS U
 	SET
 		U.user_image = user_image,
+        U.image_content_type = content_type,
         U.last_change_date = CURRENT_TIMESTAMP()
     WHERE
 		U.id_user = id_user;
@@ -84,9 +86,10 @@ CREATE PROCEDURE GetUserImage (
 )
 BEGIN
 	SELECT
-		U.user_image
+		U.user_image,
+        U.image_content_type
 	FROM
-		Users as U
+		Users AS U
 	WHERE
 		U.id_user = id_user;
 END $$
@@ -124,7 +127,7 @@ BEGIN
 		U.last_change_date,
 		U.account_state
     FROM
-		Users as U
+		Users AS U
     WHERE
 		U.id_user = id_user;
 END $$

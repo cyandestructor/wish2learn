@@ -1,8 +1,8 @@
 RewriteEngine on
 
 #Rewrite for api/avatar.php
-RewriteRule ^users/([0-9]+)/avatar$ api/avatar.php?userId=$1 [NC,L]
+RewriteRule ^api/users/([0-9]+)/avatar$ api/avatar.php?userId=$1 [NC,L]
 
 # Rewrite for api/users.php
-RewriteRule ^users/([0-9]+)$ api/users.php?userId=$1 [NC,L]
-RewriteRule ^users$ api/users.php [NC,L]
+RewriteRule ^api/users/([0-9]+)$ api/users.php?userId=$1 [NC,L]
+RewriteRule ^api/users$ api/users.php [NC,L]

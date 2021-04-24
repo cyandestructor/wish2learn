@@ -10,6 +10,7 @@ CREATE TABLE Users (
     user_email NVARCHAR(60) NOT NULL UNIQUE,
     user_password VARCHAR(255) NOT NULL,
     user_image MEDIUMBLOB,
+    image_content_type VARCHAR(50),
     user_role TINYINT DEFAULT 1,
     account_creation_date DATE,
     last_change_date DATETIME,
@@ -81,6 +82,7 @@ CREATE TABLE Lessons (
 CREATE TABLE Resources (
 	id_resource INT NOT NULL AUTO_INCREMENT,
     resource_content LONGBLOB,
+    content_type VARCHAR(50),
     lesson_id INT NOT NULL,
     
     PRIMARY KEY (id_resource),
