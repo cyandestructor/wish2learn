@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/carousel.css">
+    <link href="css/all.css" rel="stylesheet"> <!--load all styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <title>Hello, world!</title>
+  </head>
+  <body >
+    
+    <!-- AQUI EMPIEZA EL SIDEBAR-->
+    <div class="d-flex">
+        <div id="sidebar-container" class="bg-secu">
+            <div class="logo">
+                <h4>Wish2Know</h4>
+            </div>
+            <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <h5>Planificación</h5>
+              <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Objetivos</button>
+              <h5>Crea tu contenido</h5>
+              <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Multimedia y Datos</button>
+              <h5>Publica tu curso</h5>
+              <!-- ACTIVE -->
+              <button class="nav-link " id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Página de inicio del curso</button>
+              <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Mensaje de Bienvenida</button>
+              <a href="Plataformamaestros_pruebafinal.html"  class="btn btn-dark">Enviar para revisión</a>
+            </div>
+        </div>
+        
+        <div class="container-fluid">
+          <div class="d-flex align-items-start">
+            <div class="tab-content container " id="v-pills-tabContent">
+              <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <div class="container">
+                  <h5>Llega a tus estudiantes</h5>
+                  <div class="form-group">
+                      <label for="formGroupExampleInput">¿Qué aprenderán los estudiantes en tu curso?</label>
+                      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                      <button type="button" class="btn btn-link">Añadir respuesta</button>
+                  </div>
+                  <div class="form-group">
+                      <label for="formGroupExampleInput">¿Que requisitos se necesitan?</label>
+                      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                      <button type="button" class="btn btn-link">Añadir respuesta</button>
+
+                  </div>
+                  <div class="form-group">
+                      <label for="formGroupExampleInput"> ¿Quiénes son tus estudiantes objetivo?</label>
+                      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                      <button type="button" class="btn btn-link">Añadir respuesta</button>
+                 
+                  </div>
+                  <p>Elabora un esquema.
+                    Decide qué habilidades enseñarás y cómo lo harás. Organiza las clases en secciones. Cada sección debe tener de 3 a 7 clases e incluir al menos una tarea o actividad práctica.
+                    Preséntate y capta su atención.
+                    La gente en Internet quiere empezar a aprender rápidamente. Haz una sección introductoria que ofrezca a los estudiantes algo que les entusiasme durante los primeros 10 minutos.
+                    Las secciones deben tener un objetivo de aprendizaje claro.
+                    Presenta cada sección con una descripción del objetivo de la misma y de su importancia. Los títulos de las secciones y clases deben reflejar su contenido y tener un flujo lógico.
+                    Las clases deben cubrir un único concepto.
+                    La duración ideal de una clase es entre 2 y 7 minutos, con el fin mantener el interés de los estudiantes y ayudarlos a estudiar en intervalos cortos. Haz que las clases vayan sobre un único tema para que los estudiantes puedan volver a ver puntos específicos más adelante.
+                    Mezcla y combina varios tipos de clases.
+                    Alterna entre grabarte a ti mismo y a tu pantalla con diapositivas y otros elementos visuales. Mostrarte a ti mismo ayudará a los estudiantes a sentirse conectados.
+                    Las actividades generan aprendizaje práctico.
+                    Ayuda a los estudiantes a aplicar las clases en el mundo real con proyectos, tareas, ejercicios de codificación o fichas.
+                    Requisitos
+                    Tu curso debe tener al menos cinco clases
+                    Las clases deben sumar en total al menos 30 minutos de vídeo
+                    Tu curso se compone de contenido educativo valioso</p>
+                </div>
+              </div>
+              <!-- CREA TU CONTENIDO -->
+              <div class="tab-pane fade " id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                <h5>Programa</h5>
+                <p>Empieza a dar forma a tu curso creando secciones, clases y ejercicios prácticos (cuestionarios, ejercicios de codificación y tareas).</p>
+                
+                <div class="container-fluid fondonegro">
+                  <div class="row">
+                  <div class="panel-group" id="accordion">
+                    <div id="padreLecciones" class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                          Título</a>
+                          <div class="form-group">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Escribe algo genial">
+                          </div>
+                        </h4>
+                      </div>
+                      <div id="collapse1" class="panel-collapse collapse in">
+                        <div class="card">
+                          <div onmouseover="myOverFunction()" onmouseout="myOutOverFunction()" class="card-body">
+                            <h5 class="card-title">Sección 1</h5>
+                            <input class="form-control" id="pruebaplace" type="text" placeholder="Introduccion">
+                            <div class="displayagregar">
+                              <div class="agregarmas isloaded">
+                                <button class="btn btn-info" onclick="nuevovalor()"><i class="bi bi-pencil-square"></i></button> 
+                                <button class="btn btn-info" onclick="borrarvalor()"><i class="bi bi-trash"></i></button>
+                                <button class="btn btn-info" onclick="desplegardescrip()"><i class="bi bi-caret-down-fill"></i></button>
+                              </div>
+                            </div>
+                            <br>
+                            <ul id="descripciondesplegar" class="list-group list-group-flush">
+                             <!-- <li class="list-group-item">Descripción</li>-->
+                              <div class="form-group">
+                                  <label for="exampleFormControlTextarea1">Describe esta sección</label>
+                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                              </div>
+                                
+                                  <!-- MENU PESTAÑAS-->
+                              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                  <li class="nav-item">
+                                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Archivo descargable</a>
+                                  </li>
+                                  <li class="nav-item">
+                                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Recurso externo</a>
+                                  </li>
+                              
+                              </ul>
+                              <div class="tab-content container-fluid" id="myTabContent">
+                                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                      
+                                      <label class="form-label" for="customFile">Default file input example</label>
+                                      <input type="file" class="form-control" id="customFile" />
+                                  </div>
+                                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                      <form>
+                                          <div class="form-row">
+                                              <div class="form-group">
+                                                  <label for="inputAddress">Título</label>
+                                                  <input type="text" class="form-control" id="inputTitle" placeholder="Conceptos básicos">
+                                                </div>
+                                                <div class="form-group">
+                                                  <label for="inputAddress2">URL</label>
+                                                  <input type="text" class="form-control" id="inputAddress2" placeholder="youtube.com">
+                                                </div>
+                                                <button class="btn btn-info">Añadir enlace</button>
+                                          </div>
+                                      </form>
+                                  </div>
+                              </div>
+                              <!--AQUI TERMINA MENU PESTAÑAS-->
+                              <br>
+                              <button class="btn btn-info">Guardar</button>
+                              <button type="button" onclick="canceldesplegardescrip()" class="btn btn-warning">Cancelar</button>
+                              <br>
+                            </ul>
+                            <br>
+                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>
+                          </div>
+                        </div>
+
+                        <div class=""> <!--agregarmas2 -->
+                          <a type="button" id="btndinamic" href="#" onclick="crearmascards()" class="tamanoicon btn-info"><i class="bi bi-node-plus"></i></a> 
+                          <h4>Crea mas secciones</h4>
+                        </div> 
+
+                        <div id="agregando" class=" container-fluid" >
+                          <div>
+        
+                          </div>
+                        </div>
+                      </div> <!-- FINALIZA EL DESPLEGABLE-->
+                      
+                      
+                    </div>
+
+                  <!-- <div class="panel panel-default">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                            ¿Para quién es este curso?</a>
+                        </h4>
+                      </div>
+                      <div id="collapse2" class="panel-collapse collapse">
+                        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                        minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                        commodo consequat.</div>
+                      </div>
+                    </div> -->
+                  </div>
+                  
+                  </div>
+                </div><!-- TERMINA FONDO NEGRO-->
+                <div>
+                  <a type="button" id="btndinamicLecciones" href="#" onclick="crearlec()" class="tamanoicon btn-success"><i class="bi bi-node-plus"></i></a> 
+                
+                </div>
+                    
+                <div id="agregandoLecciones" class="container-fluid">
+                  <div class="">
+                   
+                  </div>
+                </div>
+                
+              </div> <!-- TERMINA LA SECCION PESTAÑA 1 -->
+              
+              <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                <div class="container-fluid">
+                  <h1>Página de inicio del curso</h1>
+                  <h1>Perfiles de los instructores</h1>
+                  <div class="alert alert-danger" role="alert">
+                    Todos los instructores de este curso deben completar su perfil para que el curso se pueda publicar. 
+                    Esto incluye el nombre, una foto y una breve biografía de mínimo 50 palabras.
+                  </div>
+                <form>
+                  <div class="form-group">
+                    <label for="formGroupExampleInput">Título del curso</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                  </div>
+                  <div class="form-group">
+                    <label for="formGroupExampleInput2">Subtítulo del curso</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Descripción del curso</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label for="inputCity">Idioma</label>
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected value="1">Basico</option>
+                        <option value="2">Español</option>
+                        <option value="3">Inglés</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="inputCity">Elige una categoria</label>
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected value="1">Basico</option>
+                        <option value="2">Intermedio</option>
+                        <option value="3">Avanzados</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="inputCity">Elige un nivel</label>
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected value="1">Basico</option>
+                        <option value="2">Intermedio</option>
+                        <option value="3">Avanzados</option>
+                      </select>
+
+                    </div>
+                    <div class="col-md-6">
+                      <label for="input"> ¿Cuál es el contenido principal que enseñas en el curso?</label>
+                      <input type="text" class="form-control" placeholder="Por ejemplo fotografia">
+                    </div>
+                   
+                  </div>
+                </form>
+                <div class="form-row">
+                  <h1>Imagen promocional</h1>
+                  <div class="col-md-6">
+                    <img src="img/chargeimg.png" class="img-fluid" alt="Responsive image">
+                  </div>
+                  <div class="col-md-6">
+                    <p>Carga la imagen de tu curso aquí. Para ser aceptada, debe cumplir nuestros estándares de calidad para las imágenes de los cursos.
+                       Directrices importantes: 750 x 422 píxeles; formato .jpg, .jpeg, .gif, o .png.; y sin texto en la imagen.</p>
+                       <div class="form-group">
+                        <label for="ejemplo_archivo_1">Adjuntar un archivo</label>
+                        <input type="file" id="ejemplo_archivo_1">
+                        <p class="help-block">Ejemplo de texto de ayuda.</p>
+                      </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <h1>Video promocional</h1>
+                  <div class="col-md-6">
+                    <img src="img/chargeimg.png" class="img-fluid" alt="Responsive image">
+                  </div>
+                  <div class="col-md-6">
+                    <p>Los estudiantes que ven un vídeo promocional bien hecho tienen 5 veces más probabilidades de matricularse en tu curso. 
+                      Esa estadística se multiplica por 10 si los vídeos son excepcionalmente buenos. Aprende a hacer los tuyos impresionantes</p>
+                      <div class="form-group">
+                        <label for="ejemplo_archivo_1">Adjuntar un archivo</label>
+                        <input type="file" id="ejemplo_archivo_1">
+                        <p class="help-block">Ejemplo de texto de ayuda.</p>
+                      </div>
+                  </div>
+                </div>
+                <h3>Elige el precio</h3>
+                <select class="form-select" aria-label="Default select example">
+                  <option selected value="1">$290</option>
+                  <option value="2">$590</option>
+                  <option value="3">$890</option>
+                </select>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Aceptar tokens de los alumnos
+                  </label>
+                </div>
+                </div><!--FIN DEL CONTAINER-->
+                
+              </div>
+              <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+
+                <p>Escríbele mensajes a tus estudiantes (opcional) que se enviarán automáticamente cuando se inscriban
+                   en tu curso o lo completen. Así los estarás animando a involucrarse más en el contenido del curso. 
+                   Si prefieres no enviar mensajes de bienvenida o de enhorabuena, deja esta casilla en blanco.</p>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Mensaje de Bienvenida</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Mensaje de finalización</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+              </div>
+               
+              </div>
+
+              <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">diferente5</div>
+             <!-- este lo voy a cambiar </div>-->
+          </div>
+        </div>    
+    </div>
+    <!-- AQUI TERMINA EL SIDEBAR-->
+  </div>
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="jquery3.min.js"></script>
+    <script src="js/bootstrap.min.js" ></script>
+    
+    <script src="js/plataforma-maestro.js"></script>
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+ -->
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
