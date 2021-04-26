@@ -63,7 +63,7 @@ export default class User {
     // de cliente si éste fue registrado con setValidationErrorCallback
     // y le envía el objeto de errores para poder leerlos
     if (!Utility.objectIsEmpty(errors) && this.#validationErrorCallback) {
-      this.#validationErrorCallback(errors);
+      return this.#validationErrorCallback(errors);
     }
 
     // Llamada asíncrona a la base de datos usando fetch
@@ -82,7 +82,7 @@ export default class User {
       // Si se logra hacer la llamada, se manda a llamar el callback de respuesta
       // si éste fue registrado previamente con setResponseCallback. Se envía la respuesta completa
       if (this.#responseCallback) {
-        this.#responseCallback(response);
+        return this.#responseCallback(response);
       }
     });
   }
@@ -96,7 +96,7 @@ export default class User {
     // por defecto manda una petición GET
     fetch(endpoint).then((response) => {
       if (this.#responseCallback) {
-        this.#responseCallback(response);
+        return this.#responseCallback(response);
       }
     });
   }
@@ -111,7 +111,7 @@ export default class User {
     let errors = validator.validate();
 
     if (!Utility.objectIsEmpty(errors) && this.#validationErrorCallback) {
-      this.#validationErrorCallback(errors);
+      return this.#validationErrorCallback(errors);
     }
 
     // Llamada asíncrona a la base de datos usando fetch
@@ -128,7 +128,7 @@ export default class User {
       body: JSON.stringify(userObj),
     }).then((response) => {
       if (this.#responseCallback) {
-        this.#responseCallback(response);
+        return this.#responseCallback(response);
       }
     });
   }
@@ -141,7 +141,7 @@ export default class User {
     // Se verifica que el archivo cumpla con el tamaño máximo de imagen
     const maxImageSize = 5 * 1024 * 1024; // 5.0 MB
     if (avatar.size >= maxImageSize && this.#validationErrorCallback) {
-      this.#validationErrorCallback({
+      return this.#validationErrorCallback({
         avatar: "The avatar must not be greater than 5.0 MB",
       });
     }
@@ -158,7 +158,7 @@ export default class User {
       body: avatar,
     }).then((response) => {
       if (this.#responseCallback) {
-        this.#responseCallback(response);
+        return this.#responseCallback(response);
       }
     });
   }
