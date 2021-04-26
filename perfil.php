@@ -1,3 +1,6 @@
+<?php
+    $userId = isset($_GET['userId']) ? $_GET['userId'] : null;
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -6,10 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/barranav.css">
-    <link rel="stylesheet" href="css/perfil.css">
-    <link href="css/all.css" rel="stylesheet"> <!--load all styles -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/barranav.css">
+    <link rel="stylesheet" href="/css/perfil.css">
+    <link href="/css/all.css" rel="stylesheet"> <!--load all styles -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
  
@@ -110,7 +113,7 @@
             <!-- Uploaded image area-->
             <p class="font-italic text-white text-center">Vista previa de imagen</p>
             <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
-            <button id="uploadAvatar" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Guardar</button>
+            <button id="uploadAvatar" data-userId="<?php if(isset($userId)){ echo $userId; } ?>" class="btn btn-primary btn-lg" role="button" aria-pressed="true">Guardar</button>
             <div id="displayImageErrors" style="color: tomato;"></div>
             <div id="displayImageMessage" style="color: turquoise;"></div>
         </div>
@@ -120,7 +123,7 @@
     </div>
     <div id="margintp2" class="row container">
         <div class="">
-            <form id="userEditionForm" class="needs-validation" novalidate>
+            <form id="userEditionForm" data-userId="<?php if(isset($userId)){ echo $userId; } ?>" class="needs-validation" novalidate>
                 <div class="form-row">
                   <div class="col-md-4 mb-3">
                     <label for="validationCustom01">First name</label>
@@ -165,7 +168,7 @@
                   </div>
                 </div>
                 <div id="displayEditionErrors" style="color: tomato;"></div>
-                <div id="displayEditionMessage" style="color: turquoise;"></div>
+                <div id="displayEditionMessage" style="color: green;"></div>
                 <button class="btn btn-primary" type="submit">Actualizar datos</button>
               </form>
         </div>
@@ -186,9 +189,9 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="jquery3.min.js"></script>
-    <script src="js/showimage.js"></script>
-    <script src="js/bootstrap.min.js" ></script>
+    <script src="/jquery3.min.js"></script>
+    <script src="/js/showimage.js"></script>
+    <script src="/js/bootstrap.min.js" ></script>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Optional JavaScript; choose one of the two! -->
 
