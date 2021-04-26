@@ -2,6 +2,7 @@ RewriteEngine on
 
 #Rewrite for views
 RewriteRule ^user-edition/([0-9]+)$ perfil.php?userId=$1 [NC,L]
+RewriteRule ^users/([0-9]+)$ wish2knows/sesioniniciada_alumno.html?userId=$1 [NC,L]
 
 #Rewrite for api/avatar.php
 RewriteRule ^api/users/([0-9]+)/avatar$ api/avatar.php?userId=$1 [NC,L]

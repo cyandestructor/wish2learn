@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/carousel.css">
-    <link href="css/all.css" rel="stylesheet"> <!--load all styles -->
+    <link rel="stylesheet" href="/wish2knows/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/wish2knows/css/carousel.css">
+    <link href="/wish2knows/css/all.css" rel="stylesheet"> <!--load all styles -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
     <title>Hello, world!</title>
   </head>
   <body>
+    <script src="/scripts/pages/GetUser.js" type="module"></script>
     <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand black" href="#">Wish2Know</a>
@@ -75,7 +76,7 @@
             <ul class="navderbtns">
               <li>   
                 <!-- <a href="registro_f.html" class="btn btn-outline-success" role="button">Registrarse</a> -->
-                <img class="iconimg" src="img/icons/mochila.png" alt="mochila de compras">
+                <img class="iconimg" src="/wish2knows/img/icons/mochila.png" alt="mochila de compras">
               </li> 
               <li>   
             
@@ -94,7 +95,10 @@
         </div>
       </nav>
       <div class="container margintp">
-        <h4>Empecemos a aprender, Erika Rubi Aranda</h4>
+        <h4>Empecemos a aprender, <span id="userFullname"></span></h4>
+        <div id="userDescription" class="col-md-12">
+
+        </div>
         <div class="col-md-12">
           <!-- Topic Cards -->
           <div id="cards_landscape_wrap-2">
@@ -170,8 +174,8 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="jquery3.min.js"></script>
-    <script src="js/bootstrap.min.js" ></script>
+    <script src="/wish2knows/jquery3.min.js"></script>
+    <script src="/wish2knows/js/bootstrap.min.js" ></script>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Optional JavaScript; choose one of the two! -->
 
