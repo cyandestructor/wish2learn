@@ -1,320 +1,320 @@
-CREATE DATABASE w2l_db_dev;
-USE w2l_db_dev;
+create database w2l_db_dev;
+use w2l_db_dev;
 
-CREATE TABLE Users (
-	id_user INT NOT NULL AUTO_INCREMENT,
-    username NVARCHAR(50) NOT NULL UNIQUE,
-    account_name NVARCHAR(50) NOT NULL,
-    account_lastname NVARCHAR(50) NOT NULL,
-    user_description TEXT,
-    user_email NVARCHAR(60) NOT NULL UNIQUE,
-    user_password VARCHAR(255) NOT NULL,
-    user_image MEDIUMBLOB,
-    image_content_type VARCHAR(50),
-    user_role TINYINT DEFAULT 1,
-    account_creation_date DATE,
-    last_change_date DATETIME,
-    account_state TINYINT DEFAULT 1,
+create table Users (
+	id_user int not null auto_increment,
+    username nvarchar(50) not null unique,
+    account_name nvarchar(50) not null,
+    account_lastname nvarchar(50) not null,
+    user_description text,
+    user_email nvarchar(60) not null unique,
+    user_password varchar(255) not null,
+    user_image mediumblob,
+    image_content_type varchar(50),
+    user_role tinyint default 1,
+    account_creation_date date,
+    last_change_date datetime,
+    account_state tinyint default 1,
     
-    PRIMARY KEY (id_user),
-    FULLTEXT (username, account_name, account_lastname)
+    primary key (id_user),
+    fulltext (username, account_name, account_lastname)
 );
 
-ALTER TABLE Users MODIFY COLUMN id_user INT COMMENT 'Codigo unico numerico que identifica a cada usuario';
-ALTER TABLE Users MODIFY COLUMN username NVARCHAR(50) COMMENT 'Alias de usuario, no es un nombre necesariamente';
-ALTER TABLE Users MODIFY COLUMN account_name NVARCHAR(50) COMMENT 'Nombre oficial del usuario que crea la cuenta';
-ALTER TABLE Users MODIFY COLUMN account_lastname NVARCHAR(50) COMMENT 'Nombre oficial del usuario que crea la cuenta';
-ALTER TABLE Users MODIFY COLUMN user_description TEXT COMMENT 'Palabras dichas por el usuario que definen su personalidad o aspectos importantes de su vida';
-ALTER TABLE Users MODIFY COLUMN user_email NVARCHAR(60) COMMENT 'Correo electronico del usuario que lo identifica, y sirve para enviarle notificaciones';
-ALTER TABLE Users MODIFY COLUMN user_password VARCHAR(255) COMMENT 'Combinacion de numeros, letras, y caracteres para proteger el acceso a su cuenta';
-ALTER TABLE Users MODIFY COLUMN user_image MEDIUMBLOB COMMENT 'El usuario puede subir una foto que lo identifique';
-ALTER TABLE Users MODIFY COLUMN user_role TINYINT COMMENT 'El usuario puede tener el rol de instructor, o de alumno';
-ALTER TABLE Users MODIFY COLUMN account_creation_date DATE COMMENT 'Dia que el usuario creo la cuenta';
-ALTER TABLE Users MODIFY COLUMN last_change_date DATETIME COMMENT 'Fecha de la ultima actualizacion realizada en la cuenta';
-ALTER TABLE Users MODIFY COLUMN account_state TINYINT COMMENT 'Estado actual de la cuenta, debido a que puede estar activa, o suspendida';
+alter table Users modify column id_user int comment 'Codigo unico numerico que identifica a cada usuario';
+alter table Users modify column username nvarchar(50) comment 'Alias de usuario, no es un nombre necesariamente';
+alter table Users modify column account_name nvarchar(50) comment 'Nombre oficial del usuario que crea la cuenta';
+alter table Users modify column account_lastname nvarchar(50) comment 'Nombre oficial del usuario que crea la cuenta';
+alter table Users modify column user_description text comment 'Palabras dichas por el usuario que definen su personalidad o aspectos importantes de su vida';
+alter table Users modify column user_email nvarchar(60) comment 'Correo electronico del usuario que lo identifica, y sirve para enviarle notificaciones';
+alter table Users modify column user_password varchar(255) comment 'Combinacion de numeros, letras, y caracteres para proteger el acceso a su cuenta';
+alter table Users modify column user_image mediumblob comment 'El usuario puede subir una foto que lo identifique';
+alter table Users modify column user_role tinyint comment 'El usuario puede tener el rol de instructor, o de alumno';
+alter table Users modify column account_creation_date date comment 'Dia que el usuario creo la cuenta';
+alter table Users modify column last_change_date datetime comment 'Fecha de la ultima actualizacion realizada en la cuenta';
+alter table Users modify column account_state tinyint comment 'Estado actual de la cuenta, debido a que puede estar activa, o suspendida';
 
-CREATE TABLE Products (
-	id_product INT NOT NULL AUTO_INCREMENT,
-    product_name NVARCHAR(70),
-    product_price DECIMAL(15, 2),
+create table Products (
+	id_product int not null auto_increment,
+    product_name nvarchar(70),
+    product_price decimal(15, 2),
     
-    PRIMARY KEY (id_product)
+    primary key (id_product)
 );
-ALTER TABLE Products MODIFY COLUMN id_product INT COMMENT 'Codigo numerico que identifica a los productos';
-ALTER TABLE Products MODIFY COLUMN product_name NVARCHAR(70) COMMENT 'Un producto es una porcion de un curso, que puede ser adquirida por un estudiante';
-ALTER TABLE Products MODIFY COLUMN product_price DECIMAL(15, 2) COMMENT 'Precio en pesos mexicanos del producto';
+alter table Products modify column id_product int comment 'Codigo numerico que identifica a los productos';
+alter table Products modify column product_name nvarchar(70) comment 'Un producto es una porcion de un curso, que puede ser adquirida por un estudiante';
+alter table Products modify column product_price decimal(15, 2) comment 'Precio en pesos mexicanos del producto';
 
 
-CREATE TABLE Courses (
-	id_course INT NOT NULL AUTO_INCREMENT,
-    course_title NVARCHAR(70) NOT NULL,
-    course_description TEXT,
-    course_image MEDIUMBLOB,
-    product_id INT NOT NULL,
-    instructor_id INT NOT NULL,
-    publication_date DATETIME,
-    last_update DATETIME,
-    published BIT DEFAULT 1,
+create table Courses (
+	id_course int not null auto_increment,
+    course_title nvarchar(70) not null,
+    course_description text,
+    course_image mediumblob,
+    product_id int not null,
+    instructor_id int not null,
+    publication_date datetime,
+    last_update datetime,
+    published bit default 1,
     
-    PRIMARY KEY (id_course),
-    FOREIGN KEY (product_id) REFERENCES Products (id_product),
-    FOREIGN KEY (instructor_id) REFERENCES Users (id_user) ON DELETE CASCADE,
+    primary key (id_course),
+    foreign key (product_id) references Products (id_product),
+    foreign key (instructor_id) references Users (id_user) on delete cascade,
     
-    FULLTEXT (course_title)
+    fulltext (course_title)
 );
-ALTER TABLE Courses MODIFY COLUMN course_title NVARCHAR(70) COMMENT 'Titulo que asigna un instructor para definir las caracteristicas y aprendizajes de un curso';
-ALTER TABLE Courses MODIFY COLUMN  course_description TEXT COMMENT 'Descripcion que proporciona un instructor acerca del curso';
-ALTER TABLE Courses MODIFY COLUMN  course_image MEDIUMBLOB COMMENT 'Imagen que describe en forma general el contenido del curso';
-ALTER TABLE Courses MODIFY COLUMN  product_id INT COMMENT 'Codigo numerico que identifica el numero del producto';
-ALTER TABLE Courses MODIFY COLUMN  instructor_id INT COMMENT 'Codigo numerico que identifica al creador del curso';
-ALTER TABLE Courses MODIFY COLUMN  publication_date DATETIME COMMENT 'Fecha de publicacion pública del curso';
-aLTER tABLE Courses mODIFY cOLUMN  last_update DATETIME cOMMENT 'Fecha en la que se actualizo la informacion del curso';
-aLTER tABLE Courses mODIFY cOLUMN  published BIT cOMMENT 'Estado del curso, por ejemplo publicado u oculto';
-CREATE TABLE Categories (
-	id_category INT NOT NULL AUTO_INCREMENT,
-    category_name NVARCHAR(50) NOT NULL,
-    category_description TEXT,
+alter table Courses modify column course_title nvarchar(70) comment 'Titulo que asigna un instructor para definir las caracteristicas y aprendizajes de un curso';
+alter table Courses modify column  course_description text comment 'Descripcion que proporciona un instructor acerca del curso';
+alter table Courses modify column  course_image mediumblob comment 'Imagen que describe en forma general el contenido del curso';
+alter table Courses modify column  product_id int comment 'Codigo numerico que identifica el numero del producto';
+alter table Courses modify column  instructor_id int comment 'Codigo numerico que identifica al creador del curso';
+alter table Courses modify column  publication_date datetime comment 'Fecha de publicacion pública del curso';
+alter table Courses modify column  last_update Datetime comment 'Fecha en la que se actualizo la informacion del curso';
+alter table Courses modify column  published Bit comment 'Estado del curso, por ejemplo publicado u oculto';
+Create Table Categories (
+	id_category Int Not Null Auto_increment,
+    category_name Nvarchar(50) Not Null,
+    category_description Text,
     
-    PRIMARY KEY (Id_category)
+    Primary Key (id_category)
 );
-aLTER tABLE Categories mODIFY cOLUMN category_name NVARCHAR(50) cOMMENT 'Nombre de la categoria';
-aLTER tABLE Categories mODIFY cOLUMN category_description TEXT cOMMENT 'Descripcion de la categoria';
+alter table Categories modify column category_name Nvarchar(50) comment 'Nombre de la categoria';
+alter table Categories modify column category_description Text comment 'Descripcion de la categoria';
 
-CREATE TABLE Sections (
-	id_section INT NOT NULL AUTO_INCREMENT,
-    section_title NVARCHAR(50) NOT NULL,
-    section_is_free BIT DEFAULT 0,
-    course_id INT NOT NULL,
-    product_id INT,
-    published BIT DEFAULT 1,
+Create Table Sections (
+	id_section Int Not Null Auto_increment,
+    section_title Nvarchar(50) Not Null,
+    section_is_free Bit Default 0,
+    course_id Int Not Null,
+    product_id Int,
+    published Bit Default 1,
     
-    PRIMARY KEY (Id_section),
-	FOREIGN KEY (Product_id) REFERENCES Products (Id_product),
-    FOREIGN KEY (Course_id) REFERENCES Courses (Id_course) ON DELETE CASCADE
+    Primary Key (id_section),
+	Foreign Key (product_id) References Products (id_product),
+    Foreign Key (course_id) References Courses (id_course) On Delete Cascade
 );
 
-aLTER tABLE Sections mODIFY cOLUMN section_title NVARCHAR(50) cOMMENT 'Titulo de la sección';
-alTER TaBLE Sections moDIFY CoLUMN Section_is_free BIT CoMMENT 'Estado del curso en cuanto si es de paga o gratuito';
-alTER TaBLE Sections moDIFY CoLUMN Course_id INT CoMMENT 'Curso al que pertenece la seccion';
-alTER TaBLE Sections moDIFY CoLUMN Product_id INT CoMMENT 'Codigo de producto asignado a la sección';
-altER TAbLE SEctions modIFY COlUMN PUblished BIT COmMENT 'Estado de publicacion de la seccion es decir si esta publicada o no';
+alter table Sections modify column section_title Nvarchar(50) comment 'Titulo de la sección';
+alter table sections modify column section_is_free BIt comment 'Estado del curso en cuanto si es de paga o gratuito';
+alter table sections modify column course_id INt comment 'Curso al que pertenece la seccion';
+alter table sections modify column product_id INt comment 'Codigo de producto asignado a la sección';
+alter table sections modify column published BIT comment 'estado de publicacion de la seccion es decir si esta publicada o no';
 
 
-CREATE TABLE LEssons (
-	Id_lesson INT NOT NULL AUTO_INCREMENT,
-    lesson_title NVARCHAR(50) NOT NULL,
-    content_type TINYINT,
-    lesson_text MEDIUMTEXT,
-    section_id INT NOT NULL,
-    published BIT DEFAULT 1,
+CREate taBle lessons (
+	id_lesson INT noT nuLl auTo_increment,
+    lesson_title NVArchar(50) noT nuLl,
+    content_type TINyint,
+    lesson_text MEDiumtext,
+    section_id INT noT nuLl,
+    published BIT deFault 1,
     
-    PRIMARY KEY (Id_lesson),
-    FOREIGN KEY (SeCtion_id) REFERENCES SEctions (id_section) ON DELETE CASCADE
+    PRImary keY (id_lesson),
+    FOReign keY (section_id) ReFerences sections (id_section) On deLete caScade
 );
-AltER TAbLE LEssons modIFY COlUMN LEsson_title NVARCHAR(50) COmMENT 'Titulo de la leccion';
-altER TAbLE LEssons modIFY COlUMN COntent_type TINYINT COmMENT 'Tipo de contenido, por ejemplo pdf, texto, entre otros formatos'; /* **************************** PENDIENTE   ************************ */
-altER TAbLE LEssons modIFY COlUMN LEsson_text MEDIUMTEXT COmMENT 'Texto de la lección que introduce el instructor';
-alteR TABlE LESsons modiFY COLuMN SECtion_id INT COMmENT 'COdigo de la seccion a la que pertenece';
-alteR TABlE LESsons modiFY COLuMN PUBlished BIT COMmENT 'EStado de publicacion de la leccion es decir si esta publicada o no';
+alter table lessons modify column lesson_title NVArchar(50) comment 'titulo de la leccion';
+alter table lessons modify column content_type TINyint comment 'tipo de contenido, por ejemplo pdf, texto, entre otros formatos'; /* **************************** PENDIENTE   ************************ */
+alter table lessons modify column lesson_text MEDiumtext comment 'texto de la lección que introduce el instructor';
+alter table lessons modify column section_id INT comment 'codigo de la seccion a la que pertenece';
+alter table lessons modify column published BIT comment 'estado de publicacion de la leccion es decir si esta publicada o no';
 
-CREATE TABLE RESources (
-	iD_resource INT NOT NULL AUTO_INCREMENT,
-    resource_content LONGBLOB,
-    content_type varcHAR(50),
-    lesson_id INT NOT NULL,
-    PRIMARY KEY (ID_Resource),
-    FOREIGN KEY (LEsSon_id) REFERENCES LESsons (id_Lesson) ON DELETE CASCADE
+CREAte tabLe resources (
+	id_resource INT not nulL autO_increment,
+    resource_content LONGblob,
+    content_type varchar(50),
+    lesson_id INT not nulL,
+    PRIMary key (id_resource),
+    FOREign key (lesson_id) REfErences lessons (id_lesson) ON DelEte casCade
 );
-aLteR TABlE RESources modiFY COLuMN RESource_content LONGBLOB COMmENT 'COntenido de los recursos, archivos necesarios para cumplir con el aprendizaje esperado';
-alteR TABlE RESources modiFY COLuMN LESson_id BIT COMmENT 'COdigo para saber a que leccion pertenece el recurso';
+alter table resources modify column resource_content LONGblob comment 'contenido de los recursos, archivos necesarios para cumplir con el aprendizaje esperado';
+alter table resources modify column lesson_id INT comment 'codigo para saber a que leccion pertenece el recurso';
 
-CREATE TABLE COMments (
-	iD_comment INT NOT NULL AUTO_INCREMENT,
+CREAte tabLe comments (
+	id_comment INT not nulL autO_increment,
     comment_body TEXT,
-    comment_upvotes INT DEFAULT 0,
-    comment_date DATETIME,
+    comment_upvotes INT defAult 0,
+    comment_date DATEtime,
     comment_parent_id INT,
-    published BIT DEFAULT 1,
+    published BIT defAult 1,
     
-    PRIMARY KEY (ID_Comment),
-    FOREIGN KEY (COmMent_parent_id) REFERENCES COMments (id_Comment)
+    PRIMary key (id_comment),
+    FOREign key (comment_parent_id) REfErences comments (id_comment)
 );
 
-AlteR TABlE COMments modiFY COLuMN COMment_body TEXT COMmENT 'COntenido de un comentario que ha hecho un usuario';
-alteR TABlE COMments modiFY COLuMN COMment_upvotes INT COMmENT 'VOtos positivos de un comentario';
-alteR TABlE COMments modiFY COLuMN COMment_date DATETIME COMmENT 'FEcha en que se realizo un comentario';
-alteR TABlE COMments modiFY COLuMN COMment_parent_id INT COMmENT 'INdica si un comentario respondio a otro';
-alteR TABlE COMments modiFY COLuMN PUBlished BIT COMmENT 'EStado de un comentario, si esta publicado';
-CREATE TABLE VIDeos (
-	iD_video INT NOT NULL AUTO_INCREMENT,
-    video_address NVARCHAR(100),
+alter table comments modify column comment_body TEXT comment 'contenido de un comentario que ha hecho un usuario';
+alter table comments modify column comment_upvotes INT comment 'votos positivos de un comentario';
+alter table comments modify column comment_date DATEtime comment 'fecha en que se realizo un comentario';
+alter table comments modify column comment_parent_id INT comment 'indica si un comentario respondio a otro';
+alter table comments modify column published BIT comment 'estado de un comentario, si esta publicado';
+CREAte tabLe videos (
+	id_video INT not nulL autO_increment,
+    video_address NVARchar(100),
     video_duration INT,
     lesson_id INT,
     
-    PRIMARY KEY (ID_Video),
-    FOREIGN KEY (LEsSon_id) REFERENCES LESsons (id_Lesson)
+    PRIMary key (id_video),
+    FOREign key (lesson_id) REfErences lessons (id_lesson)
 );
-aLteR TABlE VIDeos modiFY COLuMN VIDeo_address NVARCHAR(100) COMmENT 'LInk de almacenamiento del video de un recurso para una lección';
-alter TABLe VIDEos modifY COLUmN VIDEo_duration INT cOMMeNT 'DURacion de un video';
-alter TABLe VIDEos modifY COLUmN LESSon_id INT cOMMeNT 'CODigo de la leccion a la que pertenece el video';
+alter table videos modify column video_address NVARchar(100) comment 'link de almacenamiento del video de un recurso para una lección';
+alter table videos modify column video_duration INT comment 'duracion de un video';
+alter table videos modify column lesson_id INT comment 'codigo de la leccion a la que pertenece el video';
 
-CREATE TABLE MESSages (
-	id_message INT NOT NULL AUTO_INCREMENT,
-    message_body MEDIUMTEXT,
-    message_date DATETIME,
+CREATe tablE messages (
+	id_message INT Not Null auto_increment,
+    message_body MEDIUmtext,
+    message_date DATETime,
     
-    PRIMARY KEY (ID_mEssage)
+    PRIMAry key (id_message)
 );
-AlTer TABLe MESSages modifY COLUmN MESSage_body INT cOMMeNT 'CONtenido del mensaje enviado entre usuarios';
-alter TABLe MESSages modifY COLUmN MESSage_date INT cOMMeNT 'FECha de envio de un mensaje';
+alter table messages modify column message_body INT comment 'contenido del mensaje enviado entre usuarios';
+alter table messages modify column message_date INT comment 'fecha de envio de un mensaje';
 
-CREATE TABLE REVIews (
-	id_review INT NOT NULL AUTO_INCREMENT,
+CREATe tablE reviews (
+	id_review INT Not Null auto_increment,
     review_body TEXT,
-    review_date DATETIME,
-    published BIT DEFAULT 1,
+    review_date DATETime,
+    published BIT DefaUlt 1,
     
-    PRIMARY KEY (ID_rEview)
+    PRIMAry key (id_review)
 );
-AlTer TABLe REVIews modifY COLUmN REVIew_body TEXT COMMeNT 'CONtenido de los comentarios con valoraciones que ponen los usuarios a un curso'; /*  ************************ PENDIENTE ******************/
-alter TABLe REVIews modifY COLUmN REVIew_date DATETIME COMMeNT 'FECha de envio comentario con valoracion';
-alter TABLe REVIews modifY COLUmN PUBLished BIT cOMMeNT 'ESTado de la publicacion, publicado u oculto';
+alter table reviews modify column review_body TEXT comment 'contenido de los comentarios con valoraciones que ponen los usuarios a un curso'; /*  ************************ PENDIENTE ******************/
+alter table reviews modify column review_date DATETime comment 'fecha de envio comentario con valoracion';
+alter table reviews modify column published BIT comment 'estado de la publicacion, publicado u oculto';
 
-CREATE TABLE CERTificates (
-	id_certificate BINARY(16) NOT NULL,
-    user_name NVARCHAR(150) NOT NULL,
-    instructor_name NVARCHAR(150) NOT NULL,
-    course_title NVARCHAR(70) NOT NULL,
-    expedition_date DATE NOT NULL,
+CREATe tablE certificates (
+	id_certificate BINARy(16) not Null,
+    user_name NVARChar(150) not Null,
+    instructor_name NVARChar(150) not Null,
+    course_title NVARChar(70) not Null,
+    expedition_date DATE not Null,
     
-    PRIMARY KEY (ID_cErtificate)
+    PRIMAry key (id_certificate)
 );
-AlTer TABLe CERTificates modifY COLUmN USER_name NVARCHAR(150) COMMeNT 'NOMbre de usuario que se va a expedir en el certificado';
-alter TABLe CERTificates modifY COLUmN INSTructor_name NVARCHAR(150) COMMeNT 'NOMbre del instructor que impartio el curso';
-alter TABLe CERTificates modifY COLUmN COURse_title NVARCHAR(70) COMMeNT 'TITulo del curso que aprobo el usuario';
-alter TABLe CERTificates modifY COLUmN EXPEdition_date DATE COMMeNT 'FECha de expedicion del certificado';
+alter table certificates modify column user_name NVARChar(150) comment 'nombre de usuario que se va a expedir en el certificado';
+alter table certificates modify column instructor_name NVARChar(150) comment 'nombre del instructor que impartio el curso';
+alter table certificates modify column course_title NVARChar(70) comment 'titulo del curso que aprobo el usuario';
+alter table certificates modify column expedition_date DATE comment 'fecha de expedicion del certificado';
 
-CREATE TABLE USERs_Courses (
-	id_user_course INT NOT NULL AUTO_INCREMENT,
-    user_id INT NOT NULL,
-    course_id INT NOT NULL,
+CREATe tablE users_Courses (
+	id_user_course INT Not Null auto_increment,
+    user_id INT Not Null,
+    course_id INT Not Null,
     enroll_date DATE,
-    PRIMARY KEY (ID_uSer_course),
-    FOREIGN KEY (USEr_id) REFERENCES USERs (id_uSer) ON DELETE CASCADE,
-	FOREIGN KEY (COUrSe_id) REFERENCES COURses (id_cOurse) ON DELETE CASCADE
+    PRIMAry key (id_user_course),
+    FOREIgn key (user_id) REFeRences users (id_user) ON dEleTe cascAde,
+	forEIgn key (course_id) REFeRences courses (id_course) ON dEleTe cascAde
 );
-AlTer TABLe USERs_Courses modifY COLUmN USER_id INT cOMMeNT 'CODigo del usuario';
-alter TABLe USERs_Courses modifY COLUmN COURse_id INT cOMMeNT 'CODigo del curso que compra el usuario';
-alter TABLe USERs_Courses modifY COLUmN ENROll_date DATE COMMeNT 'FECha en que el usuario se inscribe al curso';
-CREATE TABLE COURses_Categories (
-	id_course_category INT NOT NULL AUTO_INCREMENT,
-    course_id INT NOT NULL,
-    category_id INT NOT NULL,
+alter table users_Courses modify column user_id INT comment 'codigo del usuario';
+alter table users_Courses modify column course_id INT comment 'codigo del curso que compra el usuario';
+alter table users_Courses modify column enroll_date DATE comment 'fecha en que el usuario se inscribe al curso';
+CREATe tablE courses_Categories (
+	id_course_category INT Not Null auto_increment,
+    course_id INT Not Null,
+    category_id INT Not Null,
     
-    PRIMARY KEY (ID_cOurse_category),
-    FOREIGN KEY (CATeGory_id) REFERENCES CATEgories (id_cAtegory),
-    FOREIGN KEY (COUrSe_id) REFERENCES COURses (id_cOurse) ON DELETE CASCADE
+    PRIMAry key (id_course_category),
+    FOREIgn key (category_id) REFeRences categories (id_category),
+    FOREIgn key (course_id) REFeRences courses (id_course) ON dEleTe cascAde
 );
 
-aLter TABLe COURses_Categories modifY COLUmN COURse_id INT cOMMeNT 'CODigo del curso que pertenece a una categoria';
-alter TABLe COURses_Categories modifY COLUmN CATEgory_id INT cOMMeNT 'CODigo de la categoria';
+alter table courses_Categories modify column course_id INT comment 'codigo del curso que pertenece a una categoria';
+alter table courses_Categories modify column category_id INT comment 'codigo de la categoria';
 
-CREATE TABLE USERs_Sections (
-	id_user_section INT NOT NULL AUTO_INCREMENT,
-    user_id INT NOT NULL,
-    section_id INT NOT NULL,
+CREATe tablE users_Sections (
+	id_user_section INT Not Null auto_increment,
+    user_id INT Not Null,
+    section_id INT Not Null,
     
-    PRIMARY KEY (ID_uSer_section),
-    FOREIGN KEY (USEr_id) REFERENCES USERs (id_uSer) ON DELETE CASCADE,
-    FOREIGN KEY (SECtIon_id) REFERENCES SECTions (id_sEction) ON DELETE CASCADE
+    PRIMAry key (id_user_section),
+    FOREIgn key (user_id) REFeRences users (id_user) ON dEleTe cascAde,
+    FOREIgn key (section_id) REFeRences sections (id_section) ON dEleTe cascAde
 );
-AlTer TABLe USERs_Sections modifY COLUmN USER_id INT cOMMeNT 'CODigo del usuario que adquirio una seccion de un curso';
-alter TABLe USERs_Sections modifY COLUmN SECTion_id INT cOMMeNT 'SECción que ha adquirido un usuario';
+alter table users_Sections modify column user_id INT comment 'codigo del usuario que adquirio una seccion de un curso';
+alter table users_Sections modify column section_id INT comment 'sección que ha adquirido un usuario';
 
-CREATE TABLE USERS_Lessons (
-	id_User_lesson INT NOT NULL AUTO_INCREMENT,
-    User_id INT NOT NULL,
-    Lesson_id INT NOT NULL,
-    Lesson_completed BIT DEFAULT 0,
+CREATE table users_Lessons (
+	id_user_lesson INT NOt nUll Auto_Increment,
+    user_id INT NOt nUll,
+    lesson_id INT NOt nUll,
+    lesson_completed BIT DEfauLt 0,
     
-    PRIMARY KEY (iD_UsEr_lesson),
-    FOREIGN KEY (uSER_Id) REFERENCES USERS (id_usEr) ON DELETE CASCADE,
-    FOREIGN KEY (lESSoN_id) REFERENCES LESSOns (id_leSson) ON DELETE CASCADE
+    PRIMARy key (id_user_lesson),
+    fOREIGn key (user_id) REFErEnces users (id_user) ON DeLetE cascaDe,
+    fOREIGn key (lesson_id) REFErEnces lessons (id_lesson) ON DeLetE cascaDe
 );
-ALtEr TABLE USERS_Lessons modify COLUMn USER_id INT coMMEnT 'CODIgo del usuario';
-alter TABLE USERS_Lessons modify COLUMn LESSOn_id INT coMMEnT 'CODIgo de Leccion';
-alter TABLE USERS_Lessons modify COLUMn LESSOn_completed BIT coMMEnT 'ESTAdo de una leccion, si esta completa o en revision por el estudiante, para evaluar su progreso';
+alter table users_Lessons modify column user_id INT comment 'codigo del usuario';
+alter table users_Lessons modify column lesson_id INT comment 'codigo de Leccion';
+alter table users_Lessons modify column lesson_completed BIT comment 'estado de una leccion, si esta completa o en revision por el estudiante, para evaluar su progreso';
 
-CREATE TABLE USERS_Comments (
-	id_User_comment INT NOT NULL AUTO_INCREMENT,
-    User_id INT NOT NULL,
-    Comment_id INT NOT NULL,
-    Lesson_id INT NOT NULL,
+CREATE table users_Comments (
+	id_user_comment INT NOt nUll Auto_Increment,
+    user_id INT NOt nUll,
+    comment_id INT NOt nUll,
+    lesson_id INT NOt nUll,
     
-    PRIMARY KEY (iD_UsEr_comment),
-    FOREIGN KEY (cOMMeNt_id) REFERENCES COMMEnts (id_coMment),
-    FOREIGN KEY (uSER_Id) REFERENCES USERS (id_usEr) ON DELETE CASCADE,
-    FOREIGN KEY (lESSoN_id) REFERENCES LESSOns (id_leSson) ON DELETE CASCADE
+    PRIMARy key (id_user_comment),
+    fOREIGn key (comment_id) REFErEnces comments (id_comment),
+    fOREIGn key (user_id) REFErEnces users (id_user) ON DeLetE cascaDe,
+    fOREIGn key (lesson_id) REFErEnces lessons (id_lesson) ON DeLetE cascaDe
 );
-ALtEr TABLE USERS_Comments modify COLUMn USER_id INT coMMEnT 'CODIgo de usuario que realiza un comentario';
-alter TABLE USERS_Comments modify COLUMn COMMEnt_id INT coMMEnT 'CODIgo de comentario';
-alter TABLE USERS_Comments modify COLUMn LESSOn_id INT coMMEnT 'CODIgo de la lección donde se realiza el comentario';
+alter table users_Comments modify column user_id INT comment 'codigo de usuario que realiza un comentario';
+alter table users_Comments modify column comment_id INT comment 'codigo de comentario';
+alter table users_Comments modify column lesson_id INT comment 'codigo de la lección donde se realiza el comentario';
 
-CREATE TABLE USERS_Messages (
-	id_uSer_message INT NOT NULL AUTO_INCREMENT,
-    USer_sender_id INT NOT NULL,
-    USer_receptor_id INT NOT NULL,
-    MEssage_id INT NOT NULL,
+CREATE table Users_Messages (
+	id_user_message INT NOT nuLl aUto_iNcrement,
+    user_sender_id INT NOT nuLl,
+    user_receptor_id INT NOT nuLl,
+    message_id INT NOT nuLl,
     
-    PRIMARY KEY (Id_USeR_message),
-    FOREIGN KEY (MeSSAgE_id) REFERENCES MESSAGes (id_mesSage),
-    FOREIGN KEY (UsER_sEnder_id) REFERENCES USERS (id_useR) ON DELETE CASCADE,
-    FOREIGN KEY (UsER_rEceptor_id) REFERENCES USERS (id_useR) ON DELETE CASCADE
+    PRIMARY key (id_user_message),
+    foREIGN key (message_id) REFEReNces messages (id_message),
+    foREIGN key (user_sender_id) REFEReNces users (id_user) ON DElEte cascadE,
+    foREIGN key (user_receptor_id) REFEReNces users (id_user) ON DElEte cascadE
 );
-ALTeR tABLE USERS_Messages modify COLUMN USER_Sender_id INT comMENt 'CODIGo del usuario que envío el mensaje';
+alter table Users_Messages modify column user_sender_id INT comment 'codigo del usuario que envío el mensaje';
 
-alter taBLE UsERS_Messages modify cOLUMN uSER_REceptor_id INT commENT 'CODIGO del usuario que recibe el mensaje';
-alter taBLE UsERS_Messages modify cOLUMN mESSAGE_id INT commENT 'CODIGO del mensaje de texto';
-CREATE TABLE CoURSES_Reviews (
-	id_coUrse_review INT NOT NULL AUTO_INCREMENT,
-    COUrse_id INT NOT NULL,
-    REView_id INT NOT NULL,
-    USEr_id INT NOT NULL,
-    GRAde TINYINT,
+alter table users_messages modify column user_receptor_id INT comment 'codigo del usuario que recibe el mensaje';
+alter table users_messages modify column message_id INT comment 'codigo del mensaje de texto';
+CREATE Table courses_Reviews (
+	id_course_review INT NOT nulL auTo_inCrement,
+    course_id INT NOT nulL,
+    review_id INT NOT nulL,
+    user_id INT NOT nulL,
+    grade TINYINT,
     
-    PRIMARY KEY (ID_COUrSe_review),
-    FOREIGN KEY (REvIEW_Id) REFERENCES REVIEWS (id_reviEw),
-    FOREIGN KEY (COuRSE_Id) REFERENCES COURSES (id_courSe) ON DELETE CASCADE,
-    FOREIGN KEY (USeR_Id) REFERENCES USERS (id_user) ON DELETE CASCADE
+    PRIMARY key (id_course_review),
+    ForEIGN key (review_id) REFEREnCes reviews (id_review),
+    ForEIGN key (course_id) REFEREnCes courses (id_course) ON DELeTe Cascade,
+    forEIGN key (user_id) REFEREnCes users (id_user) ON DELeTe Cascade
 );
-ALTEr taBLE CoURSES_Reviews modify cOLUMN cOURSE_id INT commENT 'CODIGO del curso';
-alter taBLE CoURSES_Reviews modify cOLUMN rEVIEW_id INT commENT 'CODIGO del comentario con valoracion del curso'; /************************** PENDIENTE *******************************/
-alter taBLE CoURSES_Reviews modify cOLUMN uSER_ID INT commENT 'CODIGO del usuario que califica el curso';
-alter taBLE CoURSES_Reviews modify cOLUMN gRADE TINYINT COMMENT 'PUNTUAción que califica del curso';
-CREATE TABLE USeRS_CErtificates (
-	id_useR_certificate INT NOT NULL AUTO_INCREMENT,
-    USER_id INT NOT NULL,
-    COURse_id INT NOT NULL,
-    CERTificate_id BINARY(16),
+alter table courses_Reviews modify column course_id INT comment 'codigo del curso';
+alter table courses_Reviews modify column review_id INT comment 'codigo del comentario con valoracion del curso'; /************************** PENDIENTE *******************************/
+alter table courses_Reviews modify column user_id INT comment 'codigo del usuario que califica el curso';
+alter table courses_Reviews modify column grade tINYINT comment 'puntuación que califica del curso';
+CREATE TAble users_certificates (
+	id_user_certificate INT NOT Null autO_incRement,
+    user_id INT NOT Null,
+    course_id INT NOT Null,
+    certificate_id BINARY(16),
     
-    PRIMARY KEY (ID_uSER_Certificate),
-    FOREIGN KEY (CERtIFIcAte_id) REFERENCES CERTIFICates (id_certiFicate),
-    FOREIGN KEY (USEr_ID) REFERENCES USERS (Id_user) ON DELETE CASCADE,
-    FOREIGN KEY (COUrSE_iD) REFERENCES COURSES (id_coursE) ON DELETE CASCADE
+    PRIMARY Key (id_user_certificate),
+    FOreIGN Key (certificate_id) REFERENcEs certificates (id_certificate),
+    FOreIGN Key (user_id) REFERENcEs users (id_user) ON DELEtE cAscade,
+    foreIGN Key (course_id) REFERENcEs courses (id_course) ON DELEtE cAscade
 );
 
-ALTEr tabLE USeRS_CErtificates modify coLUMN UsER_ID INT commeNT 'CODIGO del estudiante que ha sido certificado';
-alter tabLE USeRS_CErtificates modify coLUMN CoURSE_Id INT commeNT 'CODIGO del curso finalizado por el estudiante';
-alter tabLE USeRS_CErtificates modify coLUMN CeRTIFICate_id BINARY coMMENT 'CODIGO del certificado expedido';
+alter table users_certificates modify column user_id INT comment 'codigo del estudiante que ha sido certificado';
+alter table users_certificates modify column course_id INT comment 'codigo del curso finalizado por el estudiante';
+alter table users_certificates modify column certificate_id BINARY(16) comment 'codigo del certificado expedido';
 
-CREATE TABLE USeRS_UPvotes (
-	id_useR_upvote INT NOT NULL AUTO_INCREMENT,
-    USER_id INT NOT NULL,
-    COMMent_id INT NOT NULL,
+CREATE TAble users_upvotes (
+	id_user_upvote INT NOT Null autO_incRement,
+    user_id INT NOT Null,
+    comment_id INT NOT Null,
     
-    PRIMARY KEY (ID_uSER_Upvote),
-    FOREIGN KEY (USEr_ID) REFERENCES USERS (Id_user) ON DELETE CASCADE,
-    FOREIGN KEY (COMmENT_Id) REFERENCES COMMENTS (id_commeNt) ON DELETE CASCADE
+    PRIMARY Key (id_user_upvote),
+    FOreIGN Key (user_id) REFERENcEs users (id_user) ON DELEtE cAscade,
+    foreIGN Key (comment_id) REFERENcEs comments (id_comment) ON DELEtE cAscade
 );
-ALTER TabLE USeRS_UPvotes modify coLUMN UsER_ID INT commeNT 'CODIGO del usuario que vota positivo';
-alter tabLE USeRS_UPvotes modify coLUMN CoMMENT_id INT commeNT 'CODIGO del comentario positivo';
+alter table users_upvotes modify column user_id INT comment 'codigo del usuario que vota positivo';
+alter table users_upvotes modify column comment_id INT comment 'codigo del comentario positivo';

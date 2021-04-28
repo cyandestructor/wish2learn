@@ -1,32 +1,42 @@
 <?php
     require_once($_SERVER['DOCUMENT_ROOT'] . '/api/manager/HttpRequest.php');
     require_once($_SERVER['DOCUMENT_ROOT'] . '/api/manager/ResourceInterface.php');
-    
+    require_once($_SERVER['DOCUMENT_ROOT'] . '/api/manager/CorsMiddleware.php');
+
     class ApiManager
     {
         private $resource;
 
         public function __construct(ResourceInterface $resource)
         {
-            $this->resource = $resource;    
+            $this->resource = $resource;
         }
 
         public function getResponse()
         {
             $request = new HttpRequest();
+            $response;
 
             switch ($_SERVER['REQUEST_METHOD']) {
                 case 'GET':
-                    return $this->resource->get($request);
+                    $response = $this->resource->get($request);
+                    break;
                 case 'POST':
-                    return $this->resource->post($request);
+                    $response = $this->resource->post($request);
+                    break;
                 case 'PUT':
-                    return $this->resource->put($request);
+                    $response = $this->resource->put($request);
+                    break;
                 case 'DELETE':
-                    return $this->resource->delete($request);
+                    $response = $this->resource->delete($request);
+                    break;
                 default:
-                    return $this->resource->defaultMethod($request);
+                    $response = $this->resource->defaultMethod($request);
+                    break;
             }
+
+            return CorsMiddleware::process($request, $response);
+            //return $response;
         }
     }
     
