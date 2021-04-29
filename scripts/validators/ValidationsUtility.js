@@ -1,8 +1,15 @@
 import Validations from './Validations.js';
 
-export function interpretError(field, error, minLength = 0, maxLength = 0, minValue = 0, maxValue = 0) {
+export function interpretError(
+    field,
+    error,
+    minLength = 0,
+    maxLength = 0,
+    minValue = 0,
+    maxValue = 0
+) {
     let message = '';
-    
+
     switch (error) {
         case Validations.Error.Alphabetic:
             message = `The ${field} must be alphabetic`;
