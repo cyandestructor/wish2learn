@@ -1,4 +1,6 @@
 <?php
+    namespace Validators;
+    
     class Validations  
     {
         private $value;

@@ -14,4 +14,6 @@
         return $response;
     });
 
+    $app->get('/users/{id:[0-9]+}', Controllers\UsersController::class . ':getUnique');
+
     $app->run();

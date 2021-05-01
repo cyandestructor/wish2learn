@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] . '/api/validators/user/UserValidator.php');
+    namespace Validators;
 
     class UserEditionValidator extends UserValidator
     {

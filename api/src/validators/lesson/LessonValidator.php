@@ -1,6 +1,5 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] . '/api/validators/ValidatorInterface.php');
-    require_once($_SERVER['DOCUMENT_ROOT'] . '/api/validators/Validations.php');
+    namespace Validators;
 
     class LessonValidator implements ValidatorInterface
     {

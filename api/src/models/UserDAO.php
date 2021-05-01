@@ -1,5 +1,7 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] . '/config/DatabaseInterface.php');
+    namespace Models;
+
+    use Configuration\Database\DatabaseInterface;
 
     class UserDAO
     {
@@ -29,10 +31,10 @@
                     $hashedPassword
                 ]);
 
-                $statement->bindColumn(1, $userID, PDO::PARAM_INT);
-                $statement->fetch(PDO::FETCH_BOUND);
+                $statement->bindColumn(1, $userID, \PDO::PARAM_INT);
+                $statement->fetch(\PDO::FETCH_BOUND);
 
-            } catch (PDOException $e) {
+            } catch (\PDOException $e) {
                 error_log($e->getMessage());
                 $userID = -1;
             }
@@ -67,7 +69,7 @@
                     return null;
                 }
 
-            } catch (PDOException $e) {
+            } catch (\PDOException $e) {
                 error_log($e->getMessage());
                 header('Content-Type: application/json', true, 500);
                 die(json_encode(array('message' => 'A database method failed')));
@@ -92,7 +94,7 @@
                     $user['description']
                 ]);
 
-            } catch (PDOException $e) {
+            } catch (\PDOException $e) {
                 error_log($e->getMessage());
                 header('Content-Type: application/json', true, 500);
                 die(json_encode(array('message' => 'A database method failed')));
@@ -112,7 +114,7 @@
                     $contentType
                 ]);
 
-            } catch (PDOException $e) {
+            } catch (\PDOException $e) {
                 error_log($e->getMessage());
                 header('Content-Type: application/json', true, 500);
                 die(json_encode(array('message' => 'A database method failed')));
@@ -137,7 +139,7 @@
                     return null;
                 }
 
-            } catch (PDOException $e) {
+            } catch (\PDOException $e) {
                 error_log($e->getMessage());
                 header('Content-Type: application/json', true, 500);
                 die(json_encode(array('message' => 'A database method failed')));

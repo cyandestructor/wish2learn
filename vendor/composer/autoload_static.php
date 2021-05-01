@@ -7,12 +7,16 @@ namespace Composer\Autoload;
 class ComposerStaticInitd7f742ca9fa88a83efb04001cdd301e1
 {
     public static $files = array (
-        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
         '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'V' => 
+        array (
+            'Validators\\' => 11,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Php80\\' => 23,
@@ -26,14 +30,27 @@ class ComposerStaticInitd7f742ca9fa88a83efb04001cdd301e1
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
         ),
+        'M' => 
+        array (
+            'Models\\' => 7,
+        ),
         'F' => 
         array (
             'Fig\\Http\\Message\\' => 17,
             'FastRoute\\' => 10,
         ),
+        'C' => 
+        array (
+            'Controllers\\' => 12,
+            'Configuration\\Database\\' => 23,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Validators\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/api/src/validators',
+        ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
@@ -64,6 +81,10 @@ class ComposerStaticInitd7f742ca9fa88a83efb04001cdd301e1
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
+        'Models\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/api/src/models',
+        ),
         'Fig\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/fig/http-message-util/src',
@@ -71,6 +92,14 @@ class ComposerStaticInitd7f742ca9fa88a83efb04001cdd301e1
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
+        ),
+        'Controllers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/api/src/controllers',
+        ),
+        'Configuration\\Database\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/api/config',
         ),
     );
 
