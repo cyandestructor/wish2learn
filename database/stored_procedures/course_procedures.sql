@@ -6,7 +6,6 @@ DROP PROCEDURE IF EXISTS CreateCourse $$
 CREATE PROCEDURE CreateCourse (
     IN course_title NVARCHAR(70),
     IN course_description TEXT,
-    IN course_image MEDIUMBLOB,
     IN course_price DECIMAL(15, 2),
     IN instructor_id INT
 )
@@ -27,7 +26,6 @@ BEGIN
 	INSERT INTO Courses (
 		course_title,
 		course_description,
-		course_image,
         product_id,
 		instructor_id,
 		publication_date,
@@ -36,12 +34,13 @@ BEGIN
     VALUES (
 		course_title,
 		course_description,
-		course_image,
         product_id,
 		instructor_id,
 		CURRENT_TIMESTAMP(),
 		CURRENT_TIMESTAMP()
     );
+    
+    SELECT product_id;
 END $$
 DELIMITER ;
 
@@ -55,12 +54,12 @@ CREATE PROCEDURE EditCourse (
     IN course_price DECIMAL(15, 2)
 )
 BEGIN
-	UPDATE Courses
+	UPDATE Courses AS C
     SET
-		course_title = course_title,
-		course_description = course_description
+		C.course_title = course_title,
+		C.course_description = course_description
 	WHERE
-		id_course = id_course;
+		C.id_course = id_course;
         
 	UPDATE
 		Products AS P
@@ -78,14 +77,33 @@ DROP PROCEDURE IF EXISTS SetCourseImage $$
 
 CREATE PROCEDURE SetCourseImage (
 	IN id_course INT,
-	IN course_image MEDIUMBLOB
+	IN course_image MEDIUMBLOB,
+    IN content_type VARCHAR(50)
 )
 BEGIN
-	UPDATE Courses
+	UPDATE Courses AS C
     SET
-		course_image = course_image
+		C.course_image = course_image,
+        C.image_content_type = content_type
 	WHERE
-		id_course = id_course;
+		C.id_course = id_course;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS GetCourseImage $$
+
+CREATE PROCEDURE GetCourseImage (
+	IN id_course INT
+)
+BEGIN
+	SELECT
+		C.course_image,
+        C.image_content_type
+	FROM
+		Courses AS C
+	WHERE
+		C.id_course = id_course;
 END $$
 DELIMITER ;
 
@@ -96,8 +114,8 @@ CREATE PROCEDURE DeleteCourse (
 	IN id_course INT
 )
 BEGIN
-	DELETE FROM Courses
-    WHERE id_course = id_course;
+	DELETE FROM Courses AS C
+    WHERE C.id_course = id_course;
 END $$
 DELIMITER ;
 
@@ -110,38 +128,30 @@ CREATE PROCEDURE GetCourses (
 BEGIN
 	IF only_published = 1 THEN
 		SELECT
-			id_course,
-			course_title,
-			course_description,
-			course_image,
-			course_price,
-			instructor_id,
-            instructor_name,
-			publication_date,
-			last_update,
-            course_grade,
-            total_students,
-            published
+			CI.id_course,
+			CI.course_title,
+			CI.course_description,
+			CI.course_price,
+			CI.instructor_id,
+            CI.instructor_name,
+            CI.course_grade,
+            CI.published
 		FROM
-			CoursesInfo
+			CoursesInfo AS CI
 		WHERE
-			published = 1;
+			CI.published = 1;
     ELSE
 		SELECT
-			id_course,
-			course_title,
-			course_description,
-			course_image,
-			course_price,
-			instructor_id,
-            instructor_name,
-			publication_date,
-			last_update,
-			course_grade,
-            total_students,
-            published
+			CI.id_course,
+			CI.course_title,
+			CI.course_description,
+			CI.course_price,
+			CI.instructor_id,
+            CI.instructor_name,
+            CI.course_grade,
+            CI.published
 		FROM
-			CoursesInfo;
+			CoursesInfo AS CI;
     END IF;
 END $$
 DELIMITER ;
@@ -150,29 +160,29 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS GetTopRatedCourses $$
 
 CREATE PROCEDURE GetTopRatedCourses (
-	IN total_rows INT
+	IN total_rows INT,
+    IN row_offset INT
 )
 BEGIN
 	SELECT
-		id_course,
-		course_title,
-		course_description,
-		course_image,
-		course_price,
-		instructor_id,
-        instructor_name,
-		publication_date,
-		last_update,
-		course_grade,
-        total_students,
-		published
+		CI.id_course,
+		CI.course_title,
+		CI.course_description,
+		CI.course_price,
+		CI.instructor_id,
+		CI.instructor_name,
+		CI.course_grade,
+		CI.published
 	FROM
-		CoursesInfo
+		CoursesInfo AS CI
 	WHERE
-		published = 1
+		CI.published = 1
 	ORDER BY
-		course_grade, last_update DESC
-	LIMIT TOTAL_ROWS;
+		CI.course_grade DESC
+	LIMIT
+		total_rows
+    OFFSET
+		row_offset;
 END $$
 DELIMITER ;
 
@@ -180,29 +190,29 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS GetTopSellsCourses $$
 
 CREATE PROCEDURE GetTopSellsCourses (
-	IN total_rows INT
+	IN total_rows INT,
+    IN row_offset INT
 )
 BEGIN
 	SELECT
-		id_course,
-		course_title,
-		course_description,
-		course_image,
-		course_price,
-		instructor_id,
-        instructor_name,
-		publication_date,
-		last_update,
-		course_grade,
-        total_students,
-		published
+		CI.id_course,
+		CI.course_title,
+		CI.course_description,
+		CI.course_price,
+		CI.instructor_id,
+		CI.instructor_name,
+		CI.course_grade,
+		CI.published
 	FROM
-		CoursesInfo
+		CoursesInfo AS CI
 	WHERE
-		published = 1
+		CI.published = 1
 	ORDER BY
-		total_students, course_grade, last_update DESC
-	LIMIT TOTAL_ROWS;
+		CI.total_students DESC
+	LIMIT
+		total_rows
+	OFFSET
+		row_offset;
 END $$
 DELIMITER ;
 
@@ -210,29 +220,29 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS GetMostRecentCourses $$
 
 CREATE PROCEDURE GetMostRecentCourses (
-	IN total_rows INT
+	IN total_rows INT,
+    IN row_offset INT
 )
 BEGIN
 	SELECT
-		id_course,
-		course_title,
-		course_description,
-		course_image,
-		course_price,
-		instructor_id,
-        instructor_name,
-		publication_date,
-		last_update,
-		course_grade,
-        total_students,
-		published
+		CI.id_course,
+		CI.course_title,
+		CI.course_description,
+		CI.course_price,
+		CI.instructor_id,
+		CI.instructor_name,
+		CI.course_grade,
+		CI.published
 	FROM
-		CoursesInfo
+		CoursesInfo AS CI
 	WHERE
-		published = 1
+		CI.published = 1
 	ORDER BY
-		publication_date, total_students, course_grade DESC
-	LIMIT TOTAL_ROWS;
+		CI.publication_date DESC
+	LIMIT
+		total_rows
+	OFFSET
+		row_offset;
 END $$
 DELIMITER ;
 
@@ -244,22 +254,22 @@ CREATE PROCEDURE GetCourseInfo (
 )
 BEGIN
 	SELECT
-		id_course,
-		course_title,
-		course_description,
-		course_image,
-		course_price,
-		instructor_id,
-        instructor_name,
-		publication_date,
-		last_update,
-		course_grade,
-        total_students,
-        published
+		CI.id_course,
+		CI.course_title,
+		CI.course_description,
+		CI.course_price,
+		CI.instructor_id,
+        CI.instructor_name,
+		CI.publication_date,
+		CI.last_update,
+		CI.course_grade,
+        CI.total_students,
+        CI.total_lessons,
+        CI.published
 	FROM
-		CoursesInfo
+		CoursesInfo AS CI
 	WHERE
-		id_course = id_course;
+		CI.id_course = id_course;
 END $$
 DELIMITER ;
 
@@ -273,36 +283,32 @@ CREATE PROCEDURE GetUserCourses (
 BEGIN
 	IF only_published = 1 THEN
 		SELECT
-			id_course,
-			course_title,
-			course_description,
-			course_image,
-			course_price,
-			instructor_id,
-			publication_date,
-			last_update,
-            course_grade,
-            published
+			CI.id_course,
+			CI.course_title,
+			CI.course_description,
+			CI.course_price,
+			CI.instructor_id,
+            CI.instructor_name,
+            CI.course_grade,
+            CI.published
 		FROM
-			CoursesInfo
+			CoursesInfo AS CI
 		WHERE
-			instructor_id = id_user AND published = 1;
+			CI.instructor_id = id_user AND CI.published = 1;
     ELSE
 		SELECT
-			id_course,
-			course_title,
-			course_description,
-			course_image,
-			course_price,
-			instructor_id,
-			publication_date,
-			last_update,
-            course_grade,
-            published
+			CI.id_course,
+			CI.course_title,
+			CI.course_description,
+			CI.course_price,
+			CI.instructor_id,
+            CI.instructor_name,
+            CI.course_grade,
+            CI.published
 		FROM
-			CoursesInfo
+			CoursesInfo AS CI
 		WHERE
-			instructor_id = id_user;
+			CI.instructor_id = id_user;
     END IF;
 END $$
 DELIMITER ;
@@ -318,14 +324,11 @@ BEGIN
 		CI.id_course,
 		CI.course_title,
 		CI.course_description,
-		CI.course_image,
 		CI.course_price,
 		CI.instructor_id,
-        CI.instructor_name,
-		CI.publication_date,
-		CI.last_update,
+		CI.instructor_name,
 		CI.course_grade,
-        CI.total_lessons,
+		CI.total_lessons,
 		CI.published,
         UC.enroll_date,
         (SELECT
@@ -354,13 +357,10 @@ BEGIN
 		CI.id_course,
 		CI.course_title,
 		CI.course_description,
-		CI.course_image,
 		CI.course_price,
 		CI.instructor_id,
-		CI.publication_date,
-		CI.last_update,
+		CI.instructor_name,
 		CI.course_grade,
-        CI.total_lessons,
 		CI.published
 	FROM
 		(SELECT

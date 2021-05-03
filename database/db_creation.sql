@@ -33,6 +33,7 @@ CREATE TABLE Courses (
     course_title NVARCHAR(70) NOT NULL,
     course_description TEXT,
     course_image MEDIUMBLOB,
+    image_content_type VARCHAR(50),
     product_id INT NOT NULL,
     instructor_id INT NOT NULL,
     publication_date DATETIME,
