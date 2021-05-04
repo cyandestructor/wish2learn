@@ -74,7 +74,7 @@
                 $offset = $configuration['offset'];
             }
 
-            $orderBy = isset($configuration['orderBy']) ? $configuration['orderBy'] : null;
+            $orderBy = $configuration['orderBy'] ?? null;
 
             if(!$orderBy){
                 return null;
