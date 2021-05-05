@@ -192,9 +192,9 @@
 
             $courseData = new Course();
             $courseData->id = $courseID;
-            $courseData->title = $data['title'];
-            $courseData->description = $data['description'];
-            $courseData->price = $data['price'];
+            $courseData->title = $data['title'] ?? $original->title;
+            $courseData->description = $data['description'] ?? $original->description;
+            $courseData->price = $data['price'] ?? $original->price;
 
             $courseDAO->createCourse($courseData);
             
