@@ -15,9 +15,9 @@ BEGIN
     DECLARE course_title NVARCHAR(70);
     
     SET certificate_id = UUID_TO_BIN(UUID());
-    SET user_name = (SELECT CONCAT(account_name, " ", account_lastname) FROM Users WHERE id_user = id_user);
-    SET instructor_name = (SELECT CONCAT(account_name, " ", account_lastname) FROM Users WHERE id_user = id_instructor);
-    SET course_title = (SELECT course_title FROM Courses WHERE id_course = id_course);
+    SET user_name = (SELECT CONCAT(U.account_name, " ", U.account_lastname) FROM Users AS U WHERE U.id_user = id_user);
+    SET instructor_name = (SELECT CONCAT(U.account_name, " ", U.account_lastname) FROM Users AS U WHERE U.id_user = id_instructor);
+    SET course_title = (SELECT C.course_title FROM Courses AS C WHERE C.id_course = id_course);
     
     INSERT INTO Certificates (
 		id_certificate,
@@ -44,6 +44,8 @@ BEGIN
         id_course,
         certificate_id
     );
+    
+    SELECT BIN_TO_UUID(certificate_id) AS certificate_id;
 END $$
 DELIMITER ;
 
@@ -55,15 +57,15 @@ CREATE PROCEDURE GetCertificate (
 )
 BEGIN
 	SELECT
-		BIN_TO_UUID(id_certificate) AS certificate_id,
-		user_name,
-		instructor_name,
-		course_title,
-		expedition_date
+		BIN_TO_UUID(C.id_certificate) AS certificate_id,
+		C.user_name,
+		C.instructor_name,
+		C.course_title,
+		C.expedition_date
 	FROM
-		Certificates
+		Certificates AS C
 	WHERE
-		id_certificate = UUID_TO_BIN(certificate_id);
+		C.id_certificate = UUID_TO_BIN(certificate_id);
 END $$
 DELIMITER ;
 

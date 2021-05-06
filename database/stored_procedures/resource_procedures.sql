@@ -16,6 +16,8 @@ BEGIN
 		resource_content,
 		lesson_id
     );
+    
+    SELECT LAST_INSERT_ID();
 END $$
 DELIMITER ;
 
@@ -26,9 +28,9 @@ CREATE PROCEDURE DeleteResource (
 	IN id_resource INT
 )
 BEGIN
-	DELETE FROM Resources
+	DELETE FROM Resources AS R
     WHERE
-		id_resource = id_resource;
+		R.id_resource = id_resource;
 END $$
 DELIMITER ;
 
@@ -40,11 +42,30 @@ CREATE PROCEDURE GetLessonResources (
 )
 BEGIN
 	SELECT
-		id_resource,
-		resource_content
+		R.id_resource,
+        R.content_type
 	FROM
-		Resources
+		Resources AS R
 	WHERE
-		lesson_id = id_lesson;
+		R.lesson_id = id_lesson;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS GetResource $$
+
+CREATE PROCEDURE GetResource (
+	IN resource_id INT
+)
+BEGIN
+	SELECT
+		R.id_resource,
+        R.resource_content,
+        R.content_type,
+        R.lesson_id
+	FROM
+		Resources AS R
+	WHERE
+		R.id_resource = resource_id;
 END $$
 DELIMITER ;

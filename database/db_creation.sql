@@ -112,12 +112,24 @@ CREATE TABLE Videos (
     FOREIGN KEY (lesson_id) REFERENCES Lessons (id_lesson)
 );
 
+CREATE TABLE Chats (
+	id_chat INT NOT NULL AUTO_INCREMENT,
+    chat_name NVARCHAR(80),
+    
+    PRIMARY KEY(id_chat)
+);
+
 CREATE TABLE Messages (
 	id_message INT NOT NULL AUTO_INCREMENT,
     message_body MEDIUMTEXT,
     message_date DATETIME,
     
-    PRIMARY KEY (id_message)
+	user_sender_id INT,
+    chat_id INT NOT NULL,
+	
+    PRIMARY KEY (id_message),
+    FOREIGN KEY (user_sender_id) REFERENCES Users (id_user) ON DELETE SET NULL,
+    FOREIGN KEY (chat_id) REFERENCES Chats (id_chat) ON DELETE CASCADE
 );
 
 CREATE TABLE Reviews (
@@ -193,16 +205,14 @@ CREATE TABLE Users_Comments (
     FOREIGN KEY (lesson_id) REFERENCES Lessons (id_lesson) ON DELETE CASCADE
 );
 
-CREATE TABLE Users_Messages (
-	id_user_message INT NOT NULL AUTO_INCREMENT,
-    user_sender_id INT NOT NULL,
-    user_receptor_id INT NOT NULL,
-    message_id INT NOT NULL,
+CREATE TABLE Users_Chats (
+	id_user_chat INT NOT NULL AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    chat_id INT NOT NULL,
     
-    PRIMARY KEY (id_user_message),
-    FOREIGN KEY (message_id) REFERENCES Messages (id_message),
-    FOREIGN KEY (user_sender_id) REFERENCES Users (id_user) ON DELETE CASCADE,
-    FOREIGN KEY (user_receptor_id) REFERENCES Users (id_user) ON DELETE CASCADE
+    PRIMARY KEY (id_user_chat),
+    FOREIGN KEY (user_id) REFERENCES Users (id_user),
+    FOREIGN KEY (chat_id) REFERENCES Chats (id_chat)
 );
 
 CREATE TABLE Courses_Reviews (
