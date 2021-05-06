@@ -3,6 +3,22 @@ $(document).ready(function () {
         $('#sidebar').toggleClass('active');
     });
 });
+function colapsar(cualcolapso){
+    let cual = cualcolapso.id;
+    var ocultarlo = document.getElementById(cual);
+    if(ocultarlo.style.display= "block"){
+        ocultarlo.style.display= "none";
+    }else{
+        ocultarlo.style.display= "block";
+    }
+    
+}
+
+var contador = 1;
+var contadorlecciones = 0;
+var cualbotonseccion = 0;
+var sabercuantaslecciones = 'agregandoLecciones'+ cualbotonseccion ;
+var division = document.getElementById(sabercuantaslecciones);
 
 function showCard() {  
   var data=`
@@ -15,134 +31,12 @@ function showCard() {
   </div>
 </div>`;  
     
-  document.getElementById('agregando').innerHTML=data;  
+  document.getElementById('agregandosecciones' + contadorlecciones).innerHTML=data;  
  
 }  
-var contador = 0;
-
-var division = document.getElementById('agregando');
-
-function crearmascards(a){
-  var contenido ="hola";
-  contador++;
-  
-  numeracion = contador + 1;
-  var iddd = contador;
-  var divNota = document.createElement("div");
-  divNota.setAttribute("id", iddd);
-  divNota.setAttribute("class", "tags");
-  division.appendChild(divNota);
-  divNota.textContent = contenido;
-  /*
-  var fruta = "agregando";
-  alert(fruta);
-  var resu  =  fruta+contador;
-  alert(resu); */
- const myCard = document.getElementById('agregando');
- 
- /*myCard.innerHTML=`*/
- myCard.lastChild.innerHTML=`
- <div class="card container">
- <div onmouseover="myOverFunction()" onmouseout="myOutOverFunction()" class="card-body">
-   <h5 class="card-title">Sección ` + numeracion +`</h5>
-   <input class="form-control" id="pruebaplace" type="text" placeholder="Introduccion">
-   <div class="displayagregar">
-     <div class="agregarmas isloaded">
-       <button class="btn btn-info" onclick="nuevovalor()"><i class="bi bi-pencil-square"></i></button> 
-       <button class="btn btn-info" onclick="borrarvalor()"><i class="bi bi-trash"></i></button>
-       <button class="btn btn-info" onclick="desplegardescrip()"><i class="bi bi-caret-down-fill"></i></button>
-     </div>
-   </div>
-   <br>
-   <ul id="descripciondesplegar" class="list-group list-group-flush">
-    <!-- <li class="list-group-item">Descripción</li>-->
-     <div class="form-group">
-         <label for="exampleFormControlTextarea1">Describe esta sección</label>
-         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-     </div>
-       
-         <!-- MENU PESTAÑAS-->
-     <ul class="nav nav-tabs" id="myTab" role="tablist">
-         <li class="nav-item">
-         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Archivo descargable</a>
-         </li>
-         <li class="nav-item">
-         <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Recurso externo</a>
-         </li>
-     
-     </ul>
-     <div class="tab-content" id="myTabContent">
-         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-             
-             <label class="form-label" for="customFile">Default file input example</label>
-             <input type="file" class="form-control" id="customFile" />
-         </div>
-         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-             <form>
-                 <div class="form-row">
-                     <div class="form-group">
-                         <label for="inputAddress">Título</label>
-                         <input type="text" class="form-control" id="inputTitle" placeholder="Conceptos básicos">
-                       </div>
-                       <div class="form-group">
-                         <label for="inputAddress2">URL</label>
-                         <input type="text" class="form-control" id="inputAddress2" placeholder="youtube.com">
-                       </div>
-                       <button class="btn btn-info">Añadir enlace</button>
-                 </div>
-             </form>
-         </div>
-     </div>
-     <!--AQUI TERMINA MENU PESTAÑAS-->
-     <br>
-     <button class="btn btn-info">Guardar</button>
-     <button type="button" onclick="canceldesplegardescrip()" class="btn btn-warning">Cancelar</button>
-     <br>
-   </ul>
-   <br>
-   <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-   <a href="#" class="card-link">Card link</a>
-   <a href="#" class="card-link">Another link</a>
- </div>
-</div>
-`; 
-/*const  ultimo= document.getElementById('introduccion').lastChild;*/
+//var contador = 0;
 
 
-
-/* 
-var temp= document.createElement('h1');
-var newContent = document.createTextNode('Hola!¿Qué tal?');
-temp.appendChild(newContent);
-var capa = document.getElementById('agregando');
-capa.innerHTML = newContent;
-*/
-/*
-var temp= document.createElement('h1');
-var node = document.createTextNode('This is new.');
-temp.appendChild(node);
-
-var element = document.getElementById('agregando');
-element.appendChild(temp);
-*/
-/*
-const myCard = document.getElementById( 'agregando' );
-var div = document.createElement('div');
-div.setAttribute('class', 'post block');
-div.innerHTML = `
-  <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-  </div>
-`;
-document.getElementById('agregando').appendChild(div);
-*/
-}
 
 
 function nuevovalor() {
@@ -519,155 +413,153 @@ function validarFormulario(evento) {
     `; 
 
   }
-  var division2 = document.getElementById('agregandoLecciones');
-
-  function crearmaslecciones(){
+ 
+  function crearmassecciones(a){
    
-   var contenido ="hola lecciones";
-  contador++;
-  numeracion = contador + 1;
-  var iddd = contador;
-  var divNota = document.createElement("div");
-  divNota.setAttribute("id", iddd);
-  divNota.setAttribute("class", "tags");
-  division2.appendChild(divNota);
-  divNota.textContent = contenido;
-   /*myCard.innerHTML=`*/
-   alert('Se agrego una nueva Lección');
-   const myCard2 = document.getElementById( "agregandoLecciones" );
-   myCard2.lastElementChild.innerHTML=`
-   <div class="container-fluid fondonegro">
-                  <div class="row">
-                  <div class="panel-group" id="accordion` + iddd` ">
-                    <div id="padreLecciones" class="panel panel-default">
-                      <div class="panel-heading">
-                        <h4 class="panel-title">
-                          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                          DESCRIPCION</a>
-                        </h4>
-                      </div>
-                      <div id="collapse1" class="panel-collapse collapse in">
-                        <div class="card">
-                          <div onmouseover="myOverFunction()" onmouseout="myOutOverFunction()" class="card-body">
-                            <h5 class="card-title">Sección 1</h5>
-                            <input class="form-control" id="pruebaplace" type="text" placeholder="Introduccion">
-                            <div class="displayagregar">
-                              <div class="agregarmas isloaded">
-                                <button class="btn btn-info" onclick="nuevovalor()"><i class="bi bi-pencil-square"></i></button> 
-                                <button class="btn btn-info" onclick="borrarvalor()"><i class="bi bi-trash"></i></button>
-                                <button class="btn btn-info" onclick="desplegardescrip()"><i class="bi bi-caret-down-fill"></i></button>
-                              </div>
-                            </div>
-                            <br>
-                            <ul id="descripciondesplegar" class="list-group list-group-flush">
-                             <!-- <li class="list-group-item">Descripción</li>-->
-                              <div class="form-group">
-                                  <label for="exampleFormControlTextarea1">Describe esta sección</label>
-                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                              </div>
-                                
-                                  <!-- MENU PESTAÑAS-->
-                              <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                  <li class="nav-item">
-                                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Archivo descargable</a>
-                                  </li>
-                                  <li class="nav-item">
-                                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Recurso externo</a>
-                                  </li>
-                              
-                              </ul>
-                              <div class="tab-content container-fluid" id="myTabContent">
-                                  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                      
-                                      <label class="form-label" for="customFile">Default file input example</label>
-                                      <input type="file" class="form-control" id="customFile" />
-                                  </div>
-                                  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                      <form>
-                                          <div class="form-row">
-                                              <div class="form-group">
-                                                  <label for="inputAddress">Título</label>
-                                                  <input type="text" class="form-control" id="inputTitle" placeholder="Conceptos básicos">
-                                                </div>
-                                                <div class="form-group">
-                                                  <label for="inputAddress2">URL</label>
-                                                  <input type="text" class="form-control" id="inputAddress2" placeholder="youtube.com">
-                                                </div>
-                                                <button class="btn btn-info">Añadir enlace</button>
-                                          </div>
-                                      </form>
-                                  </div>
-                              </div>
-                              <!--AQUI TERMINA MENU PESTAÑAS-->
-                              <br>
-                              <button class="btn btn-info">Guardar</button>
-                              <button type="button" onclick="canceldesplegardescrip()" class="btn btn-warning">Cancelar</button>
-                              <br>
-                            </ul>
-                            <br>
-                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                          </div>
-                        </div>
+    let cualbotonseccion = a.id;
+     numeracion = contador + 1;
+    var iddd = contador;
+    contador = contador + 1; 
 
-                        <div class=""> <!--agregarmas2 -->
-                          <a type="button" id="btndinamic" href="#" onclick="crearmascards(this)" class="tamanoicon btn-info"><i class="bi bi-node-plus"></i></a> 
-                          <h4>Crea mas secciones</h4>
-                        </div> 
+    var contenido ="Leccion" + cualbotonseccion + 'agregandosecciones' + contador;
+   
+    /*const myCard2 = document.getElementById("agregandosecciones" + cualbotonseccion);*/
+    var divNota = document.createElement("div");
+    divNota.setAttribute("id", 'seccion' + numeracion);
+    divNota.setAttribute("class", "tags");
+    division.appendChild(divNota);
+    divNota.textContent = contenido;
+    /*
+    var sabercuantaslecciones = 'agregandoLecciones'+ cualbotonseccion ;
+    var division = document.getElementById(sabercuantaslecciones);
 
-                        <div id="agregando`+ contador +`" class=" container-fluid" >
-                          <div>
-        
-                          </div>
-                        </div>
-                      </div> <!-- FINALIZA EL DESPLEGABLE-->
-                      <div id="collapse2" class="panel-collapse collapse">
-                        <h2>PRUEBA</h2>
-                        
-                      </div>
-                      <div id="collapse3" class="panel-collapse collapse">
-                       
-                      
-                      </div>
-                      
-                    </div>
-                  </div>
-                  
-                  </div>
-                </div><!-- TERMINA FONDO NEGRO-->
-   `;
-  }
+    var fruta = "agregando";
+    alert(fruta);
+    var resu  =  fruta+contador;
+    alert(resu);
+    
+    12:48 am cambie esto
+    var cualessecciones1 = 'agregandosecciones' + contadorlecciones;
+   const myCard = document.getElementById(cualessecciones1);
+    */
+    var cualessecciones1 = 'agregandoLecciones' + cualbotonseccion;
+   const myCard = document.getElementById(cualessecciones1);
+   
+   /*myCard.innerHTML=`
+   lastElementChild sustituye al ultimo hijo
+   */
+   myCard.lastChild.innerHTML=  `
+   <div class="card container">
+   <div onmouseover="myOverFunction()" onmouseout="myOutOverFunction()" class="card-body">
+     <h5 class="card-title">Sección ` + numeracion +` Generada dinamicamente </h5>
+     <input class="form-control" id="pruebaplace" type="text" placeholder="Introduccion">
+     <div class="displayagregar">
+       <div class="agregarmas isloaded">
+         <button class="btn btn-info" onclick="nuevovalor()"><i class="bi bi-pencil-square"></i></button> 
+         <button class="btn btn-info" onclick="borrarvalor()"><i class="bi bi-trash"></i></button>
+         <button class="btn btn-info" onclick="desplegardescrip()"><i class="bi bi-caret-down-fill"></i></button>
+       </div>
+     </div>
+     <br>
+     <ul id="descripciondesplegar" class="list-group list-group-flush">
+      <!-- <li class="list-group-item">Descripción</li>-->
+       <div class="form-group">
+           <label for="exampleFormControlTextarea1">Describe esta sección</label>
+           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+       </div>
+         
+           <!-- MENU PESTAÑAS-->
+       <ul class="nav nav-tabs" id="myTab" role="tablist">
+           <li class="nav-item">
+           <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Archivo descargable</a>
+           </li>
+           <li class="nav-item">
+           <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Recurso externo</a>
+           </li>
+       
+       </ul>
+       <div class="tab-content" id="myTabContent">
+           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+               
+               <label class="form-label" for="customFile">Default file input example</label>
+               <input type="file" class="form-control" id="customFile" />
+           </div>
+           <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+               <form>
+                   <div class="form-row">
+                       <div class="form-group">
+                           <label for="inputAddress">Título</label>
+                           <input type="text" class="form-control" id="inputTitle" placeholder="Conceptos básicos">
+                         </div>
+                         <div class="form-group">
+                           <label for="inputAddress2">URL</label>
+                           <input type="text" class="form-control" id="inputAddress2" placeholder="youtube.com">
+                         </div>
+                         <button class="btn btn-info">Añadir enlace</button>
+                   </div>
+               </form>
+           </div>
+       </div>
+       <!--AQUI TERMINA MENU PESTAÑAS-->
+       <br>
+       <button class="btn btn-info">Guardar</button>
+       <button type="button" onclick="canceldesplegardescrip()" class="btn btn-warning">Cancelar</button>
+       <br>
+     </ul>
+     <br>
+     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+     <a href="#" class="card-link">Card link</a>
+     <a href="#" class="card-link">Another link</a>
+   </div>
+  </div>
+      <br>
+  `;   
   
-  var division3 = document.getElementById('accordion2');
+  }
+  //contadorlecciones = contadorlecciones +1;
+  
+  var sabercuantaslecciones2 = 'collapse'+ contadorlecciones;
+  var division3 = document.getElementById(sabercuantaslecciones2  );
 
-  function crearlec(){
-    var contenido ="hola lecciones 2";
-    contador++;
+  function crearlec(a){
+    contador = contador + 1;
+  
+   // contadorlecciones = contadorlecciones +1;
+    var contenido ="hola leccion" + contadorlecciones ;
     numeracion = contador + 1;
     var iddd = contador;
     var divNota = document.createElement("div");
-    divNota.setAttribute("id", iddd);
+    divNota.setAttribute("id", 'agregandoLecciones' + contadorlecciones);
     divNota.setAttribute("class", "tags");
     division3.appendChild(divNota);
     divNota.textContent = contenido;
      /*myCard.innerHTML=`*/
-     alert('Se agrego una nueva Lección');
-     const myCard2 = document.getElementById( "accordion2" );
-     myCard2.lastElementChild.innerHTML=`
-  
-     <div id="padreLecciones" class="panel panel-default jumbotron">
+     
+     alert('Se agrego la Lección' + contadorlecciones);
+
+     var elid =  "collapse" + contadorlecciones;
+     contadorlecciones = contadorlecciones + 1;
+     const myCard2 = document.getElementById( elid );
+        
+     myCard2.lastChild.innerHTML=`
+     
+<div class="jumbotron">
+ <div class="container-fluid fondonegro">
+ <div class="row">
+ <div class="panel-group" id="accordion">
+   <div id="padreLecciones" class="panel panel-default">
      <div class="panel-heading">
        <h4 class="panel-title">
-       <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-       Título</a>
-       <div class="form-group">
-         <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Escribe algo genial">
-       </div>
+         <label for="inputAddress">Lección 1</label>
+         <a data-toggle="collapse" data-parent="#accordion" href="#collapse`+ contadorlecciones+`">
+         Título</a>
+         <div class="form-group">
+           <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Escribe algo genial">
+         </div>
        </h4>
      </div>
-     <div id="collapse1" class="panel-collapse collapse in">
+     <div id="collapse`+ contadorlecciones+`" class="panel-collapse collapse in">
        <div class="card">
          <div onmouseover="myOverFunction()" onmouseout="myOutOverFunction()" class="card-body">
            <h5 class="card-title">Sección 1</h5>
@@ -707,7 +599,8 @@ function validarFormulario(evento) {
                      <form>
                          <div class="form-row">
                              <div class="form-group">
-                                 <label for="inputAddress">Título</label>
+                                
+                                 <label for="inputAddress">Título </label>
                                  <input type="text" class="form-control" id="inputTitle" placeholder="Conceptos básicos">
                                </div>
                                <div class="form-group">
@@ -734,18 +627,31 @@ function validarFormulario(evento) {
        </div>
 
        <div class=""> <!--agregarmas2 -->
-         <a type="button" id="btndinamic" href="#" onclick="crearmascards(` + numeracion+`)" class="tamanoicon btn-info"><i class="bi bi-node-plus"></i></a> 
+         <a type="button" id="`+ contadorlecciones +`" href="#" onclick="crearmassecciones(this)" class="tamanoicon btn-info"><i class="bi bi-node-plus"></i></a> 
          <h4>Crea mas secciones</h4>
        </div> 
 
-       <div id="agregando ` + numeracion+`" class=" container-fluid" >
-         <div>
+      
+         <div id="agregandoLecciones`+ contadorlecciones +`" class="container-fluid">
+           <div id="agregandosecciones`+ contadorlecciones +`" class=" container-fluid" >
+             <div>
 
+             </div>
+           </div>
+           <div class="">
+            
+           </div>
          </div>
-       </div>
+       
      </div> <!-- FINALIZA EL DESPLEGABLE-->
-     
-     
-   </div>
-                    `;
+   </div><!-- FINALIZA EL PADRE LECCIONES -->
+ </div>
+ 
+ </div>
+</div><!-- TERMINA FONDO NEGRO-->
+</div><!-- TERMINA JUMBOTRON-->
+
+`;
+                    
+                    
   }
