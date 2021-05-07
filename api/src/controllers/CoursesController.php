@@ -5,10 +5,12 @@
     use Psr\Http\Message\ServerRequestInterface as Request;
     
     use Configuration\Database\MySQLDatabase;
+    
     use Validators\CourseValidator;
     use Validators\CourseCreationValidator;
+    use Models\Course;
     use Models\CourseDAO;
-
+    
     class CoursesController
     {
         static public function getUnique(Request $request, Response $response, $args)

@@ -143,7 +143,7 @@
                 $lesson->published = $row['published'];
                 $lesson->videoAddress = $row['video_address'];
                 $lesson->duration = $row['lesson_duration'];
-                $lesson->sectionId = $row['section_id'];                
+                $lesson->sectionId = $row['section_id'];
             }
             else{
                 return null;

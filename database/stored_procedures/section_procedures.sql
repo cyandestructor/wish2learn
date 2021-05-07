@@ -129,6 +129,27 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
+DROP PROCEDURE IF EXISTS GetSection $$
+
+CREATE PROCEDURE GetSection (
+	IN id_section INT
+)
+BEGIN
+	SELECT
+		SI.id_section,
+		SI.section_title,
+		SI.section_is_free,
+        SI.product_id,
+		SI.section_price,
+		SI.published
+	FROM
+		SectionsInfo AS SI
+	WHERE
+		SI.id_section = id_section;
+END $$
+DELIMITER ;
+
+DELIMITER $$
 DROP PROCEDURE IF EXISTS GetCourseSections $$
 
 CREATE PROCEDURE GetCourseSections (
@@ -162,6 +183,7 @@ BEGIN
 		SI.section_title,
 		SI.section_is_free,
 		SI.section_price,
+        SI.product_id,
 		SI.published,
         EXISTS(
 			SELECT
