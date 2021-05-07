@@ -9,11 +9,11 @@
    
     <link rel="stylesheet" href="fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <!--<link rel="stylesheet" href="/assets/css/owl.carousel.min.css">-->
 
     
     <!-- Style -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/assets/css/interfaz_curso_adquirido.css">
 
     <title>Sidebar #3</title>
   </head>
@@ -147,6 +147,8 @@
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <a class="dropdown-item" href="#">
                     Nombre del maestro<br><h6>alumno@example.com</h6></a>
+                    
+                  <a class="dropdown-item" href="#">Plataforma Estudiante</a>
                   <a class="dropdown-item" href="#">Configuracion de pago</a>
                   <a class="dropdown-item" href="#">Cerrar sesión</a>
                 </div>
@@ -167,12 +169,19 @@
       
       </nav>
 
-      <div class="tab-content">
-        <div id="video1" class="tab-pane fade show active in active">
-          <h3>PONER AQUI UN VIDEO DIFERENTE </h3>
-          <div class="tab-content" id="pills-tabContent">
+      <div class="container tab-content">
+        <div class="row">
+          <div class="col-md-12">
+
+          </div>
+        </div>
+        <div id="video1" class="row tab-pane fade show active in active">
+        
+          <div class="tab-content container" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                descripción general
+              <br>
+              <h3>Lección</h3>
+              <p>Sección</p>
                 <div class="modal-content embed-responsive embed-responsive-16by9">
                   <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/6ZHGJzAkLJ0"  allowfullscreen></iframe> 
               </div>
@@ -188,6 +197,7 @@
         </div>
         </div>
         <div id="video2" class="tab-pane fade">
+          <br>
           <h3>Menu 2</h3>
           <p>PONER AQUI UN VIDEO DIFERENTE 2</p>
           <div class="modal-content embed-responsive embed-responsive-16by9">
@@ -199,7 +209,9 @@
           <p>PONER AQUI UN VIDEO DIFERENTE 3</p>
         </div>
       </div>
-      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+
+      <br>
+      <ul class="nav nav-pills container mb-3" id="pills-tab" role="tablist">
         <li class="nav-item">
         <a class="nav-link active" id="pills-home-tab2" data-toggle="pill" href="#pills-home2" role="tab" aria-controls="pills-home2" aria-selected="true">Descripción general </a>
         </li>
@@ -210,7 +222,8 @@
         <a class="nav-link" id="pills-contact-tab2" data-toggle="pill" href="#pills-contact2" role="tab" aria-controls="pills-contact2" aria-selected="false">Notas</a>
         </li>
     </ul>
-    <div class="tab-content" id="pills-tabContent">
+
+    <div class="tab-content container" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-home2" role="tabpanel" aria-labelledby="pills-home-tab">
             descripción general
         </div>
@@ -223,10 +236,57 @@
     </div>
     </main>
     
+     <!-- Footer -->
+ <footer class="bg-light footEr text-center text-lg-start">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <h5 class="text-uppercase">Cursos hechos por expertos</h5>
+        <p>
+         Conocemos las necesidades del medio para proveerte cursos especializados.
+        </p>
+      </div>
+      <!--Grid column-->
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+      <!--Grid column-->
+      <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-uppercase">Inicio</h5>
+
+        <ul class="list-unstyled mb-0">
+          <li>
+            <a href="#!" class="text-dark">Categorias</a>
+          </li>
+          <li>
+            <a href="#!" class="text-dark">Link 2</a>
+          </li>
+          <li>
+            <a href="#!" class="text-dark">Link 3</a>
+          </li>
+          <li>
+            <a href="#!" class="text-dark">Conviertete en instructor</a>
+          </li>
+        </ul>
+      </div>
+      <!--Grid column-->
+    </div>
+    <!--Grid row-->
+  </div>
+  <!-- Grid container -->
+
+  
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+    © 2020 Copyright Wish2Learn
+  </div>
+  <!-- Copyright -->
+</footer>
+
+    <script src="/scripts/js/jquery-3.3.1.min.js"></script>
+    <script src="/scripts/js/popper.min.js"></script>
+    <script src="/scripts/js/bootstrap.min.js"></script>
+    <script src="/scripts/js/main.js"></script>
   </body>
 </html>
