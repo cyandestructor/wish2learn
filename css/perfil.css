@@ -5,9 +5,7 @@
 #upload {
     opacity: 0;
 }
-.marginautos{
-    margin: auto;
-}
+
 #upload-label {
     position: absolute;
     top: 50%;
@@ -54,9 +52,7 @@ body {
 
 /**/
 #margintp, #margintp2{
-    /*margin-top: 50px;*/
-    padding-top: 40px;
-    margin: auto;
+    margin-top: 50px;
 }
 .input-group{
     display: inline-block;

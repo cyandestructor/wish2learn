@@ -4,15 +4,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/carousel.css">
     <link rel="stylesheet" href="css/barranav.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"> 
+    <link href="css/all.css" rel="stylesheet"> <!--load all styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+     <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/carousel/">
+
+    
+
+    Bootstrap core CSS
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">  -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
    
+    
+    <!-- Custom styles for this template -->
+    <link href="css/carousel.css" rel="stylesheet">
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+    
+
+
+    <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand black" href="#">Wish2Know</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -24,7 +38,7 @@
               <!--  <button class="btn btn-outline-success" type="submit">Search</button>-->
               <button  class="btn btn-outline-success" type="button" onclick="validarBuscar()">Buscar</button>
            </form>
-          <ul class="navbar-nav acomodaruls me-auto mb-2 mb-md-0">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item dropdown menu-area active">
               <a class="nav-link " href="#" id="mega-one" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categorias </a>
              
@@ -62,13 +76,15 @@
               </div> <!-- dropdown-mega-menu.// -->
           </li>
             <li class="nav-item">
-              <a class="nav-link" href="encuestaparasermaestro.html">Enseña en W2L</a>
+              <a class="nav-link" href="#">Enseña en W2L</a>
             </li>
+            
+           
           </ul>
          
           <ul class="navderbtns">
             <li>     
-               <a href="registrarse.html" class="btn btn-outline-success" role="button">Registrarse</a>
+               <a href="registro.html" class="btn btn-outline-success" role="button">Registrarse</a>
             </li> 
             <li>   
              <!-- <button class="btn btn-outline-success morado" type="submit">Iniciar sesión</button> -->
@@ -77,29 +93,12 @@
             
           </ul>
 
-          
-          <ul class="navbar-nav navderbtns ms-auto">
-           
+          <ul class="navderbtns">
             <li class="nav-item ">
-              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
-                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
-              </svg>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown"> Dropdown right </a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#"> Nombre User </a></li>
-                <li><a class="dropdown-item" href="#"> email user </a></li>
-                <div class="dropdown-divider"></div>
-                <li><a class="dropdown-item" href="#"> Mi aprendizaje </a></li>
-                <li><a class="dropdown-item" href="#"> Mi mochila </a></li>
-                <div class="dropdown-divider"></div>
-                <li><a class="dropdown-item" href="#"> Mensajes </a></li>
-                <li><a class="dropdown-item" href="perfil.html"> Editar Perfil </a></li>
-                <div class="dropdown-divider"></div>
-                <li><a class="dropdown-item" href="#"> Cerrar sesión </a></li>
-                </ul>
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+              <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
+            </svg>
             </li>
           </ul>
          
@@ -156,11 +155,12 @@
 
        <!--TERMINA ELEMENTO DEL CARRUSEL -->
       <div class="carousel-item">
-        <img src="https://images.pexels.com/photos/5625007/pexels-photo-5625007.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="FCFM" class="bd-placeholder-img">
+        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>
+
         <div class="container">
           <div class="carousel-caption">
-            <h1>Aprovecha los descuentos</h1>
-            <p>Gana o aprovecha los fascinantes descuentos en cursos</p>
+            <h1>Another example headline.</h1>
+            <p>Some representative placeholder content for the second slide of the carousel.</p>
             <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
           </div>
         </div>
@@ -176,19 +176,16 @@
         </div>
       </div>
 
-
-     
-
       <div class="carousel-item ">
         <div class="container nosalirtedelcontainer">
           <div class="row">
             <div class="col-md-6 ocultar">
-              <div class="tresde3">
-                <div class="containersito3">
-                  <img src="img/efectos3d/muestra2.jpg">
-                  <img src="img/efectos3d/muestra2.jpg">
-                  <img src="img/efectos3d/muestra2.jpg">
-                  <img src="img/efectos3d/muestra2.jpg">
+              <div class="tresde">
+                <div class="containersito pruebatamano">
+                 <img src="https://res.cloudinary.com/websway/image/upload/v1538242836/img_vkgzwy.png">
+                 <img src="https://res.cloudinary.com/websway/image/upload/v1538242836/img_vkgzwy.png">
+                 <img src="https://res.cloudinary.com/websway/image/upload/v1538242836/img_vkgzwy.png">
+                 <img src="https://res.cloudinary.com/websway/image/upload/v1538242836/img_vkgzwy.png">
                 </div>
               </div>
             </div>
@@ -223,10 +220,9 @@
 
   <!-- TERMINA EL CARRUSEL -->
   <!-- cards comienzan-->
-  <div class="jumbotron morado container">
-    <h4 class="marginmorado">Cursos recomendados</h4>
-  </div>
+  
   <div class="row marginbtm">
+    
       <div class="col-md-3 card" style="width: 18rem;">
         <img class="card-img-top" src="img/cursos.jpg" alt="img-thumbnail">
         <div class="card-body">
@@ -335,15 +331,33 @@
   </div> 
   <!--fin del row de cards JS-->
   
-    
+    <!-- EFECTO 3D -->
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="tresde3">
+            <div class="containersito3">
+             <img src="https://res.cloudinary.com/websway/image/upload/v1538242836/img_vkgzwy.png">
+             <img src="https://res.cloudinary.com/websway/image/upload/v1538242836/img_vkgzwy.png">
+             <img src="https://res.cloudinary.com/websway/image/upload/v1538242836/img_vkgzwy.png">
+             <img src="https://res.cloudinary.com/websway/image/upload/v1538242836/img_vkgzwy.png">
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 textoderecho">
+          <h2>Accede en cualquier momento desde tu dispositivo móvil</h2>
+        </div>
+      </div>
+    </div>
+    <!-- TERMINA EFECTO 3D-->
 
     <!-- CURSOS AGREGADOS RECIENTEMENTE-->
 
-    
-      <div class="container morado my-4">
-        <h1 class="marginmorado">Nuevos cursos</h1>
+    <div class="jumbotron">
+      <div class="container my-4">
+        <h1>Nuevos cursos</h1>
       </div>
-    
+    </div>
     
     <div class="container my-4">
 
@@ -518,29 +532,6 @@
     
     </div>
   <!--TERMINAN CARDS -->
-
-  <!-- EFECTO 3D -->
-   
-  <div class="row">
-    <div class="col-md-6">
-      <div class="tresde3">
-        <div class="containersito3">
-         <img src="https://res.cloudinary.com/websway/image/upload/v1538242836/img_vkgzwy.png">
-         <img src="https://res.cloudinary.com/websway/image/upload/v1538242836/img_vkgzwy.png">
-         <img src="https://res.cloudinary.com/websway/image/upload/v1538242836/img_vkgzwy.png">
-         <img src="https://res.cloudinary.com/websway/image/upload/v1538242836/img_vkgzwy.png">
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 textoderecho">
-      <h2>Accede en cualquier momento desde tu dispositivo móvil</h2>
-    </div>
-  </div>
-
-<!-- TERMINA EFECTO 3D-->
-
-<br>
-<br>
  <!-- Footer -->
  <footer class="bg-light text-center text-lg-start">
   <!-- Grid container -->
@@ -582,7 +573,6 @@
   </div>
   <!-- Grid container -->
 
-  
   <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
     © 2020 Copyright Wish2Know

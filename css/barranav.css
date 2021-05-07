@@ -1,13 +1,9 @@
 .navbar-expand-md {
     justify-content: space-between!important;
 }
-.fixed-top {
-  position: relative!important;
-}
+
 /*NAVBAR */
-body{
-  padding: 0!important;
-}
+
 .navderbtns{
     display: inherit;
   margin: 0!important;
@@ -23,72 +19,10 @@ ul{
   list-style-type: none;
 }
 .navderbtns >li{
-  padding:0;
-  /*margin-right: 20px;*/
-  display: inline-block;
+  margin-right: 20px;
 }
 
 .morado {
     color: #5B00BC!important;
     border-color: #5B00BC!important;
-}
-.jumbotron{
-  background-color: #200042!important;
-  color: white;
-}
-.mega-area{
-  min-width: 40rem!important;
-}
-#modifbarra{
-  position: relative;
-  justify-content: center;
-}
-.todoelanchobarra2{
-  width: 40%;
-}
-@media (min-width: 1200px){
-  .navderbtns > li{
-    margin-left: 20px!important;
-  }
-}
-@media (max-width: 1199px){
-  .acomodaruls{
-    display: block!important;
-  }
-  .navderbtns{
-    margin-left: 0!important;
-    padding: 0!important;
-    margin-bottom: 10px!important;
-  }
-  .definirancho{
-  
-  }
- /* #navbarCollapse{
-    width: 100%;
-    display: none!important;
-  } */
-  .todoelanchobarra{
-    width: 100%;
-  }
-  .todoelanchobarra2{
-    width: 100%;
-  }
-  .cambiaraverti{
-    flex-direction: column!important;
-  }
-}
-
-.marginmorado{
-   
-    background-color: #200042!important;
-    color: white;
-    padding: 30px;
-}
-
-.btn-primary{
-  background-color: #200042!important;
-    
-  /*background-color: #5B00BC!important;*/
-  
-  border:none!important;
 }

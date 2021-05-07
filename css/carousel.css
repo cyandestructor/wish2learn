@@ -421,7 +421,7 @@ width: 100%;
   max-width: 1.56rem;
   height: 1.56rem;
   margin-bottom: -3.75rem;
-  background-color: #5B00BC;
+  background-color: #4285f4;
 }
 .carousel .carousel-indicators li {
   width: 1.56rem;
@@ -434,7 +434,7 @@ width: 100%;
   width: 1.56rem;
   max-width: 1.56rem;
   height: 1.56rem;
-  background-color: #200042;
+  background-color: #4285f4;
   border-radius: 50%;
 }
 .carousel-indicators li {
@@ -509,7 +509,7 @@ a.waves-effect, a.waves-light {
 
 
 .carousel-multi-item .controls-top .btn-floating {
-    background: #5B00BC;
+    background: #4285f4;
     align-items: center;
     text-align: center;
     justify-content: center;

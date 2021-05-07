@@ -24,11 +24,7 @@
     width: 40%;
     margin: 30px;
 }
-.btn-medianomorado {
-  background-color: #200042!important;
-  width: 40%;
-  margin: 30px;
-}
+
 .cardquote {
     margin-top: 30px;
 }
@@ -205,29 +201,4 @@ a[data-toggle="collapse"] {
 #menu input[name="list"] {
     position: absolute;
     left: -1000em;
-}
-
-#menu * { list-style:none;}
-#menu li{ line-height:180%;     display: block;
-}
-#menu li a{color:#222; text-decoration:none;}
-#menu li a:before{ content:"\025b8"; color:#ddd; margin-right:4px;}
-#menu input[name="list"] {
-	position: absolute;
-	left: -1000em;
-	}
-#menu label:before{ content:"\025b8"; margin-right:4px;}
-#menu input:checked ~ label:before{ content:"\025be";}
-#menu .interior{display: none;}
-#menu input:checked ~ ul{display:block;}
-
-/*ESTILOS DE LOS DESPLEGABLES*/
-
-.valoracioncurso{
-  padding: 40px;
-  margin: 40px;
-}
-
-.panel-default{
-  margin: 30px;
 }

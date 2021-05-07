@@ -8,7 +8,6 @@
     <link href="css/all.css" rel="stylesheet"> <!--load all styles -->
     
     <!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
-
     <link rel="stylesheet" href="css/barranav.css"> 
     <link rel="stylesheet" href="css/ExplorarCurso.css"> 
     <!-- <link href="css/all.css" rel="stylesheet">  -->
@@ -18,105 +17,87 @@
 </head>
 <body>
     <!-- BARRA DE NAVEGACION -->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand black" href="#">Wish2Know</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <form class="d-flex">
-            <input id="busqueda" class="form-control me-2" type="text" placeholder="Busca tu sueño aquí" aria-label="Search">
-              <!--  <button class="btn btn-outline-success" type="submit">Search</button>-->
-              <button  class="btn btn-outline-success" type="button" onclick="validarBuscar()">Buscar</button>
-           </form>
-          <ul class="navbar-nav acomodaruls me-auto mb-2 mb-md-0">
-            <li class="nav-item dropdown menu-area active">
-              <a class="nav-link " href="#" id="mega-one" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categorias </a>
-             
-              <div class="dropdown-menu mega-area" aria-labelledby="mega-one">
-                <div class="row">
-                  <div class="col-sm-6">
-                      <h4>Desarrollo</h4>
-                      <a href="#" class="dropdown-item">Desarrollo móvil</a>
-                      <a href="#" class="dropdown-item">Desarrollo de base de datos</a>
+    <nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand black" href="#">Wish2Know</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <form class="d-flex">
+              <input id="busqueda" class="form-control me-2" type="text" placeholder="Busca tu sueño aquí" aria-label="Search">
+                <!--  <button class="btn btn-outline-success" type="submit">Search</button>-->
+                <button  class="btn btn-outline-success" type="button" onclick="validarBuscar()">Buscar</button>
+             </form>
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item dropdown menu-area active">
+                <a class="nav-link " href="#" id="mega-one" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categorias </a>
+               
+                <div class="dropdown-menu mega-area" aria-labelledby="mega-one">
+                  <div class="row">
+                    <div class="col-sm-6">
+                        <h4>Desarrollo</h4>
+                        <a href="#" class="dropdown-item">Desarrollo móvil</a>
+                        <a href="#" class="dropdown-item">Desarrollo de base de datos</a>
+                        <a href="#" class="dropdown-item">Subcategoria 1</a>
+                        <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    </div>
+                    <div class="col-sm-6">
+                      <h4>Prueba 2</h4>
                       <a href="#" class="dropdown-item">Subcategoria 1</a>
                       <a href="#" class="dropdown-item">Subcategoria 1</a>
-                  </div>
-                  <div class="col-sm-6">
-                    <h4>Prueba 2</h4>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                  </div>
-                  <div class="col-sm-6">
-                    <h4>Prueba 3</h4>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                  </div>
-                  <div class="col-sm-6">
-                    <h4>Prueba 4</h4>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                  </div>
-                </div>  
-              </div> <!-- dropdown-mega-menu.// -->
-          </li>
-            <li class="nav-item">
-              <a class="nav-link" href="encuestaparasermaestro.html">Enseña en W2L</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    </div>
+                    <div class="col-sm-6">
+                      <h4>Prueba 3</h4>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    </div>
+                    <div class="col-sm-6">
+                      <h4>Prueba 4</h4>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    </div>
+                  </div>  
+                </div> <!-- dropdown-mega-menu.// -->
             </li>
-          </ul>
-         
-          <ul class="navderbtns">
-            <li>     
-               <a href="registro.html" class="btn btn-outline-success" role="button">Registrarse</a>
-            </li> 
-            <li>   
-             <!-- <button class="btn btn-outline-success morado" type="submit">Iniciar sesión</button> -->
-              <a class="btn btn-outline-success morado" href="iniciar_sesion.html" role="button">Iniciar sesión</a>
-            </li> 
-            
-          </ul>
-
-          
-          <ul class="navbar-nav navderbtns ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Enseña en W2L</a>
+              </li>
+              
+             
+            </ul>
            
-            <li class="nav-item ">
+            <ul class="navderbtns">
+              <li>     
+                 <a href="registro_f.html" class="btn btn-outline-success" role="button">Registrarse</a>
+              </li> 
+              <li>   
+               <!-- <button class="btn btn-outline-success morado" type="submit">Iniciar sesión</button> -->
+                <a class="btn btn-outline-success morado" href="iniciar_sesion.html" role="button">Iniciar sesión</a>
+              </li> 
+              
+            </ul>
+  
+            <ul class="navderbtns">
+              <li class="nav-item ">
               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                 <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
               </svg>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown"> Dropdown right </a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#"> Nombre User </a></li>
-                <li><a class="dropdown-item" href="#"> email user </a></li>
-                <div class="dropdown-divider"></div>
-                <li><a class="dropdown-item" href="#"> Mi aprendizaje </a></li>
-                <li><a class="dropdown-item" href="#"> Mi mochila </a></li>
-                <div class="dropdown-divider"></div>
-                <li><a class="dropdown-item" href="#"> Mensajes </a></li>
-                <li><a class="dropdown-item" href="#"> Mi aprendizaje </a></li>
-                <div class="dropdown-divider"></div>
-                <li><a class="dropdown-item" href="#"> Mi aprendizaje </a></li>
-                </ul>
-            </li>
-          </ul>
-         
+              </li>
+            </ul>
+           
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
     <!-- FIN BARRA NAVEGACION-->
 
-      <div class="jumbotron valoracioncurso">
-        <h3>Videos del curso</h3>
-      </div>
     <!-- VIDEOS DE PRUEBA -->
           <!-- Grid row -->
 <div class="row">
@@ -271,12 +252,12 @@
 
     <!-- -->
     <div class="container">
-      <button type="button" class="btn btn-primary btn-lg btn-medianomorado">Comprar</button>
+      <button type="button" class="btn btn-primary btn-lg btn-mediano">Comprar</button>
     <button type="button" class="btn btn-secondary btn-lg btn-mediano">Mochila</button>
       <h2>Angular: De cero a experto</h2>
       <p>Todo lo que necesitas saber de angular utilizando TypeScript y buenas prácticas ofrecidas por el equipo de angular.
       </p>
-      
+      <p>Creado por <a href="">INSTRUCTOR</a> </p>
       <h5>
         <i class="bi bi-award"></i>Fecha de la última actualizacion</h5>
         <h5>
@@ -284,8 +265,6 @@
           <button type="button" class="btn btn-outline-primary">Lista de deseos</button>
     <button type="button" class="btn btn-outline-secondary">Compartir</button>
     <button type="button" class="btn btn-outline-success">Regalar</button>
-
-    <p>Creado por <a href="">INSTRUCTOR</a> </p>
     <div class="card cardquote">
       <div class="card-header">
         Quote
@@ -299,20 +278,7 @@
     </div>
     </div>
     <!-- TERMINA INFORMACION DEL CURSO  -->
-    <div class="container jumbotron valoracioncurso">
-      <div class="row">
-        <div class="col-md-12">
-          <h2>VALORACIÓN DEL CURSO</h2>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-          <i class="bi bi-star-fill"></i>
-        </div>
-       
-      </div>
-      
-    </div>
+    
     
 
     <!-- DESCRIPCION Y REQUISITOS -->
@@ -320,7 +286,7 @@
 
     <!-- TEMARIO -->
     
-    <div class="col-md-6 hacerinline container"> 
+    <div class="col-md-6 hacerinline"> 
       <h3>TEMARIO</h3>
       <table class="table">
       <thead>
@@ -366,19 +332,14 @@
             <th scope="row">
               <ul id="menu">
                 <div class="col-md-8">
-                  <li>
-                    <input type="checkbox" name="list" id="nivel1-2" checked="" >
-                    <label for="nivel1-2" >Nivel 1</label>
+                  <li><input type="checkbox" name="list" id="nivel1-2" checked=""><label for="nivel1-2">Nivel 1</label>
                     <ul class="interior">
-                      <li><a href="#r">Nivel 2</a>
-                      
-                      </li>
-                      <li>
-                        <input type="checkbox" name="list" id="nivel2-3"><label for="nivel2-3">Nivel 2</label>
+                      <li><a href="#r">Nivel 2</a></li>
+                      <li><input type="checkbox" name="list" id="nivel2-3"><label for="nivel2-3">Nivel 2</label>
                         <ul class="interior">
                           <!--<li><a href="#r">Nivel 3</a></li>
                           <li><a href="#r">Nivel 3</a></li> -->
-                        </ul>
+                          </ul>
                       </li>
                       <li><input type="checkbox" name="list" id="nivel2-4"><label for="nivel2-4">Nivel 2</label>
                       <ul class="interior">
@@ -416,27 +377,23 @@
     <!-- PLANTILLA -->
     <!-- SECCION DE instructores y valoraciones-->
   <div id="quitarmargintb2" class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-    <div id="moradito" class="cuadromitad morado text-center overflow-hidden">
+    <div id="moradito" class="cuadromitad morado me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
         <div class="container-fluid ">
         <div class="panel-group" id="accordion">
-            <div class="panel panel-default">
+          <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-                Comentarios de estudiantes</a>
+                Lorem Ipsum</a>
               </h4>
             </div>
             <div id="collapse1" class="panel-collapse collapse in">
-              <div class="panel-body">
-                <h6>Nombre del estudiante</h6>
-                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                  commodo consequat.</div>
+              <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+              minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+              commodo consequat.</div>
             </div>
-              
-            </div>
-          </div> 
+          </div>
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
@@ -451,14 +408,6 @@
               commodo consequat.</div>
             </div>
           </div>
-        </div>
-        
-        </div>
- 
-      </div>
-    <div class="cuadromitad bg-primary text-center text-white overflow-hidden">
-      <div class="container-fluid ">
-        <div class="panel-group" id="accordion">
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
@@ -488,8 +437,22 @@
                   <h6>TEXTO AQUI</h6>
                 </div>
       
-                
-                
+                <h3>Comentarios de los estudiantes</h3>
+                <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                  minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                  commodo consequat.</div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h2>VALORACIÓN DEL CURSO</h2>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  </div>
+                 
+                </div>
               </div>
               
       
@@ -499,18 +462,33 @@
         </div>
         
         </div>
+ 
+      </div>
+    <div class="cuadromitad bg-primary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+      <div class="my-3 py-3">
+        <h2 class="display-5">Another headline</h2>
+        <p class="lead">And an even wittier subheading.</p>
+      </div>
+      <div class="bg-light shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
     </div>
   </div>
     <!-- FIN DE LA PLANTILLA -->
 
     <!-- DESCRIPCION Y REQUISITOS -->
     <div id="quitarmargintb" class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-      <div id="quitarmargin" class="col-md-12 bg-dark text-center text-white overflow-hidden">
+      <div id="quitarmargin" class="cuadromitad bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
         <div class="my-3 py-3">
           <h2 class="display-5">Requisitos</h2>
           <p class="lead">And an even wittier subheading.</p>
         </div>
           <img src="img/explorarcurso/html5.png" alt="">
+      </div>
+      <div class="cuadromitad bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+        <div class="my-3 p-3">
+          <h2 class="display-5">DESCRIPCION</h2>
+          <p class="lead">And an even wittier subheading.</p>
+        </div>
+        <div class="bg-dark shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
       </div>
     </div>
      <!-- terminan DESCRIPCION Y REQUISITOS -->
@@ -519,11 +497,11 @@
 
      <!-- CURSOS AGREGADOS RECIENTEMENTE-->
 
-    
+    <div class="jumbotron">
       <div class="container my-4">
         <h1>CURSOS RELACIONADOS</h1>
       </div>
-   
+    </div>
     
     <div class="container my-4">
 

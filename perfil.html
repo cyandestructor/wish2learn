@@ -16,111 +16,92 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand black" href="#">Wish2Know</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <form class="d-flex">
-            <input id="busqueda" class="form-control me-2" type="text" placeholder="Busca tu sueño aquí" aria-label="Search">
-              <!--  <button class="btn btn-outline-success" type="submit">Search</button>-->
-              <button  class="btn btn-outline-success" type="button" onclick="validarBuscar()">Buscar</button>
-           </form>
-          <ul class="navbar-nav acomodaruls me-auto mb-2 mb-md-0">
-            <li class="nav-item dropdown menu-area active">
-              <a class="nav-link " href="#" id="mega-one" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categorias </a>
-             
-              <div class="dropdown-menu mega-area" aria-labelledby="mega-one">
-                <div class="row">
-                  <div class="col-sm-6">
-                      <h4>Desarrollo</h4>
-                      <a href="#" class="dropdown-item">Desarrollo móvil</a>
-                      <a href="#" class="dropdown-item">Desarrollo de base de datos</a>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand black" href="#">Wish2Know</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Busca tu sueño aquí" aria-label="Search">
+                <!--  <button class="btn btn-outline-success" type="submit">Search</button>-->
+                <button class="btn btn-outline-success" type="submit">Buscar</button>
+             </form>
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item dropdown menu-area active">
+                <a class="nav-link dropdown-toggle" href="#" id="mega-one" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categorias </a>
+                <div class="dropdown-menu mega-area" aria-labelledby="mega-one">
+                  <div class="row">
+                    <div class="col-sm-6">
+                        <h4>Desarrollo</h4>
+                        <a href="#" class="dropdown-item">Desarrollo móvil</a>
+                        <a href="#" class="dropdown-item">Desarrollo de base de datos</a>
+                        <a href="#" class="dropdown-item">Subcategoria 1</a>
+                        <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    </div>
+                    <div class="col-sm-6">
+                      <h4>Prueba 2</h4>
                       <a href="#" class="dropdown-item">Subcategoria 1</a>
                       <a href="#" class="dropdown-item">Subcategoria 1</a>
-                  </div>
-                  <div class="col-sm-6">
-                    <h4>Prueba 2</h4>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                  </div>
-                  <div class="col-sm-6">
-                    <h4>Prueba 3</h4>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                  </div>
-                  <div class="col-sm-6">
-                    <h4>Prueba 4</h4>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                  </div>
-                </div>  
-              </div> <!-- dropdown-mega-menu.// -->
-          </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Enseña en W2L</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    </div>
+                    <div class="col-sm-6">
+                      <h4>Prueba 3</h4>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    </div>
+                    <div class="col-sm-6">
+                      <h4>Prueba 4</h4>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    </div>
+                  </div>  
+                </div> <!-- dropdown-mega-menu.// -->
             </li>
-          </ul>
-         
-          <ul class="navderbtns">
-            <li>     
-               <a href="registro.html" class="btn btn-outline-success" role="button">Registrarse</a>
-            </li> 
-            <li>   
-             <!-- <button class="btn btn-outline-success morado" type="submit">Iniciar sesión</button> -->
-              <a class="btn btn-outline-success morado" href="iniciar_sesion.html" role="button">Iniciar sesión</a>
-            </li> 
-            
-          </ul>
-
-          
-          <ul class="navbar-nav navderbtns ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Enseña en W2L</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+             
+            </ul>
            
-            <li class="nav-item ">
+            <ul class="navderbtns">
+              <li>   
+                <a href="registro_f.html" class="btn btn-outline-success" role="button">Registrarse</a>
+              </li> 
+              <li>   
+                <button class="btn btn-outline-success morado" type="submit">Iniciar sesión</button>
+              </li> 
+              
+            </ul>
+            <ul class="navderbtns">
+              <li class="nav-item ">
               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                 <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
               </svg>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown"> Dropdown right </a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#"> Nombre User </a></li>
-                <li><a class="dropdown-item disabled" href="#"> email user </a></li>
-                <div class="dropdown-divider"></div>
-                <li><a class="dropdown-item" href="#"> Mi aprendizaje </a></li>
-                
-              <!--  <li><a class="dropdown-item" id="mochilaextemporanea" onclick="mochilaextemporanea()" href="#"> Mi mochila </a></li> -->
-                <li><a class="dropdown-item" href="sesioniniciada_wishlist.html"> Mi mochila </a></li>
-                <div class="dropdown-divider"></div>
-                <li><a class="dropdown-item" href="#"> Mensajes </a></li>
-                <li><a class="dropdown-item" href="#"> Mi aprendizaje </a></li>
-                <div class="dropdown-divider"></div>
-                <li><a class="dropdown-item" href="#"> Mi aprendizaje </a></li>
-                </ul>
-            </li>
-          </ul>
-         
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
     
     <!-- CARGAR IMAGENES -->
-   
-    <div id="margintp" class="row container marginautos">
-        <div class="col-md-6 marginautos">
+    <h3 class="">Editar perfil</h3>
+    <div id="margintp" class="row container">
+        <div class="col-md-6">
             <!-- Upload image input
             <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
                 -->
-                <h3 class="">Editar perfil</h3>
             <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
                 <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
                 
@@ -129,11 +110,12 @@
             <!-- Uploaded image area-->
             <p class="font-italic text-white text-center">Vista previa de imagen</p>
             <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
-            <br>
             <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Guardar</a>
 
             </div>
-        
+        <div class="col-md-6">
+
+        </div>
     </div>
     <div id="margintp2" class="row container">
         <div class="">
@@ -208,7 +190,6 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="jquery3.min.js"></script>
-    <script src="js/mochilaextemporanea.js"></script>
     <script src="js/showimage.js"></script>
     <script src="js/bootstrap.min.js" ></script>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
