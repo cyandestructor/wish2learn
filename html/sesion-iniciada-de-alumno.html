@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/barranav.css">
+    <link rel="stylesheet" href="/assets/css/sesioniniciada_alumno.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"> 
+
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+   
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand black" href="#">Wish2Know</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <form class="d-flex">
+              <input id="busqueda" class="form-control me-2" type="text" placeholder="Busca tu sueño aquí" aria-label="Search">
+                <!--  <button class="btn btn-outline-success" type="submit">Search</button>-->
+                <button  class="btn btn-outline-success" type="button" onclick="validarBuscar()">Buscar</button>
+             </form>
+            <ul class="navbar-nav acomodaruls me-auto mb-2 mb-md-0">
+              <li class="nav-item dropdown menu-area active">
+                <a class="nav-link " href="#" id="mega-one" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categorias </a>
+               
+                <div class="dropdown-menu mega-area" aria-labelledby="mega-one">
+                  <div class="row">
+                    <div class="col-sm-6">
+                        <h4>Desarrollo</h4>
+                        <a href="#" class="dropdown-item">Desarrollo móvil</a>
+                        <a href="#" class="dropdown-item">Desarrollo de base de datos</a>
+                        <a href="#" class="dropdown-item">Subcategoria 1</a>
+                        <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    </div>
+                    <div class="col-sm-6">
+                      <h4>Prueba 2</h4>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    </div>
+                    <div class="col-sm-6">
+                      <h4>Prueba 3</h4>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    </div>
+                    <div class="col-sm-6">
+                      <h4>Prueba 4</h4>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    </div>
+                  </div>  
+                </div> <!-- dropdown-mega-menu.// -->
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/html/encuestaparasermaestro.html">Enseña en W2L</a>
+              </li>
+            </ul>
+           
+            
+  
+            
+            <ul class="navbar-nav navderbtns ms-auto">
+             
+              <li class="nav-item ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
+                </svg>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown"> Dropdown right </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href="#"> Nombre User </a></li>
+                  <li><a class="dropdown-item disabled" href="#"> email user </a></li>
+                  <div class="dropdown-divider"></div>
+                  <li><a class="dropdown-item" href="#"> Mi aprendizaje </a></li>
+                  <li><a class="dropdown-item " data-toggle="pill" onclick="activarPestanaMochila()" href="#mimochilacursos"> Mi mochila </a></li>
+                  <div class="dropdown-divider"></div>
+                  <li><a class="dropdown-item" href="#"> Mensajes </a></li>
+                  <li><a class="dropdown-item" href="/html/perfil.html"> Editar Perfil </a></li>
+                  <div class="dropdown-divider"></div>
+                  <li><a class="dropdown-item" href="/html/historial.html"> Historial </a></li>
+                  <div class="dropdown-divider"></div>
+                  <li><a class="dropdown-item" href="#"> Cerrar sesión </a></li>
+                  </ul>
+              </li>
+            </ul>
+           
+          </div>
+        </div>
+      </nav>
+
+      
+   
+      <ul class="nav nav-tabs container" id="myTab" role="tablist">
+        <li class="nav-item  active" role="presentation">
+          <button class="nav-link  active" id="miscursosindex" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="false">Mis cursos</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="mimochilacursos2" data-bs-toggle="tab" data-bs-target="#mimochilacursos" type="button" role="tab" aria-controls="mimochilacursos" aria-selected="false">Mochila</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Mensajes</button>
+        </li> 
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="perfil-tab" data-bs-toggle="tab" data-bs-target="#perfil" type="button" role="tab" aria-controls="perfil" aria-selected="true">Mi Perfil</button>
+          </li> 
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active container" id="home" role="tabpanel" aria-labelledby="miscursosindex">
+            <div class="container margintp">
+                <div class="jumbotron jumbosesioniniciada">
+                  <h4>Empecemos a aprender, Erika Rubi Aranda</h4>
+                  <h4>Perfil estudiante</h4>
+                </div>
+               
+                <div class="col-md-12">
+                  <!-- Topic Cards -->
+                  <h5>Tus cursos</h5>
+                  <div id="cards_landscape_wrap-2">
+                      <div class="container">
+                          <div class="row">
+                              <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                                  <a href="/html/plataforma_Cursocomprado.html">
+                                      <div class="card-flyer">
+                                          <div class="text-box">
+                                              <div class="image-box">
+                                                  <img src="https://cdn.pixabay.com/photo/2018/03/30/15/11/deer-3275594_960_720.jpg" alt="" />
+                                              </div>
+                                              <div class="text-container">
+                                                  <h6>CURSO 1</h6>
+                                                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </a>
+                                 
+                                  
+                              </div>
+                              <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                                  <a href="">
+                                      <div class="card-flyer">
+                                          <div class="text-box">
+                                              <div class="image-box">
+                                                  <img src="https://cdn.pixabay.com/photo/2018/04/09/19/55/low-poly-3305284_960_720.jpg" alt="" />
+                                              </div>
+                                              <div class="text-container">                                    
+                                                  <h6>CURSO 2</h6>
+                                                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </a>
+                                  
+                              </div>
+                              <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                                  <a href="">
+                                      <div class="card-flyer">
+                                          <div class="text-box">
+                                              <div class="image-box">
+                                                  <img src="https://cdn.pixabay.com/photo/2018/04/06/13/46/poly-3295856_960_720.png" alt="" />
+                                              </div>
+        
+                                              <div class="text-container">
+                                                  <h6>CURSO 3</h6>
+                                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </a>
+                              </div>
+                              <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                                  <a href="">
+                                      <div class="card-flyer">
+                                          <div class="text-box">
+                                              <div class="image-box">
+                                                  <img src="https://cdn.pixabay.com/photo/2018/03/30/15/12/dog-3275593_960_720.jpg" alt="" />
+                                              </div>
+                                              <div class="text-container">
+                                                  <h6>CURSO 4</h6>
+                                              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </a>
+                              </div>
+                              
+                          </div>
+                      </div>
+                  </div> <!-- fin de los cards-->
+              </div>
+              </div>
+              <br>
+              <!-- EMPIEZA A CALIFICAR -->
+              <div class="jumbotron container col-md-6">
+                <form id="calificationForm">
+                  <div class="mb-3">
+                    <h2>Califica y comenta un curso</h2>
+                    <p>
+                      Puedes cambiar de opinión, recuerda que debes terminar un curso para calificarlo.
+                    </p>
+                    <h2>Nombre del curso</h2>
+                    
+                  </div>
+        
+                  
+                  <div class="col-md-4 hacerinline">
+                    <label for="inputState" class="form-label">Elige un curso que hayas terminado</label>
+                    <select id="inputState" class="form-select">
+                      <option selected>Choose...</option>
+                      <option>Bases de datos</option>
+                      <option>Desarrollo</option>
+                    </select>
+                  </div>
+                  <br>
+        
+                  
+          
+                  <button type="button" id="anadircate" class="btn btn-warning" onclick="AnadirCalificacion(this)">
+                    Comenzar
+                  </button>
+                  <br>
+                  <br>
+                    <div class="row " id="mostrarCalificacion">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body text-center"> <span class="myratings">4.5</span>
+                                    <h4 class="mt-1">Rate us</h4>
+                                    <fieldset class="rating"> <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label> <input type="radio" id="star4half" name="rating" value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label> <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label> <input type="radio" id="star3half" name="rating" value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label> <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label> <input type="radio" id="star2half" name="rating" value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label> <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label> <input type="radio" id="star1half" name="rating" value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label> <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label> <input type="radio" id="starhalf" name="rating" value="0.5" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label> <input type="radio" class="reset-option" name="rating" value="reset" /> </fieldset>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                
+                  <br>
+        
+                  <div class="form-group" id="mostrarCalificacion2">
+                    <label for="exampleFormControlTextarea1">Comenta que te parecio el curso</label>
+                    <textarea
+                      name="description"
+                      class="form-control"
+                      id="exampleFormControlTextarea1"
+                      rows="3"
+                    ></textarea>
+                  </div>
+        
+                  <br>
+        
+                  <div id="courseErrors" style="color: tomato;">
+                    <!-- Course Creation errors here -->
+                  </div>
+                  <button type="submit" class="btn btn-success">Guardar</button>
+                </form>
+              </div>
+        </div>
+
+
+        <div class="tab-pane fade container" id="mimochilacursos" role="tabpanel" aria-labelledby="mimochilacursos2">
+           <!--
+               COMIENZAN AGREGAR LOS CURSOS QUE QUIERE COMPRAR EL ALUMNO
+           --> 
+           <!-- cards comienzan-->
+  
+            <div class="row marginbtm container">
+                <div class="col-md-3 card" style="width: 18rem;">
+                <img class="card-img-top" src="/assets/images/cursos.jpg" alt="img-thumbnail">
+                <div class="card-body">
+                    <h5 class="card-title">Técnicas de aprendizaje</h5>
+                    <p class="card-text">Erika Aranda</p>
+                
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg></li>
+                    <li class="list-group-item">Gratis</li>
+                
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Soft skills</a>
+                </div>
+                </div>
+                <div class="col-md-3 card" style="width: 18rem;">
+                <img class="card-img-top" src="/assets/images/courses/js-course.jpg" alt="img-thumbnail">
+                <div class="card-body">
+                    <h5 class="card-title">Principios de JavaScript</h5>
+                    <p class="card-text">Erika Aranda</p>
+                
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg></li>
+                    <li class="list-group-item">$150.00</li>
+                
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">JavaScript</a>
+                </div>
+                </div>
+                <div class="col-md-3 card" style="width: 18rem;">
+                <img class="card-img-top" src="/assets/images/courses/c-plus-plus-course.jpg" alt="img-thumbnail">
+                <div class="card-body">
+                    <h5 class="card-title">C++ Intermedio</h5>
+                    <p class="card-text">Bryan Duarte</p>
+                
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg></li>
+                    <li class="list-group-item">$150.00</li>
+                
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">C++</a>
+                </div>
+                </div>
+                <div class="col-md-3 card" style="width: 18rem;">
+                <img class="card-img-top" src="/assets/images/courses/c-sharp-course.jpg" alt="img-thumbnail">
+                <div class="card-body">
+                    <h5 class="card-title">C# avanzado</h5>
+                    <p class="card-text">Bryan Duarte</p>
+                
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg></li>
+                    <li class="list-group-item">$150.00</li>
+                
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">C#</a>
+                </div>
+                </div>
+            
+            </div> 
+            <!--fin del row de cards JS-->
+        </div>
+        
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+            <h2 class="container">Mensajes</h2>
+                                <!--
+                                <button type="button" class="btn btn-primary btn-sm">
+                                    Bandeja de entrada <span class="badge bg-secondary">9</span>
+                                    <span class="visually-hidden">unread messages</span>
+                                  </button>
+                                 <button class="btn btn-outline-primary" type="button"><i class="bi bi-funnel"></i>Filtrar</button> 
+                                <button class="btn btn-success" type="button"><i class="bi bi-chat-text"></i>Redactar</button>-->
+
+                              
+                                <ul class="nav nav-pills mb-3 container" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">BANDEJA DE ENTRADA</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">REDACTAR</a>
+                                    </li>
+                                   
+                                  </ul>
+                                  <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="card">
+                                                        <div class="card-body bg-primary text-white mailbox-widget pb-0">
+                                                            <h2 class="text-white pb-3">Your Mailbox</h2>
+                                                            <ul class="nav nav-tabs custom-tab border-bottom-0 mt-4" id="myTab" role="tablist">
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link active" id="inbox-tab" data-toggle="tab" aria-controls="inbox" href="#inbox" role="tab" aria-selected="true">
+                                                                        <span class="d-block d-md-none"><i class="ti-email"></i></span>
+                                                                        <span class="d-none d-md-block"> INBOX</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" id="sent-tab" data-toggle="tab" aria-controls="sent" href="#sent" role="tab" aria-selected="false">
+                                                                        <span class="d-block d-md-none"><i class="ti-export"></i></span>
+                                                                        <span class="d-none d-md-block">SENT</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" id="spam-tab" data-toggle="tab" aria-controls="spam" href="#spam" role="tab" aria-selected="false">
+                                                                        <span class="d-block d-md-none"><i class="ti-panel"></i></span>
+                                                                        <span class="d-none d-md-block">SPAM</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" id="delete-tab" data-toggle="tab" aria-controls="delete" href="#delete" role="tab" aria-selected="false">
+                                                                        <span class="d-block d-md-none"><i class="ti-trash"></i></span>
+                                                                        <span class="d-none d-md-block">DELETED</span>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="tab-content" id="myTabContent">
+                                                            <div class="tab-pane fade active show" id="inbox" aria-labelledby="inbox-tab" role="tabpanel">
+                                                                <div>
+                                                                    <div class="row p-4 no-gutters align-items-center">
+                                                                        <div class="col-sm-12 col-md-6">
+                                                                            <h3 class="font-light mb-0"><i class="ti-email mr-2"></i>350 Unread emails</h3>
+                                                                        </div>
+                                                                        <div class="col-sm-12 col-md-6">
+                                                                            <ul class="list-inline dl mb-0 float-left float-md-right">
+                                                                                <li class="list-inline-item text-info mr-3">
+                                                                                    <a href="#">
+                                                                                        <button class="btn btn-circle btn-success text-white" href="javascript:void(0)">
+                                                                                            <i class="fa fa-plus"></i>
+                                                                                        </button>
+                                                                                        <span class="ml-2 font-normal text-dark">Compose</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li class="list-inline-item text-danger">
+                                                                                    <a href="#">
+                                                                                        <button class="btn btn-circle btn-danger text-white" href="javascript:void(0)">
+                                                                                            <i class="fa fa-trash"></i>
+                                                                                        </button>
+                                                                                        <span class="ml-2 font-normal text-dark">Delete</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Mail list-->
+                                                                    <div class="table-responsive">
+                                                                        <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
+                                                                            <tbody>
+                                                                                <!-- row -->
+                                                                                <tr>
+                                                                                    <!-- label -->
+                                                                                    <td class="pl-3">
+                                                                                        <div class="custom-control custom-checkbox">
+                                                                                            <input type="checkbox" class="custom-control-input" id="cst1" />
+                                                                                            <label class="custom-control-label" for="cst1">&nbsp;</label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <!-- star -->
+                                                                                    <td><i class="fa fa-star text-warning"></i></td>
+                                                                                    <td>
+                                                                                        <span class="mb-0 text-muted">Hritik Roshan</span>
+                                                                                    </td>
+                                                                                    <!-- Message -->
+                                                                                    <td>
+                                                                                        <a class="link" href="javascript: void(0)">
+                                                                                            <span class="badge badge-pill text-white font-medium badge-danger mr-2">Work</span>
+                                                                                            <span class="text-dark">Lorem ipsum perspiciatis-</span>
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <!-- Attachment -->
+                                                                                    <td><i class="fa fa-paperclip text-muted"></i></td>
+                                                                                    <!-- Time -->
+                                                                                    <td class="text-muted">May 13</td>
+                                                                                </tr>
+                                                                                <!-- row -->
+                                                                                <tr>
+                                                                                    <!-- label -->
+                                                                                    <td class="pl-3">
+                                                                                        <div class="custom-control custom-checkbox">
+                                                                                            <input type="checkbox" class="custom-control-input" id="cst2" />
+                                                                                            <label class="custom-control-label" for="cst2">&nbsp;</label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <!-- star -->
+                                                                                    <td><i class="fa fa-star"></i></td>
+                                                                                    <!-- User -->
+                                                                                    <td>
+                                                                                        <span class="mb-0 text-muted">Genelia Roshan</span>
+                                                                                    </td>
+                                                                                    <!-- Message -->
+                                                                                    <td>
+                                                                                        <a class="link" href="javascript: void(0)">
+                                                                                            <span class="badge badge-pill text-white font-medium badge-info mr-2">Business</span>
+                                                                                            <span class="text-dark">Inquiry about license for Admin </span>
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <!-- Attachment -->
+                                                                                    <td><i class="fa fa-paperclip text-muted"></i></td>
+                                                                                    <!-- Time -->
+                                                                                    <td class="text-muted">May 13</td>
+                                                                                </tr>
+                                                                                <!-- row -->
+                                                                                <tr>
+                                                                                    <!-- label -->
+                                                                                    <td class="pl-3">
+                                                                                        <div class="custom-control custom-checkbox">
+                                                                                            <input type="checkbox" class="custom-control-input" id="cst3" />
+                                                                                            <label class="custom-control-label" for="cst3">&nbsp;</label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <!-- star -->
+                                                                                    <td><i class="fa fa-star text-warning"></i></td>
+                                                                                    <!-- User -->
+                                                                                    <td class="user-name max-texts">
+                                                                                        <span class="mb-0 text-muted font-light">Ritesh Deshmukh</span>
+                                                                                    </td>
+                                                                                    <!-- Message -->
+                                                                                    <td>
+                                                                                        <a class="link" href="javascript: void(0)">
+                                                                                            <span class="badge badge-pill text-white font-medium badge-warning mr-2">Friend</span>
+                                                                                            <span class="font-light text-dark">Bitbucket (commit Pushed) by Ritesh</span>
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <!-- Attachment -->
+                                                                                    <td><i class="fa fa-paperclip text-muted"></i></td>
+                                                                                    <!-- Time -->
+                                                                                    <td class="text-muted font-light">May 13</td>
+                                                                                </tr>
+                                                                                <!-- row -->
+                                                                                <tr class="">
+                                                                                    <!-- label -->
+                                                                                    <td class="pl-3">
+                                                                                        <div class="custom-control custom-checkbox">
+                                                                                            <input type="checkbox" class="custom-control-input" id="cst4" />
+                                                                                            <label class="custom-control-label" for="cst4">&nbsp;</label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <!-- star -->
+                                                                                    <td><i class="fa fa-star"></i></td>
+                                                                                    <!-- User -->
+                                                                                    <td>
+                                                                                        <span class="mb-0 text-muted font-light">Akshay Kumar</span>
+                                                                                    </td>
+                                                                                    <!-- Message -->
+                                                                                    <td>
+                                                                                        <a class="link" href="javascript: void(0)">
+                                                                                            <span class="badge badge-pill text-white font-medium badge-info mr-2">Work</span><span class="font-light text-dark">Perspiciatis unde omnis- iste Lorem ipsum</span>
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <!-- Attachment -->
+                                                                                    <td><i class="fa fa-paperclip text-muted"></i></td>
+                                                                                    <!-- Time -->
+                                                                                    <td class="text-muted font-light">May 9</td>
+                                                                                </tr>
+                                                                                <!-- row -->
+                                                                                <tr class="">
+                                                                                    <!-- label -->
+                                                                                    <td class="pl-3">
+                                                                                        <div class="custom-control custom-checkbox">
+                                                                                            <input type="checkbox" class="custom-control-input" id="cst5" />
+                                                                                            <label class="custom-control-label" for="cst5">&nbsp;</label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <!-- star -->
+                                                                                    <td><i class="fa fa-star"></i></td>
+                                                                                    <!-- User -->
+                                                                                    <td>
+                                                                                        <span class="mb-0 text-muted font-light">John Abraham</span>
+                                                                                    </td>
+                                                                                    <!-- Message -->
+                                                                                    <td>
+                                                                                        <a class="link" href="javascript: void(0)">
+                                                                                            <span class="badge badge-pill text-white font-medium badge-success mr-2">Work</span> <span class="font-light text-dark">Lorem ipsum perspiciatis- unde omnis</span>
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <!-- Attachment -->
+                                                                                    <td><i class="fa fa-paperclip text-muted"></i></td>
+                                                                                    <!-- Time -->
+                                                                                    <td class="text-muted font-light">Mar 10</td>
+                                                                                </tr>
+                                                                                <!-- row -->
+                                                                                <tr class="">
+                                                                                    <!-- label -->
+                                                                                    <td class="pl-3">
+                                                                                        <div class="custom-control custom-checkbox">
+                                                                                            <input type="checkbox" class="custom-control-input" id="cst6" />
+                                                                                            <label class="custom-control-label" for="cst6">&nbsp;</label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <!-- star -->
+                                                                                    <td><i class="fa fa-star text-warning"></i></td>
+                                                                                    <!-- User -->
+                                                                                    <td>
+                                                                                        <span class="mb-0 text-muted font-light">Akshay Kumar</span>
+                                                                                    </td>
+                                                                                    <!-- Message -->
+                                                                                    <td>
+                                                                                        <a class="link" href="javascript: void(0)">
+                                                                                            <span class="badge badge-pill text-white font-medium badge-success mr-2">Work</span> <span class="font-light text-dark">Lorem ipsum perspiciatis - unde</span>
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <!-- Attachment -->
+                                                                                    <td><i class="fa fa-paperclip text-muted"></i></td>
+                                                                                    <!-- Time -->
+                                                                                    <td class="text-muted font-light">Mar 09</td>
+                                                                                </tr>
+                                                                                <!-- row -->
+                                                                                <tr class="">
+                                                                                    <!-- label -->
+                                                                                    <td class="pl-3">
+                                                                                        <div class="custom-control custom-checkbox">
+                                                                                            <input type="checkbox" class="custom-control-input" id="cst7" />
+                                                                                            <label class="custom-control-label" for="cst7">&nbsp;</label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <!-- star -->
+                                                                                    <td><i class="fa fa-star text-warning"></i></td>
+                                                                                    <!-- User -->
+                                                                                    <td>
+                                                                                        <span class="mb-0 text-muted font-light">Hanna Gover</span>
+                                                                                    </td>
+                                                                                    <!-- Message -->
+                                                                                    <td>
+                                                                                        <a class="link" href="javascript: void(0)">
+                                                                                            <span class="badge badge-pill text-white font-medium badge-danger mr-2">Work</span><span class="font-light text-dark"> Unde omnis Lorem ipsum perspiciatis</span>
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <!-- Attachment -->
+                                                                                    <td><i class="fa fa-paperclip text-muted"></i></td>
+                                                                                    <!-- Time -->
+                                                                                    <td class="text-muted font-light">Mar 09</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane fade" id="sent" aria-labelledby="sent-tab" role="tabpanel">
+                                                                <div class="row p-3 text-dark">
+                                                                    <div class="col-md-6">
+                                                                        <h3 class="font-light">Lets check profile</h3>
+                                                                        <h4 class="font-light">you can use it with the small code</h4>
+                                                                    </div>
+                                                                    <div class="col-md-6 text-right">
+                                                                        <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane fade" id="spam" aria-labelledby="spam-tab" role="tabpanel">
+                                                                <div class="row p-3 text-dark">
+                                                                    <div class="col-md-6">
+                                                                        <h3 class="font-light">Come on you have a lot message</h3>
+                                                                        <h4 class="font-light">you can use it with the small code</h4>
+                                                                    </div>
+                                                                    <div class="col-md-6 text-right">
+                                                                        <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane fade" id="delete" aria-labelledby="delete-tab" role="tabpanel">
+                                                                <div class="row p-3 text-dark">
+                                                                    <div class="col-md-6">
+                                                                        <h3 class="font-light">Just do Settings</h3>
+                                                                        <h4 class="font-light">you can use it with the small code</h4>
+                                                                    </div>
+                                                                    <div class="col-md-6 text-right">
+                                                                        <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- TERMINA BANDEJA DE ENTRADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+                                    <div class="tab-pane fade container" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                        <h2>REDACTAR</h2>
+                                        <h3>NUEVO MENSAJE</h3>
+                                        <form>
+                                            <div class="form-group">
+                                              <label for="exampleFormControlInput1">Destinatario</label>
+                                              <input type="" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+ 
+                                            </div>
+                                            
+                                        
+                                            <div class="form-group">
+                                              <label for="exampleFormControlTextarea1">Example textarea</label>
+                                              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            </div>
+                                          </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"></div>
+                                  </div>
+        </div>
+        <!-- TAB DE PERFIL -->
+        <div class="tab-pane fade " id="perfil" role="tabpanel" aria-labelledby="perfil-tab">
+            <div class="container margintp">
+                <div class="jumbotron jumbosesioniniciada">
+                  <h4>Estas en tu perfil</h4>
+                </div>
+               
+                <div class="col-md-12">
+                    <form>
+                        <img src="/assets/images/multimedia.jpg" alt="foto de Perfil" class="img-thumbnail">
+                        <br>
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Nombre</label>
+                            <div class="col-sm-10">
+                              <input type="text" readonly class="form-control-plaintext" id="nombre" value="Erika Rubi">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Apellido</label>
+                            <div class="col-sm-10">
+                              <input type="text" readonly class="form-control-plaintext" id="lastName" value="Aranda Ferrer">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Descripción usuario</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" value="Aqui se coloca la descripción"></textarea>
+                         
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Nombre de usuario</label>
+                            <div class="col-sm-6">
+                              <input type="text" readonly class="form-control-plaintext" id="nombreUser" value="erubidm1">
+                            </div>
+                          </div>
+                        <div class="form-group row">
+                          <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                          <div class="col-sm-10">
+                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                          <div class="col-sm-10">
+                            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                            <br>
+                            <button type="button" class="btn btn-warning">Cambiar contraseña</button>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Rol actual (Alumno ó Maestro)</label>
+                           
+                            <div class="col-sm-10">
+                              <input type="text" readonly class="form-control-plaintext" id="actualRol" value="Estudiante">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de la última actividad</label>
+                           
+                            <div class="col-sm-10">
+                              <input type="text" readonly class="form-control-plaintext" id="fechaActividad" value="05 Mayo 2021">
+                            </div>
+                          </div>
+                      </form>
+                </div>
+              </div>
+        </div>
+        <!-- TAB DE PERFIL-->
+      </div>
+      <br>
+      <br>
+
+     
+
+      <div class="container d-flex justify-content-center mt-100">
+        <div class="row">
+            <div class="col-md-6">
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="/scripts/js/AnadirCalificacion.js" ></script>
+    <script src="/scripts/js/ratingCourse.js"></script>
+    <script src="/scripts/js/jquery3.min.js"></script>
+    <script src="/scripts/js/irAPestanaMochila.js"></script>
+    <script src="/scripts/js/bootstrap.min.js" ></script>  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+  
+  </body>
+</html>

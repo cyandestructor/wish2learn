@@ -35,8 +35,6 @@ BEGIN
         comment_id,
         id_lesson
     );
-    
-    SELECT comment_id;
 END $$
 DELIMITER ;
 
@@ -48,11 +46,11 @@ CREATE PROCEDURE HideComment (
     IN hide BIT
 )
 BEGIN
-	UPDATE Comments AS C
+	UPDATE Comments
     SET
-		C.published = hide
+		published = hide
 	WHERE
-		C.id_comment = id_comment;
+		id_comment = id_comment;
 END $$
 DELIMITER ;
 
@@ -65,16 +63,12 @@ CREATE PROCEDURE VoteComment (
     IN up_vote BIT
 )
 BEGIN
-    IF up_vote = 1 AND NOT EXISTS (
-		SELECT UU.id_comment
-        FROM Users_Upvotes AS UU
-        WHERE UU.comment_id = id_comment AND UU.user_id = id_user
-	) THEN
-		UPDATE Comments AS C
+    IF up_vote = 1 AND NOT EXISTS (SELECT id_comment FROM Users_Upvotes WHERE comment_id = id_comment AND user_id = id_user) THEN
+		UPDATE Comments
 		SET
-			C.comment_upvotes = C.comment_upvotes + 1
+			comment_upvotes = comment_upvotes + 1
 		WHERE
-			C.id_comment = id_comment;
+			id_comment = id_comment;
         
         INSERT INTO Users_Upvotes (
 			user_id,
@@ -84,22 +78,16 @@ BEGIN
 			id_user,
             id_comment
         );
-	END IF;
-    
-    IF up_vote = 0 AND EXISTS (
-		SELECT UU.id_comment
-		FROM Users_Upvotes AS UU
-		WHERE UU.comment_id = id_comment AND UU.user_id = id_user
-	) THEN
-		UPDATE Comments AS C
+	ELSE
+		UPDATE Comments
 		SET
-			C.comment_upvotes = C.comment_upvotes - 1
+			comment_upvotes = comment_upvotes - 1
 		WHERE
-			C.id_comment = id_comment;
-			
-		DELETE FROM Users_Upvotes AS UU
-		WHERE
-			UU.comment_id = id_comment AND UU.user_id = id_user;
+			id_comment = id_comment;
+            
+		DELETE FROM Users_Upvotes
+        WHERE
+			comment_id = id_comment AND user_id = id_user;
 	END IF;
 END $$
 DELIMITER ;
@@ -112,18 +100,18 @@ CREATE PROCEDURE GetLessonComments (
 )
 BEGIN
 	SELECT
-		CI.user_id,
-        CI.username,
-        CI.id_comment,
-		CI.comment_body,
-		CI.comment_upvotes,
-		CI.comment_date,
-		CI.comment_parent_id,
-		CI.published
+		user_id,
+        username,
+        id_comment,
+		comment_body,
+		comment_upvotes,
+		comment_date,
+		comment_parent_id,
+		published
 	FROM
-		CommentsInfo AS CI
+		CommentsInfo
 	WHERE
-		CI.lesson_id = id_lesson;
+		lesson_id = id_lesson;
 END $$
 DELIMITER ;
 

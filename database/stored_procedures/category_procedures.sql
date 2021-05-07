@@ -16,26 +16,6 @@ BEGIN
 		category_name,
         category_description
     );
-    
-    SELECT last_insert_id();
-END $$
-DELIMITER ;
-
-DELIMITER $$
-DROP PROCEDURE IF EXISTS EditCategory $$
-
-CREATE PROCEDURE EditCategory (
-	IN id_category INT,
-	IN category_name NVARCHAR(50),
-    IN category_description TEXT
-)
-BEGIN
-	UPDATE Categories AS C
-	SET
-		C.category_name = category_name,
-        C.category_description = category_description
-	WHERE
-		C.id_category = id_category;
 END $$
 DELIMITER ;
 
@@ -46,47 +26,22 @@ CREATE PROCEDURE DeleteCategory (
 	IN id_category INT
 )
 BEGIN
-	DELETE FROM Categories AS C
-    WHERE C.id_category = id_category;
-END $$
-DELIMITER ;
-
-DELIMITER $$
-DROP PROCEDURE IF EXISTS GetCategory $$
-
-CREATE PROCEDURE GetCategory(
-	IN id_category INT
-)
-BEGIN
-	SELECT
-		C.id_category,
-		C.category_name,
-		C.category_description
-	FROM
-		Categories AS C
-	WHERE
-		C.id_category = id_category;
+	DELETE FROM Categories
+    WHERE id_category = id_category;
 END $$
 DELIMITER ;
 
 DELIMITER $$
 DROP PROCEDURE IF EXISTS GetCategories $$
 
-CREATE PROCEDURE GetCategories(
-	IN total_rows INT,
-    IN row_offset INT
-)
+CREATE PROCEDURE GetCategories()
 BEGIN
 	SELECT
 		id_category,
 		category_name,
 		category_description
 	FROM
-		Categories AS C
-	LIMIT
-		total_rows
-	OFFSET
-		row_offset;
+		Categories;
 END $$
 DELIMITER ;
 

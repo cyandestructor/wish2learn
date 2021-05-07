@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/carousel.css">
+    <link href="css/all.css" rel="stylesheet"> <!--load all styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <title>Whish2Know</title>
+</head>
+<body>
+
+        <div id="mySidenav" class="sidenav">
+            <div id="sidebar-container-complete" class="bg-secu">
+               <!-- <div class="logo">
+                    <h4>Wish2Know</h4>
+                </div> -->
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNavOriginal()">&times;</a>
+                           
+                <div class="d-flex">
+                  <div id="sidebar-container2" class="bg-secu">
+                    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                            
+                            <div class="name">
+                                <div class="espacio-iconos centraricons">
+                                    <i class="bi bi-file-earmark-word-fill"></i>
+                                </div>
+                                <div class="last-wrapper">
+                               <a href="#" class="p-3 prueba22">Wish2Know</a> 
+                                <!--<button class="nav-link" type="button">Wish2Know</button>
+                                -->
+                                </div>
+                            </div>
+                           
+                               
+                          
+                            <a href="#" class="nav-link btn-toolbar last-wrapper2" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="false"><i class="bi bi-file-earmark-slides "></i><span class="textside prueba33">Cursos</span></a>
+                                
+                            <a href="#" class="nav-link btn-toolbar last-wrapper2" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-home" aria-selected="false"><i class="bi bi-file-earmark-slides "></i><span class="textside prueba33">Comunicación</span></a>
+                            
+                            <!-- <button class="nav-link btn-toolbar" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="bi bi-chat-dots flexc"></i><span class="textside last-wrapper">Comunicación</span></button>
+                            -->
+                            <a href="#" class="nav-link btn-toolbar last-wrapper2" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="bi bi-bar-chart-line flexc"></i><span class="textside prueba33">Rendimiento</span></a>
+                            
+                            <!--<button class="nav-link " id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="bi bi-bar-chart-line flexc"></i><span class="textside last-wrapper">Rendimiento</span></button>
+                            -->
+                            <a href="#" class="nav-link btn-toolbar last-wrapper2" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="bi bi-tools flexc"></i><span class="textside prueba33">Herramientas</span></a>
+                           <!--  <a href="" class="p-3 prueba22">Comunicacion</a>
+                           <button class="nav-link " id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="bi bi-tools flexc"></i><span class="textside last-wrapper">Herramientas</span></button>
+                     -->
+                          
+                      <!-- ACTIVE -->
+                         
+                    </div>
+                  </div>
+                </div>
+                
+            </div>
+            
+            </div>
+        </div>
+        <!-- AQUI TERMINA -->
+
+        <div id="main" >
+            
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <ul class="navderbtns navbar-nav mr-auto abrirbtn">
+                    <li>   
+                    <span style="font-size:30px;cursor:pointer" onclick="openNavOriginal()">&#9776; open</span>
+                    </li> 
+                </ul>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"  onclick="openNavOriginal()"></span>
+                </button>
+              
+                <div class="collapse justify-content-end navbar-collapse form-inline my-2 my-lg-0s" id="navbarToggleExternalContent">
+                  <ul class="navbar-nav mr-auto mt-2 mt-lg-0 anchocel justify-content-end align-items-center">
+                    <li class="nav-item mr-sm-2 active nombre-perfil2 espaciochico align-items-center">
+                      <i class="bi bi-bell align-middle"></i> 
+                    </li>
+                    <li class="nav-item btn-group btn-nav-perfil-d nav-item fotoperfil1">
+                        <img src="https://cdn.pixabay.com/photo/2015/01/08/18/29/entrepreneur-593358_960_720.jpg" alt="persona">
+                    </li>
+                    <li class="nav-item dropdown nombreperfil">
+                        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Nombre del maestro
+                          </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#">
+                            Nombre del maestro<br><h6>alumno@example.com</h6></a>
+                          <a class="dropdown-item" href="#">Configuracion de pago</a>
+                          <a class="dropdown-item" href="#">Cerrar sesión</a>
+                        </div>
+                    </li>
+                
+                  </ul>
+                  
+                </div>
+              </nav>
+
+            <div class="container-fluid">
+                <div class="d-flex align-items-start">
+                    
+                    <div class="tab-content container " id="v-pills-tabContent">
+                        <!-- PAGINA DINAMICA 1-->
+                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                           
+                                <div class="col-md-6 m-5">
+                                    <a class="btn btn-primary" href="crear-curso.html" role="button">CREA UN CURSO</a>
+                                </div>
+                                <div class="col-md-12">
+                                    <!-- Topic Cards -->
+                                    <div id="cards_landscape_wrap-2">
+                                        <div class="container">
+                                            <div class="row">
+                                                <h5>Tus cursos</h5>
+                                                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                                                    <a href="proceso_crear_curso2.html">
+                                                        <div class="card-flyer">
+                                                            <div class="text-box">
+                                                                <div class="image-box">
+                                                                    <img src="./img/courses/js-course.jpg" alt="" />
+                                                                </div>
+                                                                <div class="text-container">
+                                                                    <h6>CURSO 1</h6>
+                                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                                                    <a href="">
+                                                        <div class="card-flyer">
+                                                            <div class="text-box">
+                                                                <div class="image-box">
+                                                                    <img src="./img/courses/c-plus-plus-course.jpg" alt="" />
+                                                                </div>
+                                                                <div class="text-container">                                    
+                                                                    <h6>CURSO 2</h6>
+                                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                                                    <a href="">
+                                                        <div class="card-flyer">
+                                                            <div class="text-box">
+                                                                <div class="image-box">
+                                                                    <img src="./img/courses/c-sharp-course.jpg" alt="" />
+                                                                </div>
+                
+                                                                <div class="text-container">
+                                                                    <h6>CURSO 3</h6>
+                                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> <!-- fin de los cards-->
+                                </div>
+                            
+                          </div>
+                            <!-- PAGINA DINAMICA2-->
+                            <div class="tab-pane fade  " id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                <h2>Mensajes</h2>
+                                <!--
+                                <button type="button" class="btn btn-primary btn-sm">
+                                    Bandeja de entrada <span class="badge bg-secondary">9</span>
+                                    <span class="visually-hidden">unread messages</span>
+                                  </button>
+                                 <button class="btn btn-outline-primary" type="button"><i class="bi bi-funnel"></i>Filtrar</button> 
+                                <button class="btn btn-success" type="button"><i class="bi bi-chat-text"></i>Redactar</button>-->
+
+                              
+                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">BANDEJA DE ENTRADA</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">REDACTAR</a>
+                                    </li>
+                                    <!-- 
+                                    <li class="nav-item">
+                                      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+                                    </li> -->
+                                  </ul>
+                                  <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="card">
+                                                        <div class="card-body bg-primary text-white mailbox-widget pb-0">
+                                                            <h2 class="text-white pb-3">Your Mailbox</h2>
+                                                            <ul class="nav nav-tabs custom-tab border-bottom-0 mt-4" id="myTab" role="tablist">
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link active" id="inbox-tab" data-toggle="tab" aria-controls="inbox" href="#inbox" role="tab" aria-selected="true">
+                                                                        <span class="d-block d-md-none"><i class="ti-email"></i></span>
+                                                                        <span class="d-none d-md-block"> INBOX</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" id="sent-tab" data-toggle="tab" aria-controls="sent" href="#sent" role="tab" aria-selected="false">
+                                                                        <span class="d-block d-md-none"><i class="ti-export"></i></span>
+                                                                        <span class="d-none d-md-block">SENT</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" id="spam-tab" data-toggle="tab" aria-controls="spam" href="#spam" role="tab" aria-selected="false">
+                                                                        <span class="d-block d-md-none"><i class="ti-panel"></i></span>
+                                                                        <span class="d-none d-md-block">SPAM</span>
+                                                                    </a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" id="delete-tab" data-toggle="tab" aria-controls="delete" href="#delete" role="tab" aria-selected="false">
+                                                                        <span class="d-block d-md-none"><i class="ti-trash"></i></span>
+                                                                        <span class="d-none d-md-block">DELETED</span>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <div class="tab-content" id="myTabContent">
+                                                            <div class="tab-pane fade active show" id="inbox" aria-labelledby="inbox-tab" role="tabpanel">
+                                                                <div>
+                                                                    <div class="row p-4 no-gutters align-items-center">
+                                                                        <div class="col-sm-12 col-md-6">
+                                                                            <h3 class="font-light mb-0"><i class="ti-email mr-2"></i>350 Unread emails</h3>
+                                                                        </div>
+                                                                        <div class="col-sm-12 col-md-6">
+                                                                            <ul class="list-inline dl mb-0 float-left float-md-right">
+                                                                                <li class="list-inline-item text-info mr-3">
+                                                                                    <a href="#">
+                                                                                        <button class="btn btn-circle btn-success text-white" href="javascript:void(0)">
+                                                                                            <i class="fa fa-plus"></i>
+                                                                                        </button>
+                                                                                        <span class="ml-2 font-normal text-dark">Compose</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                                <li class="list-inline-item text-danger">
+                                                                                    <a href="#">
+                                                                                        <button class="btn btn-circle btn-danger text-white" href="javascript:void(0)">
+                                                                                            <i class="fa fa-trash"></i>
+                                                                                        </button>
+                                                                                        <span class="ml-2 font-normal text-dark">Delete</span>
+                                                                                    </a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- Mail list-->
+                                                                    <div class="table-responsive">
+                                                                        <table class="table email-table no-wrap table-hover v-middle mb-0 font-14">
+                                                                            <tbody>
+                                                                                <!-- row -->
+                                                                                <tr>
+                                                                                    <!-- label -->
+                                                                                    <td class="pl-3">
+                                                                                        <div class="custom-control custom-checkbox">
+                                                                                            <input type="checkbox" class="custom-control-input" id="cst1" />
+                                                                                            <label class="custom-control-label" for="cst1">&nbsp;</label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <!-- star -->
+                                                                                    <td><i class="fa fa-star text-warning"></i></td>
+                                                                                    <td>
+                                                                                        <span class="mb-0 text-muted">Hritik Roshan</span>
+                                                                                    </td>
+                                                                                    <!-- Message -->
+                                                                                    <td>
+                                                                                        <a class="link" href="javascript: void(0)">
+                                                                                            <span class="badge badge-pill text-white font-medium badge-danger mr-2">Work</span>
+                                                                                            <span class="text-dark">Lorem ipsum perspiciatis-</span>
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <!-- Attachment -->
+                                                                                    <td><i class="fa fa-paperclip text-muted"></i></td>
+                                                                                    <!-- Time -->
+                                                                                    <td class="text-muted">May 13</td>
+                                                                                </tr>
+                                                                                <!-- row -->
+                                                                                <tr>
+                                                                                    <!-- label -->
+                                                                                    <td class="pl-3">
+                                                                                        <div class="custom-control custom-checkbox">
+                                                                                            <input type="checkbox" class="custom-control-input" id="cst2" />
+                                                                                            <label class="custom-control-label" for="cst2">&nbsp;</label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <!-- star -->
+                                                                                    <td><i class="fa fa-star"></i></td>
+                                                                                    <!-- User -->
+                                                                                    <td>
+                                                                                        <span class="mb-0 text-muted">Genelia Roshan</span>
+                                                                                    </td>
+                                                                                    <!-- Message -->
+                                                                                    <td>
+                                                                                        <a class="link" href="javascript: void(0)">
+                                                                                            <span class="badge badge-pill text-white font-medium badge-info mr-2">Business</span>
+                                                                                            <span class="text-dark">Inquiry about license for Admin </span>
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <!-- Attachment -->
+                                                                                    <td><i class="fa fa-paperclip text-muted"></i></td>
+                                                                                    <!-- Time -->
+                                                                                    <td class="text-muted">May 13</td>
+                                                                                </tr>
+                                                                                <!-- row -->
+                                                                                <tr>
+                                                                                    <!-- label -->
+                                                                                    <td class="pl-3">
+                                                                                        <div class="custom-control custom-checkbox">
+                                                                                            <input type="checkbox" class="custom-control-input" id="cst3" />
+                                                                                            <label class="custom-control-label" for="cst3">&nbsp;</label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <!-- star -->
+                                                                                    <td><i class="fa fa-star text-warning"></i></td>
+                                                                                    <!-- User -->
+                                                                                    <td class="user-name max-texts">
+                                                                                        <span class="mb-0 text-muted font-light">Ritesh Deshmukh</span>
+                                                                                    </td>
+                                                                                    <!-- Message -->
+                                                                                    <td>
+                                                                                        <a class="link" href="javascript: void(0)">
+                                                                                            <span class="badge badge-pill text-white font-medium badge-warning mr-2">Friend</span>
+                                                                                            <span class="font-light text-dark">Bitbucket (commit Pushed) by Ritesh</span>
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <!-- Attachment -->
+                                                                                    <td><i class="fa fa-paperclip text-muted"></i></td>
+                                                                                    <!-- Time -->
+                                                                                    <td class="text-muted font-light">May 13</td>
+                                                                                </tr>
+                                                                                <!-- row -->
+                                                                                <tr class="">
+                                                                                    <!-- label -->
+                                                                                    <td class="pl-3">
+                                                                                        <div class="custom-control custom-checkbox">
+                                                                                            <input type="checkbox" class="custom-control-input" id="cst4" />
+                                                                                            <label class="custom-control-label" for="cst4">&nbsp;</label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <!-- star -->
+                                                                                    <td><i class="fa fa-star"></i></td>
+                                                                                    <!-- User -->
+                                                                                    <td>
+                                                                                        <span class="mb-0 text-muted font-light">Akshay Kumar</span>
+                                                                                    </td>
+                                                                                    <!-- Message -->
+                                                                                    <td>
+                                                                                        <a class="link" href="javascript: void(0)">
+                                                                                            <span class="badge badge-pill text-white font-medium badge-info mr-2">Work</span><span class="font-light text-dark">Perspiciatis unde omnis- iste Lorem ipsum</span>
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <!-- Attachment -->
+                                                                                    <td><i class="fa fa-paperclip text-muted"></i></td>
+                                                                                    <!-- Time -->
+                                                                                    <td class="text-muted font-light">May 9</td>
+                                                                                </tr>
+                                                                                <!-- row -->
+                                                                                <tr class="">
+                                                                                    <!-- label -->
+                                                                                    <td class="pl-3">
+                                                                                        <div class="custom-control custom-checkbox">
+                                                                                            <input type="checkbox" class="custom-control-input" id="cst5" />
+                                                                                            <label class="custom-control-label" for="cst5">&nbsp;</label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <!-- star -->
+                                                                                    <td><i class="fa fa-star"></i></td>
+                                                                                    <!-- User -->
+                                                                                    <td>
+                                                                                        <span class="mb-0 text-muted font-light">John Abraham</span>
+                                                                                    </td>
+                                                                                    <!-- Message -->
+                                                                                    <td>
+                                                                                        <a class="link" href="javascript: void(0)">
+                                                                                            <span class="badge badge-pill text-white font-medium badge-success mr-2">Work</span> <span class="font-light text-dark">Lorem ipsum perspiciatis- unde omnis</span>
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <!-- Attachment -->
+                                                                                    <td><i class="fa fa-paperclip text-muted"></i></td>
+                                                                                    <!-- Time -->
+                                                                                    <td class="text-muted font-light">Mar 10</td>
+                                                                                </tr>
+                                                                                <!-- row -->
+                                                                                <tr class="">
+                                                                                    <!-- label -->
+                                                                                    <td class="pl-3">
+                                                                                        <div class="custom-control custom-checkbox">
+                                                                                            <input type="checkbox" class="custom-control-input" id="cst6" />
+                                                                                            <label class="custom-control-label" for="cst6">&nbsp;</label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <!-- star -->
+                                                                                    <td><i class="fa fa-star text-warning"></i></td>
+                                                                                    <!-- User -->
+                                                                                    <td>
+                                                                                        <span class="mb-0 text-muted font-light">Akshay Kumar</span>
+                                                                                    </td>
+                                                                                    <!-- Message -->
+                                                                                    <td>
+                                                                                        <a class="link" href="javascript: void(0)">
+                                                                                            <span class="badge badge-pill text-white font-medium badge-success mr-2">Work</span> <span class="font-light text-dark">Lorem ipsum perspiciatis - unde</span>
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <!-- Attachment -->
+                                                                                    <td><i class="fa fa-paperclip text-muted"></i></td>
+                                                                                    <!-- Time -->
+                                                                                    <td class="text-muted font-light">Mar 09</td>
+                                                                                </tr>
+                                                                                <!-- row -->
+                                                                                <tr class="">
+                                                                                    <!-- label -->
+                                                                                    <td class="pl-3">
+                                                                                        <div class="custom-control custom-checkbox">
+                                                                                            <input type="checkbox" class="custom-control-input" id="cst7" />
+                                                                                            <label class="custom-control-label" for="cst7">&nbsp;</label>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <!-- star -->
+                                                                                    <td><i class="fa fa-star text-warning"></i></td>
+                                                                                    <!-- User -->
+                                                                                    <td>
+                                                                                        <span class="mb-0 text-muted font-light">Hanna Gover</span>
+                                                                                    </td>
+                                                                                    <!-- Message -->
+                                                                                    <td>
+                                                                                        <a class="link" href="javascript: void(0)">
+                                                                                            <span class="badge badge-pill text-white font-medium badge-danger mr-2">Work</span><span class="font-light text-dark"> Unde omnis Lorem ipsum perspiciatis</span>
+                                                                                        </a>
+                                                                                    </td>
+                                                                                    <!-- Attachment -->
+                                                                                    <td><i class="fa fa-paperclip text-muted"></i></td>
+                                                                                    <!-- Time -->
+                                                                                    <td class="text-muted font-light">Mar 09</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane fade" id="sent" aria-labelledby="sent-tab" role="tabpanel">
+                                                                <div class="row p-3 text-dark">
+                                                                    <div class="col-md-6">
+                                                                        <h3 class="font-light">Lets check profile</h3>
+                                                                        <h4 class="font-light">you can use it with the small code</h4>
+                                                                    </div>
+                                                                    <div class="col-md-6 text-right">
+                                                                        <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane fade" id="spam" aria-labelledby="spam-tab" role="tabpanel">
+                                                                <div class="row p-3 text-dark">
+                                                                    <div class="col-md-6">
+                                                                        <h3 class="font-light">Come on you have a lot message</h3>
+                                                                        <h4 class="font-light">you can use it with the small code</h4>
+                                                                    </div>
+                                                                    <div class="col-md-6 text-right">
+                                                                        <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tab-pane fade" id="delete" aria-labelledby="delete-tab" role="tabpanel">
+                                                                <div class="row p-3 text-dark">
+                                                                    <div class="col-md-6">
+                                                                        <h3 class="font-light">Just do Settings</h3>
+                                                                        <h4 class="font-light">you can use it with the small code</h4>
+                                                                    </div>
+                                                                    <div class="col-md-6 text-right">
+                                                                        <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a.</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!-- TERMINA BANDEJA DE ENTRADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+                                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                        <h2>REDACTAR</h2>
+                                        <h3>NUEVO MENSAJE</h3>
+                                        <form>
+                                            <div class="form-group">
+                                              <label for="exampleFormControlInput1">Destinatario</label>
+                                              <input type="" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+ 
+                                            </div>
+                                            
+                                        
+                                            <div class="form-group">
+                                              <label for="exampleFormControlTextarea1">Example textarea</label>
+                                              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            </div>
+                                          </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"></div>
+                                  </div>
+                                
+                            </div>
+                            <!-- PAGINA DINAMICA 2-->
+                            
+                             <!-- PAGINA DINAMICA 3 RENDIMIENTO -->
+                             <div class="tab-pane fade  " id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home2" role="tab" aria-controls="pills-home" aria-selected="true">Ingresos</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile2" role="tab" aria-controls="pills-profile" aria-selected="false">Estudiantes</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact2" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</a>
+                                    </li>
+                                  </ul>
+                                  <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-home2" role="tabpanel" aria-labelledby="pills-home-tab">
+                                        <h6>FUNCION1 </h6>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                              <div class="card">
+                                                <div class="card-body">
+                                                  <h5 class="card-title"><i class="bi bi-cash"></i>Ingresos</h5>
+                                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                </div>
+                                              </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="card">
+                                                  <div class="card-body">
+                                                    <h5 class="card-title"><i class="bi bi-pencil"></i>Inscripciones por mes</h5>
+                                                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            <div class="col-sm-4">
+                                              <div class="card">
+                                                <div class="card-body">
+                                                  <h5 class="card-title"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>Calificación del instructor</h5>
+                                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        <table class="table">
+                                            <thead class="thead-dark">
+                                              <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">First</th>
+                                                <th scope="col">Last</th>
+                                                <th scope="col">Handle</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                <th scope="row">1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                              </tr>
+                                              <tr>
+                                                <th scope="row">2</th>
+                                                <td>Jacob</td>
+                                                <td>Thornton</td>
+                                                <td>@fat</td>
+                                              </tr>
+                                              <tr>
+                                                <th scope="row">3</th>
+                                                <td>Larry</td>
+                                                <td>the Bird</td>
+                                                <td>@twitter</td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                          
+                                          <table class="table">
+                                            <thead class="thead-light">
+                                              <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">First</th>
+                                                <th scope="col">Last</th>
+                                                <th scope="col">Handle</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                <th scope="row">1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                              </tr>
+                                              <tr>
+                                                <th scope="row">2</th>
+                                                <td>Jacob</td>
+                                                <td>Thornton</td>
+                                                <td>@fat</td>
+                                              </tr>
+                                              <tr>
+                                                <th scope="row">3</th>
+                                                <td>Larry</td>
+                                                <td>the Bird</td>
+                                                <td>@twitter</td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                    </div>
+                                    <div class="tab-pane fade" id="pills-profile2" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                        <h6>FUNCION2 </h6>
+                                    </div>
+                                    <div class="tab-pane fade" id="pills-contact2" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                        <h6>FUNCION3 </h6>
+                                    </div>
+                                  </div>
+                            </div>
+                            <!-- PAGINA DINAMICA 3--> 
+
+                            <!-- PAGINA DINAMICA 4 HERRAMIENTAS -->
+                            <div class="tab-pane fade  " id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                <h5>FUNCIONA 3</h5>
+                                <div class="row ">
+                                    <div class="card ajustecards" style="width: 18rem;">
+                                        <img class="card-img-top img-fluid rounded d-block " src="img/alumnos2.jpg" alt="Card image cap">
+                                        <div class="card-body">
+                                          <p class="card-text">Busca estudiantes auxiliares</p>
+                                        </div>
+                                      </div>
+    
+                                      <div class="card ajustecards" style="width: 18rem;">
+                                        <img class="card-img-top img-fluid rounded d-block" src="img/tokens/token.jpg" alt="Card image cap">
+                                        <div class="card-body">
+                                          <p class="card-text">Regala tokens</p>
+                                        </div>
+                                      </div>
+                                </div>
+                                
+                               
+                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home9" role="tab" aria-controls="pills-home" aria-selected="true">Busqueda de asistentes</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile8" role="tab" aria-controls="pills-profile" aria-selected="false">Generar tokens</a>
+                                    </li>
+                                     <li class="nav-item">
+                                      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact7" role="tab" aria-controls="pills-contact" aria-selected="false">Genera cupones para cursos</a>
+                                    </li> 
+                                  </ul>
+                                  <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-home9" role="tabpanel" aria-labelledby="pills-home-tab">
+                                        <h4>Búsqueda de alumnos auxiliares FCFM</h4>
+                                        <p>Publica un puesto de auxiliar para un alumno de la facultad y ayuda a su educación</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="pills-profile8" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                        <h4>Generar tokens</h4>
+                                        <p>Genera tokens para alumnos del curso, alumnos auxiliares, y maestros</p>
+                                        <div class="card text-center">
+                                            <div class="card-header">
+                                              Featured
+                                            </div>
+                                            <div class="card-body">
+                                              <h5 class="card-title">Genera tokens</h5>
+                                              <p class="card-text">Ya has llegado al límite de tokens</p>
+                                              <a href="#" class="btn btn-primary">Compra tokens</a>
+                                            </div>
+                                            <div class="card-footer text-muted">
+                                              2 days ago
+                                            </div>
+                                          </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="pills-contact7" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                        <h4>Genera cupones</h4>
+                                        <p>Genera cupones para cualquier persona</p>
+                                    </div> 
+                                  </div>
+                            </div>
+                            <!-- PAGINA DINAMICA 3-->
+                    </div>
+                            
+                    </div>
+
+                        
+                    </div>
+                   
+                </div>
+       
+            </div>
+        </div>
+
+        <script src="jquery3.min.js"></script>
+        <script src="js/bootstrap.min.js" ></script>
+        
+        <script src="js/plataforma-maestro.js"></script>
+        <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <!-- Optional JavaScript; choose one of the two! -->
+    
+        <!-- Option 1: Bootstrap Bundle with Popper
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+     -->
+        <!-- Option 2: Separate Popper and Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+       
+</body>
+</html>

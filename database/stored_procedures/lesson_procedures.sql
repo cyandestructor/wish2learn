@@ -10,8 +10,6 @@ CREATE PROCEDURE AddLesson (
     IN section_id INT
 )
 BEGIN
-	DECLARE lesson_id INT;
-
 	INSERT INTO Lessons (
 		lesson_title,
 		content_type,
@@ -25,8 +23,6 @@ BEGIN
 		section_id
     );
     
-    SET lesson_id = LAST_INSERT_ID();
-    
     UPDATE
 		Courses AS C
         INNER JOIN Sections AS S ON S.course_id = C.id_course
@@ -34,8 +30,6 @@ BEGIN
 		C.last_update = CURRENT_TIMESTAMP()
 	WHERE
 		S.id_section = section_id;
-        
-	SELECT lesson_id;
 END $$
 DELIMITER ;
 
@@ -45,17 +39,15 @@ DROP PROCEDURE IF EXISTS EditLesson $$
 CREATE PROCEDURE EditLesson (
 	IN id_lesson INT,
 	IN lesson_title NVARCHAR(50),
-    IN lesson_text MEDIUMTEXT,
-    IN published BIT
+    IN lesson_text MEDIUMTEXT
 )
 BEGIN
-	UPDATE Lessons AS L
+	UPDATE Lessons
     SET
-		L.lesson_title = lesson_title,
-		L.lesson_text = lesson_text,
-        L.published = published
+		lesson_title = lesson_title,
+		lesson_text = lesson_text
 	WHERE
-		L.id_lesson = id_lesson;
+		id_lesson = id_lesson;
 END $$
 DELIMITER ;
 
@@ -66,8 +58,8 @@ CREATE PROCEDURE DeleteLesson (
 	IN id_lesson INT
 )
 BEGIN
-	DELETE FROM Lessons AS L
-	WHERE L.id_lesson = id_lesson;
+	DELETE FROM Lessons
+	WHERE id_lesson = id_lesson;
 END $$
 DELIMITER ;
 
@@ -96,12 +88,12 @@ CREATE PROCEDURE SetLessonCompleted (
     IN completed BIT
 )
 BEGIN
-	IF EXISTS(SELECT UL.id_user_lesson FROM Users_Lessons AS UL WHERE UL.user_id = id_user AND UL.lesson_id = id_lesson) THEN
-		UPDATE Users_Lessons AS UL
+	IF EXISTS(SELECT id_user_lesson FROM Users_Lessons WHERE user_id = id_user AND lesson_id = id_lesson) THEN
+		UPDATE Users_Lessons
 		SET
-			UL.lesson_completed = completed
+			lesson_completed = completed
 		WHERE
-			UL.user_id = id_user AND UL.lesson_id = id_lesson;
+			user_id = id_user AND lesson_id = id_lesson;
 	ELSE
 		INSERT INTO Users_Lessons (
 			user_id,
@@ -125,15 +117,17 @@ CREATE PROCEDURE GetSectionLessons (
 )
 BEGIN
 	SELECT
-		LI.id_lesson,
-		LI.lesson_title,
-		LI.published,
-        LI.lesson_duration,
-        LI.section_id
+		id_lesson,
+		lesson_title,
+		content_type,
+		lesson_text,
+		published,
+        video_address,
+        lesson_duration
 	FROM
-		LessonsInfo AS LI
+		LessonsInfo
 	WHERE
-		LI.section_id = id_section;
+		section_id = id_section AND published = 1;
 END $$
 DELIMITER ;
 
@@ -146,16 +140,18 @@ CREATE PROCEDURE GetSectionUserLessons (
 )
 BEGIN
 	SELECT
-		ULI.id_lesson,
-		ULI.lesson_title,
-		ULI.published,
-        ULI.lesson_duration,
-        ULI.id_section,
-        ULI.lesson_completed
+		id_lesson,
+		lesson_title,
+		content_type,
+		lesson_text,
+		published,
+        video_address,
+        lesson_duration,
+        lesson_completed
 	FROM
-		UsersLessonsInfo AS ULI
+		UsersLessonsInfo
 	WHERE
-		ULI.id_section = id_section AND ULI.id_user = id_user;
+		id_section = id_section AND id_user = id_user;
 END $$
 DELIMITER ;
 
@@ -167,17 +163,16 @@ CREATE PROCEDURE GetLessonInfo (
 )
 BEGIN
 	SELECT
-		LI.id_lesson,
-		LI.lesson_title,
-		LI.content_type,
-		LI.lesson_text,
-		LI.published,
-        LI.video_address,
-		LI.lesson_duration,
-        LI.section_id
+		id_lesson,
+		lesson_title,
+		content_type,
+		lesson_text,
+		published,
+        video_address,
+		lesson_duration
 	FROM
-		LessonsInfo AS LI
+		LessonsInfo
 	WHERE
-		LI.id_lesson = id_lesson;
+		id_lesson = id_lesson;
 END $$
 DELIMITER ;

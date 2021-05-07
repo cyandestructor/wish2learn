@@ -29,8 +29,6 @@ BEGIN
 		CURRENT_DATE(),
 		CURRENT_TIMESTAMP()
 	);
-    
-    SELECT LAST_INSERT_ID();
 END $$
 DELIMITER ;
 
@@ -46,16 +44,16 @@ CREATE PROCEDURE EditUser (
     IN user_description TEXT
 )
 BEGIN
-	UPDATE Users AS U
+	UPDATE Users
     SET
-        U.username = username,
-        U.account_name = account_name,
-        U.account_lastname = account_lastname,
-        U.user_email = user_email,
-        U.user_description = user_description,
-        U.last_change_date = CURRENT_TIMESTAMP()
+        username = username,
+        account_name = account_name,
+        account_lastname = account_lastname,
+        user_email = user_email,
+        user_description = user_description,
+        last_change_date = CURRENT_TIMESTAMP()
 	WHERE
-		U.id_user = id_user;
+		id_user = id_user;
 END $$
 DELIMITER ;
 
@@ -64,34 +62,15 @@ DROP PROCEDURE IF EXISTS SetUserImage $$
 
 CREATE PROCEDURE SetUserImage (
 	IN id_user INT,
-    IN user_image MEDIUMBLOB,
-    IN content_type VARCHAR(50)
+    IN user_image MEDIUMBLOB
 )
 BEGIN
-	UPDATE Users AS U
+	UPDATE Users
 	SET
-		U.user_image = user_image,
-        U.image_content_type = content_type,
-        U.last_change_date = CURRENT_TIMESTAMP()
+		user_image = user_image,
+        last_change_date = CURRENT_TIMESTAMP()
     WHERE
-		U.id_user = id_user;
-END $$
-DELIMITER ;
-
-DELIMITER $$
-DROP PROCEDURE IF EXISTS GetUserImage $$
-
-CREATE PROCEDURE GetUserImage (
-	IN id_user INT
-)
-BEGIN
-	SELECT
-		U.user_image,
-        U.image_content_type
-	FROM
-		Users AS U
-	WHERE
-		U.id_user = id_user;
+		id_user = id_user;
 END $$
 DELIMITER ;
 
@@ -116,20 +95,20 @@ CREATE PROCEDURE GetUserInfo (
 )
 BEGIN
 	SELECT
-		U.id_user,
-		U.username,
-		U.account_name,
-		U.account_lastname,
-        U.user_email,
-		U.user_description,
-		U.user_role,
-		U.account_creation_date,
-		U.last_change_date,
-		U.account_state
+		id_user,
+		username,
+		account_name,
+		account_lastname,
+		user_description,
+		user_image,
+		user_role,
+		account_creation_date,
+		last_change_date,
+		account_state
     FROM
-		Users AS U
+		Users
     WHERE
-		U.id_user = id_user;
+		id_user = id_user;
 END $$
 DELIMITER ;
 

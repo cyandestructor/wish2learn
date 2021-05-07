@@ -10,7 +10,6 @@ CREATE PROCEDURE AddSection (
 )
 BEGIN
 	DECLARE product_id INT;
-    DECLARE section_id INT;
     
     IF section_price IS NULL OR section_price <= 0 THEN
 		INSERT INTO Products (
@@ -38,15 +37,11 @@ BEGIN
 		product_id
     );
     
-    SET section_id = LAST_INSERT_ID();
-    
-    UPDATE Courses AS C
+    UPDATE Courses
     SET
-		C.last_update = CURRENT_TIMESTAMP()
+		last_update = CURRENT_TIMESTAMP()
 	WHERE
-		C.id_course = id_course;
-        
-	SELECT section_id;
+		id_course = id_course;
 END $$
 DELIMITER ;
 
@@ -57,20 +52,16 @@ CREATE PROCEDURE EditSection (
 	IN id_section INT,
 	IN section_title NVARCHAR(50),
     IN course_id INT,
-    IN section_price DECIMAL(15, 2),
-    IN section_is_free BIT,
-    IN section_published BIT
+    IN section_price DECIMAL(15, 2)
 )
 BEGIN
-	UPDATE Sections AS S
+	UPDATE Sections
     SET
-		S.section_title = section_title,
-		S.course_id = course_id,
-		S.section_price = section_price,
-        S.section_is_free = section_is_free,
-        S.published = section_published
+		section_title = section_title,
+		course_id = course_id,
+		section_price = section_price
 	WHERE
-		S.id_section = id_section;
+		id_section = id_section;
         
 	UPDATE
 		Products AS P
@@ -91,11 +82,11 @@ CREATE PROCEDURE HideSection (
     IN hide BIT
 )
 BEGIN
-	UPDATE Sections AS S
+	UPDATE Sections
     SET
-		S.published = hide
+		published = hide
 	WHERE
-		S.id_section = id_section;
+		id_section = id_section;
 END $$
 DELIMITER ;
 
@@ -107,11 +98,11 @@ CREATE PROCEDURE SetSectionFree (
     IN is_free BIT
 )
 BEGIN
-	UPDATE Sections AS S
+	UPDATE Sections
     SET
-		S.section_is_free = is_free
+		section_is_free = is_free
 	WHERE
-		S.id_section = id_section;
+		id_section = id_section;
 END $$
 DELIMITER ;
 
@@ -122,30 +113,9 @@ CREATE PROCEDURE DeleteSection (
 	IN id_section INT
 )
 BEGIN
-	DELETE FROM Sections AS S
+	DELETE FROM Sections
     WHERE
-		S.id_section = id_section;
-END $$
-DELIMITER ;
-
-DELIMITER $$
-DROP PROCEDURE IF EXISTS GetSection $$
-
-CREATE PROCEDURE GetSection (
-	IN id_section INT
-)
-BEGIN
-	SELECT
-		SI.id_section,
-		SI.section_title,
-		SI.section_is_free,
-        SI.product_id,
-		SI.section_price,
-		SI.published
-	FROM
-		SectionsInfo AS SI
-	WHERE
-		SI.id_section = id_section;
+		id_section = id_section;
 END $$
 DELIMITER ;
 
@@ -157,16 +127,15 @@ CREATE PROCEDURE GetCourseSections (
 )
 BEGIN
 	SELECT
-		SI.id_section,
-		SI.section_title,
-		SI.section_is_free,
-        SI.product_id,
-		SI.section_price,
-		SI.published
+		id_section,
+		section_title,
+		section_is_free,
+		section_price,
+		published
 	FROM
-		SectionsInfo AS SI
+		SectionsInfo
 	WHERE
-		SI.course_id = id_course;
+		course_id = id_course;
 END $$
 DELIMITER ;
 
@@ -183,7 +152,6 @@ BEGIN
 		SI.section_title,
 		SI.section_is_free,
 		SI.section_price,
-        SI.product_id,
 		SI.published,
         EXISTS(
 			SELECT
