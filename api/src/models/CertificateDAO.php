@@ -45,7 +45,7 @@
             if($row = $statement->fetch()){
                 $certificate->id = $row['certificate_id'];
                 $certificate->userName = $row['user_name'];
-                $certificate->instructoName = $row['instructor_name'];
+                $certificate->instructorName = $row['instructor_name'];
                 $certificate->courseTitle = $row['course_title'];
                 $certificate->expeditionDate = $row['expedition_date'];
             }

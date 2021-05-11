@@ -90,6 +90,31 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
+DROP PROCEDURE IF EXISTS GetReview $$
+
+CREATE PROCEDURE GetReview (
+	IN review_id INT
+)
+BEGIN
+	SELECT
+		R.id_review,
+		R.review_body,
+		R.review_date,
+        CR.course_id,
+        CR.user_id,
+        U.username,
+		CR.grade,
+        R.published
+	FROM
+		Reviews AS R
+        INNER JOIN Courses_Reviews AS CR ON CR.review_id = R.id_review
+        INNER JOIN Users AS U ON CR.user_id = U.id_user
+	WHERE
+		R.id_review = review_id;
+END $$
+DELIMITER ;
+
+DELIMITER $$
 DROP PROCEDURE IF EXISTS GetUserCourseReview $$
 
 CREATE PROCEDURE GetUserCourseReview (

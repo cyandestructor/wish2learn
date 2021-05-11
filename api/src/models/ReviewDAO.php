@@ -76,6 +76,31 @@
             return $reviews;
         }
 
+        public function getReview($reviewID)
+        {
+            $review = new Review();
+            
+            $sql = 'CALL GetReview(?)';
+
+            $statement = $this->connection->prepare($sql);
+            $statement->bindParam(1, $reviewID);
+            $statement->execute();
+
+            if($row = $statement->fetch()){
+                $review->id = $row['id_review'];
+                $review->body = $row['review_body'];
+                $review->date = $row['review_date'];
+                $review->userId = $row['user_id'];
+                $review->courseId = $row['course_id'];
+                $review->userName = $row['username'];
+                $review->rate = $row['grade'];
+                $review->published = $row['published'];
+            }
+            else{
+                return null;
+            }
+        }
+
         public function getUserCourseReview($courseID, $userID)
         {
             $review = new Review();

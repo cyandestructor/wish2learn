@@ -16,12 +16,13 @@
         {
             $resourceID = -1;
 
-            $sql = 'CALL AddResource(?, ?)';
+            $sql = 'CALL AddResource(?, ?, ?)';
             
             $statement = $this->connection->prepare($sql);
             
             $statement->execute([
                 $resource->content,
+                $resource->contentType
                 $resource->lessonId
             ]);
 

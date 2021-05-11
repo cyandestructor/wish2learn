@@ -5,11 +5,13 @@ DROP PROCEDURE IF EXISTS AddResource $$
 
 CREATE PROCEDURE AddResource (
     IN resource_content LONGBLOB,
+    IN content_type VARCHAR(50),
     IN lesson_id INT
 )
 BEGIN
 	INSERT INTO Resources (
 		resource_content,
+        content_type,
 		lesson_id
     )
     VALUES (

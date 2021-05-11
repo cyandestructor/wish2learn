@@ -8,8 +8,8 @@
         public $date;
         public $published;
 
-        public $courseID;
-        public $userID;
+        public $courseId;
+        public $userId;
         public $userName;
 
         public $rate;
