@@ -1,26 +1,31 @@
 import Validations from '../Validations.js';
 import { interpretError } from '../ValidationsUtility.js';
 
-export default class SectionValidator {
+export default class SectionValidator
+{
     #section;
     #errors = {};
 
     static #fields = ['title', 'price'];
 
-    constructor(section) {
+    constructor(section)
+    {
         this.#section = section;
     }
 
-    get section() {
+    get section()
+    {
         return this.#section;
     }
 
-    get errors() {
+    get errors()
+    {
         return this.#errors;
     }
 
-    validate() {
-        SectionValidator.#fields.forEach((field) => {
+    validate()
+    {
+        SectionValidator.#fields.forEach(field => {
             if (!this.#section.hasOwnProperty(field)) {
                 throw new Error(`The ${field} is not present in the section`);
             }
@@ -32,14 +37,17 @@ export default class SectionValidator {
         return this.#errors;
     }
 
-    validateTitle() {
+    validateTitle()
+    {
         const field = 'title';
         let title = String(this.#section[field]).trim();
 
         const maxLength = 50;
 
         let validate = new Validations(title);
-        validate.maxLength(maxLength).required();
+        validate
+            .maxLength(maxLength)
+            .required();
 
         let error = validate.lastError;
         if (error !== Validations.Error.None) {
@@ -48,12 +56,16 @@ export default class SectionValidator {
         }
     }
 
-    validatePrice() {
+    validatePrice()
+    {
         const field = 'price';
         let price = String(this.#section[field]).trim();
 
         let validate = new Validations(price);
-        validate.number().minValue(0).notRequired();
+        validate
+            .number()
+            .minValue(0)
+            .notRequired();
 
         let error = validate.lastError;
         if (error !== Validations.Error.None) {
@@ -62,7 +74,8 @@ export default class SectionValidator {
         }
     }
 
-    addError(key, value) {
+    addError(key, value)
+    {
         this.#errors[key] = value;
     }
 }

@@ -1,26 +1,31 @@
 import Validations from '../Validations.js';
 import { interpretError } from '../ValidationsUtility.js';
 
-export default class LessonValidator {
+export default class LessonValidator
+{
     #lesson;
     #errors = {};
 
     static #fields = ['title'];
 
-    constructor(lesson) {
+    constructor(lesson)
+    {
         this.#lesson = lesson;
     }
 
-    get lesson() {
+    get lesson()
+    {
         return this.#lesson;
     }
 
-    get errors() {
+    get errors()
+    {
         return this.#errors;
     }
 
-    validate() {
-        LessonValidator.#fields.forEach((field) => {
+    validate()
+    {
+        LessonValidator.#fields.forEach(field => {
             if (!this.#lesson.hasOwnProperty(field)) {
                 throw new Error(`The ${field} is not present in the lesson`);
             }
@@ -31,14 +36,17 @@ export default class LessonValidator {
         return this.#errors;
     }
 
-    validateTitle() {
+    validateTitle()
+    {
         const field = 'title';
         let title = String(this.#lesson[field]).trim();
 
         const maxLength = 50;
 
         let validate = new Validations(title);
-        validate.maxLength(maxLength).required();
+        validate
+            .maxLength(maxLength)
+            .required();
 
         let error = validate.lastError;
         if (error !== Validations.Error.None) {
@@ -47,7 +55,8 @@ export default class LessonValidator {
         }
     }
 
-    addError(key, value) {
+    addError(key, value)
+    {
         this.#errors[key] = value;
     }
 }

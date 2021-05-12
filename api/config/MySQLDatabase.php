@@ -3,10 +3,10 @@
 
     class MySQLDatabase implements DatabaseInterface
     {
-        private $host = '';
-        private $dbName = '';
-        private $username = '';
-        private $password = '';
+        private $host = 'localhost';
+        private $dbName = 'w2l_db_dev';
+        private $username = 'root';
+        private $password = 'Sampl3@MySQL';
 
         private $connection;
         

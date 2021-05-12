@@ -1,26 +1,31 @@
 import Validations from '../Validations.js';
 import { interpretError } from '../ValidationsUtility.js';
 
-export default class UserValidator {
+export default class UserValidator
+{
     #user;
     #errors = {};
 
     static #fields = ['username', 'name', 'lastname', 'email', 'password'];
 
-    constructor(user) {
+    constructor(user)
+    {
         this.#user = user;
     }
 
-    get errors() {
+    get errors()
+    {
         return this.#errors;
     }
 
-    get user() {
+    get user()
+    {
         return this.#user;
     }
 
-    validate() {
-        UserValidator.#fields.forEach((field) => {
+    validate()
+    {
+        UserValidator.#fields.forEach(field => {
             if (!this.#user.hasOwnProperty(field)) {
                 throw new Error(`${field} is not present in the user`);
             }
@@ -35,7 +40,8 @@ export default class UserValidator {
         return this.#errors;
     }
 
-    validateUsername() {
+    validateUsername()
+    {
         const field = 'username';
         let username = String(this.#user[field]).trim();
 
@@ -48,7 +54,7 @@ export default class UserValidator {
             .minLength(minLength)
             .maxLength(maxLength)
             .required();
-
+        
         let error = validate.lastError;
         if (error !== Validations.Error.None) {
             let message = interpretError(field, error, minLength, maxLength);
@@ -56,12 +62,15 @@ export default class UserValidator {
         }
     }
 
-    validateName() {
+    validateName()
+    {
         const field = 'name';
         let name = String(this.#user[field]).trim();
 
         let validate = new Validations(name);
-        validate.alphabetic(true).required();
+        validate
+            .alphabetic(true)
+            .required();
 
         let error = validate.lastError;
         if (error !== Validations.Error.None) {
@@ -70,12 +79,15 @@ export default class UserValidator {
         }
     }
 
-    validateLastname() {
+    validateLastname()
+    {
         const field = 'lastname';
         let lastname = String(this.#user[field]).trim();
 
         let validate = new Validations(lastname);
-        validate.alphabetic(true).required();
+        validate
+            .alphabetic(true)
+            .required();
 
         let error = validate.lastError;
         if (error !== Validations.Error.None) {
@@ -84,7 +96,8 @@ export default class UserValidator {
         }
     }
 
-    validatePassword() {
+    validatePassword()
+    {
         const field = 'password';
         let password = this.#user[field];
 
@@ -98,21 +111,24 @@ export default class UserValidator {
         if (error !== Validations.Error.None) {
             let message;
             if (error === Validations.Error.Match) {
-                message =
-                    'The password must have at least one uppercase, one number and one special character';
-            } else {
+                message = 'The password must have at least one uppercase, one number and one special character';
+            }
+            else {
                 message = interpretError(field, error, 8);
             }
             this.addError(field, message);
         }
     }
 
-    validateEmail() {
+    validateEmail()
+    {
         const field = 'email';
         let email = String(this.#user[field]).trim();
 
         let validate = new Validations(email);
-        validate.email().required();
+        validate
+            .email()
+            .required();
 
         let error = validate.lastError;
         if (error !== Validations.Error.None) {
@@ -121,7 +137,8 @@ export default class UserValidator {
         }
     }
 
-    addError(key, value) {
+    addError(key, value)
+    {
         this.#errors[key] = value;
     }
 }
