@@ -1,14 +1,14 @@
 <?php
-    namespace Controllers;
+    namespace W2l\Controllers;
 
     use Psr\Http\Message\ResponseInterface as Response;
     use Psr\Http\Message\ServerRequestInterface as Request;
     
-    use Configuration\Database\MySQLDatabase;
+    use W2l\Configuration\Database\MySQLDatabase;
 
-    use Validators\SectionValidator;
-    use Models\Section;
-    use Models\SectionDAO;
+    use W2l\Validators\SectionValidator;
+    use W2l\Models\Dto\Section;
+    use W2l\Models\SectionDAO;
 
     class SectionController
     {

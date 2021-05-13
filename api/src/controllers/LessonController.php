@@ -1,14 +1,14 @@
 <?php
-    namespace Controllers;
+    namespace W2l\Controllers;
 
     use Psr\Http\Message\ResponseInterface as Response;
     use Psr\Http\Message\ServerRequestInterface as Request;
     
-    use Configuration\Database\MySQLDatabase;
+    use W2l\Configuration\Database\MySQLDatabase;
 
-    use Validators\LessonValidator;
-    use Models\Lesson;
-    use Models\LessonDAO;
+    use W2l\Validators\LessonValidator;
+    use W2l\Models\Dto\Lesson;
+    use W2l\Models\LessonDAO;
 
     class LessonController
     {

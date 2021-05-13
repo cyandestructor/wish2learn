@@ -1,13 +1,13 @@
 <?php
-    namespace Controllers;
+    namespace W2l\Controllers;
 
     use Psr\Http\Message\ResponseInterface as Response;
     use Psr\Http\Message\ServerRequestInterface as Request;
     
-    use Configuration\Database\MySQLDatabase;
+    use W2l\Configuration\Database\MySQLDatabase;
 
-    use Models\Certificate;
-    use Models\CertificateDAO;
+    use W2l\Models\Dto\Certificate;
+    use W2l\Models\CertificateDAO;
 
     class CertificateController
     {

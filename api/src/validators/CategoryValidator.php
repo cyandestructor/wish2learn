@@ -1,5 +1,5 @@
 <?php
-    namespace Validators;
+    namespace W2l\Validators;
 
     class CategoryValidator implements ValidatorInterface
     {

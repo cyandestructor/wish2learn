@@ -1,15 +1,15 @@
 <?php
-    namespace Controllers;
+    namespace W2l\Controllers;
     
     use Psr\Http\Message\ResponseInterface as Response;
     use Psr\Http\Message\ServerRequestInterface as Request;
     
-    use Configuration\Database\MySQLDatabase;
+    use W2l\Configuration\Database\MySQLDatabase;
     
-    use Validators\CourseValidator;
-    use Validators\CourseCreationValidator;
-    use Models\Course;
-    use Models\CourseDAO;
+    use W2l\Validators\CourseValidator;
+    use W2l\Validators\CourseCreationValidator;
+    use W2l\Models\Dto\Course;
+    use W2l\Models\CourseDAO;
     
     class CoursesController
     {

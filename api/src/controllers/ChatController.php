@@ -1,13 +1,13 @@
 <?php
-    namespace Controllers;
+    namespace W2l\Controllers;
 
     use Psr\Http\Message\ResponseInterface as Response;
     use Psr\Http\Message\ServerRequestInterface as Request;
     
-    use Configuration\Database\MySQLDatabase;
+    use W2l\Configuration\Database\MySQLDatabase;
 
-    use Models\Chat;
-    use Models\ChatDAO;
+    use W2l\Models\Dto\Chat;
+    use W2l\Models\ChatDAO;
 
     class ChatController
     {

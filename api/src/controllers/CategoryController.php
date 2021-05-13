@@ -1,14 +1,14 @@
 <?php
-    namespace Controllers;
+    namespace W2l\Controllers;
 
     use Psr\Http\Message\ResponseInterface as Response;
     use Psr\Http\Message\ServerRequestInterface as Request;
     
-    use Configuration\Database\MySQLDatabase;
+    use W2l\Configuration\Database\MySQLDatabase;
     
-    use Validators\CategoryValidator;
-    use Models\Category;
-    use Models\CategoryDAO;
+    use W2l\Validators\CategoryValidator;
+    use W2l\Models\Dto\Category;
+    use W2l\Models\CategoryDAO;
 
     class CategoryController
     {

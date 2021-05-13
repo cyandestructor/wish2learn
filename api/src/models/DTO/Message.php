@@ -1,5 +1,5 @@
 <?php
-    namespace Models;
+    namespace W2l\Models\Dto;
 
     class Message
     {

@@ -1,13 +1,13 @@
 <?php
-    namespace Controllers;
+    namespace W2l\Controllers;
 
     use Psr\Http\Message\ResponseInterface as Response;
     use Psr\Http\Message\ServerRequestInterface as Request;
     
-    use Configuration\Database\MySQLDatabase;
+    use W2l\Configuration\Database\MySQLDatabase;
 
-    use Models\Message;
-    use Models\MessageDAO;
+    use W2l\Models\Dto\Message;
+    use W2l\Models\MessageDAO;
 
     class MessageController
     {
