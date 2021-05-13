@@ -7,6 +7,9 @@
     require __DIR__ . '/../vendor/autoload.php';
 
     $app = AppFactory::create();
+    
+    $app->addBodyParsingMiddleware();
+    $app->addRoutingMiddleware();
 
     $app->setBasePath('/api');
 
@@ -20,9 +23,9 @@
             $method = $request->getMethod();
             switch ($method) {
                 case 'GET':
-                    return Controllers\UsersController::getUnique($request, $response, $args);
+                    return W2l\Controllers\UsersController::getUnique($request, $response, $args);
                 case 'PUT':
-                    return Controllers\UsersController::putUser($request, $response, $args);
+                    return W2l\Controllers\UsersController::putUser($request, $response, $args);
             }
             return $response;
         });
@@ -31,14 +34,14 @@
             $method = $request->getMethod();
             switch ($method) {
                 case 'GET':
-                    return Controllers\UsersController::getUserAvatar($request, $response, $args);
+                    return W2l\Controllers\UsersController::getUserAvatar($request, $response, $args);
                 case 'PUT':
-                    return Controllers\UsersController::putUserAvatar($request, $response, $args);
+                    return W2l\Controllers\UsersController::putUserAvatar($request, $response, $args);
             }
             return $response;
         });
 
-        $group->post('', Controllers\UsersController::class . ':postUser');
+        $group->post('', W2l\Controllers\UsersController::class . ':postUser');
     });
 
     $app->run();

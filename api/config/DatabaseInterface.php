@@ -1,5 +1,5 @@
 <?php
-    namespace Configuration\Database;
+    namespace W2l\Configuration\Database;
     
     interface DatabaseInterface
     {

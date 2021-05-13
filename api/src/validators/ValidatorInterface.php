@@ -1,5 +1,5 @@
 <?php
-    namespace Validators;
+    namespace W2l\Validators;
     
     interface ValidatorInterface
     {

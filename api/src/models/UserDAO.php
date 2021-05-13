@@ -1,7 +1,7 @@
 <?php
-    namespace Models;
+    namespace W2l\Models;
 
-    use Configuration\Database\DatabaseInterface;
+    use W2l\Configuration\Database\DatabaseInterface;
 
     class UserDAO
     {

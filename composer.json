@@ -5,10 +5,11 @@
     },
     "autoload": {
         "psr-4": {
-            "Controllers\\": "api/src/controllers",
-            "Models\\": "api/src/models",
-            "Validators\\": "api/src/validators",
-            "Configuration\\Database\\": "api/config"
+            "W2l\\Controllers\\": "api/src/controllers",
+            "W2l\\Models\\": "api/src/models",
+            "W2l\\Models\\Dto\\": "api/src/models",
+            "W2l\\Validators\\": "api/src/validators",
+            "W2l\\Configuration\\Database\\": "api/config"
         }
     }
 }

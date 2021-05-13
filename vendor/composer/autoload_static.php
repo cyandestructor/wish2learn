@@ -13,9 +13,13 @@ class ComposerStaticInitd7f742ca9fa88a83efb04001cdd301e1
     );
 
     public static $prefixLengthsPsr4 = array (
-        'V' => 
+        'W' => 
         array (
-            'Validators\\' => 11,
+            'W2l\\Validators\\' => 15,
+            'W2l\\Models\\Dto\\' => 15,
+            'W2l\\Models\\' => 11,
+            'W2l\\Controllers\\' => 16,
+            'W2l\\Configuration\\Database\\' => 27,
         ),
         'S' => 
         array (
@@ -30,26 +34,33 @@ class ComposerStaticInitd7f742ca9fa88a83efb04001cdd301e1
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
         ),
-        'M' => 
-        array (
-            'Models\\' => 7,
-        ),
         'F' => 
         array (
             'Fig\\Http\\Message\\' => 17,
             'FastRoute\\' => 10,
         ),
-        'C' => 
-        array (
-            'Controllers\\' => 12,
-            'Configuration\\Database\\' => 23,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Validators\\' => 
+        'W2l\\Validators\\' => 
         array (
             0 => __DIR__ . '/../..' . '/api/src/validators',
+        ),
+        'W2l\\Models\\Dto\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/api/src/models',
+        ),
+        'W2l\\Models\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/api/src/models',
+        ),
+        'W2l\\Controllers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/api/src/controllers',
+        ),
+        'W2l\\Configuration\\Database\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/api/config',
         ),
         'Symfony\\Polyfill\\Php80\\' => 
         array (
@@ -81,10 +92,6 @@ class ComposerStaticInitd7f742ca9fa88a83efb04001cdd301e1
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
-        'Models\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/api/src/models',
-        ),
         'Fig\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/fig/http-message-util/src',
@@ -92,14 +99,6 @@ class ComposerStaticInitd7f742ca9fa88a83efb04001cdd301e1
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
-        ),
-        'Controllers\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/api/src/controllers',
-        ),
-        'Configuration\\Database\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/api/config',
         ),
     );
 

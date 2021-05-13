@@ -1,13 +1,13 @@
 <?php
-    namespace Controllers;
+    namespace W2l\Controllers;
     
     use Psr\Http\Message\ResponseInterface as Response;
     use Psr\Http\Message\ServerRequestInterface as Request;
     
-    use Configuration\Database\MySQLDatabase;
-    use Validators\UserValidator;
-    use Validators\UserEditionValidator;
-    use Models\UserDAO;
+    use W2l\Configuration\Database\MySQLDatabase;
+    use W2l\Validators\UserValidator;
+    use W2l\Validators\UserEditionValidator;
+    use W2l\Models\UserDAO;
 
     class UsersController
     {
@@ -192,7 +192,7 @@
             $userDAO = new UserDAO(new MySQLDatabase());
             $avatar = $userDAO->getAvatar($userID);
 
-            if(!$avatar){
+            if(!$avatar || !$avatar['data']){
                 return $response->withStatus(404);
             }
 

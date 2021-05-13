@@ -1,5 +1,5 @@
 <?php
-    namespace Configuration\Database;
+    namespace W2l\Configuration\Database;
 
     class MySQLDatabase implements DatabaseInterface
     {
