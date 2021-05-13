@@ -114,8 +114,7 @@
             
             $response->getBody()->write(json_encode($result));
             return $response
-                        ->withHeader('Content-Type', 'application/json')
-                        ->withStatus(201);
+                        ->withHeader('Content-Type', 'application/json');
         }
 
         static public function deleteCategory(Request $request, Response $response, $args)

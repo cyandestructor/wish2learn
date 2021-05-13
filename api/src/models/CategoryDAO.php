@@ -17,7 +17,7 @@
         {
             $categoryID = -1;
 
-            $sql = 'CALL CreateCourse(?, ?)';
+            $sql = 'CALL CreateCategory(?, ?)';
             
             $statement = $this->connection->prepare($sql);
             
@@ -74,6 +74,8 @@
             else{
                 return null;
             }
+
+            return $category;
         }
 
         public function getCategories($limit, $offset = 0)
