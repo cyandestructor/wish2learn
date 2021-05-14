@@ -108,14 +108,14 @@
                 'id' => $original->id,
                 'title' => $original->title,
                 'text' => $original->text,
-                'published' => $original->published
+                'published' => (bool)$original->published
             ];
 
             $result['new'] = [
                 'id' => $lessonData->id,
                 'title' => $lessonData->title,
                 'text' => $lessonData->text,
-                'published' => $lessonData->published
+                'published' => (bool)$lessonData->published
             ];
             
             $response->getBody()->write(json_encode($result));
@@ -129,7 +129,7 @@
             $lessonID = $request->getAttribute('id');
 
             $lessonDAO = new LessonDAO(new MySQLDatabase());
-            $lessonDAO->deleteCategory($lessonID);
+            $lessonDAO->deleteLesson($lessonID);
 
             return $response;
         }
@@ -185,7 +185,7 @@
                 $element['title'] = $lesson->title;
                 $element['published'] = (bool) $lesson->published;
                 $element['duration'] = $lesson->duration;
-                $element['sectionId'] = $lesson->sectionId;
+                $element['link'] = "/api/lessons/$lesson->id";
 
                 if(isset($queryParams['userId'])){
                     $element['completed'] = (bool) $lesson->completed;

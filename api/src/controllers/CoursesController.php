@@ -81,7 +81,16 @@
 
             $offset = ($page - 1) * $limit;
 
-            $orderBy = $queryParams['orderBy'] ?? 'none';
+            $orderBy = $queryParams['orderBy'] ?? null;
+
+            if($orderBy && !in_array($orderBy, ['sales', 'publication', 'rate'])){
+                $response->getBody()->write(json_encode([
+                    'message' => 'Parameter "orderBy" is invalid'
+                ]));
+                return $response
+                            ->withHeader('Content-Type', 'application/json')
+                            ->withStatus(400);
+            }
 
             $courseDAO = new CourseDAO(new MySQLDatabase());
 
@@ -198,7 +207,7 @@
             $courseData->description = $data['description'] ?? $original->description;
             $courseData->price = $data['price'] ?? $original->price;
 
-            $courseDAO->createCourse($courseData);
+            $courseDAO->editCourse($courseData);
             
             // Prepare the return data
             $result['old'] = [
@@ -217,8 +226,7 @@
             
             $response->getBody()->write(json_encode($result));
             return $response
-                        ->withHeader('Content-Type', 'application/json')
-                        ->withStatus(201);
+                        ->withHeader('Content-Type', 'application/json');
         }
 
         static public function putCourseImage(Request $request, Response $response, $args)
@@ -263,7 +271,7 @@
             $courseDAO = new CourseDAO(new MySQLDatabase());
             $data = $courseDAO->getCourseImage($courseID);
 
-            if(!$data){
+            if(!$data || !$data->image){
                 return $response->withStatus(404);
             }
 

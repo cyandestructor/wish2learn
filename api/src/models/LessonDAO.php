@@ -36,7 +36,7 @@
 
         public function editLesson(Lesson $lesson)
         {
-            $sql = 'CALL EditLesson(?, ?, ?, ?)';
+            $sql = 'CALL EditLesson(?, ?, ?, b?)';
             
             $statement = $this->connection->prepare($sql);
             
@@ -145,6 +145,7 @@
                 $lesson->videoAddress = $row['video_address'];
                 $lesson->duration = $row['lesson_duration'];
                 $lesson->sectionId = $row['section_id'];
+                return $lesson;
             }
             else{
                 return null;

@@ -40,7 +40,7 @@ BEGIN
 		CURRENT_TIMESTAMP()
     );
     
-    SELECT product_id;
+    SELECT LAST_INSERT_ID();
 END $$
 DELIMITER ;
 

@@ -61,6 +61,8 @@
             else{
                 return null;
             }
+
+            return $course;
         }
 
         public function getCourses($configuration)
@@ -78,13 +80,13 @@
             $orderBy = $configuration['orderBy'] ?? null;
 
             if(!$orderBy){
-                return null;
+                return $this->getCoursesByPublication($limit, $offset);
             }
 
             switch (strtolower($orderBy)) {
                 case 'rate':
                     return $this->getCoursesByRate($limit, $offset);
-                case 'sells':
+                case 'sales':
                     return $this->getCoursesBySells($limit, $offset);
                 case 'publication':
                     return $this->getCoursesByPublication($limit, $offset);

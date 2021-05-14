@@ -35,7 +35,7 @@
 
         public function editSection(Section $section)
         {
-            $sql = 'CALL EditSection(?, ?, ?, ?, ?, ?)';
+            $sql = 'CALL EditSection(?, ?, ?, ?, b?, b?)';
             
             $statement = $this->connection->prepare($sql);
             
@@ -74,9 +74,11 @@
                 $section->id = $row['id_section'];
                 $section->title = $row['section_title'];
                 $section->isFree = $row['section_is_free'];
+                $section->courseId = $row['course_id'];
                 $section->productId = $row['product_id'];
                 $section->price = $row['section_price'];
                 $section->published = $row['published'];
+                return $section;
             }
             else{
                 return null;

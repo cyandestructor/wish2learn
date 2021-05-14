@@ -38,7 +38,7 @@ CREATE TABLE Courses (
     instructor_id INT NOT NULL,
     publication_date DATETIME,
     last_update DATETIME,
-    published BIT DEFAULT 1,
+    published BIT DEFAULT 0,
     
     PRIMARY KEY (id_course),
     FOREIGN KEY (product_id) REFERENCES Products (id_product),
@@ -71,7 +71,7 @@ CREATE TABLE Sections (
 CREATE TABLE Lessons (
 	id_lesson INT NOT NULL AUTO_INCREMENT,
     lesson_title NVARCHAR(50) NOT NULL,
-    content_type TINYINT,
+    content_type TINYINT, -- 1: video, 2: text and resources
     lesson_text MEDIUMTEXT,
     section_id INT NOT NULL,
     published BIT DEFAULT 1,
