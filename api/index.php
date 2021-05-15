@@ -160,4 +160,95 @@
         }
         return $response;
     });
+
+    // RESOURCES
+    $app->map(['GET', 'DELETE'], '/resources/{id:[0-9]+}', function ($request, $response, $args) {
+        $method = $request->getMethod();
+        switch ($method) {
+            case 'GET':
+                return W2l\Controllers\ResourceController::getUnique($request, $response, $args);
+            case 'DELETE':
+                return W2l\Controllers\ResourceController::deleteResource($request, $response, $args);
+        }
+        return $response;
+    });
+
+    $app->map(['GET', 'POST'], '/lessons/{id:[0-9]+}/resources', function ($request, $response, $args) {
+        $method = $request->getMethod();
+        switch ($method) {
+            case 'GET':
+                return W2l\Controllers\ResourceController::getLessonResources($request, $response, $args);
+            case 'POST':
+                return W2l\Controllers\ResourceController::postResource($request, $response, $args);
+        }
+        return $response;
+    });
+
+    // REVIEWS
+    $app->map(['GET', 'PUT'], '/reviews/{id:[0-9]+}', function ($request, $response, $args) {
+        $method = $request->getMethod();
+        switch ($method) {
+            case 'GET':
+                return W2l\Controllers\ReviewController::getUnique($request, $response, $args);
+            case 'PUT':
+                return W2l\Controllers\ReviewController::putReview($request, $response, $args);
+        }
+        return $response;
+    });
+
+    $app->map(['GET', 'POST'], '/courses/{id:[0-9]+}/reviews', function ($request, $response, $args) {
+        $method = $request->getMethod();
+        switch ($method) {
+            case 'GET':
+                return W2l\Controllers\ReviewController::getCourseReviews($request, $response, $args);
+            case 'POST':
+                return W2l\Controllers\ReviewController::postReview($request, $response, $args);
+        }
+        return $response;
+    });
+
+    // CHATS
+    $app->map(['GET', 'POST'], '/users/{id:[0-9]+}/chats', function ($request, $response, $args) {
+        $method = $request->getMethod();
+        switch ($method) {
+            case 'GET':
+                return W2l\Controllers\ChatController::getUserChats($request, $response, $args);
+            case 'POST':
+                return W2l\Controllers\ChatController::postChat($request, $response, $args);
+        }
+        return $response;
+    });
+
+    // MESSAGES
+    $app->map(['GET', 'POST'], '/chats/{id:[0-9]+}/messages', function ($request, $response, $args) {
+        $method = $request->getMethod();
+        switch ($method) {
+            case 'GET':
+                return W2l\Controllers\MessageController::getChatMessages($request, $response, $args);
+            case 'POST':
+                return W2l\Controllers\MessageController::postMessage($request, $response, $args);
+        }
+        return $response;
+    });
+
+    // COMMENTS
+    $app->map(['GET', 'POST'], '/lessons/{id:[0-9]+}/comments', function ($request, $response, $args) {
+        $method = $request->getMethod();
+        switch ($method) {
+            case 'GET':
+                return W2l\Controllers\CommentController::getLessonComments($request, $response, $args);
+            case 'POST':
+                return W2l\Controllers\CommentController::postComment($request, $response, $args);
+        }
+        return $response;
+    });
+
+    // CERTIFICATES
+    $app->group('/certificates', function (RouteCollectorProxy $group) {
+        $group->post('', W2l\Controllers\CertificateController::class . ':postCertificate');
+        $group->get('/{id}', W2l\Controllers\CertificateController::class . ':getUnique');
+    });
+
+    $app->get('/users/{id:[0-9]+}/certificates', W2l\Controllers\CertificateController::class . ':getUserCertificates');
+
     $app->run();

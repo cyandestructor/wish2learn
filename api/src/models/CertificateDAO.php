@@ -49,6 +49,7 @@
                 $certificate->instructorName = $row['instructor_name'];
                 $certificate->courseTitle = $row['course_title'];
                 $certificate->expeditionDate = $row['expedition_date'];
+                return $certificate;
             }
             else{
                 return null;
@@ -59,7 +60,7 @@
         {
             $certificates = [];
 
-            $sql = 'CALL GetCourseCategories(?)';
+            $sql = 'CALL GetUserCertificates(?)';
 
             $statement = $this->connection->prepare($sql);
             $statement->execute([

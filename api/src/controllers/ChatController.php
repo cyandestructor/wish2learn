@@ -13,6 +13,8 @@
     {
         static public function postChat(Request $request, Response $response, $args)
         {
+            $userID = $request->getAttribute('id');
+            
             $contentType = $request->getHeaderLine('Content-Type');
             if(!$contentType || $contentType != 'application/json'){
                 return $response
@@ -26,7 +28,7 @@
             $chatDAO = new ChatDAO(new MySQLDatabase());
 
             $chat = new Chat();
-            $chat->senderId = $data['senderId'];
+            $chat->senderId = $userID;
             $chat->receptorId = $data['receptorId'];
             $chat->name = $data['name'];
 

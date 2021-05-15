@@ -23,7 +23,7 @@
             
             $statement->execute([
                 $resource->content,
-                $resource->contentType
+                $resource->contentType,
                 $resource->lessonId
             ]);
 
@@ -59,6 +59,7 @@
                 $resource->content = $row['resource_content'];
                 $resource->contentType = $row['content_type'];
                 $resource->lessonId = $row['lesson_id'];
+                return $resource;
             }
             else{
                 return null;

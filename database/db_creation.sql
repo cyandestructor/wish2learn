@@ -83,7 +83,7 @@ CREATE TABLE Lessons (
 CREATE TABLE Resources (
 	id_resource INT NOT NULL AUTO_INCREMENT,
     resource_content LONGBLOB,
-    content_type VARCHAR(50),
+    content_type VARCHAR(255),
     lesson_id INT NOT NULL,
     
     PRIMARY KEY (id_resource),

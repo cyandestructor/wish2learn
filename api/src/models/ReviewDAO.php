@@ -36,7 +36,7 @@
 
         public function editReview(Review $review)
         {
-            $sql = 'CALL EditReview(?, ?, ?, ?)';
+            $sql = 'CALL EditReview(?, ?, ?, b?)';
             
             $statement = $this->connection->prepare($sql);
             
@@ -96,6 +96,7 @@
                 $review->userName = $row['username'];
                 $review->rate = $row['grade'];
                 $review->published = $row['published'];
+                return $review;
             }
             else{
                 return null;
@@ -122,6 +123,7 @@
                 $review->userName = $row['username'];
                 $review->rate = $row['grade'];
                 $review->published = $row['published'];
+                return $review;
             }
             else{
                 return null;

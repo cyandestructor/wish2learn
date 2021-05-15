@@ -53,10 +53,15 @@ BEGIN
 	UPDATE Reviews AS R
     SET
 		R.review_body = review_body,
-        R.grade = grade,
         R.published = published
 	WHERE
 		R.id_review = review_id;
+        
+	UPDATE Courses_Reviews AS CR
+    SET
+		CR.grade = grade
+	WHERE
+		CR.review_id = review_id;
 END $$
 DELIMITER ;
 

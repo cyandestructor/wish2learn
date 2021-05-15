@@ -5,7 +5,7 @@ DROP PROCEDURE IF EXISTS AddResource $$
 
 CREATE PROCEDURE AddResource (
     IN resource_content LONGBLOB,
-    IN content_type VARCHAR(50),
+    IN content_type VARCHAR(255),
     IN lesson_id INT
 )
 BEGIN
@@ -16,6 +16,7 @@ BEGIN
     )
     VALUES (
 		resource_content,
+        content_type,
 		lesson_id
     );
     
