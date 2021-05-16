@@ -289,5 +289,34 @@
 
             return $response;
         }
+
+        static public function addCourseCategory(Request $request, Response $response, $args)
+        {
+            $contentType = $request->getHeaderLine('Content-Type');
+            if(!$contentType || $contentType != 'application/json'){
+                return $response
+                            ->withStatus(415);
+            }
+
+            $data = $request->getParsedBody();
+
+            $courseID = $request->getAttribute('id');
+
+            $courseDAO = new CourseDAO(new MySQLDatabase());
+            $courseDAO->addCategory($courseID, $data['categoryId']);
+
+            return $response;
+        }
+
+        static public function deleteCourseCategory(Request $request, Response $response, $args)
+        {
+            $courseID = $request->getAttribute('id');
+            $categoryID = $request->getAttribute('categoryId');
+            
+            $courseDAO = new CourseDAO(new MySQLDatabase());
+            $courseDAO->deleteCategory($courseID, $categoryID);
+
+            return $response;
+        }
     }
     

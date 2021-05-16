@@ -414,8 +414,8 @@ CREATE PROCEDURE DeleteCategory (
     IN id_category INT
 )
 BEGIN
-	DELETE FROM Courses_Categories
+	DELETE FROM Courses_Categories AS CC
     WHERE
-		id_course = id_course AND id_category = id_category;
+		CC.course_id = id_course AND CC.category_id = id_category;
 END $$
 DELIMITER ;

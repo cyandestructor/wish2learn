@@ -244,5 +244,29 @@
                 $courseID
             ]);
         }
+
+        public function addCategory($courseID, $categoryID)
+        {
+            $sql = 'CALL AddCategory(?, ?)';
+            
+            $statement = $this->connection->prepare($sql);
+            
+            $statement->execute([
+                $courseID,
+                $categoryID
+            ]);
+        }
+
+        public function deleteCategory($courseID, $categoryID)
+        {
+            $sql = 'CALL DeleteCategory(?, ?)';
+            
+            $statement = $this->connection->prepare($sql);
+            
+            $statement->execute([
+                $courseID,
+                $categoryID
+            ]);
+        }
     }
     

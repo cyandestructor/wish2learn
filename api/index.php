@@ -86,28 +86,44 @@
             return $response;
         });
 
-        $group->map(['GET', 'PUT', 'DELETE'], '/{id:[0-9]+}', function ($request, $response, $args) {
-            $method = $request->getMethod();
-            switch ($method) {
-                case 'GET':
-                    return W2l\Controllers\CoursesController::getUnique($request, $response, $args);
-                case 'PUT':
-                    return W2l\Controllers\CoursesController::putCourse($request, $response, $args);
-                case 'DELETE':
-                    return W2l\Controllers\CoursesController::deleteCourse($request, $response, $args);
-            }
-            return $response;
-        });
+        $group->group('/{id:[0-9]+}', function (RouteCollectorProxy $subgroup) {
+            $subgroup->map(['GET', 'PUT', 'DELETE'], '', function ($request, $response, $args) {
+                $method = $request->getMethod();
+                switch ($method) {
+                    case 'GET':
+                        return W2l\Controllers\CoursesController::getUnique($request, $response, $args);
+                    case 'PUT':
+                        return W2l\Controllers\CoursesController::putCourse($request, $response, $args);
+                    case 'DELETE':
+                        return W2l\Controllers\CoursesController::deleteCourse($request, $response, $args);
+                }
+                return $response;
+            });
 
-        $group->map(['GET', 'PUT'], '/{id:[0-9]+}/image', function ($request, $response, $args) {
-            $method = $request->getMethod();
-            switch ($method) {
-                case 'GET':
-                    return W2l\Controllers\CoursesController::getCourseImage($request, $response, $args);
-                case 'PUT':
-                    return W2l\Controllers\CoursesController::putCourseImage($request, $response, $args);
-            }
-            return $response;
+            $subgroup->map(['GET', 'PUT'], '/image', function ($request, $response, $args) {
+                $method = $request->getMethod();
+                switch ($method) {
+                    case 'GET':
+                        return W2l\Controllers\CoursesController::getCourseImage($request, $response, $args);
+                    case 'PUT':
+                        return W2l\Controllers\CoursesController::putCourseImage($request, $response, $args);
+                }
+                return $response;
+            });
+
+            $subgroup->map(['GET', 'POST'], '/categories', function ($request, $response, $args) {
+                $method = $request->getMethod();
+                switch ($method) {
+                    case 'GET':
+                        return W2l\Controllers\CategoryController::getCourseCategories($request, $response, $args);
+                    case 'POST':
+                        return W2l\Controllers\CoursesController::addCourseCategory($request, $response, $args);
+                }
+                return $response;
+            });
+
+            $subgroup->delete('/categories/{categoryId:[0-9]+}',
+                W2l\Controllers\CoursesController::class . ':deleteCourseCategory');
         });
     });
 
