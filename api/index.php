@@ -21,13 +21,15 @@
 
     // USERS
     $app->group('/users', function (RouteCollectorProxy $group) {
-        $group->map(['GET', 'PUT'], '/{id:[0-9]+}', function ($request, $response, $args) {
+        $group->map(['GET', 'PUT', 'DELETE'], '/{id:[0-9]+}', function ($request, $response, $args) {
             $method = $request->getMethod();
             switch ($method) {
                 case 'GET':
                     return W2l\Controllers\UsersController::getUnique($request, $response, $args);
                 case 'PUT':
                     return W2l\Controllers\UsersController::putUser($request, $response, $args);
+                case 'DELETE':
+                    return W2l\Controllers\UsersController::deleteUser($request, $response, $args);
             }
             return $response;
         });
@@ -177,6 +179,9 @@
         return $response;
     });
 
+    $app->put('/users/{userId:[0-9]+}/lessons/{lessonId:[0-9]+}',
+        W2l\Controllers\LessonController::class . ':setCompleted');
+
     // RESOURCES
     $app->map(['GET', 'DELETE'], '/resources/{id:[0-9]+}', function ($request, $response, $args) {
         $method = $request->getMethod();
@@ -266,5 +271,9 @@
     });
 
     $app->get('/users/{id:[0-9]+}/certificates', W2l\Controllers\CertificateController::class . ':getUserCertificates');
+
+    // ENROLLMENTS
+    $app->get('/users/{id:[0-9]+}/enrollments', W2l\Controllers\EnrollmentController::class . ':getUserEnrollments');
+    $app->post('/enrollments', W2l\Controllers\EnrollmentController::class . ':postEnrollment');
 
     $app->run();

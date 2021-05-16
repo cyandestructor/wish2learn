@@ -22,5 +22,8 @@
 
         public $image;
         public $imageType;
+
+        public $enrollDate;
+        public $completedLessons;
     }
     

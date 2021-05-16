@@ -145,5 +145,28 @@
                 die(json_encode(array('message' => 'A database method failed')));
             }
         }
+
+        public function deleteUser($userID)
+        {
+            $sql = 'CALL DeleteUser(?)';
+            
+            $statement = $this->connection->prepare($sql);
+            
+            $statement->execute([
+                $userID
+            ]);
+        }
+
+        public function enrollUser($userID, $courseID)
+        {
+            $sql = 'CALL EnrollUser(?, ?)';
+            
+            $statement = $this->connection->prepare($sql);
+            
+            $statement->execute([
+                $userID,
+                $courseID
+            ]);
+        }
     }
     

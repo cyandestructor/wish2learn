@@ -151,5 +151,18 @@
                 return null;
             }
         }
+
+        public function setLessonCompleted($userID, $lessonID, $completed)
+        {
+            $sql = 'CALL SetLessonCompleted(?, ?, b?)';
+            
+            $statement = $this->connection->prepare($sql);
+            
+            $statement->execute([
+                $userID,
+                $lessonID,
+                $completed
+            ]);
+        }
     }
     

@@ -268,5 +268,37 @@
                 $categoryID
             ]);
         }
+
+        public function getUserEnrolledCourses($userID)
+        {
+            $courses = [];
+
+            $sql = 'CALL GetUserEnrolledCourses(?)';
+
+            $statement = $this->connection->prepare($sql);
+            $statement->execute([
+                $userID
+            ]);
+
+            while($row = $statement->fetch()){
+                $course = new Course();
+
+                $course->id = $row['id_course'];
+                $course->title = $row['course_title'];
+                $course->description = $row['course_description'];
+                $course->price = $row['course_price'];
+                $course->instructorId = $row['instructor_id'];
+                $course->instructorName = $row['instructor_name'];
+                $course->grade = $row['course_grade'];
+                $course->published = $row['published'];
+
+                $course->enrollDate = $row['enroll_date'];
+                $course->completedLessons = $row['completed_lessons'];
+
+                $courses[] = $course;
+            }
+
+            return $courses;
+        }
     }
     

@@ -96,7 +96,14 @@ CREATE PROCEDURE SetLessonCompleted (
     IN completed BIT
 )
 BEGIN
-	IF EXISTS(SELECT UL.id_user_lesson FROM Users_Lessons AS UL WHERE UL.user_id = id_user AND UL.lesson_id = id_lesson) THEN
+	IF EXISTS(
+		SELECT
+			UL.id_user_lesson
+		FROM
+			Users_Lessons AS UL
+        WHERE
+			UL.user_id = id_user AND UL.lesson_id = id_lesson
+	) THEN
 		UPDATE Users_Lessons AS UL
 		SET
 			UL.lesson_completed = completed

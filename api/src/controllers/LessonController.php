@@ -197,5 +197,28 @@
             return $response
                         ->withHeader('Content-Type', 'application/json');
         }
+
+        static public function setCompleted(Request $request, Response $response, $args)
+        {
+            $userID = $request->getAttribute('userId');
+            $lessonID = $request->getAttribute('lessonId');
+
+            $queryParams = $request->getQueryParams();
+
+            if(!isset($queryParams['completed'])){
+                $response->getBody()->write(json_encode(['message' => 'Parameter "completed" must be specified']));
+                return $response
+                            ->withHeader('Content-Type', 'application/json')
+                            ->withStatus(400);
+            }
+
+            $lessonDAO = new LessonDAO(new MySQLDatabase());
+
+            $completed = strtolower($queryParams['completed']) == 'true' ? true : false;
+
+            $lessonDAO->setLessonCompleted($userID, $lessonID, $completed);
+
+            return $response;
+        }
     }
     

@@ -102,9 +102,9 @@ CREATE PROCEDURE DeleteUser (
 	IN user_id INT
 )
 BEGIN
-	DELETE FROM Users
+	DELETE FROM Users AS U
     WHERE
-		id_user = user_id;
+		U.id_user = user_id;
 END $$
 DELIMITER ;
 
@@ -141,16 +141,25 @@ CREATE PROCEDURE EnrollUser (
     IN id_course INT
 )
 BEGIN
-	INSERT INTO Users_Courses (
-		user_id,
-        course_id,
-        enroll_date
-    )
-    VALUES (
-		id_user,
-        id_course,
-        CURRENT_DATE()
-    );
+	IF NOT EXISTS(
+		SELECT
+			UC.id_user_course
+        FROM
+			Users_Courses AS UC
+		WHERE
+			UC.user_id = id_user AND UC.course_id = id_course
+	) THEN
+		INSERT INTO Users_Courses (
+			user_id,
+			course_id,
+			enroll_date
+		)
+		VALUES (
+			id_user,
+			id_course,
+			CURRENT_DATE()
+		);
+    END IF;
 END $$
 DELIMITER ;
 

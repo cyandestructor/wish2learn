@@ -200,5 +200,15 @@
             return $response
                         ->withHeader('Content-Type', $avatar['contentType']);
         }
+
+        static public function deleteUser(Request $request, Response $response, $args)
+        {
+            $userID = $request->getAttribute('id');
+
+            $userDAO = new UserDAO(new MySQLDatabase());
+            $userDAO->deleteUser($userID);
+
+            return $response;
+        }
     }
     

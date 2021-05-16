@@ -305,7 +305,8 @@
             $courseDAO = new CourseDAO(new MySQLDatabase());
             $courseDAO->addCategory($courseID, $data['categoryId']);
 
-            return $response;
+            return $response
+                        ->withStatus(201);
         }
 
         static public function deleteCourseCategory(Request $request, Response $response, $args)
