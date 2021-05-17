@@ -300,5 +300,36 @@
 
             return $courses;
         }
+
+        public function getResultCourses($query, $limit, $offset)
+        {
+            $courses = [];
+
+            $sql = 'CALL SearchCourses(?, ?, ?)';
+
+            $statement = $this->connection->prepare($sql);
+            $statement->execute([
+                $query,
+                $limit,
+                $offset
+            ]);
+
+            while($row = $statement->fetch()){
+                $course = new Course();
+
+                $course->id = $row['id_course'];
+                $course->title = $row['course_title'];
+                $course->description = $row['course_description'];
+                $course->price = $row['course_price'];
+                $course->instructorId = $row['instructor_id'];
+                $course->instructorName = $row['instructor_name'];
+                $course->grade = $row['course_grade'];
+                $course->published = $row['published'];
+
+                $courses[] = $course;
+            }
+
+            return $courses;
+        }
     }
     

@@ -276,4 +276,7 @@
     $app->get('/users/{id:[0-9]+}/enrollments', W2l\Controllers\EnrollmentController::class . ':getUserEnrollments');
     $app->post('/enrollments', W2l\Controllers\EnrollmentController::class . ':postEnrollment');
 
+    // RESULTS
+    $app->get('/results', W2l\Controllers\ResultController::class . ':getList');
+
     $app->run();

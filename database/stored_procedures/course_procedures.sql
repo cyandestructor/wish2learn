@@ -349,7 +349,9 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS SearchCourses $$
 
 CREATE PROCEDURE SearchCourses (
-	IN search_input TINYTEXT
+	IN search_input TINYTEXT,
+    IN total_rows INT,
+    IN row_offset INT
 )
 BEGIN
 	SELECT
@@ -378,11 +380,14 @@ BEGIN
 				Courses AS C
 				INNER JOIN Users AS U ON U.id_user = C.instructor_id
 			WHERE
-				MATCH(C.course_title, U.username, U.account_name, U.account_lastname)
-                AGAINST(search_input IN NATURAL LANGUAGE MODE)) AS ids
+				MATCH(C.course_title)
+                AGAINST(search_input IN NATURAL LANGUAGE MODE) OR
+                search_input IN (U.username, U.account_name, U.account_lastname)) AS ids
 		GROUP BY
 			ids.course_id) AS results
-		INNER JOIN CoursesInfo AS CI ON CI.id_course = results.course_id;
+		INNER JOIN CoursesInfo AS CI ON CI.id_course = results.course_id
+	LIMIT total_rows
+    OFFSET row_offset;
 END $$
 DELIMITER ;
 
