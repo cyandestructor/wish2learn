@@ -210,5 +210,24 @@
 
             return $response;
         }
+
+        static public function checkUserExists(Request $request, Response $response, $args)
+        {
+            $queryParams = $request->getQueryParams();
+
+            $username = $queryParams['username'] ?? '';
+            $email = $queryParams['email'] ?? '';
+
+            $userDAO = new UserDAO(new MySQLDatabase());
+
+            $count = $userDAO->checkUser($username, $email);
+
+            if($count <= 0){
+                return $response
+                            ->withStatus(404);
+            }
+
+            return $response;
+        }
     }
     

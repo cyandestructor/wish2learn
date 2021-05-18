@@ -168,5 +168,24 @@
                 $courseID
             ]);
         }
+
+        public function checkUser($username, $email)
+        {
+            $count = 0;
+
+            $sql = 'CALL UserExists(?, ?)';
+            
+            $statement = $this->connection->prepare($sql);
+            
+            $statement->execute([
+                $username,
+                $email
+            ]);
+
+            $statement->bindColumn(1, $count, \PDO::PARAM_INT);
+            $statement->fetch(\PDO::FETCH_BOUND);
+
+            return $count;
+        }
     }
     

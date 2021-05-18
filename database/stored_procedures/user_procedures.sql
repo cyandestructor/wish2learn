@@ -79,6 +79,23 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
+DROP PROCEDURE IF EXISTS UserExists $$
+
+CREATE PROCEDURE UserExists (
+	IN username NVARCHAR(50),
+    IN email NVARCHAR(60)
+)
+BEGIN
+	SELECT
+		COUNT(*)
+	FROM
+		Users AS U
+	WHERE
+		U.username = username OR U.user_email = email;
+END $$
+DELIMITER ;
+
+DELIMITER $$
 DROP PROCEDURE IF EXISTS GetUserImage $$
 
 CREATE PROCEDURE GetUserImage (

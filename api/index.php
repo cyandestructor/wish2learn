@@ -45,6 +45,7 @@
             return $response;
         });
 
+        $group->get('', W2l\Controllers\UsersController::class . ':checkUserExists');
         $group->post('', W2l\Controllers\UsersController::class . ':postUser');
     });
 
