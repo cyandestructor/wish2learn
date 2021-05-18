@@ -72,22 +72,6 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
-DROP PROCEDURE IF EXISTS HideLesson $$
-
-CREATE PROCEDURE HideLesson (
-	IN id_lesson INT,
-    IN hide BIT
-)
-BEGIN
-	UPDATE Lessons
-    SET
-		published = hide
-    WHERE
-		id_lesson = id_lesson;
-END $$
-DELIMITER ;
-
-DELIMITER $$
 DROP PROCEDURE IF EXISTS SetLessonCompleted $$
 
 CREATE PROCEDURE SetLessonCompleted (
