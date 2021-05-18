@@ -1,6 +1,61 @@
 {
     "packages": [
         {
+            "name": "bryanjhv/slim-session",
+            "version": "4.1.0",
+            "version_normalized": "4.1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bryanjhv/slim-session.git",
+                "reference": "da8a3a7a5a5a15e2ac820ccd2d2d8a15daaddea2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bryanjhv/slim-session/zipball/da8a3a7a5a5a15e2ac820ccd2d2d8a15daaddea2",
+                "reference": "da8a3a7a5a5a15e2ac820ccd2d2d8a15daaddea2",
+                "shasum": ""
+            },
+            "require": {
+                "slim/slim": "^4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0"
+            },
+            "time": "2020-07-02T08:27:26+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bryan Horna",
+                    "email": "bryanjhv@gmail.com",
+                    "homepage": "https://bryanjhv.github.io",
+                    "role": "developer"
+                }
+            ],
+            "description": "Session middleware and helper for Slim framework 4.",
+            "homepage": "https://github.com/bryanjhv/slim-session",
+            "keywords": [
+                "helper",
+                "middleware",
+                "session",
+                "slim"
+            ],
+            "support": {
+                "issues": "https://github.com/bryanjhv/slim-session/issues",
+                "source": "https://github.com/bryanjhv/slim-session.git"
+            },
+            "install-path": "../bryanjhv/slim-session"
+        },
+        {
             "name": "fig/http-message-util",
             "version": "1.1.5",
             "version_normalized": "1.1.5.0",

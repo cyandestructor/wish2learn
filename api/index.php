@@ -8,6 +8,13 @@
 
     $app = AppFactory::create();
     
+    $app->add(
+        new \Slim\Middleware\Session([
+            'name' => 'w2l_session',
+            'autorefresh' => true,
+            'lifetime' => '1 hour',
+        ])
+    );
     $app->addBodyParsingMiddleware();
     $app->addRoutingMiddleware();
     $errorMiddleware = $app->addErrorMiddleware(true, true, true);
@@ -16,6 +23,18 @@
 
     $app->get('/', function (Request $request, Response $response, $args) {
         $response->getBody()->write("Hello world!");
+        // Test session
+        $session = new \SlimSession\Helper();
+        $session->set('username', 'cyandestructor');
+        return $response;
+    });
+
+    $app->get('/testSession', function (Request $request, Response $response, $args) {
+        // Test session
+        $session = new \SlimSession\Helper();
+        $username = $session->get('username') ?? 'guest';
+        
+        $response->getBody()->write("Hello $username!");
         return $response;
     });
 

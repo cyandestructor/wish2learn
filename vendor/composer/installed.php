@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'e3ef9a472b5d4bea2d039a446ba5853d79cd5d06',
+    'reference' => 'e0f1526baf269dbe982bb1cae25ce87b5a7670b2',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,16 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'e3ef9a472b5d4bea2d039a446ba5853d79cd5d06',
+      'reference' => 'e0f1526baf269dbe982bb1cae25ce87b5a7670b2',
+    ),
+    'bryanjhv/slim-session' => 
+    array (
+      'pretty_version' => '4.1.0',
+      'version' => '4.1.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'da8a3a7a5a5a15e2ac820ccd2d2d8a15daaddea2',
     ),
     'fig/http-message-util' => 
     array (
