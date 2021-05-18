@@ -184,19 +184,18 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS UserLogin $$
 
 CREATE PROCEDURE UserLogin (
-	IN user_input NVARCHAR(60),
-    IN user_password VARCHAR(255)
+	IN user_input NVARCHAR(60)
 )
 BEGIN
 	SELECT
-		id_user,
-		username,
-		user_image,
-		user_role,
-		account_state
+		U.id_user,
+		U.username,
+		U.user_role,
+		U.account_state,
+        U.user_password
     FROM
-		Users
+		Users AS U
     WHERE
-		user_input IN (username, user_email) AND user_password = user_password;
+		user_input IN (U.username, U.user_email);
 END $$
 DELIMITER ;

@@ -187,5 +187,30 @@
 
             return $count;
         }
+
+        public function loginUser($input, $password)
+        {
+            $user = [];
+            $sql = 'CALL UserLogin(?)';
+
+            $statement = $this->connection->prepare($sql);
+            $statement->execute([
+                $input
+            ]);
+
+            if($row = $statement->fetch()){
+                $user['id'] = $row['id_user'];
+                $user['username'] = $row['username'];
+                $user['role'] = $row['user_role'];
+                $user['accountState'] = $row['account_state'];
+                $hashedPassword = $row['user_password'];
+
+                if(password_verify($password, $hashedPassword)){
+                    return $user;
+                }
+            }
+            
+            return null;
+        }
     }
     

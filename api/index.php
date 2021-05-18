@@ -23,18 +23,6 @@
 
     $app->get('/', function (Request $request, Response $response, $args) {
         $response->getBody()->write("Hello world!");
-        // Test session
-        $session = new \SlimSession\Helper();
-        $session->set('username', 'cyandestructor');
-        return $response;
-    });
-
-    $app->get('/testSession', function (Request $request, Response $response, $args) {
-        // Test session
-        $session = new \SlimSession\Helper();
-        $username = $session->get('username') ?? 'guest';
-        
-        $response->getBody()->write("Hello $username!");
         return $response;
     });
 
@@ -66,6 +54,20 @@
 
         $group->get('', W2l\Controllers\UsersController::class . ':checkUserExists');
         $group->post('', W2l\Controllers\UsersController::class . ':postUser');
+    });
+
+    // SESSION
+    $app->map(['GET', 'PUT', 'DELETE'], '/session', function ($request, $response, $args) {
+        $method = $request->getMethod();
+        switch ($method) {
+            case 'GET':
+                return W2l\Controllers\SessionController::getCurrent($request, $response, $args);
+            case 'PUT':
+                return W2l\Controllers\SessionController::login($request, $response, $args);
+            case 'DELETE':
+                return W2l\Controllers\SessionController::logout($request, $response, $args);
+        }
+        return $response;
     });
 
     // CATEGORIES
