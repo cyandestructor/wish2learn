@@ -4,6 +4,8 @@
     use Slim\Factory\AppFactory;
     use Slim\Routing\RouteCollectorProxy;
 
+    use W2l\VideoUpload\AzureBlobStorageVideoUploader;
+
     require __DIR__ . '/../vendor/autoload.php';
 
     $app = AppFactory::create();
@@ -203,6 +205,19 @@
 
     $app->put('/users/{userId:[0-9]+}/lessons/{lessonId:[0-9]+}',
         W2l\Controllers\LessonController::class . ':setCompleted');
+
+    // VIDEOS
+    $app->map(['GET', 'PUT'], '/lessons/{id:[0-9]+}/video', function ($request, $response, $args) {
+        $method = $request->getMethod();
+        $videoController = new W2l\Controllers\VideoController(new AzureBlobStorageVideoUploader());
+        switch ($method) {
+            case 'GET':
+                return $response;
+            case 'PUT':
+                return $videoController->putVideo($request, $response, $args);
+        }
+        return $response;
+    });
 
     // RESOURCES
     $app->map(['GET', 'DELETE'], '/resources/{id:[0-9]+}', function ($request, $response, $args) {
