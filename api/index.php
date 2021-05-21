@@ -219,7 +219,9 @@
         return $response;
     });
 
-    $app->delete('/videos/{id:[0-9]+}', W2l\Controllers\VideoController::class . ':deleteVideo');
+    $app->delete('/videos/{id:[0-9]+}', function (Request $request, Response $response, $args) {
+        return W2l\Controllers\VideoController::deleteVideo($request, $response, $args);
+    });
 
     // RESOURCES
     $app->map(['GET', 'DELETE'], '/resources/{id:[0-9]+}', function ($request, $response, $args) {
