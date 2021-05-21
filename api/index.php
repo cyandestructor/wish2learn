@@ -212,12 +212,14 @@
         $videoController = new W2l\Controllers\VideoController(new AzureBlobStorageVideoUploader());
         switch ($method) {
             case 'GET':
-                return $response;
+                return $videoController->getLessonVideo($request, $response, $args);
             case 'PUT':
-                return $videoController->putVideo($request, $response, $args);
+                return $videoController->putLessonVideo($request, $response, $args);
         }
         return $response;
     });
+
+    $app->delete('/videos/{id:[0-9]+}', W2l\Controllers\VideoController::class . ':deleteVideo');
 
     // RESOURCES
     $app->map(['GET', 'DELETE'], '/resources/{id:[0-9]+}', function ($request, $response, $args) {

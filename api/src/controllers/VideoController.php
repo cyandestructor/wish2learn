@@ -19,8 +19,10 @@
             $this->videoUploader = $videoUploader;
         }
 
-        public function putVideo(Request $request, Response $response, $args)
+        public function putLessonVideo(Request $request, Response $response, $args)
         {
+            $lessonID = $request->getAttribute('id');
+            
             $contentType = $request->getHeaderLine('Content-Type');
 
             $result = [];
@@ -36,7 +38,7 @@
 
             $videoUpload = new \W2l\VideoUpload\Video;
             
-            $videoName = "w2lvideo" . time();
+            $videoName = "lesson-$lessonID-video";
             $videoUpload->setName($videoName);
             $videoUpload->setData($videoContent->getContents());
             $videoUpload->setMimeType($contentType);
@@ -58,11 +60,54 @@
                             ->withStatus(500);
             }
 
-            $result['url'] = $uploadResult['url'];
+            $videoAddress = $uploadResult['url'];
+
+            $videoDAO = new VideoDAO(new MySQLDatabase());
+            
+            $video = new \W2l\Models\Dto\Video;
+            $video->lessonId = $lessonID;
+            $video->duration = 0; // TODO: Get the video duration
+            $video->address = $videoAddress;
+
+            $result['id'] = $videoDAO->addVideo($video);
+
             $response->getBody()->write(json_encode($result));
             return $response
-                        ->withHeader('Content-Type', 'application/json')
-                        ->withStatus(201);
+                        ->withHeader('Content-Type', 'application/json');
+        }
+
+        public function getLessonVideo(Request $request, Response $response, $args)
+        {
+            $lessonID = $request->getAttribute('id');
+
+            $videoDAO = new VideoDAO(new MySQLDatabase());
+
+            $video = $videoDAO->getLessonVideo($lessonID);
+
+            if(!$video){
+                return $response
+                            ->withStatus(404);
+            }
+
+            $result = [];
+
+            $result['id'] = $video->id;
+            $result['address'] = $video->address;
+            $result['duration'] = $video->duration;
+
+            $response->getBody()->write(json_encode($result));
+            return $response
+                        ->withHeader('Content-Type', 'application/json');
+        }
+
+        static public function deleteVideo(Request $request, Response $response, $args)
+        {
+            $videoID = $request->getAttribute('id');
+
+            $videoDAO = new VideoDAO(new MySQLDatabase());
+            $videoDAO->deleteVideo($videoID);
+
+            return $response;
         }
     }
     

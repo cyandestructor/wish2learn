@@ -93,6 +93,7 @@
                 $video->address = $row['video_address'];
                 $video->duration = $row['video_duration'];
                 $video->lessonId = $row['lesson_id'];
+                return $video;
             }
             else{
                 return null;
