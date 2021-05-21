@@ -29,6 +29,7 @@
             $result['id'] = $course->id;
             $result['title'] = $course->title;
             $result['description'] = $course->description;
+            $result['productId'] = $course->productId;
             $result['price'] = $course->price;
             $result['image'] = "/api/courses/$course->id/image";
             $result['instructorId'] = $course->instructorId;
@@ -106,6 +107,7 @@
                 $element['id'] = $course->id;
                 $element['title'] = $course->title;
                 $element['description'] = $course->description;
+                $element['productId'] = $course->productId;
                 $element['price'] = $course->price;
                 $element['image'] = "/api/courses/$course->id/image";
                 $element['instructorId'] = $course->instructorId;
@@ -206,6 +208,7 @@
             $courseData->title = $data['title'] ?? $original->title;
             $courseData->description = $data['description'] ?? $original->description;
             $courseData->price = $data['price'] ?? $original->price;
+            $courseData->published = $data['published'] ?? $original->published;
 
             $courseDAO->editCourse($courseData);
             
@@ -214,14 +217,16 @@
                 'id' => $original->id,
                 'title' => $original->title,
                 'description' => $original->description,
-                'price' => $original->price
+                'price' => $original->price,
+                'published' => (bool)$original->published
             ];
 
             $result['new'] = [
                 'id' => $courseData->id,
                 'title' => $courseData->title,
                 'description' => $courseData->description,
-                'price' => $courseData->price
+                'price' => $courseData->price,
+                'published' => (bool)$courseData->published
             ];
             
             $response->getBody()->write(json_encode($result));

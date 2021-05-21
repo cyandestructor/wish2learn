@@ -48,6 +48,7 @@
                 $course->id = $row['id_course'];
                 $course->title = $row['course_title'];
                 $course->description = $row['course_description'];
+                $course->productId = $row['product_id'];
                 $course->price = $row['course_price'];
                 $course->instructorId = $row['instructor_id'];
                 $course->instructorName = $row['instructor_name'];
@@ -113,6 +114,7 @@
                 $course->id = $row['id_course'];
                 $course->title = $row['course_title'];
                 $course->description = $row['course_description'];
+                $course->productId = $row['product_id'];
                 $course->price = $row['course_price'];
                 $course->instructorId = $row['instructor_id'];
                 $course->instructorName = $row['instructor_name'];
@@ -143,6 +145,7 @@
                 $course->id = $row['id_course'];
                 $course->title = $row['course_title'];
                 $course->description = $row['course_description'];
+                $course->productId = $row['product_id'];
                 $course->price = $row['course_price'];
                 $course->instructorId = $row['instructor_id'];
                 $course->instructorName = $row['instructor_name'];
@@ -173,6 +176,7 @@
                 $course->id = $row['id_course'];
                 $course->title = $row['course_title'];
                 $course->description = $row['course_description'];
+                $course->productId = $row['product_id'];
                 $course->price = $row['course_price'];
                 $course->instructorId = $row['instructor_id'];
                 $course->instructorName = $row['instructor_name'];
@@ -187,7 +191,7 @@
 
         public function editCourse(Course $course)
         {
-            $sql = 'CALL EditCourse(?, ?, ?, ?)';
+            $sql = 'CALL EditCourse(?, ?, ?, ?, b?)';
             
             $statement = $this->connection->prepare($sql);
             
@@ -195,7 +199,8 @@
                 $course->id,
                 $course->title,
                 $course->description,
-                $course->price
+                $course->price,
+                $course->published
             ]);
         }
 
@@ -286,6 +291,7 @@
                 $course->id = $row['id_course'];
                 $course->title = $row['course_title'];
                 $course->description = $row['course_description'];
+                $course->productId = $row['product_id'];
                 $course->price = $row['course_price'];
                 $course->instructorId = $row['instructor_id'];
                 $course->instructorName = $row['instructor_name'];
@@ -320,6 +326,7 @@
                 $course->id = $row['id_course'];
                 $course->title = $row['course_title'];
                 $course->description = $row['course_description'];
+                $course->productId = $row['product_id'];
                 $course->price = $row['course_price'];
                 $course->instructorId = $row['instructor_id'];
                 $course->instructorName = $row['instructor_name'];

@@ -8,6 +8,7 @@ AS
 		C.course_title,
 		C.course_description,
 		C.course_image,
+        C.product_id,
 		P.product_price AS course_price,
 		C.instructor_id,
         concat(U.account_name, ' ', U.account_lastname) as instructor_name,
