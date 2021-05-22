@@ -297,6 +297,7 @@
                 $course->instructorName = $row['instructor_name'];
                 $course->grade = $row['course_grade'];
                 $course->published = $row['published'];
+                $course->totalLessons = $row['total_lessons'];
 
                 $course->enrollDate = $row['enroll_date'];
                 $course->completedLessons = $row['completed_lessons'];

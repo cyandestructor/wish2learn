@@ -339,15 +339,10 @@ BEGIN
 		CI.instructor_id,
 		CI.instructor_name,
 		CI.course_grade,
-		CI.published,
+		CI.total_lessons,
+        CI.published,
         UC.enroll_date,
-        (SELECT
-			COUNT(*)
-		FROM
-			Users_Lessons AS UL
-            INNER JOIN CoursesLessons AS CL ON CL.id_lesson = UL.lesson_id
-		WHERE
-			CL.id_course = CI.id_course AND UL.lesson_completed = 1) AS completed_lessons
+        userLessonsCompleted(UC.user_id, CI.id_course) AS completed_lessons
 	FROM
 		CoursesInfo AS CI
         INNER JOIN Users_Courses AS UC ON UC.course_id = CI.id_course

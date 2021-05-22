@@ -48,14 +48,21 @@
                 $element['id'] = $course->id;
                 $element['title'] = $course->title;
                 $element['description'] = $course->description;
+                $element['productId'] = $course->productId;
                 $element['price'] = $course->price;
                 $element['image'] = "/api/courses/$course->id/image";
                 $element['instructorId'] = $course->instructorId;
-                $element['instrutorName'] = $course->instructorName;
+                $element['instructorName'] = $course->instructorName;
                 $element['grade'] = $course->grade;
+                $element['totalLessons'] = $course->totalLessons;
                 $element['published'] = (bool) $course->published;
                 $element['enrollDate'] = $course->enrollDate;
                 $element['completedLessons'] = $course->completedLessons;
+                
+                $element['completionRate'] =
+                    $course->totalLessons > 0 ?
+                    $course->completedLessons / $course->totalLessons : 0;
+                
                 $element['link'] = "/api/courses/$course->id";
 
                 $result[] = $element;
