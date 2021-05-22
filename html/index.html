@@ -6,7 +6,7 @@
 
     
     <link rel="stylesheet" href="/assets/css/carousel.css">
-    <link rel="stylesheet" href="/assets/css/barranav.css">
+      <link rel="stylesheet" href="/assets/css/barranav.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"> 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
    
@@ -26,38 +26,11 @@
            </form>
           <ul class="navbar-nav acomodaruls me-auto mb-2 mb-md-0">
             <li class="nav-item dropdown menu-area show active">
-              <a class="nav-link " href="#" id="mega-one" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categorias </a>
+              <a class="nav-link " id="mega-one" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> Categorias </a>
              
-              <div class="dropdown-menu mega-area" aria-labelledby="mega-one">
-                <div class="row">
-                  <div class="col-sm-6">
-                      <h4>Desarrollo</h4>
-                      <a href="#" class="dropdown-item">Desarrollo móvil</a>
-                      <a href="#" class="dropdown-item">Desarrollo de base de datos</a>
-                      <a href="#" class="dropdown-item">Subcategoria 1</a>
-                      <a href="#" class="dropdown-item">Subcategoria 1</a>
-                  </div>
-                  <div class="col-sm-6">
-                    <h4>Prueba 2</h4>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                  </div>
-                  <div class="col-sm-6">
-                    <h4>Prueba 3</h4>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                  </div>
-                  <div class="col-sm-6">
-                    <h4>Prueba 4</h4>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                    <a href="#" class="dropdown-item">Subcategoria 1</a>
-                  </div>
+              <div id="paddingMegaMenu" class="dropdown-menu mega-area" aria-labelledby="mega-one">
+                <div id="categoriasMegaMenu" class="row">
+                 <!-- Aqui se van a cargar las categorias -->
                 </div>  
               </div> <!-- dropdown-mega-menu.// -->
           </li>
@@ -596,9 +569,11 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="jquery3.min.js"></script>
-    <script src="js/plataforma-maestro.js"></script>
-    <script src="js/bootstrap.min.js" ></script>
+    <script type="module" src="/scripts/objects/getCategoriesMegaMenuDB.js"></script>
+
+    <script src="/scripts/js/jquery3.min.js"></script>
+    <script src="/scripts/js/plataforma-maestro.js"></script>
+    <script src="/scripts/js/bootstrap.min.js" ></script>
 <!-- Optional JavaScript; choose one of the two! -->
 
   

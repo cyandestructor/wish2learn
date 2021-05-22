@@ -1,0 +1,10 @@
+#escondercategorias{
+    display: none;
+}
+
+#categoriasDB{
+	height: 300px!important;
+}
+#esconderEliminarCategoria{
+	margin-bottom: 60px
+}

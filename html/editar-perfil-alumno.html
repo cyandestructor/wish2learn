@@ -141,17 +141,13 @@
                 <div class="form-row">
                   <div class="col-md-4 mb-3">
                     <label for="validationCustom01">First name</label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark" required>
-                    <div class="valid-feedback">
-                      Looks good!
-                    </div>
+                    <input type="text" class="form-control" id="nameUserDBinsert" placeholder="First name">
+                    
                   </div>
                   <div class="col-md-4 mb-3">
                     <label for="validationCustom02">Last name</label>
-                    <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="Otto" required>
-                    <div class="valid-feedback">
-                      Looks good!
-                    </div>
+                    <input type="text" class="form-control" id="lastNameUserDBinsert" placeholder="Last name">
+                    
                   </div>
                   <div class="col-md-4 mb-3">
                     <label for="validationCustomUsername">Username</label>
@@ -159,33 +155,29 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
                       </div>
-                      <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
-                      <div class="invalid-feedback">
-                        Please choose a username.
-                      </div>
+                      <input type="text" class="form-control" id="userNameDBinsert" placeholder="Username" aria-describedby="inputGroupPrepend">
+                      
                     </div>
                   </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="disabledTextInput">Correo electronico</label>
-                         
                         <div class="input-group ">
                           <fieldset class="tamano" disabled>
-                          <input type="text" id="disabledTextInput" class="form-control" placeholder="example@mail.com">  
+                          <input type="text" id="emailDBinsert" class="form-control" placeholder="example@mail.com">  
                           </fieldset>
-                          <div class="input-group-append">
-                            <button class="btn btn-success" type="submit">Go</button>
-                          </div>
+                          
                         </div>
                   </div>
                   <div class="form-group row">
+                     <label for="disabledTextInput">Contraseña</label>
                         <div class="input-group ">
                             <fieldset class="tamano" disabled>
-                            <input type="text" class="form-control" placeholder="Search">
+                            <input type="text" class="form-control" placeholder="Nueva contraseña">
                             </fieldset>
                             <div class="input-group-append">
-                              <button class="btn btn-success" type="submit">Go</button>
+                              <button class="btn btn-success" type="submit">Actualizar</button>
                             </div>
                           </div>
                   </div>
@@ -194,7 +186,7 @@
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
                         <label>Describete a ti mismo</label>
-                        <textarea class="form-control"  placeholder="Cuenta lo más interesante de ti" rows="3"></textarea>
+                        <textarea class="form-control" id="descripcionDB" placeholder="Cuenta lo más interesante de ti" rows="3"></textarea>
                       </div>
                   </div>
                 </div>
@@ -206,6 +198,8 @@
     <!-- TERMINA CARGAR IMAGENES-->
 
     <!-- Optional JavaScript -->
+
+    <script type="module" src="/scripts/objects/editarPerfil.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="/scripts/js/jquery3.min.js"></script>
     <script src="/scripts/js/mochilaextemporanea.js"></script>

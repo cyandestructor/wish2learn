@@ -92,9 +92,8 @@ ul{
 }
 
 .btn-primary{
-  background-color: #200042!important;
-    
-  /*background-color: #5B00BC!important;*/
+  /*background-color: #200042!important;*/
+  background-color: #5B00BC!important;
   
   border:none!important;
 }

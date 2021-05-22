@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"> 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-   
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
@@ -108,44 +108,36 @@
       </div>
     </nav>
 
+    <nav aria-label="...">
+      <ul class="pagination container marginarriba">
+        <li class="page-item ">
+          <a class="page-link" id="anteriorInformacion" href="#" tabindex="-1"> Anterior </a>
+        </li>
+        
+        <li class="page-item">
+          <a class="page-link" id="siguienteInformacion" href="#"> Siguiente </a>
+        </li>
+      </ul>
+    </nav>
+
+
     <div class="container marginarriba">
-        <div class="row">
-            <div class="col-md-4 cardsCategorias">
-              <a href="">
-                <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src="https://images.pexels.com/photos/6804581/pexels-photo-6804581.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Card image cap">
-                  <div class="card-body">
-                    <h4>Desarrollo Web</h4>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-md-4 cardsCategorias">
-              <a href="">
-                <div class="card" style="width: 18rem;">
-                  <img class="card-img-top" src="https://images.pexels.com/photos/6804581/pexels-photo-6804581.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Card image cap">
-                  <div class="card-body">
-                    <h4>Bases de datos</h4>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="col-md-4 cardsCategorias">
-                <a href="">
-                  <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src="https://images.pexels.com/photos/6804581/pexels-photo-6804581.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Card image cap">
-                    <div class="card-body">
-                      <h4>Diseño Web</h4>
-                    </div>
-                  </div>
-                </a>
-               
-            </div>
+        <div id="colocarAvisos" class="row">
+            
+        </div>
+       
+    </div>
+
+    <div class="container marginarriba">
+        <div id="insertaListaCategorias" class="row">
+            
         </div>
        
     </div>
     
-
+    
+    <script type="module" src="/scripts/objects/getCategoriesPageHtmlDB.js"></script>
+  
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="/scripts/js/jquery3.min.js"></script>

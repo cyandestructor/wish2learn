@@ -191,3 +191,6 @@ a.article:hover {
 .generadaautomaticamente{
     background-color: red!important;
 }
+#escondercategorias{
+    display: none;
+}

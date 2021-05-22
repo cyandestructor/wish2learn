@@ -10,3 +10,25 @@
     background-color: #200042;
    
 }
+.card {
+	
+}
+
+#insertaListaCategorias >.cardCategories{
+	background: red;
+}
+@media (min-width: 768px){
+.cardCategories {
+    position: relative;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+}
+

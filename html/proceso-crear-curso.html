@@ -368,29 +368,67 @@
                         rows="3"
                       ></textarea>
                     </div>
-                    <div class="col-md-4 hacerinline">
+                    <!--<div class="col-md-8 hacerinline">
                       <label for="inputState" class="form-label">Categoría</label>
-                      <select id="inputState" class="form-select">
+                      <select id="categoriasDB" class="form-select">
                         <option selected>Choose...</option>
-                        <option>Bases de datos</option>
-                        <option>Desarrollo</option>
-                        <option>Diseño y Arte</option>
-                        <option>Software</option>
-                        <option>Categoria 1</option>
+                      
                       </select>
-                    </div>
+                    </div>-->
+                     <div class="form-group">
+                        <label for="exampleFormControlSelect2">Elige una categoría</label>
+                        <select multiple class="form-control" id="categoriasDB">
+                          
+                        </select>
+                      </div>
                     <br>
+
+                    <nav aria-label="...">
+                      <ul class="pagination container marginarriba">
+                        <li class="page-item ">
+                          <a class="page-link" id="anteriorInformacionPCC" href="#" tabindex="-1"> Anterior </a>
+                        </li>
+                        
+                        <li class="page-item">
+                          <a class="page-link" id="siguienteInformacionPCC" href="#"> Siguiente </a>
+                        </li>
+                      </ul>
+                    </nav>
+                    <div id="colocarAvisos">
+                      
+                    </div>
                     <button type="button" id="anadircate" class="btn btn-primary" onclick="anadirCategoria(this)">
                       Crear mi categoria
                     </button>
                     <br>
                     <br>
+                    
                     <div id="courseErrors" style="color: tomato;">
                       <!-- Course Creation errors here -->
                     </div>
                     <button type="submit" class="btn btn-success">Guardar</button>
                   </form>
                 </div>
+                
+               <div id="escondercategorias" class=" container jumbotron col-md-6">
+                   <form id="addCategoryForm">
+                      <h6>Crea tu categoría</h6>
+                      <label for="formGroupExampleInput2" class="form-label">Nueva categoria</label>
+                      <input type="text" class="form-control" id="categoriaInput" placeholder="Nombre de categoría" name="name">
+                     <br>
+                     <label for="exampleFormControlTextarea1">Añade una descripción de la categoría</label>
+                      <input name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></input>
+                      <br>
+                      <button type="submit" id="guardarCategoria" class="btn btn-primary" onclick="anadirCategoriaListBox(this)">
+                         Guardar categoría
+                      </button>
+                      <div id="msjCategoryAdd" style="color: green;">
+                        
+                      </div>
+                    </form>
+                </div>
+               
+
               </div>
              <!-- este lo voy a cambiar </div>-->
           </div>
@@ -405,7 +443,10 @@
     <script src="/scripts/js/jquery3.min.js"></script>
     <script src="/scripts/js/bootstrap.min.js" ></script>
     
+    <script type="module" src="/scripts/objects/addCategoryDB_2.js" ></script> 
     <script src="/scripts/js/AnadirCategoria.js" ></script>
+    <script type="module" src="/scripts/objects/getCategoriesDB.js" ></script> 
+      
      <!--<script src="/scripts/js/proceso_crear_curso_op2.js" ></script>
    <script src="js/plataforma-maestro.js"></script>-->
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>

@@ -528,6 +528,12 @@ a.waves-effect, a.waves-light {
   background-color: #5B00BC;
 }
 
-.mega-area{
+#paddingMegaMenu{
   padding: 20px;
+}
+
+
+
+.dropdown:hover>.dropdown-menu {
+  display: block;
 }

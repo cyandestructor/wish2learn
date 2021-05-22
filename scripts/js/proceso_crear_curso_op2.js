@@ -419,8 +419,9 @@ function anadircatego() {
   anadir.setAttribute("class", "col-md-8 hacerinlines");
   anadir.innerHTML = `
     <h6>Crea tu categoria</h6>
-    <label for="formGroupExampleInput2" class="form-label">Nueva categoria</label>
+    <label for="formGroupExampleInput2" class="form-label">Nueva categoría</label>
     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input placeholder">
+    
     `;
 }
 

@@ -125,9 +125,8 @@
       <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active container" id="home" role="tabpanel" aria-labelledby="miscursosindex">
             <div class="container margintp">
-                <div class="jumbotron jumbosesioniniciada">
-                  <h4>Empecemos a aprender, Erika Rubi Aranda</h4>
-                  <h4>Perfil estudiante</h4>
+                <div id="chargeNameDB" class="jumbotron jumbosesioniniciada">
+                  
                 </div>
                
                 <div class="col-md-12">
@@ -431,7 +430,7 @@
                                         <div class="container">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <div class="card">
+                                                    <div class="cardinbox">
                                                         <div class="card-body bg-primary text-white mailbox-widget pb-0">
                                                             <h2 class="text-white pb-3">Your Mailbox</h2>
                                                             <ul class="nav nav-tabs custom-tab border-bottom-0 mt-4" id="myTab" role="tablist">
@@ -755,26 +754,26 @@
                         <div class="form-group row">
                             <label for="staticEmail" class="col-sm-2 col-form-label">Nombre</label>
                             <div class="col-sm-10">
-                              <input type="text" readonly class="form-control-plaintext" id="nombre" value="Erika Rubi">
+                              <input type="text" readonly class="form-control-plaintext" id="nameUserDBinsert" >
                             </div>
                           </div>
                           <div class="form-group row">
                             <label for="staticEmail" class="col-sm-2 col-form-label">Apellido</label>
                             <div class="col-sm-10">
-                              <input type="text" readonly class="form-control-plaintext" id="lastName" value="Aranda Ferrer">
+                              <input type="text" readonly class="form-control-plaintext" id="lastNameUserDBinsert">
                             </div>
                           </div>
                           <div class="form-group row">
-                            <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Descripción usuario</label>
+                            <label for="descripcionDB" class="col-sm-2 col-form-label">Descripción usuario</label>
                             <div class="col-sm-6">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" value="Aqui se coloca la descripción"></textarea>
+                                <textarea class="form-control" readonly id="descripcionDB" rows="3" value="Rellena la descripción"></textarea>
                          
                             </div>
                           </div>
                           <div class="form-group row">
                             <label for="staticEmail" class="col-sm-2 col-form-label">Nombre de usuario</label>
                             <div class="col-sm-6">
-                              <input type="text" readonly class="form-control-plaintext" id="nombreUser" value="erubidm1">
+                              <input type="text" readonly class="form-control-plaintext" id="userNameDBinsert">
                             </div>
                           </div>
                         <div class="form-group row">
@@ -795,14 +794,14 @@
                             <label for="staticEmail" class="col-sm-2 col-form-label">Rol actual (Alumno ó Maestro)</label>
                            
                             <div class="col-sm-10">
-                              <input type="text" readonly class="form-control-plaintext" id="actualRol" value="Estudiante">
+                              <input type="text" readonly class="form-control-plaintext" id="actualRolDB">
                             </div>
                           </div>
                           <div class="form-group row">
                             <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de la última actividad</label>
                            
                             <div class="col-sm-10">
-                              <input type="text" readonly class="form-control-plaintext" id="fechaActividad" value="05 Mayo 2021">
+                              <input type="text" readonly class="form-control-plaintext" id="fechaActividad" >
                             </div>
                           </div>
                       </form>
@@ -815,7 +814,8 @@
       <br>
 
      
-      
+    <script type="module" src="/scripts/objects/verPerfil.js"></script>
+    <script src="/scripts/objects/getUserDB.js"></script>
 
     <script src="/scripts/js/AnadirCalificacion.js" ></script>
     <script src="/scripts/js/ratingCourse.js"></script>
