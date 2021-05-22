@@ -38,13 +38,10 @@ eliminateCategoryForm.addEventListener('submit', function(e){
  	var endpoint1 = "http://localhost/api/categories/" + ID;
 
   var avisos = document.getElementById("msjCategoryAdd");
- 	alert("en donde borrare" +endpoint1);  
+ 	alert("en donde borrare" + endpoint1);  
     fetch(endpoint1, {
     method: 'DELETE',
-    body:JSON.stringify(ID),
-    headers: {
-        "Content-Type": "application/json",
-      }
+    body: ID
     })
       .then(function(response) {
             debugger
