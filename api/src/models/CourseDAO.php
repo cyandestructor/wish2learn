@@ -264,7 +264,7 @@
 
         public function deleteCategory($courseID, $categoryID)
         {
-            $sql = 'CALL DeleteCategory(?, ?)';
+            $sql = 'CALL DeleteCourseCategory(?, ?)';
             
             $statement = $this->connection->prepare($sql);
             
