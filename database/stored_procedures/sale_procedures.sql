@@ -36,6 +36,7 @@ BEGIN
 	SELECT
 		S.id_sale,
         S.product_id,
+        P.product_name,
         P.product_price,
         S.sale_date
 	FROM
@@ -43,5 +44,27 @@ BEGIN
         INNER JOIN Products AS P ON P.id_product = S.product_id
 	WHERE
 		S.seller_id = id_user;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS GetUserSalesResume $$
+
+CREATE PROCEDURE GetUserSalesResume (
+	IN id_user INT
+)
+BEGIN
+	SELECT
+        S.product_id,
+        P.product_name,
+        P.product_price,
+        SUM(P.product_price) AS total_sales
+	FROM
+		Sales AS S
+        INNER JOIN Products AS P ON P.id_product = S.product_id
+	WHERE
+		S.seller_id = id_user
+	GROUP BY
+		S.product_id, P.product_name, P.product_price;
 END $$
 DELIMITER ;

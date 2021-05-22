@@ -7,7 +7,9 @@
         public $sellerId;
         public $customerId;
         public $productId;
+        public $productName;
         public $productPrice;
+        public $productTotalSales;
         public $date;
     }
     

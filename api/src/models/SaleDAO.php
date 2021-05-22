@@ -49,8 +49,34 @@
 
                 $sale->id = $row['id_sale'];
                 $sale->productId = $row['product_id'];
+                $sale->productName = $row['product_name'];
                 $sale->productPrice = $row['product_price'];
                 $sale->date = $row['sale_date'];
+
+                $sales[] = $sale;
+            }
+
+            return $sales;
+        }
+
+        public function getUserSalesResume($userID)
+        {
+            $sales = [];
+
+            $sql = 'CALL GetUserSalesResume(?)';
+
+            $statement = $this->connection->prepare($sql);
+            $statement->execute([
+                $userID
+            ]);
+
+            while($row = $statement->fetch()){
+                $sale = new Sale();
+
+                $sale->productId = $row['product_id'];
+                $sale->productName = $row['product_name'];
+                $sale->productPrice = $row['product_price'];
+                $sale->productTotalSales = $row['total_sales'];
 
                 $sales[] = $sale;
             }

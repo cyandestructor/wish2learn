@@ -41,20 +41,42 @@
         {
             $userID = $request->getAttribute('id');
 
+            $queryParams = $request->getQueryParams();
+
+            $isResume = isset($queryParams['resume']) && strtolower($queryParams['resume']) == 'true';
+
             $saleDAO = new SaleDAO(new MySQLDatabase());
 
-            $sales = $saleDAO->getUserSales($userID);
+            $result;
 
+            if($isResume){
+                $sales = $saleDAO->getUserSalesResume($userID);
+                $result = SaleController::computeUsersSalesResume($sales);
+            }
+            else{
+                $sales = $saleDAO->getUserSales($userID);
+                $result = SaleController::computeUsersSales($sales);
+            }
+            
+            $response->getBody()->write(json_encode($result));
+            return $response
+                        ->withHeader('Content-Type', 'application/json');
+        }
+
+        static private function computeUsersSales($sales)
+        {
             $result = [];
 
             $totalSales = 0;
             $resultSales = [];
+
             foreach ($sales as $sale) {
                 $element = [];
 
                 $element['id'] = $sale->id;
                 $element['productId'] = $sale->productId;
                 $element['productPrice'] = $sale->productPrice;
+                $element['productName'] = $sale->productName;
                 $element['date'] = $sale->date;
 
                 $resultSales[] = $element;
@@ -65,9 +87,33 @@
             $result['totalSales'] = $totalSales;
             $result['sales'] = $resultSales;
 
-            $response->getBody()->write(json_encode($result));
-            return $response
-                        ->withHeader('Content-Type', 'application/json');
+            return $result;
+        }
+
+        static private function computeUsersSalesResume($sales)
+        {
+            $result = [];
+
+            $totalSales = 0;
+            $resultSales = [];
+
+            foreach ($sales as $sale) {
+                $element = [];
+
+                $element['productId'] = $sale->productId;
+                $element['productPrice'] = $sale->productPrice;
+                $element['productName'] = $sale->productName;
+                $element['productTotal'] = $sale->productTotalSales;
+
+                $resultSales[] = $element;
+
+                $totalSales += $sale->productTotalSales;
+            }
+
+            $result['totalSales'] = $totalSales;
+            $result['sales'] = $resultSales;
+
+            return $result;
         }
     }
     
