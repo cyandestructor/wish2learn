@@ -426,8 +426,8 @@ function anadircatego() {
 }
 
 function crearmassecciones(a) {
-  let cualbotonseccion = a.id;
-  numeracion = contador + 1;
+  let cualbotonseccion = a.id; //recibe el id de crea mas secciones
+  numeracion = contador + 1; //la primera vez contador debe valer 0
   var iddd = contador;
   contador = contador + 1;
 
@@ -436,7 +436,7 @@ function crearmassecciones(a) {
 
   /*const myCard2 = document.getElementById("agregandosecciones" + cualbotonseccion);*/
   var divNota = document.createElement("div");
-  divNota.setAttribute("id", "seccion" + numeracion);
+  divNota.setAttribute("id", "seccion" + numeracion); 
   divNota.setAttribute("class", "tags");
   division.appendChild(divNota);
   divNota.textContent = contenido;
