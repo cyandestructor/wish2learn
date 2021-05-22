@@ -13,6 +13,8 @@
     {
         static public function postComment(Request $request, Response $response, $args)
         {
+            $lessonID = $request->getAttribute('id');
+
             $contentType = $request->getHeaderLine('Content-Type');
             if(!$contentType || $contentType != 'application/json'){
                 return $response
@@ -27,9 +29,9 @@
 
             $comment = new Comment();
             $comment->userId = $data['userId'];
-            $comment->lessonId = $data['lessonId'];
+            $comment->lessonId = $lessonID;
             $comment->body = $data['body'];
-            $comment->parentId = $data['parentId'];
+            $comment->parentId = $data['parentId'] ?? null;
 
             $result['id'] = $commentDAO->createComment($comment);
             $response->getBody()->write(json_encode($result));
@@ -48,10 +50,10 @@
             $comments = [];
 
             if(isset($queryParams['userId'])){
-                $comments = $commentDAO->getLessonComments($lessonID);
+                $comments = $commentDAO->getUserLessonComments($lessonID, $queryParams['userId']);
             }
             else{
-                $comments = $commentDAO->getUserLessonComments($lessonID, $queryParams['userId']);
+                $comments = $commentDAO->getLessonComments($lessonID);
             }
 
             $result = [];
@@ -65,10 +67,10 @@
                 $element['upVotes'] = $comment->upVotes;
                 $element['date'] = $comment->date;
                 $element['parentId'] = $comment->parentId;
-                $element['published'] = $comment->published;
+                $element['published'] = (bool)$comment->published;
 
                 if(isset($queryParams['userId'])){
-                    $element['upVoted'] = $comment->upVotedByUser;
+                    $element['upVoted'] = (bool)$comment->upVotedByUser;
                 }
 
                 $result[] = $element;

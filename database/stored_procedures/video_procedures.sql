@@ -9,6 +9,11 @@ CREATE PROCEDURE AddVideo (
     IN lesson_id INT
 )
 BEGIN
+	DELETE FROM
+		Videos AS V
+    WHERE
+		V.lesson_id = lesson_id;
+
 	INSERT INTO Videos (
 		video_address,
         video_duration,

@@ -96,7 +96,7 @@
 
             // Section edition
             $sectionData = new Section();
-            $sectionData->id = $categoryID;
+            $sectionData->id = $sectionID;
             $sectionData->title = $data['title'];
             $sectionData->price = $data['price'];
             $sectionData->courseId = $original->courseId;
@@ -124,15 +124,14 @@
             
             $response->getBody()->write(json_encode($result));
             return $response
-                        ->withHeader('Content-Type', 'application/json')
-                        ->withStatus(201);
+                        ->withHeader('Content-Type', 'application/json');
         }
 
         static public function deleteSection(Request $request, Response $response, $args)
         {
             $sectionID = $request->getAttribute('id');
 
-            $sectionDAO = new CategoryDAO(new MySQLDatabase());
+            $sectionDAO = new SectionDAO(new MySQLDatabase());
             $sectionDAO->deleteSection($sectionID);
 
             return $response;
@@ -165,7 +164,7 @@
                 $element['price'] = $section->price;
                 $element['published'] = (bool) $section->published;
 
-                if(isset($queryParams['userId']){
+                if(isset($queryParams['userId'])){
                     $element['accessible'] = (bool) $section->accesible;
                 }
 
@@ -196,6 +195,7 @@
             $result['productId'] = $section->productId;
             $result['price'] = $section->price;
             $result['published'] = (bool) $section->published;
+            $result['courseId'] = $section->courseId;
 
             $response->getBody()->write(json_encode($result));
             return $response

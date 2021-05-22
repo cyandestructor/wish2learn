@@ -54,7 +54,7 @@
                 $message->senderName = $row['sender_name'];
                 $message->chatId = $row['chat_id'];
 
-                $messages[] = $category;
+                $messages[] = $message;
             }
 
             return $messages;

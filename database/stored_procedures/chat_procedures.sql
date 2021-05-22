@@ -25,11 +25,11 @@ BEGIN
 		chat_id
 	)
 	VALUES (
-		sender_id,
+		id_sender,
 		chat_id
 	),
 	(
-		receptor_id,
+		id_receptor,
 		chat_id
 	);
     

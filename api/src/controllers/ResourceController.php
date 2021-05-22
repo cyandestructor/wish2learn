@@ -60,7 +60,7 @@
             $resourceDAO = new ResourceDAO(new MySQLDatabase());
             $resource = $resourceDAO->getResource($resourceID);
 
-            if(!$resource){
+            if(!$resource || !$resource->content){
                 return $response
                             ->withStatus(404);
             }

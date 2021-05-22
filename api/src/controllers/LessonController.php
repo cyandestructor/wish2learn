@@ -108,20 +108,19 @@
                 'id' => $original->id,
                 'title' => $original->title,
                 'text' => $original->text,
-                'published' => $original->published
+                'published' => (bool)$original->published
             ];
 
             $result['new'] = [
                 'id' => $lessonData->id,
                 'title' => $lessonData->title,
                 'text' => $lessonData->text,
-                'published' => $lessonData->published
+                'published' => (bool)$lessonData->published
             ];
             
             $response->getBody()->write(json_encode($result));
             return $response
-                        ->withHeader('Content-Type', 'application/json')
-                        ->withStatus(201);
+                        ->withHeader('Content-Type', 'application/json');
         }
 
         static public function deleteLesson(Request $request, Response $response, $args)
@@ -129,7 +128,7 @@
             $lessonID = $request->getAttribute('id');
 
             $lessonDAO = new LessonDAO(new MySQLDatabase());
-            $lessonDAO->deleteCategory($lessonID);
+            $lessonDAO->deleteLesson($lessonID);
 
             return $response;
         }
@@ -185,7 +184,7 @@
                 $element['title'] = $lesson->title;
                 $element['published'] = (bool) $lesson->published;
                 $element['duration'] = $lesson->duration;
-                $element['sectionId'] = $lesson->sectionId;
+                $element['link'] = "/api/lessons/$lesson->id";
 
                 if(isset($queryParams['userId'])){
                     $element['completed'] = (bool) $lesson->completed;
@@ -197,6 +196,29 @@
             $response->getBody()->write(json_encode($result));
             return $response
                         ->withHeader('Content-Type', 'application/json');
+        }
+
+        static public function setCompleted(Request $request, Response $response, $args)
+        {
+            $userID = $request->getAttribute('userId');
+            $lessonID = $request->getAttribute('lessonId');
+
+            $queryParams = $request->getQueryParams();
+
+            if(!isset($queryParams['completed'])){
+                $response->getBody()->write(json_encode(['message' => 'Parameter "completed" must be specified']));
+                return $response
+                            ->withHeader('Content-Type', 'application/json')
+                            ->withStatus(400);
+            }
+
+            $lessonDAO = new LessonDAO(new MySQLDatabase());
+
+            $completed = strtolower($queryParams['completed']) == 'true' ? true : false;
+
+            $lessonDAO->setLessonCompleted($userID, $lessonID, $completed);
+
+            return $response;
         }
     }
     

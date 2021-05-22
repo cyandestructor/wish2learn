@@ -13,6 +13,8 @@
     {
         static public function postMessage(Request $request, Response $response, $args)
         {
+            $chatID = $request->getAttribute('id');
+
             $contentType = $request->getHeaderLine('Content-Type');
             if(!$contentType || $contentType != 'application/json'){
                 return $response
@@ -27,7 +29,7 @@
 
             $message = new Message();
             $message->senderId = $data['senderId'];
-            $message->chatId = $data['chatId'];
+            $message->chatId = $chatID;
             $message->body = $data['body'];
 
             $result['id'] = $messageDAO->createMessage($message);

@@ -81,7 +81,7 @@ BEGIN
         C.course_title
 	FROM
 		Certificates AS C
-        INNER JOIN Users_Certificates AS UC ON UC.certificate_id = U.id_certificate
+        INNER JOIN Users_Certificates AS UC ON UC.certificate_id = C.id_certificate
 	WHERE
 		UC.user_id = id_user;
 END $$

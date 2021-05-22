@@ -200,5 +200,66 @@
             return $response
                         ->withHeader('Content-Type', $avatar['contentType']);
         }
+
+        static public function deleteUser(Request $request, Response $response, $args)
+        {
+            $userID = $request->getAttribute('id');
+
+            $userDAO = new UserDAO(new MySQLDatabase());
+            $userDAO->deleteUser($userID);
+
+            return $response;
+        }
+
+        static public function checkUserExists(Request $request, Response $response, $args)
+        {
+            $queryParams = $request->getQueryParams();
+
+            $username = $queryParams['username'] ?? '';
+            $email = $queryParams['email'] ?? '';
+
+            $userDAO = new UserDAO(new MySQLDatabase());
+
+            $count = $userDAO->checkUser($username, $email);
+
+            if($count <= 0){
+                return $response
+                            ->withStatus(404);
+            }
+
+            return $response;
+        }
+
+        static public function getCourseEnrolledUsers(Request $request, Response $response, $args)
+        {
+            $courseID = $request->getAttribute('id');
+            
+            $userDAO = new UserDAO(new MySQLDatabase());
+
+            $users = $userDAO->getCourseEnrolledUsers($courseID);
+
+            $result = [];
+            foreach ($users as $user) {
+                $element = [];
+                
+                $userID = $user['id'];
+                $element['id'] = $userID;
+                $element['username'] = $user['username'];
+                $element['name'] = $user['name'];
+                $element['lastname'] = $user['lastname'];
+                $element['avatar'] = "/api/users/$userID/avatar";
+                $element['enrollDate'] = $user['enrollDate'];
+                $element['completionRate'] =
+                    $user['courseTotalLessons'] > 0 ?
+                    $user['lessonsCompleted'] / $user['courseTotalLessons'] : 0;
+                $element['link'] = "/api/users/$userID";
+
+                $result[] = $element;
+            }
+
+            $response->getBody()->write(json_encode($result));
+            return $response
+                        ->withHeader('Content-Type', 'application/json');
+        }
     }
     

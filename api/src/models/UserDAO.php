@@ -145,5 +145,100 @@
                 die(json_encode(array('message' => 'A database method failed')));
             }
         }
+
+        public function deleteUser($userID)
+        {
+            $sql = 'CALL DeleteUser(?)';
+            
+            $statement = $this->connection->prepare($sql);
+            
+            $statement->execute([
+                $userID
+            ]);
+        }
+
+        public function enrollUser($userID, $courseID)
+        {
+            $sql = 'CALL EnrollUser(?, ?)';
+            
+            $statement = $this->connection->prepare($sql);
+            
+            $statement->execute([
+                $userID,
+                $courseID
+            ]);
+        }
+
+        public function checkUser($username, $email)
+        {
+            $count = 0;
+
+            $sql = 'CALL UserExists(?, ?)';
+            
+            $statement = $this->connection->prepare($sql);
+            
+            $statement->execute([
+                $username,
+                $email
+            ]);
+
+            $statement->bindColumn(1, $count, \PDO::PARAM_INT);
+            $statement->fetch(\PDO::FETCH_BOUND);
+
+            return $count;
+        }
+
+        public function loginUser($input, $password)
+        {
+            $user = [];
+            $sql = 'CALL UserLogin(?)';
+
+            $statement = $this->connection->prepare($sql);
+            $statement->execute([
+                $input
+            ]);
+
+            if($row = $statement->fetch()){
+                $user['id'] = $row['id_user'];
+                $user['username'] = $row['username'];
+                $user['role'] = $row['user_role'];
+                $user['accountState'] = $row['account_state'];
+                $hashedPassword = $row['user_password'];
+
+                if(password_verify($password, $hashedPassword)){
+                    return $user;
+                }
+            }
+            
+            return null;
+        }
+
+        public function getCourseEnrolledUsers($courseID)
+        {
+            $users = [];
+
+            $sql = 'CALL GetCourseEnrolledUsers(?)';
+
+            $statement = $this->connection->prepare($sql);
+            $statement->execute([
+                $courseID
+            ]);
+
+            while($row = $statement->fetch()){
+                $user = [];
+
+                $user['id'] = $row['id_user'];
+                $user['username'] = $row['username'];
+                $user['name'] = $row['account_name'];
+                $user['lastname'] = $row['account_lastname'];
+                $user['enrollDate'] = $row['enroll_date'];
+                $user['courseTotalLessons'] = $row['course_total_lessons'];
+                $user['lessonsCompleted'] = $row['lessons_completed'];
+
+                $users[] = $user;
+            }
+
+            return $users;
+        }
     }
     

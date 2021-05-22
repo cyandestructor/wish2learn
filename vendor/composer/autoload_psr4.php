@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'W2l\\VideoUpload\\' => array($baseDir . '/api/src/classes/videoUpload'),
     'W2l\\Validators\\' => array($baseDir . '/api/src/validators'),
     'W2l\\Models\\Dto\\' => array($baseDir . '/api/src/models'),
     'W2l\\Models\\' => array($baseDir . '/api/src/models'),
@@ -17,7 +18,14 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Http\\Server\\' => array($vendorDir . '/psr/http-server-handler/src', $vendorDir . '/psr/http-server-middleware/src'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-factory/src', $vendorDir . '/psr/http-message/src'),
+    'Psr\\Http\\Client\\' => array($vendorDir . '/psr/http-client/src'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
+    'MicrosoftAzure\\Storage\\Common\\' => array($vendorDir . '/microsoft/azure-storage-common/src/Common'),
+    'MicrosoftAzure\\Storage\\Blob\\' => array($vendorDir . '/microsoft/azure-storage-blob/src/Blob'),
+    'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
+    'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
+    'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
     'Fig\\Http\\Message\\' => array($vendorDir . '/fig/http-message-util/src'),
     'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
+    '' => array($vendorDir . '/bryanjhv/slim-session/src'),
 );

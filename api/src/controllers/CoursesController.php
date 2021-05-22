@@ -29,6 +29,7 @@
             $result['id'] = $course->id;
             $result['title'] = $course->title;
             $result['description'] = $course->description;
+            $result['productId'] = $course->productId;
             $result['price'] = $course->price;
             $result['image'] = "/api/courses/$course->id/image";
             $result['instructorId'] = $course->instructorId;
@@ -81,7 +82,16 @@
 
             $offset = ($page - 1) * $limit;
 
-            $orderBy = $queryParams['orderBy'] ?? 'none';
+            $orderBy = $queryParams['orderBy'] ?? null;
+
+            if($orderBy && !in_array($orderBy, ['sales', 'publication', 'rate'])){
+                $response->getBody()->write(json_encode([
+                    'message' => 'Parameter "orderBy" is invalid'
+                ]));
+                return $response
+                            ->withHeader('Content-Type', 'application/json')
+                            ->withStatus(400);
+            }
 
             $courseDAO = new CourseDAO(new MySQLDatabase());
 
@@ -97,6 +107,7 @@
                 $element['id'] = $course->id;
                 $element['title'] = $course->title;
                 $element['description'] = $course->description;
+                $element['productId'] = $course->productId;
                 $element['price'] = $course->price;
                 $element['image'] = "/api/courses/$course->id/image";
                 $element['instructorId'] = $course->instructorId;
@@ -197,28 +208,30 @@
             $courseData->title = $data['title'] ?? $original->title;
             $courseData->description = $data['description'] ?? $original->description;
             $courseData->price = $data['price'] ?? $original->price;
+            $courseData->published = $data['published'] ?? $original->published;
 
-            $courseDAO->createCourse($courseData);
+            $courseDAO->editCourse($courseData);
             
             // Prepare the return data
             $result['old'] = [
                 'id' => $original->id,
                 'title' => $original->title,
                 'description' => $original->description,
-                'price' => $original->price
+                'price' => $original->price,
+                'published' => (bool)$original->published
             ];
 
             $result['new'] = [
                 'id' => $courseData->id,
                 'title' => $courseData->title,
                 'description' => $courseData->description,
-                'price' => $courseData->price
+                'price' => $courseData->price,
+                'published' => (bool)$courseData->published
             ];
             
             $response->getBody()->write(json_encode($result));
             return $response
-                        ->withHeader('Content-Type', 'application/json')
-                        ->withStatus(201);
+                        ->withHeader('Content-Type', 'application/json');
         }
 
         static public function putCourseImage(Request $request, Response $response, $args)
@@ -263,7 +276,7 @@
             $courseDAO = new CourseDAO(new MySQLDatabase());
             $data = $courseDAO->getCourseImage($courseID);
 
-            if(!$data){
+            if(!$data || !$data->image){
                 return $response->withStatus(404);
             }
 
@@ -280,6 +293,70 @@
             $courseDAO->deleteCourse($courseID);
 
             return $response;
+        }
+
+        static public function addCourseCategory(Request $request, Response $response, $args)
+        {
+            $contentType = $request->getHeaderLine('Content-Type');
+            if(!$contentType || $contentType != 'application/json'){
+                return $response
+                            ->withStatus(415);
+            }
+
+            $data = $request->getParsedBody();
+
+            $courseID = $request->getAttribute('id');
+
+            $courseDAO = new CourseDAO(new MySQLDatabase());
+            $courseDAO->addCategory($courseID, $data['categoryId']);
+
+            return $response
+                        ->withStatus(201);
+        }
+
+        static public function deleteCourseCategory(Request $request, Response $response, $args)
+        {
+            $courseID = $request->getAttribute('id');
+            $categoryID = $request->getAttribute('categoryId');
+            
+            $courseDAO = new CourseDAO(new MySQLDatabase());
+            $courseDAO->deleteCategory($courseID, $categoryID);
+
+            return $response;
+        }
+
+        static public function getUserCourses(Request $request, Response $response, $args)
+        {
+            $userID = $request->getAttribute('id');
+            $queryParams = $request->getQueryParams();
+
+            $onlyPublished = isset($queryParams['public']) && strtolower($queryParams['public']) == 'true';
+
+            $courseDAO = new CourseDAO(new MySQLDatabase());
+
+            $courses = $courseDAO->getUserCourses($userID, $onlyPublished);
+
+            $result = [];
+            foreach ($courses as $course) {
+                $element = [];
+                $element['id'] = $course->id;
+                $element['title'] = $course->title;
+                $element['description'] = $course->description;
+                $element['productId'] = $course->productId;
+                $element['price'] = $course->price;
+                $element['image'] = "/api/courses/$course->id/image";
+                $element['instructorId'] = $course->instructorId;
+                $element['instrutorName'] = $course->instructorName;
+                $element['grade'] = $course->grade;
+                $element['published'] = (bool) $course->published;
+                $element['link'] = "/api/courses/$course->id";
+
+                $result[] = $element;
+            }
+
+            $response->getBody()->write(json_encode($result));
+            return $response
+                        ->withHeader('Content-Type', 'application/json');
         }
     }
     

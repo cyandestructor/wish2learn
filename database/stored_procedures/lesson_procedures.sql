@@ -72,22 +72,6 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
-DROP PROCEDURE IF EXISTS HideLesson $$
-
-CREATE PROCEDURE HideLesson (
-	IN id_lesson INT,
-    IN hide BIT
-)
-BEGIN
-	UPDATE Lessons
-    SET
-		published = hide
-    WHERE
-		id_lesson = id_lesson;
-END $$
-DELIMITER ;
-
-DELIMITER $$
 DROP PROCEDURE IF EXISTS SetLessonCompleted $$
 
 CREATE PROCEDURE SetLessonCompleted (
@@ -96,7 +80,14 @@ CREATE PROCEDURE SetLessonCompleted (
     IN completed BIT
 )
 BEGIN
-	IF EXISTS(SELECT UL.id_user_lesson FROM Users_Lessons AS UL WHERE UL.user_id = id_user AND UL.lesson_id = id_lesson) THEN
+	IF EXISTS(
+		SELECT
+			UL.id_user_lesson
+		FROM
+			Users_Lessons AS UL
+        WHERE
+			UL.user_id = id_user AND UL.lesson_id = id_lesson
+	) THEN
 		UPDATE Users_Lessons AS UL
 		SET
 			UL.lesson_completed = completed

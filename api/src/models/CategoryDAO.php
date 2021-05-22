@@ -117,7 +117,7 @@
             while($row = $statement->fetch()){
                 $category = new Category();
 
-                $category->id = $row['id_category'];
+                $category->id = $row['category_id'];
                 $category->name = $row['category_name'];
                 $category->description = $row['category_description'];
 

@@ -40,7 +40,7 @@ BEGIN
 		CURRENT_TIMESTAMP()
     );
     
-    SELECT product_id;
+    SELECT LAST_INSERT_ID();
 END $$
 DELIMITER ;
 
@@ -51,13 +51,15 @@ CREATE PROCEDURE EditCourse (
 	IN id_course INT,
 	IN course_title NVARCHAR(70),
     IN course_description TEXT,
-    IN course_price DECIMAL(15, 2)
+    IN course_price DECIMAL(15, 2),
+    IN published BIT
 )
 BEGIN
 	UPDATE Courses AS C
     SET
 		C.course_title = course_title,
-		C.course_description = course_description
+		C.course_description = course_description,
+        C.published = published
 	WHERE
 		C.id_course = id_course;
         
@@ -131,6 +133,7 @@ BEGIN
 			CI.id_course,
 			CI.course_title,
 			CI.course_description,
+            CI.product_id,
 			CI.course_price,
 			CI.instructor_id,
             CI.instructor_name,
@@ -145,6 +148,7 @@ BEGIN
 			CI.id_course,
 			CI.course_title,
 			CI.course_description,
+            CI.product_id,
 			CI.course_price,
 			CI.instructor_id,
             CI.instructor_name,
@@ -168,6 +172,7 @@ BEGIN
 		CI.id_course,
 		CI.course_title,
 		CI.course_description,
+        CI.product_id,
 		CI.course_price,
 		CI.instructor_id,
 		CI.instructor_name,
@@ -198,6 +203,7 @@ BEGIN
 		CI.id_course,
 		CI.course_title,
 		CI.course_description,
+        CI.product_id,
 		CI.course_price,
 		CI.instructor_id,
 		CI.instructor_name,
@@ -228,6 +234,7 @@ BEGIN
 		CI.id_course,
 		CI.course_title,
 		CI.course_description,
+        CI.product_id,
 		CI.course_price,
 		CI.instructor_id,
 		CI.instructor_name,
@@ -257,6 +264,7 @@ BEGIN
 		CI.id_course,
 		CI.course_title,
 		CI.course_description,
+        CI.product_id,
 		CI.course_price,
 		CI.instructor_id,
         CI.instructor_name,
@@ -286,6 +294,7 @@ BEGIN
 			CI.id_course,
 			CI.course_title,
 			CI.course_description,
+            CI.product_id,
 			CI.course_price,
 			CI.instructor_id,
             CI.instructor_name,
@@ -300,6 +309,7 @@ BEGIN
 			CI.id_course,
 			CI.course_title,
 			CI.course_description,
+            CI.product_id,
 			CI.course_price,
 			CI.instructor_id,
             CI.instructor_name,
@@ -324,20 +334,15 @@ BEGIN
 		CI.id_course,
 		CI.course_title,
 		CI.course_description,
+        CI.product_id,
 		CI.course_price,
 		CI.instructor_id,
 		CI.instructor_name,
 		CI.course_grade,
 		CI.total_lessons,
-		CI.published,
+        CI.published,
         UC.enroll_date,
-        (SELECT
-			COUNT(*)
-		FROM
-			Users_Lessons AS UL
-            INNER JOIN CoursesLessons AS CL ON CL.id_lesson = UL.lesson_id
-		WHERE
-			CL.id_course = CI.id_course) AS completed_lessons
+        userLessonsCompleted(UC.user_id, CI.id_course) AS completed_lessons
 	FROM
 		CoursesInfo AS CI
         INNER JOIN Users_Courses AS UC ON UC.course_id = CI.id_course
@@ -350,13 +355,16 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS SearchCourses $$
 
 CREATE PROCEDURE SearchCourses (
-	IN search_input TINYTEXT
+	IN search_input TINYTEXT,
+    IN total_rows INT,
+    IN row_offset INT
 )
 BEGIN
 	SELECT
 		CI.id_course,
 		CI.course_title,
 		CI.course_description,
+        CI.product_id,
 		CI.course_price,
 		CI.instructor_id,
 		CI.instructor_name,
@@ -379,11 +387,14 @@ BEGIN
 				Courses AS C
 				INNER JOIN Users AS U ON U.id_user = C.instructor_id
 			WHERE
-				MATCH(C.course_title, U.username, U.account_name, U.account_lastname)
-                AGAINST(search_input IN NATURAL LANGUAGE MODE)) AS ids
+				MATCH(C.course_title)
+                AGAINST(search_input IN NATURAL LANGUAGE MODE) OR
+                search_input IN (U.username, U.account_name, U.account_lastname)) AS ids
 		GROUP BY
 			ids.course_id) AS results
-		INNER JOIN CoursesInfo AS CI ON CI.id_course = results.course_id;
+		INNER JOIN CoursesInfo AS CI ON CI.id_course = results.course_id
+	LIMIT total_rows
+    OFFSET row_offset;
 END $$
 DELIMITER ;
 
@@ -414,8 +425,8 @@ CREATE PROCEDURE DeleteCategory (
     IN id_category INT
 )
 BEGIN
-	DELETE FROM Courses_Categories
+	DELETE FROM Courses_Categories AS CC
     WHERE
-		id_course = id_course AND id_category = id_category;
+		CC.course_id = id_course AND CC.category_id = id_category;
 END $$
 DELIMITER ;

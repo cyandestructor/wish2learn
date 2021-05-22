@@ -48,6 +48,7 @@
                 $course->id = $row['id_course'];
                 $course->title = $row['course_title'];
                 $course->description = $row['course_description'];
+                $course->productId = $row['product_id'];
                 $course->price = $row['course_price'];
                 $course->instructorId = $row['instructor_id'];
                 $course->instructorName = $row['instructor_name'];
@@ -61,6 +62,8 @@
             else{
                 return null;
             }
+
+            return $course;
         }
 
         public function getCourses($configuration)
@@ -78,13 +81,13 @@
             $orderBy = $configuration['orderBy'] ?? null;
 
             if(!$orderBy){
-                return null;
+                return $this->getCoursesByPublication($limit, $offset);
             }
 
             switch (strtolower($orderBy)) {
                 case 'rate':
                     return $this->getCoursesByRate($limit, $offset);
-                case 'sells':
+                case 'sales':
                     return $this->getCoursesBySells($limit, $offset);
                 case 'publication':
                     return $this->getCoursesByPublication($limit, $offset);
@@ -111,6 +114,7 @@
                 $course->id = $row['id_course'];
                 $course->title = $row['course_title'];
                 $course->description = $row['course_description'];
+                $course->productId = $row['product_id'];
                 $course->price = $row['course_price'];
                 $course->instructorId = $row['instructor_id'];
                 $course->instructorName = $row['instructor_name'];
@@ -141,6 +145,7 @@
                 $course->id = $row['id_course'];
                 $course->title = $row['course_title'];
                 $course->description = $row['course_description'];
+                $course->productId = $row['product_id'];
                 $course->price = $row['course_price'];
                 $course->instructorId = $row['instructor_id'];
                 $course->instructorName = $row['instructor_name'];
@@ -171,6 +176,7 @@
                 $course->id = $row['id_course'];
                 $course->title = $row['course_title'];
                 $course->description = $row['course_description'];
+                $course->productId = $row['product_id'];
                 $course->price = $row['course_price'];
                 $course->instructorId = $row['instructor_id'];
                 $course->instructorName = $row['instructor_name'];
@@ -185,7 +191,7 @@
 
         public function editCourse(Course $course)
         {
-            $sql = 'CALL EditCourse(?, ?, ?, ?)';
+            $sql = 'CALL EditCourse(?, ?, ?, ?, b?)';
             
             $statement = $this->connection->prepare($sql);
             
@@ -193,7 +199,8 @@
                 $course->id,
                 $course->title,
                 $course->description,
-                $course->price
+                $course->price,
+                $course->published
             ]);
         }
 
@@ -241,6 +248,127 @@
             $statement->execute([
                 $courseID
             ]);
+        }
+
+        public function addCategory($courseID, $categoryID)
+        {
+            $sql = 'CALL AddCategory(?, ?)';
+            
+            $statement = $this->connection->prepare($sql);
+            
+            $statement->execute([
+                $courseID,
+                $categoryID
+            ]);
+        }
+
+        public function deleteCategory($courseID, $categoryID)
+        {
+            $sql = 'CALL DeleteCategory(?, ?)';
+            
+            $statement = $this->connection->prepare($sql);
+            
+            $statement->execute([
+                $courseID,
+                $categoryID
+            ]);
+        }
+
+        public function getUserEnrolledCourses($userID)
+        {
+            $courses = [];
+
+            $sql = 'CALL GetUserEnrolledCourses(?)';
+
+            $statement = $this->connection->prepare($sql);
+            $statement->execute([
+                $userID
+            ]);
+
+            while($row = $statement->fetch()){
+                $course = new Course();
+
+                $course->id = $row['id_course'];
+                $course->title = $row['course_title'];
+                $course->description = $row['course_description'];
+                $course->productId = $row['product_id'];
+                $course->price = $row['course_price'];
+                $course->instructorId = $row['instructor_id'];
+                $course->instructorName = $row['instructor_name'];
+                $course->grade = $row['course_grade'];
+                $course->published = $row['published'];
+                $course->totalLessons = $row['total_lessons'];
+
+                $course->enrollDate = $row['enroll_date'];
+                $course->completedLessons = $row['completed_lessons'];
+
+                $courses[] = $course;
+            }
+
+            return $courses;
+        }
+
+        public function getResultCourses($query, $limit, $offset)
+        {
+            $courses = [];
+
+            $sql = 'CALL SearchCourses(?, ?, ?)';
+
+            $statement = $this->connection->prepare($sql);
+            $statement->execute([
+                $query,
+                $limit,
+                $offset
+            ]);
+
+            while($row = $statement->fetch()){
+                $course = new Course();
+
+                $course->id = $row['id_course'];
+                $course->title = $row['course_title'];
+                $course->description = $row['course_description'];
+                $course->productId = $row['product_id'];
+                $course->price = $row['course_price'];
+                $course->instructorId = $row['instructor_id'];
+                $course->instructorName = $row['instructor_name'];
+                $course->grade = $row['course_grade'];
+                $course->published = $row['published'];
+
+                $courses[] = $course;
+            }
+
+            return $courses;
+        }
+
+        public function getUserCourses($userID, $onlyPublished)
+        {
+            $courses = [];
+
+            $sql = 'CALL GetUserCourses(?, b?)';
+
+            $statement = $this->connection->prepare($sql);
+            $statement->execute([
+                $userID,
+                $onlyPublished
+            ]);
+
+            while($row = $statement->fetch()){
+                $course = new Course();
+
+                $course->id = $row['id_course'];
+                $course->title = $row['course_title'];
+                $course->description = $row['course_description'];
+                $course->productId = $row['product_id'];
+                $course->price = $row['course_price'];
+                $course->instructorId = $row['instructor_id'];
+                $course->instructorName = $row['instructor_name'];
+                $course->grade = $row['course_grade'];
+                $course->published = $row['published'];
+
+                $courses[] = $course;
+            }
+
+            return $courses;
         }
     }
     

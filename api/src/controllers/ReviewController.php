@@ -22,16 +22,18 @@
             $result = [];
             $data = $request->getParsedBody();
 
+            $courseID = $request->getAttribute('id');
+
             // Review creation
             $reviewDAO = new ReviewDAO(new MySQLDatabase());
 
             $review = new Review();
             $review->body = $data['body'];
-            $review->courseID = $data['courseId'];
+            $review->courseID = $courseID;
             $review->userID = $data['userId'];
             $review->rate = $data['rate'];
 
-            $result['id'] = $reviewDAO->createReview($category);
+            $result['id'] = $reviewDAO->createReview($review);
             $response->getBody()->write(json_encode($result));
             return $response
                         ->withHeader('Content-Type', 'application/json')
@@ -67,7 +69,7 @@
 
             // Review edition
             $reviewData = new Review();
-            $reviewData->id = $data['id'] ?? $original->id;
+            $reviewData->id = $reviewID;
             $reviewData->body = $data['body'] ?? $original->body;
             $reviewData->rate = $data['rate'] ?? $original->rate;
             $reviewData->published = $data['published'] ?? $original->published;
@@ -76,23 +78,22 @@
 
             // Prepare the return data
             $result['old'] = [
-                'id' = $original->id,
-                'body' = $original->body,
-                'rate' = $original->rate,
-                'published' = $original->published
+                'id' => $original->id,
+                'body' => $original->body,
+                'rate' => $original->rate,
+                'published' => (bool)$original->published
             ];
 
             $result['new'] = [
-                'id' = $reviewData->id,
-                'body' = $reviewData->body,
-                'rate' = $reviewData->rate,
-                'published' = $reviewData->published
+                'id' => $reviewData->id,
+                'body' => $reviewData->body,
+                'rate' => $reviewData->rate,
+                'published' => (bool)$reviewData->published
             ];
             
             $response->getBody()->write(json_encode($result));
             return $response
-                        ->withHeader('Content-Type', 'application/json')
-                        ->withStatus(201);
+                        ->withHeader('Content-Type', 'application/json');
         }
 
         static public function getCourseReviews(Request $request, Response $response, $args)
@@ -177,7 +178,7 @@
             $result['userName'] = $review->userName;
             $result['courseId'] = $review->courseId;
             $result['rate'] = $review->rate;
-            $result['published'] = $review->published;
+            $result['published'] = (bool)$review->published;
 
             $response->getBody()->write(json_encode($result));
             return $response
