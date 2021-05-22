@@ -249,3 +249,16 @@ CREATE TABLE Users_Upvotes (
     FOREIGN KEY (user_id) REFERENCES Users (id_user) ON DELETE CASCADE,
     FOREIGN KEY (comment_id) REFERENCES Comments (id_comment) ON DELETE CASCADE
 );
+
+CREATE TABLE Sales (
+	id_sale INT NOT NULL AUTO_INCREMENT,
+    seller_id INT NOT NULL,
+    customer_id INT,
+    product_id INT NOT NULL,
+    sale_date DATETIME,
+    
+    PRIMARY KEY (id_sale),
+    FOREIGN KEY (customer_id) REFERENCES Users (id_user) ON DELETE SET NULL,
+    FOREIGN KEY (seller_id) REFERENCES Users (id_user) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES Products (id_product) ON DELETE CASCADE
+);

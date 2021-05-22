@@ -51,13 +51,15 @@ CREATE PROCEDURE EditCourse (
 	IN id_course INT,
 	IN course_title NVARCHAR(70),
     IN course_description TEXT,
-    IN course_price DECIMAL(15, 2)
+    IN course_price DECIMAL(15, 2),
+    IN published BIT
 )
 BEGIN
 	UPDATE Courses AS C
     SET
 		C.course_title = course_title,
-		C.course_description = course_description
+		C.course_description = course_description,
+        C.published = published
 	WHERE
 		C.id_course = id_course;
         

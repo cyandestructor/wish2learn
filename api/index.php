@@ -246,6 +246,10 @@
         return $response;
     });
 
+    // SALES
+    $app->post('/sales', W2l\Controllers\SaleController::class . ':postSale');
+    $app->get('/users/{id:[0-9]+}/sales', W2l\Controllers\SaleController::class . ':getUserSales');
+
     // REVIEWS
     $app->map(['GET', 'PUT'], '/reviews/{id:[0-9]+}', function ($request, $response, $args) {
         $method = $request->getMethod();
