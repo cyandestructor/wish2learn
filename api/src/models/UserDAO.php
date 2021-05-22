@@ -212,5 +212,33 @@
             
             return null;
         }
+
+        public function getCourseEnrolledUsers($courseID)
+        {
+            $users = [];
+
+            $sql = 'CALL GetCourseEnrolledUsers(?)';
+
+            $statement = $this->connection->prepare($sql);
+            $statement->execute([
+                $courseID
+            ]);
+
+            while($row = $statement->fetch()){
+                $user = [];
+
+                $user['id'] = $row['id_user'];
+                $user['username'] = $row['username'];
+                $user['name'] = $row['account_name'];
+                $user['lastname'] = $row['account_lastname'];
+                $user['enrollDate'] = $row['enroll_date'];
+                $user['courseTotalLessons'] = $row['course_total_lessons'];
+                $user['lessonsCompleted'] = $row['lessons_completed'];
+
+                $users[] = $user;
+            }
+
+            return $users;
+        }
     }
     

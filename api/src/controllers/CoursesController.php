@@ -324,5 +324,39 @@
 
             return $response;
         }
+
+        static public function getUserCourses(Request $request, Response $response, $args)
+        {
+            $userID = $request->getAttribute('id');
+            $queryParams = $request->getQueryParams();
+
+            $onlyPublished = isset($queryParams['public']) && strtolower($queryParams['public']) == 'true';
+
+            $courseDAO = new CourseDAO(new MySQLDatabase());
+
+            $courses = $courseDAO->getUserCourses($userID, $onlyPublished);
+
+            $result = [];
+            foreach ($courses as $course) {
+                $element = [];
+                $element['id'] = $course->id;
+                $element['title'] = $course->title;
+                $element['description'] = $course->description;
+                $element['productId'] = $course->productId;
+                $element['price'] = $course->price;
+                $element['image'] = "/api/courses/$course->id/image";
+                $element['instructorId'] = $course->instructorId;
+                $element['instrutorName'] = $course->instructorName;
+                $element['grade'] = $course->grade;
+                $element['published'] = (bool) $course->published;
+                $element['link'] = "/api/courses/$course->id";
+
+                $result[] = $element;
+            }
+
+            $response->getBody()->write(json_encode($result));
+            return $response
+                        ->withHeader('Content-Type', 'application/json');
+        }
     }
     

@@ -199,3 +199,27 @@ BEGIN
 		user_input IN (U.username, U.user_email);
 END $$
 DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS GetCourseEnrolledUsers $$
+
+CREATE PROCEDURE GetCourseEnrolledUsers (
+	IN id_course INT
+)
+BEGIN
+	SELECT
+		U.id_user,
+        U.username,
+        U.account_name,
+        U.account_lastname,
+        UC.enroll_date,
+        CI.total_lessons AS course_total_lessons,
+        userLessonsCompleted(U.id_user, UC.course_id) AS lessons_completed
+	FROM
+		Users AS U
+        INNER JOIN Users_Courses AS UC ON UC.user_id = U.id_user
+        INNER JOIN CoursesInfo AS CI ON CI.id_course = UC.course_id
+	WHERE
+		UC.course_id = id_course;
+END $$
+DELIMITER ;

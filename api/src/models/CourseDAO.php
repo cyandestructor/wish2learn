@@ -339,5 +339,36 @@
 
             return $courses;
         }
+
+        public function getUserCourses($userID, $onlyPublished)
+        {
+            $courses = [];
+
+            $sql = 'CALL GetUserCourses(?, b?)';
+
+            $statement = $this->connection->prepare($sql);
+            $statement->execute([
+                $userID,
+                $onlyPublished
+            ]);
+
+            while($row = $statement->fetch()){
+                $course = new Course();
+
+                $course->id = $row['id_course'];
+                $course->title = $row['course_title'];
+                $course->description = $row['course_description'];
+                $course->productId = $row['product_id'];
+                $course->price = $row['course_price'];
+                $course->instructorId = $row['instructor_id'];
+                $course->instructorName = $row['instructor_name'];
+                $course->grade = $row['course_grade'];
+                $course->published = $row['published'];
+
+                $courses[] = $course;
+            }
+
+            return $courses;
+        }
     }
     

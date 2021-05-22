@@ -229,5 +229,37 @@
 
             return $response;
         }
+
+        static public function getCourseEnrolledUsers(Request $request, Response $response, $args)
+        {
+            $courseID = $request->getAttribute('id');
+            
+            $userDAO = new UserDAO(new MySQLDatabase());
+
+            $users = $userDAO->getCourseEnrolledUsers($courseID);
+
+            $result = [];
+            foreach ($users as $user) {
+                $element = [];
+                
+                $userID = $user['id'];
+                $element['id'] = $userID;
+                $element['username'] = $user['username'];
+                $element['name'] = $user['name'];
+                $element['lastname'] = $user['lastname'];
+                $element['avatar'] = "/api/users/$userID/avatar";
+                $element['enrollDate'] = $user['enrollDate'];
+                $element['completionRate'] =
+                    $user['courseTotalLessons'] > 0 ?
+                    $user['lessonsCompleted'] / $user['courseTotalLessons'] : 0;
+                $element['link'] = "/api/users/$userID";
+
+                $result[] = $element;
+            }
+
+            $response->getBody()->write(json_encode($result));
+            return $response
+                        ->withHeader('Content-Type', 'application/json');
+        }
     }
     

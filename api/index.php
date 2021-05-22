@@ -58,6 +58,8 @@
         $group->post('', W2l\Controllers\UsersController::class . ':postUser');
     });
 
+    $app->get('/courses/{id:[0-9]+}/users', W2l\Controllers\UsersController::class . ':getCourseEnrolledUsers');
+
     // SESSION
     $app->map(['GET', 'PUT', 'DELETE'], '/session', function ($request, $response, $args) {
         $method = $request->getMethod();
@@ -152,6 +154,8 @@
                 W2l\Controllers\CoursesController::class . ':deleteCourseCategory');
         });
     });
+
+    $app->get('/users/{id:[0-9]+}/courses', W2l\Controllers\CoursesController::class . ':getUserCourses');
 
     // SECTIONS
     $app->map(['GET', 'PUT', 'DELETE'], '/sections/{id:[0-9]+}', function ($request, $response, $args) {
