@@ -3,6 +3,7 @@
     use Psr\Http\Message\ServerRequestInterface as Request;
     use Slim\Factory\AppFactory;
     use Slim\Routing\RouteCollectorProxy;
+    use Slim\Exception\HttpNotFoundException;
 
     use W2l\VideoUpload\AzureBlobStorageVideoUploader;
 
@@ -10,6 +11,14 @@
 
     $app = AppFactory::create();
     
+    $app->add(function ($request, $handler) {
+        $response = $handler->handle($request);
+        return $response
+            ->withHeader('Access-Control-Allow-Origin', '*') // TODO: Change this for production
+            ->withHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Accept, Origin, Authorization')
+            ->withHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
+    });
+
     $app->add(
         new \Slim\Middleware\Session([
             'name' => 'w2l_session',
@@ -19,9 +28,13 @@
     );
     $app->addBodyParsingMiddleware();
     $app->addRoutingMiddleware();
-    $errorMiddleware = $app->addErrorMiddleware(true, true, true);
+    $errorMiddleware = $app->addErrorMiddleware(true, true, true); // TODO: Change this for production
 
     $app->setBasePath('/api');
+
+    $app->options('/{routes:.+}', function ($request, $response, $args) {
+        return $response;
+    });
 
     $app->get('/', function (Request $request, Response $response, $args) {
         $response->getBody()->write("Hello world!");
@@ -327,5 +340,9 @@
 
     // RESULTS
     $app->get('/results', W2l\Controllers\ResultController::class . ':getList');
+
+    $app->map(['GET', 'POST', 'PUT', 'DELETE', 'PATCH'], '/{routes:.+}', function ($request, $response) {
+        throw new HttpNotFoundException($request);
+    });
 
     $app->run();
