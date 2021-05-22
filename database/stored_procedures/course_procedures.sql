@@ -418,9 +418,9 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
-DROP PROCEDURE IF EXISTS DeleteCategory $$
+DROP PROCEDURE IF EXISTS DeleteCourseCategory $$
 
-CREATE PROCEDURE DeleteCategory (
+CREATE PROCEDURE DeleteCourseCategory (
 	IN id_course INT,
     IN id_category INT
 )
