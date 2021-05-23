@@ -30,7 +30,7 @@
               <button class="nav-link " id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="false" onclick="cambiabtns()">Objetivos</button>
               
               <h5>Crea tu contenido</h5>
-              <button class="nav-link " id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Multimedia y Datos</button>
+              <button class="nav-link " id="multimedia-datos-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Multimedia y Datos</button>
               <h5>Publica tu curso</h5>
               <!-- ACTIVE -->
               <button class="nav-link " id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Página de inicio del curso</button>
@@ -71,6 +71,7 @@
               </div>
               <!-- CREA TU CONTENIDO -->
               <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                <span id="courseIdContainer"></span>
                 <div id="sectionContainer" data-count="1" class="row">
                     <div class="col-12 mt-3">
                         <div class="card">
@@ -90,7 +91,7 @@
                                     
                               </div>
                               <button class="btn btn-primary addLessonBtn" data-section="0">Agregar Lección</button>
-                              <button class="btn btn-primary">Guardar Sección</button>
+                              <button class="btn btn-primary save-section-btn">Guardar Sección</button>
                             </div>
                         </div>
                     </div>
@@ -243,22 +244,20 @@
                         type="text"
                         name="title"
                         class="form-control"
-                        id="formGroupExampleInput"
                         placeholder="Programación para principiantes"
                       />
                     </div>
                     <div class="mb-3 anchito">
-                      <label for="formGroupExampleInput" class="form-label"
+                      <label class="form-label"
                         >Asigna un precio
                       </label>
-                      <input type="text" name="price" class="form-control" id="formGroupExampleInput" />
+                      <input type="text" name="price" class="form-control"/>
                     </div>
                     <div class="form-group">
-                      <label for="exampleFormControlTextarea1">Descripción</label>
+                      <label class="form-label">Descripción</label>
                       <textarea
                         name="description"
                         class="form-control"
-                        id="exampleFormControlTextarea1"
                         rows="3"
                       ></textarea>
                     </div>
@@ -334,6 +333,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script type="module" src="/scripts/pages/CourseCreation.js"></script>
     <script src="/scripts/pages/course-process.js"></script>
     <script src="/scripts/js/jquery3.min.js"></script>
     <script src="/scripts/js/bootstrap.min.js" ></script>

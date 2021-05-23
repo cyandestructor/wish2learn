@@ -248,7 +248,7 @@ const addLessonCard = (sectionCount) => {
 
 const addLessonButtons = document.getElementsByClassName('addLessonBtn');
 for (let i = 0; i < addLessonButtons.length; i++) {
-    button = addLessonButtons[i];
+    let button = addLessonButtons[i];
     button.addEventListener('click', (e) => {
         let btn = e.target;
         const sectionCount = btn.dataset.section;
