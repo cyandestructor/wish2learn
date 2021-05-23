@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link href="/assets/css/procesocrearcurso2.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <title>Hello, world!</title>
+  </head>
+  <body >
+    
+    <!-- AQUI EMPIEZA EL SIDEBAR-->
+    <div class="d-flex">
+        <div id="sidebar" class="bg-secu">
+            <div class="logo">
+                <h4>Wish2Know</h4>
+            </div>
+            <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">  
+              <h5>Define tu curso</h5>
+              <button class="nav-link active " id="v-define-tab" data-bs-toggle="pill" data-bs-target="#v-define" type="button" role="tab" aria-controls="v-define" aria-selected="true" >Definición</button>
+
+              <h5>Planificación</h5>
+              <button class="nav-link " id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="false" onclick="cambiabtns()">Objetivos</button>
+              
+              <h5>Crea tu contenido</h5>
+              <button class="nav-link " id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Multimedia y Datos</button>
+              <h5>Publica tu curso</h5>
+              <!-- ACTIVE -->
+              <button class="nav-link " id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Página de inicio del curso</button>
+              <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Mensaje de Bienvenida</button>
+               <br>
+              <a href="/html/plataforma-para-que-usen-instructores.html"  class="btn btn-dark"> Publicar curso</a>
+            </div>
+        </div>
+        
+        <div class="container-fluid">
+          <div class="d-flex align-items-start">
+            <div class="tab-content container " id="v-pills-tabContent">
+              <div class="tab-pane fade " id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <div class="container">
+                  <div class="jumbotron">
+                    <h5>Llega a tus estudiantes</h5>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">¿Qué aprenderán los estudiantes en tu curso?</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                        <button type="button" class="btn btn-link">Añadir respuesta</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">¿Que requisitos se necesitan?</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                        <button type="button" class="btn btn-link">Añadir respuesta</button>
+  
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput"> ¿Quiénes son tus estudiantes objetivo?</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                        <button type="button" class="btn btn-link">Añadir respuesta</button>
+                   
+                    </div>
+                    
+                  </div>
+                  
+                </div>
+              </div>
+              <!-- CREA TU CONTENIDO -->
+              <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                <div id="sectionContainer" data-count="1" class="row">
+                    <div class="col-12 mt-3">
+                        <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title">Sección 1</h5>
+                              <form id="s0" class="sectionForm">
+                                <div class="mb-2">
+                                  <label class="form-label">Título</label>
+                                  <input name="title" type="text" class="form-control">
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label">Precio (opcional)</label>
+                                    <input name="price" type="text" class="form-control" value="0.00">
+                                </div>
+                              </form>
+                              <div id="s0LessonContainer" data-count="0">
+                                    
+                              </div>
+                              <button class="btn btn-primary addLessonBtn" data-section="0">Agregar Lección</button>
+                              <button class="btn btn-primary">Guardar Sección</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <button id="addSectionBtn" class="btn btn-primary">Agregar Sección</button>
+                </div>
+              </div> <!-- TERMINA LA SECCION PESTAÑA 1 -->
+              
+
+              <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                <div class="container-fluid">
+                  <h1>Página de inicio del curso</h1>
+                  
+                <form>
+                  <div class="form-group">
+                    <label for="formGroupExampleInput">Título del curso</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
+                  </div>
+                  <div class="form-group">
+                    <label for="formGroupExampleInput2">Subtítulo del curso</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Descripción del curso</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label for="inputCity">Idioma</label>
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected value="1">Basico</option>
+                        <option value="2">Español</option>
+                        <option value="3">Inglés</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="inputCity">Elige un nivel de experiencia</label>
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected value="1">Basico</option>
+                        <option value="2">Intermedio</option>
+                        <option value="3">Avanzados</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="inputCity">Elige un nivel</label>
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected value="1">Basico</option>
+                        <option value="2">Intermedio</option>
+                        <option value="3">Avanzados</option>
+                      </select>
+
+                    </div>
+                    <div class="col-md-6">
+                      <label for="input"> ¿Cuál es el contenido principal que enseñas en el curso?</label>
+                      <input type="text" class="form-control" placeholder="Por ejemplo fotografia">
+                    </div>
+                   
+                  </div>
+                </form>
+                <div class="form-row">
+                  <h1>Imagen promocional</h1>
+                  <div class="col-md-6">
+                    <img src="/assets/images/chargeimg.png" class="img-fluid" alt="Responsive image">
+                  </div>
+                  <div class="col-md-6">
+                    <p>Carga la imagen de tu curso aquí. Para ser aceptada, debe cumplir nuestros estándares de calidad para las imágenes de los cursos.
+                       Directrices importantes: 750 x 422 píxeles; formato .jpg, .jpeg, .gif, o .png.; y sin texto en la imagen.</p>
+                       <div class="form-group">
+                        <label for="ejemplo_archivo_1">Adjuntar un archivo</label>
+                        <input type="file" id="ejemplo_archivo_1">
+                        <p class="help-block">Ejemplo de texto de ayuda.</p>
+                      </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <h1>Video promocional</h1>
+                  <div class="col-md-6">
+                    <img src="img/chargeimg.png" class="img-fluid" alt="Responsive image">
+                  </div>
+                  <div class="col-md-6">
+                    <p>Los estudiantes que ven un vídeo promocional bien hecho tienen 5 veces más probabilidades de matricularse en tu curso. 
+                      Esa estadística se multiplica por 10 si los vídeos son excepcionalmente buenos. Aprende a hacer los tuyos impresionantes</p>
+                      <div class="form-group">
+                        <label for="ejemplo_archivo_1">Adjuntar un archivo</label>
+                        <input type="file" id="ejemplo_archivo_1">
+                        <p class="help-block">Ejemplo de texto de ayuda.</p>
+                      </div>
+                  </div>
+                </div>
+                <h3>Elige el precio</h3>
+                <select class="form-select" aria-label="Default select example">
+                  <option selected value="1">$290</option>
+                  <option value="2">$590</option>
+                  <option value="3">$890</option>
+                </select>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Aceptar tokens de los alumnos
+                  </label>
+                </div>
+                </div><!--FIN DEL CONTAINER-->
+                
+              </div>
+              <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                <h4>Aviso Importante</h4>
+                <div class="alert alert-danger" role="alert">
+                    Todos los instructores deben completar su perfil para que el curso se pueda publicar. 
+                    Esto incluye el nombre, una foto y una breve biografía de mínimo 50 palabras.
+                  </div>
+                  <h3>Mensaje a tus futuros estudiantes</h3>
+                <p>Escríbele mensajes a tus estudiantes (opcional) que se enviarán automáticamente cuando se inscriban
+                   en tu curso o lo completen. Así los estarás animando a involucrarse más en el contenido del curso. 
+                   Si prefieres no enviar mensajes de bienvenida o de enhorabuena, deja esta casilla en blanco.</p>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Mensaje de Bienvenida</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Mensaje de finalización</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+
+
+              </div>
+               
+             
+              <button type="button" id="anadircate" class="btn btn-primary" >
+                Guardar
+              </button>
+              </div>
+
+              <div class="tab-pane fade show active" id="v-define" role="tabpanel" aria-labelledby="v-define-tab">
+                <div class="jumbotron container col-md-6">
+            
+                  <div id="anadiendo" class="">
+                    <div></div>
+                  </div>
+                  <div id="categoryErrors" style="color: tomato;">
+                    <!-- Category Errors here -->
+                  </div>
+                  <form id="courseCreationForm">
+                    <div class="mb-3">
+                      <h2>Elige un título para el curso</h2>
+                      <p>
+                        No pasa nada si no se te ocurre un buen título en este momento.
+                        Puedes cambiarlo más tarde.
+                      </p>
+                      <input
+                        type="text"
+                        name="title"
+                        class="form-control"
+                        id="formGroupExampleInput"
+                        placeholder="Programación para principiantes"
+                      />
+                    </div>
+                    <div class="mb-3 anchito">
+                      <label for="formGroupExampleInput" class="form-label"
+                        >Asigna un precio
+                      </label>
+                      <input type="text" name="price" class="form-control" id="formGroupExampleInput" />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleFormControlTextarea1">Descripción</label>
+                      <textarea
+                        name="description"
+                        class="form-control"
+                        id="exampleFormControlTextarea1"
+                        rows="3"
+                      ></textarea>
+                    </div>
+                    <!--<div class="col-md-8 hacerinline">
+                      <label for="inputState" class="form-label">Categoría</label>
+                      <select id="categoriasDB" class="form-select">
+                        <option selected>Choose...</option>
+                      
+                      </select>
+                    </div>-->
+                     <div class="form-group">
+                        <label for="exampleFormControlSelect2">Elige una categoría</label>
+                        <select multiple class="form-control" id="categoriasDB">
+                          
+                        </select>
+                      </div>
+                    <br>
+
+                    <nav aria-label="...">
+                      <ul class="pagination container marginarriba">
+                        <li class="page-item ">
+                          <a class="page-link" id="anteriorInformacionPCC" href="#" tabindex="-1"> Anterior </a>
+                        </li>
+                        
+                        <li class="page-item">
+                          <a class="page-link" id="siguienteInformacionPCC" href="#"> Siguiente </a>
+                        </li>
+                      </ul>
+                    </nav>
+                    <div id="colocarAvisos">
+                      
+                    </div>
+                    <button type="button" id="anadircate" class="btn btn-primary" onclick="anadirCategoria(this)">
+                      Crear mi categoria
+                    </button>
+                    <br>
+                    <br>
+                    
+                    <div id="courseErrors" style="color: tomato;">
+                      <!-- Course Creation errors here -->
+                    </div>
+                    <button type="submit" class="btn btn-success">Guardar</button>
+                  </form>
+                </div>
+                
+               <div id="escondercategorias" class=" container jumbotron col-md-6">
+                   <form id="addCategoryForm">
+                      <h6>Crea tu categoría</h6>
+                      <label for="formGroupExampleInput2" class="form-label">Nueva categoria</label>
+                      <input type="text" class="form-control" id="categoriaInput" placeholder="Nombre de categoría" name="name">
+                     <br>
+                     <label for="exampleFormControlTextarea1">Añade una descripción de la categoría</label>
+                      <input name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></input>
+                      <br>
+                      <button type="submit" id="guardarCategoria" class="btn btn-primary" onclick="anadirCategoriaListBox(this)">
+                         Guardar categoría
+                      </button>
+                      <div id="msjCategoryAdd" style="color: green;">
+                        
+                      </div>
+                    </form>
+                </div>
+               
+
+              </div>
+             <!-- este lo voy a cambiar </div>-->
+          </div>
+        </div>    
+    </div>
+    <!-- AQUI TERMINA EL SIDEBAR-->
+  </div>
+   
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/scripts/pages/course-process.js"></script>
+    <script src="/scripts/js/jquery3.min.js"></script>
+    <script src="/scripts/js/bootstrap.min.js" ></script>
+    
+    <script type="module" src="/scripts/objects/addCategoryDB_2.js" ></script> 
+    <script src="/scripts/js/AnadirCategoria.js" ></script>
+    <script type="module" src="/scripts/objects/getCategoriesDB.js" ></script> 
+      
+     <script src="/scripts/js/proceso_crear_curso_op2.js" ></script>
+   <script src="js/plataforma-maestro.js"></script>
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+<!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+ -->
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
