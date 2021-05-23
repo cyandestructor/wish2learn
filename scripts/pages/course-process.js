@@ -72,26 +72,6 @@ const createLessonCard = (sectionCount, lessonCount) => {
 
     lessonForm.appendChild(textInputContainer);
 
-    let videoFormCheck = document.createElement('div');
-    videoFormCheck.classList.add('form-check');
-
-    let videoRadio = document.createElement('input');
-    videoRadio.classList.add('form-check-input');
-    videoRadio.type = 'radio';
-    videoRadio.name = 'type';
-    videoRadio.id = `s${sectionCount}l${lessonCount}videoRadio`;
-    videoRadio.value = 1;
-    videoRadio.checked = true;
-    videoFormCheck.appendChild(videoRadio);
-
-    let videoLabel = document.createElement('label');
-    videoLabel.classList.add('form-check-label');
-    videoLabel.htmlFor = `s${sectionCount}l${lessonCount}videoRadio`;
-    videoLabel.innerHTML = 'Con video';
-    videoFormCheck.appendChild(videoLabel);
-
-    lessonForm.appendChild(videoFormCheck);
-
     //
     let textFormCheck = document.createElement('div');
     textFormCheck.classList.add('form-check');
@@ -102,6 +82,7 @@ const createLessonCard = (sectionCount, lessonCount) => {
     textRadio.name = 'type';
     textRadio.id = `s${sectionCount}l${lessonCount}textRadio`;
     textRadio.value = 2;
+    textRadio.checked = true;
     textFormCheck.appendChild(textRadio);
 
     let textRadioLabel = document.createElement('label');
@@ -112,6 +93,25 @@ const createLessonCard = (sectionCount, lessonCount) => {
 
     lessonForm.appendChild(textFormCheck);
     //
+
+    let videoFormCheck = document.createElement('div');
+    videoFormCheck.classList.add('form-check');
+
+    let videoRadio = document.createElement('input');
+    videoRadio.classList.add('form-check-input');
+    videoRadio.type = 'radio';
+    videoRadio.name = 'type';
+    videoRadio.id = `s${sectionCount}l${lessonCount}videoRadio`;
+    videoRadio.value = 1;
+    videoFormCheck.appendChild(videoRadio);
+
+    let videoLabel = document.createElement('label');
+    videoLabel.classList.add('form-check-label');
+    videoLabel.htmlFor = `s${sectionCount}l${lessonCount}videoRadio`;
+    videoLabel.innerHTML = 'Con video';
+    videoFormCheck.appendChild(videoLabel);
+
+    lessonForm.appendChild(videoFormCheck);
 
     body.appendChild(lessonForm);
 
