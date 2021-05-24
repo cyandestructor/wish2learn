@@ -1,33 +1,29 @@
 import Utility from '../Utility.js';
-import Section from '../objects/Section.js';
+import Lesson from '../objects/Lesson.js';
 
-export const addSectionEvent = (e, displayMessageId, displayErrorsId) => {
+export const addLessonEvent = (e, displayMessageId, displayErrorsId) => {
     e.preventDefault();
     const form = e.target;
     let data = Utility.formDataToObject(new FormData(form));
-    let courseIdContainer = document.getElementById('courseIdContainer');
 
-    if (!courseIdContainer) {
-        alert('No se ha creado un id de curso');
-        return;
-    }
+    let formId = form.id;
+    let sectionFormId = formId.substr(0, formId.indexOf('l'));
+    let sectionForm = document.getElementById(sectionFormId);
+    let sectionId = sectionForm.dataset.sectionId;
 
-    let courseId = courseIdContainer.dataset.courseId;
-
-    if (!courseId) {
+    if (!sectionId) {
         Utility.displayErrors(displayErrorsId, {
-            'message': 'Es necesario crear un curso primero',
+            'message': 'Es necesario guardar la sección primero',
         });
         return;
     }
 
-    let sectionId = form.dataset.sectionId;
+    let lessonId = form.dataset.lessonId;
 
-    let section;
+    let lesson;
 
-    if (!sectionId) {
-        // Creation
-        section = new Section(
+    if (!lessonId) {
+        lesson = new Lesson(
             (response) => {
                 if (response.ok) {
                     Utility.displayErrors(displayErrorsId, null);
@@ -36,8 +32,8 @@ export const addSectionEvent = (e, displayMessageId, displayErrorsId) => {
                         'Creación exitosa'
                     );
 
-                    response.json().then((section) => {
-                        form.dataset.sectionId = section.id;
+                    response.json().then((lesson) => {
+                        form.dataset.lessonId = lesson.id;
                     });
                     return;
                 }
@@ -59,11 +55,7 @@ export const addSectionEvent = (e, displayMessageId, displayErrorsId) => {
             }
         );
 
-        section.create(data, courseId);
+        lesson.create(data, sectionId);
         return;
     }
-
-    // Edition
-
-    // TODO
 };
