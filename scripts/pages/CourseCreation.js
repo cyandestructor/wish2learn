@@ -52,3 +52,59 @@ document
 
         course.create(data);
     });
+
+document.getElementById('courseImageForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    let courseIdContainer = document.getElementById('courseIdContainer');
+
+    if (!courseIdContainer) {
+        alert('No se ha creado un id de curso');
+        return;
+    }
+
+    let courseId = courseIdContainer.dataset.courseId;
+
+    if (!courseId) {
+        Utility.displayErrors('courseImageErrors', {
+            'message': 'Es necesario crear un curso primero',
+        });
+        return;
+    }
+
+    let course = new Course(
+        (response) => {
+            if (response.ok) {
+                Utility.displayErrors('courseImageErrors', null);
+                Utility.displayMessage(
+                    'courseImageMessages',
+                    'Se ha cambiado la imagen exitosamente'
+                );
+                return;
+            }
+
+            if (response.status === 400) {
+                response.json().then((data) => {
+                    Utility.displayErrors('courseImageErrors', {
+                        'message': data.message,
+                    });
+                    Utility.displayMessage('courseImageMessages', '');
+                });
+            }
+
+            if (response.status >= 500) {
+                // Do something
+                return;
+            }
+        },
+        (errors) => {
+            Utility.displayErrors('courseImageErrors', errors);
+            Utility.displayMessage('courseImageMessages', '');
+        }
+    );
+
+    const fileInput = document.getElementById('courseImageInput');
+    const courseImage = fileInput.files[0];
+
+    course.setImage(courseImage, courseId);
+});

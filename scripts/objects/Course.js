@@ -31,4 +31,37 @@ export default class Course extends ApiObject {
             }
         });
     }
+
+    setImage(image, courseId) {
+        const endpoint = `${Course.endpoint}/${courseId}/image`;
+
+        const maxImageSize = 5 * 1024 * 1024; // 5.0 MB
+        if (image.size >= maxImageSize && this.validationErrorCallback) {
+            return this.validationErrorCallback({
+                image: 'La imagen no puede ser mayor a 5.0 MB',
+            });
+        }
+
+        fetch(endpoint, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': image.type,
+            },
+            body: image,
+        }).then((response) => {
+            if (this.responseCallback) {
+                return this.responseCallback(response);
+            }
+        });
+    }
+
+    getInformation(courseId) {
+        const endpoint = `${Course.endpoint}/${courseId}`;
+
+        fetch(endpoint).then((response) => {
+            if (this.responseCallback) {
+                return this.responseCallback(response);
+            }
+        });
+    }
 }
