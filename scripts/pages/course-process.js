@@ -1,3 +1,4 @@
+import { addSectionEvent } from '../pages/CreateSection.js';
 /*
     <div class="col-12 mt-3">
         <div class="card mb-3">
@@ -141,17 +142,22 @@ const createLessonCard = (sectionCount, lessonCount) => {
                     <label class="form-label">Precio (opcional)</label>
                     <input name="price" type="text" class="form-control" value="0.00">
                 </div>
+                <button class="btn btn-primary addLessonBtn" data-section="0">Agregar Lección</button>
+                <button class="btn btn-primary">Guardar Sección</button>
             </form>
+            <div id="s0DisplayErrors" style="color:tomato;"></div>
+            <div id="s0DisplayMessage"></div>
             <div id="s0LessonContainer" data-count="0">
                 
             </div>
-            <button class="btn btn-primary addLessonBtn" data-section="0">Agregar Lección</button>
-            <button class="btn btn-primary">Guardar Sección</button>
         </div>
     </div>
 </div>
 */
 const createSectionCard = (sectionCount) => {
+    let displayErrorsId = `s${sectionCount}DisplayErrors`;
+    let displayMessageId = `s${sectionCount}DisplayMessage`;
+
     let outer = document.createElement('div');
     outer.classList.add('col-12', 'mt-3');
 
@@ -169,6 +175,9 @@ const createSectionCard = (sectionCount) => {
     let form = document.createElement('form');
     form.classList.add('sectionForm');
     form.id = `s${sectionCount}`;
+    form.addEventListener('submit', (e) => {
+        return addSectionEvent(e, displayMessageId, displayErrorsId);
+    });
 
     let titleInputContainer = document.createElement('div');
     titleInputContainer.classList.add('mb-2');
@@ -203,28 +212,40 @@ const createSectionCard = (sectionCount) => {
 
     form.appendChild(priceInputContainer);
 
-    cardBody.appendChild(form);
-
-    let lessonContainer = document.createElement('div');
-    lessonContainer.id = `s${sectionCount}LessonContainer`;
-    lessonContainer.dataset.count = 0;
-    cardBody.appendChild(lessonContainer);
-
     let addLessonBtn = document.createElement('button');
     addLessonBtn.classList.add('btn', 'btn-primary', 'addLessonBtn', 'mr-2');
     addLessonBtn.dataset.section = sectionCount;
+    addLessonBtn.type = 'button';
     addLessonBtn.innerHTML = 'Agregar Lección';
     addLessonBtn.addEventListener('click', (e) => {
         let btn = e.target;
         const sectionCount = btn.dataset.section;
         addLessonCard(sectionCount);
     });
-    cardBody.appendChild(addLessonBtn);
+    form.appendChild(addLessonBtn);
 
     let saveSection = document.createElement('button');
-    saveSection.classList.add('btn', 'btn-primary');
+    saveSection.classList.add('btn', 'btn-primary', 'save-section-btn');
+    saveSection.dataset.section = sectionCount;
+    saveSection.type = 'submit';
     saveSection.innerHTML = 'Guardar Sección';
-    cardBody.appendChild(saveSection);
+    form.appendChild(saveSection);
+
+    cardBody.appendChild(form);
+
+    let displayErrorsContainer = document.createElement('div');
+    displayErrorsContainer.id = displayErrorsId;
+    displayErrorsContainer.style = 'color: tomato;';
+    cardBody.appendChild(displayErrorsContainer);
+
+    let displayMessageContainer = document.createElement('div');
+    displayMessageContainer.id = displayMessageId;
+    cardBody.appendChild(displayMessageContainer);
+
+    let lessonContainer = document.createElement('div');
+    lessonContainer.id = `s${sectionCount}LessonContainer`;
+    lessonContainer.dataset.count = 0;
+    cardBody.appendChild(lessonContainer);
 
     card.appendChild(cardBody);
 
@@ -246,6 +267,17 @@ const addLessonCard = (sectionCount) => {
     }
 };
 
+const sectionForms = document.getElementsByClassName('sectionForm');
+for (let i = 0; i < sectionForms.length; i++) {
+    const form = sectionForms[i];
+    const id = form.id;
+    const displayErrorsId = `${id}DisplayErrors`;
+    const displayMessageId = `${id}DisplayMessage`;
+    form.addEventListener('submit', (e) => {
+        return addSectionEvent(e, displayMessageId, displayErrorsId);
+    });
+}
+
 const addLessonButtons = document.getElementsByClassName('addLessonBtn');
 for (let i = 0; i < addLessonButtons.length; i++) {
     let button = addLessonButtons[i];
@@ -255,6 +287,17 @@ for (let i = 0; i < addLessonButtons.length; i++) {
         addLessonCard(sectionCount);
     });
 }
+
+// const saveSectionButtons = document.getElementsByClassName('save-section-btn');
+// for (let i = 0; i < saveSectionButtons.length; i++) {
+//     let button = saveSectionButtons[i];
+//     button.addEventListener('click', (e) => {
+//         let btn = e.target;
+//         const sectionCount = btn.dataset.section;
+//         const form = document.getElementById(`s${sectionCount}`);
+//         form.submit();
+//     });
+// }
 
 const addSectionButton = document.getElementById('addSectionBtn');
 addSectionButton.addEventListener('click', (e) => {

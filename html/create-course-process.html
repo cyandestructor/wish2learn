@@ -86,12 +86,14 @@
                                     <label class="form-label">Precio (opcional)</label>
                                     <input name="price" type="text" class="form-control" value="0.00">
                                 </div>
+                                <button type="button" class="btn btn-primary addLessonBtn" data-section="0">Agregar Lección</button>
+                                <button type="submit" class="btn btn-primary save-section-btn" data-section="0">Guardar Sección</button>
                               </form>
+                              <div id="s0DisplayErrors" style="color:tomato;"></div>
+                              <div id="s0DisplayMessage"></div>
                               <div id="s0LessonContainer" data-count="0">
                                     
                               </div>
-                              <button class="btn btn-primary addLessonBtn" data-section="0">Agregar Lección</button>
-                              <button class="btn btn-primary save-section-btn">Guardar Sección</button>
                             </div>
                         </div>
                     </div>
@@ -334,7 +336,7 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script type="module" src="/scripts/pages/CourseCreation.js"></script>
-    <script src="/scripts/pages/course-process.js"></script>
+    <script type="module" src="/scripts/pages/course-process.js"></script>
     <script src="/scripts/js/jquery3.min.js"></script>
     <script src="/scripts/js/bootstrap.min.js" ></script>
     
