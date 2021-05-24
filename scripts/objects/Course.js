@@ -64,4 +64,22 @@ export default class Course extends ApiObject {
             }
         });
     }
+
+    addCategory(categoryId, courseId) {
+        let endpoint = `${Course.endpoint}/${courseId}/categories`;
+
+        let data = { 'categoryId': categoryId };
+
+        fetch(endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        }).then((response) => {
+            if (this.responseCallback) {
+                return this.responseCallback(response);
+            }
+        });
+    }
 }

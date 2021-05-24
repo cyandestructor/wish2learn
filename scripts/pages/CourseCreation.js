@@ -5,6 +5,18 @@ const getCurrentUserId = () => {
     return 1; // TODO: Load current user
 };
 
+const addCourseCategories = (courseId) => {
+    const select = document.getElementById('categoriasDB');
+
+    const course = new Course();
+
+    for (let i = 0; i < select.selectedOptions.length; i++) {
+        let option = select.selectedOptions[i];
+        let categoryId = option.value;
+        course.addCategory(categoryId, courseId);
+    }
+};
+
 document
     .getElementById('courseCreationForm')
     .addEventListener('submit', (e) => {
@@ -16,7 +28,6 @@ document
         const course = new Course(
             (response) => {
                 if (response.ok) {
-                    form.reset();
                     Utility.displayMessage('colocarAvisos', 'Registro exitoso');
                     Utility.displayErrors('courseErrors', null);
 
@@ -24,6 +35,10 @@ document
                         const courseIdContainer =
                             document.getElementById('courseIdContainer');
                         courseIdContainer.dataset.courseId = course.id;
+
+                        addCourseCategories(course.id);
+
+                        form.reset();
 
                         const tabButton = document.getElementById(
                             'multimedia-datos-tab'
