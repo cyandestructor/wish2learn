@@ -123,3 +123,34 @@ document.getElementById('courseImageForm').addEventListener('submit', (e) => {
 
     course.setImage(courseImage, courseId);
 });
+
+document.getElementById('publishCourseBtn').addEventListener('click', (e) => {
+    const courseIdContainer = document.getElementById('courseIdContainer');
+    const courseId = courseIdContainer.dataset.courseId;
+
+    if (!courseId) {
+        Utility.displayErrors('publishError', {
+            'message': 'Debe crearse un curso primero',
+        });
+        return;
+    }
+
+    const course = new Course((response) => {
+        if (response.ok) {
+            Utility.displayErrors('publishError', null);
+            Utility.displayMessage(
+                'publishMessage',
+                'El curso se ha publicado de forma exitosa'
+            );
+            return;
+        }
+
+        if (response.status === 400) {
+            response.json().then((data) => {
+                Utility.displayErrors('publishError', data.errors);
+            });
+        }
+    });
+
+    course.edit({ 'published': true }, courseId);
+});

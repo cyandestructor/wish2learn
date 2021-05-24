@@ -32,6 +32,22 @@ export default class Course extends ApiObject {
         });
     }
 
+    edit(courseObj, courseId) {
+        const endpoint = `${Course.endpoint}/${courseId}`;
+
+        fetch(endpoint, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(courseObj),
+        }).then((response) => {
+            if (this.responseCallback) {
+                return this.responseCallback(response);
+            }
+        });
+    }
+
     setImage(image, courseId) {
         const endpoint = `${Course.endpoint}/${courseId}/image`;
 
