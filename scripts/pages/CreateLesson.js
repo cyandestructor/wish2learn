@@ -1,6 +1,7 @@
 import Utility from '../Utility.js';
 import Lesson from '../objects/Lesson.js';
 import Resource from '../objects/Resource.js';
+import Video from '../objects/Video.js';
 
 export const addLessonEvent = (e, displayMessageId, displayErrorsId) => {
     e.preventDefault();
@@ -107,4 +108,51 @@ export const addResourceEvent = (e, displayMessageId, displayErrorsId) => {
         const file = fileInput.files[i];
         resource.create(file, lessonId);
     }
+};
+
+export const addVideoEvent = (e, displayMessageId, displayErrorsId) => {
+    e.preventDefault();
+    const form = e.target;
+
+    let section = form.dataset.section;
+    let lesson = form.dataset.lesson;
+
+    let lessonFormId = `s${section}l${lesson}`;
+    const lessonForm = document.getElementById(lessonFormId);
+
+    const lessonId = lessonForm.dataset.lessonId;
+
+    if (!lessonId) {
+        Utility.displayErrors(displayErrorsId, {
+            'message': 'Es necesario guardar la lección primero',
+        });
+        return;
+    }
+
+    const video = new Video(
+        (response) => {
+            if (response.ok) {
+                Utility.displayErrors(displayErrorsId, null);
+                Utility.displayMessage(
+                    displayMessageId,
+                    'Se ha subido el video'
+                );
+                return;
+            }
+
+            response.json().then((data) => {
+                Utility.displayMessage(displayMessageId, '');
+                Utility.displayErrors(displayErrorsId, data.errors);
+            });
+        },
+        (errors) => {
+            Utility.displayMessage(displayMessageId, '');
+            Utility.displayErrors(displayErrorsId, errors);
+        }
+    );
+
+    let fileInput = document.getElementById(`${lessonFormId}VideoInput`);
+    let videoFile = fileInput.files[0];
+
+    video.set(videoFile, lessonId);
 };

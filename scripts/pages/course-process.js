@@ -1,5 +1,71 @@
 import { addSectionEvent } from '../pages/CreateSection.js';
-import { addLessonEvent, addResourceEvent } from '../pages/CreateLesson.js';
+import {
+    addLessonEvent,
+    addResourceEvent,
+    addVideoEvent,
+} from '../pages/CreateLesson.js';
+
+const radioChangedEvent = (e, sectionCount, lessonCount) => {
+    let radio = document.getElementById(
+        `s${sectionCount}l${lessonCount}videoRadio`
+    );
+
+    let inputId = `s${sectionCount}l${lessonCount}VideoInput`;
+    let buttonId = `s${sectionCount}l${lessonCount}SubmitVideo`;
+
+    let input = document.getElementById(inputId);
+    let button = document.getElementById(buttonId);
+
+    input.disabled = !radio.checked;
+    button.disabled = !radio.checked;
+};
+
+const createVideoForm = (sectionCount, lessonCount) => {
+    let displayErrorsId = `s${sectionCount}l${lessonCount}VideoErrors`;
+    let displayMessageId = `s${sectionCount}l${lessonCount}VideoMessage`;
+
+    let container = document.createElement('div');
+
+    let videoForm = document.createElement('form');
+    videoForm.dataset.section = sectionCount;
+    videoForm.dataset.lesson = lessonCount;
+    videoForm.classList.add('form-group', 'video-form');
+    videoForm.addEventListener('submit', (e) => {
+        return addVideoEvent(e, displayMessageId, displayErrorsId);
+    });
+
+    let label = document.createElement('label');
+    label.innerHTML = 'Video de la lección';
+    videoForm.appendChild(label);
+
+    let input = document.createElement('input');
+    input.classList.add('form-control-file');
+    input.id = `s${sectionCount}l${lessonCount}VideoInput`;
+    input.disabled = true;
+    input.type = 'file';
+    videoForm.appendChild(input);
+
+    let button = document.createElement('button');
+    button.classList.add('btn', 'btn-primary', 'mt-2');
+    button.id = `s${sectionCount}l${lessonCount}SubmitVideo`;
+    button.type = 'submit';
+    button.disabled = true;
+    button.innerHTML = 'Agregar video';
+    videoForm.appendChild(button);
+
+    container.appendChild(videoForm);
+
+    let displayErrorsContainer = document.createElement('div');
+    displayErrorsContainer.id = displayErrorsId;
+    displayErrorsContainer.style = 'color: tomato;';
+    container.appendChild(displayErrorsContainer);
+
+    let displayMessageContainer = document.createElement('div');
+    displayMessageContainer.id = displayMessageId;
+    container.appendChild(displayMessageContainer);
+
+    return container;
+};
 
 const createResourcesForm = (sectionCount, lessonCount) => {
     let displayErrorsId = `s${sectionCount}l${lessonCount}ResourceErrors`;
@@ -137,6 +203,9 @@ const createLessonCard = (sectionCount, lessonCount) => {
     textRadio.id = `s${sectionCount}l${lessonCount}textRadio`;
     textRadio.value = 2;
     textRadio.checked = true;
+    textRadio.addEventListener('change', (e) => {
+        return radioChangedEvent(e, sectionCount, lessonCount);
+    });
     textFormCheck.appendChild(textRadio);
 
     let textRadioLabel = document.createElement('label');
@@ -157,6 +226,9 @@ const createLessonCard = (sectionCount, lessonCount) => {
     videoRadio.name = 'type';
     videoRadio.id = `s${sectionCount}l${lessonCount}videoRadio`;
     videoRadio.value = 1;
+    videoRadio.addEventListener('change', (e) => {
+        return radioChangedEvent(e, sectionCount, lessonCount);
+    });
     videoFormCheck.appendChild(videoRadio);
 
     let videoLabel = document.createElement('label');
@@ -175,9 +247,6 @@ const createLessonCard = (sectionCount, lessonCount) => {
 
     body.appendChild(lessonForm);
 
-    let resourceForm = createResourcesForm(sectionCount, lessonCount);
-    body.appendChild(resourceForm);
-
     let displayErrorsContainer = document.createElement('div');
     displayErrorsContainer.id = displayErrorsId;
     displayErrorsContainer.style = 'color: tomato;';
@@ -186,6 +255,12 @@ const createLessonCard = (sectionCount, lessonCount) => {
     let displayMessageContainer = document.createElement('div');
     displayMessageContainer.id = displayMessageId;
     body.appendChild(displayMessageContainer);
+
+    let resourceForm = createResourcesForm(sectionCount, lessonCount);
+    body.appendChild(resourceForm);
+
+    let videoForm = createVideoForm(sectionCount, lessonCount);
+    body.appendChild(videoForm);
 
     card.appendChild(body);
 

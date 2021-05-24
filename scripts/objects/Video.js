@@ -1,6 +1,7 @@
+import Utility from '../Utility.js';
 import ApiObject from './ApiObject.js';
 
-export default class Resource extends ApiObject {
+export default class Video extends ApiObject {
     static base = 'http://localhost';
 
     constructor(responseCallback, validationCallback) {
@@ -9,22 +10,22 @@ export default class Resource extends ApiObject {
         super.setValidationErrorCallback(validationCallback);
     }
 
-    create(resource, lessonId) {
-        let endpoint = `${Resource.base}/api/lessons/${lessonId}/resources`;
+    set(video, lessonId) {
+        let endpoint = `${Video.base}/api/lessons/${lessonId}/video`;
 
-        const maxFileSize = 50 * 1024 * 1024; // 50.0 MB
-        if (resource.size >= maxFileSize && this.validationErrorCallback) {
+        const maxImageSize = 300 * 1024 * 1024; // 300.0 MB
+        if (video.size >= maxImageSize && this.validationErrorCallback) {
             return this.validationErrorCallback({
-                resource: 'El recurso no puede pesar más de 50.0 MB',
+                resource: 'El video no puede pesar más de 300.0 MB',
             });
         }
 
         fetch(endpoint, {
             method: 'PUT',
             headers: {
-                'Content-Type': resource.type,
+                'Content-Type': video.type,
             },
-            body: resource,
+            body: video,
         }).then((response) => {
             if (this.responseCallback) {
                 return this.responseCallback(response);
