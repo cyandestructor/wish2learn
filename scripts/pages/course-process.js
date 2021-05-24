@@ -1,5 +1,51 @@
 import { addSectionEvent } from '../pages/CreateSection.js';
-import { addLessonEvent } from '../pages/CreateLesson.js';
+import { addLessonEvent, addResourceEvent } from '../pages/CreateLesson.js';
+
+const createResourcesForm = (sectionCount, lessonCount) => {
+    let displayErrorsId = `s${sectionCount}l${lessonCount}ResourceErrors`;
+    let displayMessageId = `s${sectionCount}l${lessonCount}ResourceMessage`;
+
+    let body = document.createElement('div');
+
+    let resourceForm = document.createElement('form');
+    resourceForm.dataset.section = sectionCount;
+    resourceForm.dataset.lesson = lessonCount;
+    resourceForm.classList.add('form-group', 'resource-form');
+    resourceForm.addEventListener('submit', (e) => {
+        return addResourceEvent(e, displayMessageId, displayErrorsId);
+    });
+
+    let label = document.createElement('label');
+    label.innerHTML = 'Recursos de la lección';
+    resourceForm.appendChild(label);
+
+    let input = document.createElement('input');
+    input.classList.add('form-control-file');
+    input.id = `s${sectionCount}l${lessonCount}ResourceInput`;
+    input.type = 'file';
+    input.multiple = true;
+    resourceForm.appendChild(input);
+
+    let button = document.createElement('button');
+    button.classList.add('btn', 'btn-primary', 'mt-2');
+    button.type = 'submit';
+    button.innerHTML = 'Agregar recursos';
+    resourceForm.appendChild(button);
+
+    body.appendChild(resourceForm);
+
+    let displayErrorsContainer = document.createElement('div');
+    displayErrorsContainer.id = displayErrorsId;
+    displayErrorsContainer.style = 'color: tomato;';
+    body.appendChild(displayErrorsContainer);
+
+    let displayMessageContainer = document.createElement('div');
+    displayMessageContainer.id = displayMessageId;
+    body.appendChild(displayMessageContainer);
+
+    return body;
+};
+
 /*
     <div class="col-12 mt-3">
         <div class="card mb-3">
@@ -128,6 +174,9 @@ const createLessonCard = (sectionCount, lessonCount) => {
     lessonForm.appendChild(saveButton);
 
     body.appendChild(lessonForm);
+
+    let resourceForm = createResourcesForm(sectionCount, lessonCount);
+    body.appendChild(resourceForm);
 
     let displayErrorsContainer = document.createElement('div');
     displayErrorsContainer.id = displayErrorsId;

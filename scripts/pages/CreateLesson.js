@@ -1,5 +1,6 @@
 import Utility from '../Utility.js';
 import Lesson from '../objects/Lesson.js';
+import Resource from '../objects/Resource.js';
 
 export const addLessonEvent = (e, displayMessageId, displayErrorsId) => {
     e.preventDefault();
@@ -57,5 +58,53 @@ export const addLessonEvent = (e, displayMessageId, displayErrorsId) => {
 
         lesson.create(data, sectionId);
         return;
+    }
+};
+
+export const addResourceEvent = (e, displayMessageId, displayErrorsId) => {
+    e.preventDefault();
+    const form = e.target;
+
+    let section = form.dataset.section;
+    let lesson = form.dataset.lesson;
+
+    let lessonFormId = `s${section}l${lesson}`;
+    const lessonForm = document.getElementById(lessonFormId);
+
+    const lessonId = lessonForm.dataset.lessonId;
+
+    if (!lessonId) {
+        Utility.displayErrors(displayErrorsId, {
+            'message': 'Es necesario guardar la lección primero',
+        });
+        return;
+    }
+
+    const resource = new Resource(
+        (response) => {
+            if (response.ok) {
+                Utility.displayErrors(displayErrorsId, null);
+                Utility.displayMessage(
+                    displayMessageId,
+                    'Se ha subido el recurso'
+                );
+                return;
+            }
+
+            response.json().then((data) => {
+                Utility.displayMessage(displayMessageId, '');
+                Utility.displayErrors(displayErrorsId, data.errors);
+            });
+        },
+        (errors) => {
+            Utility.displayMessage(displayMessageId, '');
+            Utility.displayErrors(displayErrorsId, errors);
+        }
+    );
+
+    let fileInput = document.getElementById(`${lessonFormId}ResourceInput`);
+    for (let i = 0; i < fileInput.files.length; i++) {
+        const file = fileInput.files[i];
+        resource.create(file, lessonId);
     }
 };
