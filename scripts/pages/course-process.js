@@ -62,6 +62,7 @@ const createVideoForm = (sectionCount, lessonCount) => {
 
     let displayMessageContainer = document.createElement('div');
     displayMessageContainer.id = displayMessageId;
+    displayMessageContainer.style = 'color: darkcyan;';
     container.appendChild(displayMessageContainer);
 
     return container;
@@ -107,6 +108,7 @@ const createResourcesForm = (sectionCount, lessonCount) => {
 
     let displayMessageContainer = document.createElement('div');
     displayMessageContainer.id = displayMessageId;
+    displayMessageContainer.style = 'color: darkcyan;';
     body.appendChild(displayMessageContainer);
 
     return body;
@@ -254,6 +256,7 @@ const createLessonCard = (sectionCount, lessonCount) => {
 
     let displayMessageContainer = document.createElement('div');
     displayMessageContainer.id = displayMessageId;
+    displayMessageContainer.style = 'color: darkcyan;';
     body.appendChild(displayMessageContainer);
 
     let resourceForm = createResourcesForm(sectionCount, lessonCount);
