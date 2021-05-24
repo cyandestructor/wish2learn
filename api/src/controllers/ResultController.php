@@ -60,6 +60,7 @@
                 $element['title'] = $course->title;
                 $element['description'] = $course->description;
                 $element['price'] = $course->price;
+                $element['productId'] = $course->productId;
                 $element['image'] = "/api/courses/$course->id/image";
                 $element['instructorId'] = $course->instructorId;
                 $element['instrutorName'] = $course->instructorName;
