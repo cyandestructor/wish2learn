@@ -2,6 +2,20 @@ import Utility from '../Utility.js';
 import Course from '../objects/Course.js';
 import { getCurrentUserId } from '../objects/Session.js';
 
+document.addEventListener('DOMContentLoaded', () => {
+    let promise = getCurrentUserId();
+
+    if (!promise) {
+        console.log('No current session');
+        return;
+    }
+
+    promise.then((data) => {
+        const container = document.getElementById('currentUserContainer');
+        container.dataset.currentUser = data.id;
+    });
+});
+
 const addCourseCategories = (courseId) => {
     const select = document.getElementById('categoriasDB');
 
@@ -19,8 +33,16 @@ document
     .addEventListener('submit', (e) => {
         e.preventDefault();
         const form = e.target;
+        const currentUser = document.getElementById('currentUserContainer')
+            .dataset.currentUser;
+
+        if (!currentUser) {
+            console.log('No hay sesión actual');
+            return;
+        }
+
         const data = Utility.formDataToObject(new FormData(form));
-        data.instructorId = getCurrentUserId();
+        data.instructorId = currentUser;
 
         const course = new Course(
             (response) => {

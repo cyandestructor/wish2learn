@@ -98,29 +98,37 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    const currentUserId = getCurrentUserId();
+    const promise = getCurrentUserId();
 
-    const messageContainer = document.getElementById('messageContainer');
-    const message = new Message((response) => {
-        if (response.ok) {
-            response.json().then((data) => {
-                for (let i = 0; i < data.length; i++) {
-                    let container;
-                    if (data[i].senderId == currentUserId) {
-                        container = createReceiverMessage(data[i]);
-                    } else {
-                        container = createSenderMessage(data[i]);
+    if (!promise) {
+        console.log('No promise');
+        return;
+    }
+
+    promise.then((data) => {
+        const currentUserId = data.id;
+        const messageContainer = document.getElementById('messageContainer');
+        const message = new Message((response) => {
+            if (response.ok) {
+                response.json().then((data) => {
+                    for (let i = 0; i < data.length; i++) {
+                        let container;
+                        if (data[i].senderId == currentUserId) {
+                            container = createReceiverMessage(data[i]);
+                        } else {
+                            container = createSenderMessage(data[i]);
+                        }
+                        messageContainer.appendChild(container);
                     }
-                    messageContainer.appendChild(container);
-                }
-            });
-        }
+                });
+            }
+        });
+
+        message.getChatMessages(chatId);
+
+        const sendMessageForm = document.getElementById('sendMessageForm');
+        sendMessageForm.dataset.chatId = chatId;
+        sendMessageForm.dataset.senderId = currentUserId;
+        sendMessageForm.addEventListener('submit', sendMessageEvent);
     });
-
-    message.getChatMessages(chatId);
-
-    const sendMessageForm = document.getElementById('sendMessageForm');
-    sendMessageForm.dataset.chatId = chatId;
-    sendMessageForm.dataset.senderId = currentUserId;
-    sendMessageForm.addEventListener('submit', sendMessageEvent);
 });

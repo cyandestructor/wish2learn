@@ -35,19 +35,29 @@ let createChatRow = (chat) => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    let userId = getCurrentUserId();
-    const mailbox = document.getElementById('mailboxTable');
+    let promise = getCurrentUserId();
 
-    const chat = new Chat((response) => {
-        if (response.ok) {
-            response.json().then((data) => {
-                for (let i = 0; i < data.length; i++) {
-                    const row = createChatRow(data[i]);
-                    mailbox.appendChild(row);
-                }
-            });
-        }
+    if (!promise) {
+        console.log('No promise');
+        return;
+    }
+
+    promise.then((data) => {
+        const userId = data.id;
+
+        const mailbox = document.getElementById('mailboxTable');
+
+        const chat = new Chat((response) => {
+            if (response.ok) {
+                response.json().then((data) => {
+                    for (let i = 0; i < data.length; i++) {
+                        const row = createChatRow(data[i]);
+                        mailbox.appendChild(row);
+                    }
+                });
+            }
+        });
+
+        chat.getUserChats(userId);
     });
-
-    chat.getUserChats(userId);
 });

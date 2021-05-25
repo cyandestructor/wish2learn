@@ -1,3 +1,11 @@
 export const getCurrentUserId = () => {
-    return 1; // TODO: Load current user
+    const endpoint = 'http://localhost/api/session';
+
+    return fetch(endpoint).then((response) => {
+        if (response.ok) {
+            return response.json();
+        }
+
+        return null;
+    });
 };
