@@ -2,10 +2,22 @@ import Course from '../objects/Course.js';
 import Lesson from '../objects/Lesson.js';
 import Resource from '../objects/Resource.js';
 import Section from '../objects/Section.js';
+import { getCurrentUserId } from '../objects/Session.js';
 
 const loadLessonEvent = (e, lessonId) => {
     console.log(lessonId);
     setCurrentLesson(lessonId);
+};
+
+const setLessonCompleted = (lessonId, userId) => {
+    let lesson = new Lesson((response) => {
+        if (response.ok) {
+            console.log(`User ${userId} completed lesson ${lessonId}`);
+            return;
+        }
+    });
+
+    lesson.setCompleted(lessonId, userId);
 };
 
 const createLessonAccordionItem = (lesson) => {
