@@ -35,6 +35,13 @@ export default class Course extends ApiObject {
     edit(courseObj, courseId) {
         const endpoint = `${Course.endpoint}/${courseId}`;
 
+        let validator = new CourseValidator(courseObj);
+        let errors = validator.validate();
+
+        if (!Utility.objectIsEmpty(errors) && this.validationErrorCallback) {
+            return this.validationErrorCallback(errors);
+        }
+
         fetch(endpoint, {
             method: 'PUT',
             headers: {
