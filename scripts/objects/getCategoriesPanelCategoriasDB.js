@@ -12,6 +12,7 @@ fetch(endpointFinal)
 })
 
 siguienteInformacionPCC.addEventListener('click', function(e){
+  e.preventDefault(); 
  var listaCategorias = document.getElementById('colocarAvisos');
        listaCategorias.innerHTML = ` `;
   page=page + 1;
@@ -31,6 +32,7 @@ siguienteInformacionPCC.addEventListener('click', function(e){
 });
 
 anteriorInformacionPCC.addEventListener('click', function(e){
+  e.preventDefault(); 
   var listaCategorias = document.getElementById('colocarAvisos');
        listaCategorias.innerHTML = ` `;
   if(page > 1){
@@ -84,7 +86,7 @@ var listaCategorias = document.getElementById('colocarAvisos');
 
 
 btnEditarCategoria.addEventListener('click', function (e) {
-
+e.preventDefault(); 
     var vari = document.getElementById('escondercategorias');
     vari.style.display = 'block';
     vari.style.padding = '20px';

@@ -1,22 +1,4 @@
 
-/* 
-    const comboBox= document.querySelector('#categoriasDB');
-    // Es una petición GET, así que no hay que configurar nada ya que fetch
-    // por defecto manda una petición GET
-    fetch(endpoint1)
-    .then(res => res.json())
-    .then(categories => {
-    	categories.forEach( 
-    		category => {
-    			const item = document.createElement('option');
-    			item.innerHTML += `
-    				${category.name}
-    			`;
-    			comboBox.appendChild(item);
-    		});
-
-    	})
-*/
 var page=1;
 
 var endpoint1 = "http://localhost/api/categories?count=10&page=";
@@ -60,6 +42,7 @@ function consultarCategorias(data){
 //
 
 siguienteInformacionPCC.addEventListener('click', function(e){
+   e.preventDefault(); 
   page=page + 1;
   console.log(page);
   var endpoint1 = "http://localhost/api/categories?count=10&page=";
@@ -78,6 +61,7 @@ siguienteInformacionPCC.addEventListener('click', function(e){
 });
 
 anteriorInformacionPCC.addEventListener('click', function(e){
+   e.preventDefault(); 
     var errores = document.getElementById('colocarAvisos');
        errores.innerHTML = ` `;
   if(page > 1){
@@ -103,3 +87,23 @@ anteriorInformacionPCC.addEventListener('click', function(e){
   }
  
 });
+
+
+/* 
+    const comboBox= document.querySelector('#categoriasDB');
+    // Es una petición GET, así que no hay que configurar nada ya que fetch
+    // por defecto manda una petición GET
+    fetch(endpoint1)
+    .then(res => res.json())
+    .then(categories => {
+      categories.forEach( 
+        category => {
+          const item = document.createElement('option');
+          item.innerHTML += `
+            ${category.name}
+          `;
+          comboBox.appendChild(item);
+        });
+
+      })
+*/

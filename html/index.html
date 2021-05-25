@@ -19,10 +19,13 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-          <form class="d-flex">
-            <input id="busqueda" class="form-control me-2" type="text" placeholder="Busca tu sueño aquí" aria-label="Search">
-              <!--  <button class="btn btn-outline-success" type="submit">Search</button>-->
-              <button  class="btn btn-outline-success" type="button" onclick="validarBuscar()">Buscar</button>
+          <form id="busquedaImplacable" class="" style="width: 40%;">
+            <input id="busquedaImplacableInput" class="form-control me-2" type="text" placeholder="Busca tu sueño aquí" aria-label="Search" style="
+    width: 70%;
+    display: inline-block;
+">
+              <!--  <button class="btn btn-outline-success" type="submit">Search</button> onclick="validarBuscar()"-->
+              <button  class="btn btn-outline-success" type="submit" >Buscar</button>
            </form>
           <ul class="navbar-nav acomodaruls me-auto mb-2 mb-md-0">
             <li class="nav-item dropdown menu-area show active">
@@ -91,43 +94,10 @@
     </div>
     <div class="carousel-inner">
     <!-- ELEMENTO DEL CARRUSEL -->
-      <div class="carousel-item active">
-        <div class="container todo_el_alto carou">
-          <div class="carousel-caption carouselcaptioncolor">
-            <h4><i class="bi bi-trophy-fill"></i>Los cursos más vendidos <i class="bi bi-trophy-fill"></i></h4>
-          </div>
-          <div class="row todo_el_alto separate"> 
-             <div class="col-md-2 col-xs-12 todo_el_ancho cuadritos">
-                 <img src="/assets/images/carousel/rigging.jpg" class="img-fluid" alt="rigging"> 
-                 <button class="btn">Button</button>
-             </div>
-             <div class="col-md-2 todo_el_ancho cuadritos masalto2">
-                 <img src="/assets/images/carousel/rigging.jpg" class="img-fluid" alt="rigging"> 
-                 <button class="btn">Button</button>
-             </div>
-             <div class="col-md-2 todo_el_ancho cuadritos masalto">
-                 <img src="/assets/images/carousel/rigging.jpg" class="img-fluid" alt="rigging"> 
-                 <button class="btn">Button</button>
-             </div>
-             <div class="col-md-2 todo_el_ancho cuadritos masalto2">
-                 <img src="/assets/images/carousel/rigging.jpg" class="img-fluid" alt="rigging"> 
-                 <button class="btn">Button</button>
-             </div>
-             <div class="col-md-2 todo_el_ancho cuadritos">
-               <img src="/assets/images/carousel/rigging.jpg" class="img-fluid" alt="rigging"> 
-               <button class="btn">Button</button>
-           </div>
-         </div>    <!--div del row--> 
-   <!--<div class="carousel-caption text-start">
-         <h1>Example headline.</h1>
-         <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-         <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-       </div>-->
-     </div>
-      </div>
+      
 
        <!--TERMINA ELEMENTO DEL CARRUSEL -->
-      <div class="carousel-item">
+      <div class="carousel-item active">
         <img src="https://images.pexels.com/photos/5625007/pexels-photo-5625007.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="FCFM" class="bd-placeholder-img">
         <div class="container">
           <div class="carousel-caption">
@@ -196,126 +166,15 @@
 
 
   <!-- TERMINA EL CARRUSEL -->
-  <!-- cards comienzan-->
-  <div class="container">
-    <h4 class=""><i class="bi bi-star-fill"></i>Cursos mejor calificados <i class="bi bi-star-fill"></i></h4>
-  </div>
-  <div class="row marginbtm">
-      <div class="col-md-3 card" style="width: 18rem;">
-        <img class="card-img-top" src="/assets/images/cursos.jpg" alt="img-thumbnail">
-        <div class="card-body">
-          <h5 class="card-title">Técnicas de aprendizaje</h5>
-          <p class="card-text">Erika Aranda</p>
-          <a href="#" class="btn btn-primary">Agregar a la mochila</a>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg></li>
-          <li class="list-group-item">Gratis</li>
-        
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">Soft skills</a>
-        </div>
-      </div>
-      <div class="col-md-3 card" style="width: 18rem;">
-        <img class="card-img-top" src="/assets/images/courses/js-course.jpg" alt="img-thumbnail">
-        <div class="card-body">
-          <h5 class="card-title">Principios de JavaScript</h5>
-          <p class="card-text">Erika Aranda</p>
-          <a href="#" class="btn btn-primary">Agregar a la mochila</a>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg></li>
-          <li class="list-group-item">$150.00</li>
-        
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">JavaScript</a>
-        </div>
-      </div>
-      <div class="col-md-3 card" style="width: 18rem;">
-        <img class="card-img-top" src="/assets/images/courses/c-plus-plus-course.jpg" alt="img-thumbnail">
-        <div class="card-body">
-          <h5 class="card-title">C++ Intermedio</h5>
-          <p class="card-text">Bryan Duarte</p>
-          <a href="#" class="btn btn-primary">Agregar a la mochila</a>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg></li>
-          <li class="list-group-item">$150.00</li>
-        
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">C++</a>
-        </div>
-      </div>
-      <div class="col-md-3 card" style="width: 18rem;">
-        <img class="card-img-top" src="/assets/images/courses/c-sharp-course.jpg" alt="img-thumbnail">
-        <div class="card-body">
-          <h5 class="card-title">C# avanzado</h5>
-          <p class="card-text">Bryan Duarte</p>
-          <a href="#" class="btn btn-primary">Agregar a la mochila</a>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-          </svg></li>
-          <li class="list-group-item">$150.00</li>
-        
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">C#</a>
-        </div>
-      </div>
-    
-  </div> 
-  <!--fin del row de cards JS-->
-  
-    
+
+
+
 
     <!-- CURSOS AGREGADOS RECIENTEMENTE-->
 
     
       <div class="container morado my-4">
-        <h1 class="marginmorado">Nuevos cursos</h1>
+        <h1>Nuevos cursos</h1>
       </div>
     
     
@@ -343,143 +202,29 @@
         <div class="carousel-inner" role="listbox">
     
           <!--First slide-->
-          <div class="carousel-item active">
-    
-            <div class="row">
-              <div class="col-md-4">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
-                       alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-md-4 clearfix d-none d-md-block">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
-                       alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-md-4 clearfix d-none d-md-block">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
-                       alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="carousel-item active" style="height: 400px;" >
+             <div class="row" style="display: flex;" id="cursosRecientesItem0"> 
+
+             </div>
+           
     
           </div>
-          <!--/.First slide-->
+        
+          <div class="carousel-item" style="height: 400px;">
     
-          <!--Second slide-->
-          <div class="carousel-item">
-    
-            <div class="row">
-              <div class="col-md-4">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                       alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-md-4 clearfix d-none d-md-block">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
-                       alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-md-4 clearfix d-none d-md-block">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
-                       alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+             <div class="row" style="display: flex;" id="cursosRecientesItem3"> 
+
+             </div>
     
           </div>
           <!--/.Second slide-->
     
           <!--Third slide-->
-          <div class="carousel-item">
+          <div class="carousel-item" style="height: 400px;">
     
-            <div class="row">
-              <div class="col-md-4">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"
-                       alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-md-4 clearfix d-none d-md-block">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
-                       alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-md-4 clearfix d-none d-md-block">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
-                       alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-    
+              <div class="row" style="display: flex;" id="cursosRecientesItem6"> 
+
+             </div>
           </div>
           <!--/.Third slide-->
     
@@ -491,7 +236,33 @@
     
     
     </div>
-  <!--TERMINAN CARDS -->
+  <!--TERMINAN Cursos recientes -->
+
+     <div id="insertarRateCourses"  style="text-align: center;"> 
+     <h2>Cursos Mejor Valorados</h2> 
+       <div class="row" style="display: flex; justify-content: center;" id="cursosRecientesRate0"> 
+
+             </div>
+             <div class="row" style="display: flex; justify-content: center;" id="cursosRecientesRate3"> 
+
+             </div>
+             <div class="row" style="display: flex; justify-content: center;" id="cursosRecientesRate6"> 
+
+             </div>
+     </div>
+
+     <div id="insertarSellerCourses"  style="text-align: center;"> 
+     <h2>Cursos Mas Comprados</h2> 
+       <div class="row" style="display: flex; justify-content: center;" id="cursosRecientesSeller0"> 
+
+             </div>
+             <div class="row" style="display: flex; justify-content: center;" id="cursosRecientesSeller3"> 
+
+             </div>
+             <div class="row" style="display: flex; justify-content: center;" id="cursosRecientesSeller6"> 
+
+             </div>
+     </div>
 
   <!-- EFECTO 3D -->
    
@@ -569,7 +340,12 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script type="module" src="/scripts/objects/cursos/coursesSales.js"></script>
+        <script type="module" src="/scripts/objects/cursos/searchCourse.js"></script>
+     <script type="module" src="/scripts/objects/cursos/courseRate.js"></script>
     <script type="module" src="/scripts/objects/getCategoriesMegaMenuDB.js"></script>
+
+    <script type="module" src="/scripts/objects/cursos/coursesRecently.js"></script>
 
     <script src="/scripts/js/jquery3.min.js"></script>
     <script src="/scripts/js/plataforma-maestro.js"></script>

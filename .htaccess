@@ -1,3 +1,4 @@
 DirectoryIndex html/index.html
 
 RewriteEngine on
+RewriteRule ^courses/([0-9]+)$ html/explorar-curso.html [NC,L]

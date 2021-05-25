@@ -1,6 +1,9 @@
 
 /*ESTILOS DE LOS CARDS*/
 /*----  Main Style  ----*/
+.checked {
+  color: orange;
+}
 #cards_landscape_wrap-2{
     text-align: center;
     background: #F7F7F7;
@@ -98,4 +101,5 @@
   .img-thumbnail{
     max-width: 300px!important;
   }
+  
   

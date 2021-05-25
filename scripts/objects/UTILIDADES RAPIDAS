@@ -1,0 +1,365 @@
+const params = new URLSearchParams(window.location.search);
+  console.log(params.toString());
+  var buscarCurso = params.get('curso');
+  
+
+import Utility from "/scripts/Utility.js";
+
+ asignarIDEditar.dataset.indexNumber = categories.id;
+ var ID = obtenerID.getAttribute("data-index-number");
+ 
+document.addEventListener("DOMContentLoaded", () => { 
+editCategoryForm.addEventListener('submit', function(e){ 
+
+//DATA SET
+const setIdDb = document.querySelector("#btnActualizarPerfil");
+ setIdDb.dataset.indexNumber
+ 	/*var obtenerID = document.getElementById('btnActualizarPerfil');
+	let ID = obtenerID.getAttribute("data-index-number");*/
+FETCH GET
+****************************** for
+for (var i = 0; i < datas.length; i++){
+FETCH PUT
+
+fetch(endpointFinal,{
+    method: 'PUT',
+    body:JSON.stringify(avatarUser),
+    headers: {
+        "Content-Type": "application/json",
+      }
+    })
+
+
+fetch(endpoint)
+	.then(res=> res.json())
+	    .then(datas=> { 
+	    	console.log(datas);
+	    	coursesRecently(datas);
+	    });
+
+GETID
+
+e.preventDefault(); 
+
+var obtenerID = document.getElementById("btnGuardarAvatar");
+var ID = obtenerID.getAttribute("data-index-number");
+
+endpoint
+"http://localhost/api/users/"
+
+
+  lastNameUserDB.setAttribute("value",    datas.lastname);
+
+   listaCategorias.innerHTML = ` `;
+
+     let saberMultiplo;  
+         saberMultiplo = i % 3
+           if( saberMultiplo  == 0 || i == 0 ){ 
+
+
+var divNota = document.createElement("div");
+  divNota.setAttribute("id", iddd);
+  divNota.setAttribute("class", "tags");
+  division.appendChild(divNota);
+  divNota.textContent = contenido;
+
+.then(response =>{
+        if(response.ok){
+          //alert("todo esta OK");
+        }
+        return response.json();
+      }) 
+
+      
+           <!-- 
+  <!-- RATE COURSES -->
+  <div class="container">
+   
+    <div class="container morado my-4">
+        <h1><i class="bi bi-star-fill"></i> Cursos Mejor Calificados <i class="bi bi-star-fill"></i></h1>
+      </div>
+    <div class="row marginbtm" id="insertarRateCourses">
+
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="container morado my-4">
+        <h1> Cursos más vendidos </h1>
+      </div>
+
+    <div class="row marginbtm">
+      <div class="container my-4">
+
+      <!--Carousel Wrapper-->
+      <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+    
+        <!--Controls-->
+        <div class="controls-top">
+          <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="bi bi-chevron-left"></i></a>
+          <a class="btn-floating" href="#multi-item-example" data-slide="next"><i class="bi bi-chevron-right"></i></a>
+        </div>
+        <!--/.Controls-->
+    
+        <!--Indicators-->
+        <ol class="carousel-indicators">
+          <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
+          <li data-target="#multi-item-example" data-slide-to="1"></li>
+          <li data-target="#multi-item-example" data-slide-to="2"></li>
+        </ol>
+        <!--/.Indicators-->
+    
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+    
+          <!--First slide-->
+          <div class="carousel-item active" style="height: 400px;" >
+             <div class="row" style="display: flex;" id="insertarSalesCourses0"> 
+
+             </div>
+           
+    
+          </div>
+        
+          <div class="carousel-item" style="height: 400px;">
+    
+             <div class="row" style="display: flex;" id="insertarSalesCourses3"> 
+
+             </div>
+    
+          </div>
+          <!--/.Second slide-->
+    
+          <!--Third slide-->
+          <div class="carousel-item" style="height: 400px;">
+    
+              <div class="row" style="display: flex;" id="insertarSalesCourses6"> 
+
+             </div>
+          </div>
+          <!--/.Third slide-->
+    
+        </div>
+        <!--/.Slides-->
+    
+      </div>
+      <!--/.Carousel Wrapper-->
+    
+    
+    </div>
+  <!--TERMINAN CARDS -->
+    </div>
+  </div>
+
+
+            <!-- ******************* GALERIA **************************** -->
+               <br>
+    <h3 class="container">Galería de imagenes del curso</h3>
+               <br>
+  <div class="container ">
+<div class="row">
+
+  <!-- Grid column -->
+  <div class="col-md-4 margintp">
+
+    <!--Modal: Name-->
+    <div class="modal fade" id="galleryImg1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+
+        <!--Content-->
+        <div class="modal-content">
+
+          <!--Body-->
+          <div class="modal-body mb-0 p-0">
+            
+            <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+              <!-- <iframe   class="embed-responsive-item" src="https://www.youtube.com/embed/6ZHGJzAkLJ0"  allowfullscreen></iframe>
+              Body-->
+              <img class="embed-responsive-item" src="https://images.pexels.com/photos/4974912/pexels-photo-4974912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+            </div>
+
+          </div>
+
+          <!--Footer-->
+          <div class="modal-footer justify-content-center">
+          
+
+            <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
+
+          </div>
+
+        </div>
+        <!--/.Content-->
+
+      </div>
+    </div>
+    <!--Modal: Name-->
+    <h6>Instalación de software</h6>
+    <a>
+      <img class="img-fluid z-depth-1" src="https://images.pexels.com/photos/4974912/pexels-photo-4974912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" data-toggle="modal" data-target="#galleryImg1" alt="">
+     <!-- <img class="img-fluid z-depth-1" src="https://mdbootstrap.com/img/screens/yt/screen-video-1.jpg" alt="video"
+        data-toggle="modal" data-target="#modal1">
+      el data target es el id de la imagen
+      -->
+
+      </a>
+
+  </div> <!-- Grid column -->
+  <!-- Grid column -->
+
+  
+  <!-- Grid column -->
+  <div class=" col-md-4 margintp">
+
+    <!--Modal: Name-->
+    <div class="modal fade" id="galleryImg2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+
+        <!--Content-->
+        <div class="modal-content">
+
+          <!--Body-->
+          <div class="modal-body mb-0 p-0">
+            
+            <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+               <!--<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/wTcNtgA6gHs"
+                allowfullscreen></iframe>-->
+                <img  class="embed-responsive-item" src="https://images.pexels.com/photos/7504859/pexels-photo-7504859.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+            </div>
+
+          </div>
+
+           <!--Footer-->
+           <div class="modal-footer justify-content-center">
+            
+          <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
+
+          </div>
+
+        </div>
+        <!--/.Content-->
+
+      </div>
+    </div>
+    <!--Modal: Name-->
+    <h6>Codificación</h6>
+    <a>
+      <img class="img-fluid z-depth-1" src="https://images.pexels.com/photos/7504859/pexels-photo-7504859.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="video"
+        data-toggle="modal" data-target="#galleryImg2"></a>
+
+  </div>
+  <!-- Grid column -->
+
+  <!-- Grid column -->
+  <div class="col-md-4 margintp">
+
+    <!--Modal: Name-->
+    <div class="modal fade" id="galleryImg3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+
+        <!--Content-->
+        <div class="modal-content">
+
+          <!--Body-->
+          <div class="modal-body mb-0 p-0">
+           
+            <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+            
+                <img  class="embed-responsive-item" src="https://images.pexels.com/photos/325111/pexels-photo-325111.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+            </div>
+
+          </div>
+
+         <!--Footer-->
+         <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
+
+        </div>
+
+        </div>
+        <!--/.Content-->
+
+      </div>
+    </div>
+    <!--Modal: Name-->
+    <h6>Proyecto entregable</h6>
+    <a><img class="img-fluid z-depth-1" src="https://images.pexels.com/photos/325111/pexels-photo-325111.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Imagen de curso"
+        data-toggle="modal" data-target="#galleryImg3"></a>
+
+  </div>
+  <!-- Grid column -->
+</div>
+
+</div>
+     <!--GALERIA -->
+
+
+    *++++++++++++++++++++++ resultados busqueda ///////////////////////
+
+    <div class="col-md-12">
+                <div class="card">
+                    <div class="row no-gutters">
+                      <div class="col-md-4">
+                        <img src="https://images.pexels.com/photos/6804581/pexels-photo-6804581.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="card-img" alt="...">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Técnicas de aprendizaje</h5>
+                            <p class="card-text">Erika Aranda</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum quaerat repellendus, voluptates velit reprehenderit.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                            </svg></li>
+                            <li class="list-group-item">$100.00 MX</li>
+                          
+                          </ul>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+            </div>
+            <br>
+            <div class="col-md-12 marginarriba">
+                <div class="card">
+                    <div class="row no-gutters">
+                      <div class="col-md-4">
+                        <img src="https://images.pexels.com/photos/6804581/pexels-photo-6804581.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="card-img" alt="...">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Técnicas de aprendizaje</h5>
+                            <p class="card-text">Erika Aranda</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum quaerat repellendus, voluptates velit reprehenderit.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                            </svg><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                              <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                            </svg></li>
+                            <li class="list-group-item">$100.00 MX</li>
+                          
+                          </ul>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+            </div>

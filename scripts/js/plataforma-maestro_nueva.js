@@ -229,7 +229,7 @@ function openNav() {
   }
   var e = document.getElementsByClassName("prueba33");
   var f;
-  for (e = 0; e < f.length; e++) {
+  for (f = 0; f < e.length; f++) {
     e[f].style.display = "inline";
   }
 }

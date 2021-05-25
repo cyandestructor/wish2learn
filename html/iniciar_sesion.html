@@ -115,19 +115,23 @@
     <div class="container">
         <div class="jumbotron">
             <div class="col-md-6 centrarformularioregistro">
-                <form class="row g-3 formularioregistro">
+                <form id="formularioIniciarSesion" class="row g-3" method="post">
                     <h5>Inicia sesión</h5>
                     <div class="form-group">
                         <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="input" required>
                         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+                        <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password" required>
+                    </div>
+                    <div id="msjCategoryAdd">
+                      
                     </div>
                     <div class="col-12">
-                      <a class="btn btn-light" href="/html/sesion-iniciada-de-alumno.html" >Iniciar Sesión</a>
+                       <button class="btn btn-primary" type="submit" > Iniciar sesion </button> 
+                      <!-- <a class="btn btn-light" type="submit" href="/html/sesion-iniciada-de-alumno.html" >Iniciar Sesión</a>  -->
                     </div>
                   </form>
                   <br>
@@ -135,7 +139,9 @@
             </div>
         </div>
     </div>
-    
+
+      <script type="module" src="/scripts/objects/loginUser.js"></script>
+   <!--<script type="module" src="/scripts/objects/usuario/editarPerfilUser.js"></script> -->
     <script src="/scripts/js/jquery3.min.js"></script>
     <script src="/scripts/js/bootstrap.min.js" ></script>
     <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>

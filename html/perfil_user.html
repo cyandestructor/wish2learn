@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/rating.css">
+    <link rel="stylesheet" href="/assets/css/barranav.css">
+    <link rel="stylesheet" href="/assets/css/sesioniniciada_alumno.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"> 
+
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+   
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand black" href="#">Wish2Know</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <form class="d-flex">
+              <input id="busqueda" class="form-control me-2" type="text" placeholder="Busca tu sueño aquí" aria-label="Search">
+                <!--  <button class="btn btn-outline-success" type="submit">Search</button>-->
+                <button  class="btn btn-outline-success" type="button" onclick="validarBuscar()">Buscar</button>
+             </form>
+            <ul class="navbar-nav acomodaruls me-auto mb-2 mb-md-0">
+              <li class="nav-item dropdown menu-area active">
+                <a class="nav-link " href="#" id="mega-one" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Categorias </a>
+               
+                <div class="dropdown-menu mega-area" aria-labelledby="mega-one">
+                  <div class="row">
+                    <div class="col-sm-6">
+                        <h4>Desarrollo</h4>
+                        <a href="#" class="dropdown-item">Desarrollo móvil</a>
+                        <a href="#" class="dropdown-item">Desarrollo de base de datos</a>
+                        <a href="#" class="dropdown-item">Subcategoria 1</a>
+                        <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    </div>
+                    <div class="col-sm-6">
+                      <h4>Prueba 2</h4>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    </div>
+                    <div class="col-sm-6">
+                      <h4>Prueba 3</h4>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    </div>
+                    <div class="col-sm-6">
+                      <h4>Prueba 4</h4>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                      <a href="#" class="dropdown-item">Subcategoria 1</a>
+                    </div>
+                  </div>  
+                </div> <!-- dropdown-mega-menu.// -->
+            </li>
+              <li id="convierteInstructor" class="nav-item" style="display: none">
+                <a class="nav-link" href="/html/encuesta-para-instructor.html">Enseña en W2L</a>
+              </li>
+               <li id="plataforma" class="nav-item" style="display: none">
+                <a class="nav-link" href="/html/plataforma-para-que-usen-instructores.html">Plataforma para maestros</a>
+              </li>
+            </ul>
+           
+            
+  
+            
+            <ul class="navbar-nav navderbtns ms-auto">
+             
+              <li class="nav-item ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z"/>
+                </svg>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown"> Dropdown right </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href="#"> Nombre User </a></li>
+                  <li><a class="dropdown-item disabled" href="#"> email user </a></li>
+                  <div class="dropdown-divider"></div>
+                  <li><a class="dropdown-item" href="#"> Mi aprendizaje </a></li>
+                  <li><a class="dropdown-item " data-toggle="pill" onclick="activarPestanaMochila()" href="#mimochilacursos"> Mi mochila </a></li>
+                  <div class="dropdown-divider"></div>
+                  <li><a class="dropdown-item" href="#"> Mensajes </a></li>
+                  <li><a class="dropdown-item" href="/html/editar-perfil-alumno.html"> Editar Perfil </a></li>
+                  <div class="dropdown-divider"></div>
+                  <li><a class="dropdown-item" href="/html/historial.html"> Historial </a></li>
+                  <div class="dropdown-divider"></div>
+                  <li>
+                    <a class="dropdown-item" href="#" id="cerrarSesionUser"> Cerrar sesión </a>
+                  </li>
+                  </ul>
+              </li>
+            </ul>
+           
+          </div>
+        </div>
+      </nav>
+
+      
+   
+      <!-- TAB DE PERFIL -->
+        <div id="perfil">
+            <div class="container margintp">
+                <div class="">
+                  <h4>Perfil de </h4>
+                </div>
+               
+                <div class="col-md-12">
+                    <form>
+                      <div id="cargaImagen">
+                        
+                      </div>
+                      
+                        <br>
+                       
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Nombre</label>
+                            <div class="col-sm-10">
+                              <input type="text" readonly class="form-control-plaintext" id="nameUserDBinsert" >
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Apellido</label>
+                            <div class="col-sm-10">
+                              <input type="text" readonly class="form-control-plaintext" id="lastNameUserDBinsert">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="descripcionDB" class="col-sm-2 col-form-label">Descripción usuario</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" readonly id="descripcionDB" rows="3" value="Rellena la descripción"></textarea>
+                         
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Nombre de usuario</label>
+                            <div class="col-sm-6">
+                              <input type="text" readonly class="form-control-plaintext" id="userNameDBinsert">
+                            </div>
+                          </div>
+                        
+                       
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Rol actual (Alumno ó Maestro)</label>
+                           
+                            <div class="col-sm-10">
+                              <input type="text" readonly class="form-control-plaintext" id="actualRolDB">
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-2 col-form-label">Fecha de la última actividad</label>
+                           
+                            <div class="col-sm-10">
+                              <input type="text" readonly class="form-control-plaintext" id="fechaActividad" >
+                            </div>
+                          </div>
+                      </form>
+                </div>
+              </div>
+        </div>
+        <!-- TAB DE PERFIL-->
+      <ul class="nav nav-tabs container" id="myTab" role="tablist">
+        <li class="nav-item  active" role="presentation">
+          <button class="nav-link  active" id="miscursosindex" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="false">Cursos del instructor</button>
+        </li>
+      </ul>
+     
+            <div class="container margintp">
+              <div id="chargeNameDB" class="">
+                  
+              </div>
+                <div class="col-md-12">
+                  <!-- Topic Cards -->
+                  <h5>Tus cursos</h5>
+                  <div id="cards_landscape_wrap-2">
+                      <div class="container">
+                          <div id="coursesEnrollment" class="row">
+                              
+                          
+                              
+                          </div>
+                      </div>
+                  </div> <!-- fin de los cards-->
+                </div>
+              </div>
+       <br>
+      <br>
+      <br>
+
+
+
+     <!-- <script type="module" src="/scripts/objects/cursos/btnGenerarCertificado.js"></script>
+<script type="module" src="/scripts/objects/cursos/cursoCalificarComentar.js"></script> -->
+   <script type="module" src="/scripts/objects/sesionActualPerfil.js"></script>
+  <script type="module" src="/scripts/objects/logOutUser.js"></script>
+
+    <script src="/scripts/js/AnadirCalificacion.js" ></script>
+    <script src="/scripts/js/ratingCourse.js"></script>
+    <script src="/scripts/js/irAPestanaMochila.js"></script>
+
+    <script src="/scripts/js/jquery3.min.js"></script>
+    <script src="/scripts/js/bootstrap.min.js" ></script>  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
+  
+  </body>
+</html>

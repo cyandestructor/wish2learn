@@ -12,6 +12,8 @@ fetch(endpointFinal)
 })
 
 siguienteInformacion.addEventListener('click', function(e){
+  
+  e.preventDefault(); 
   page=page + 1;
   console.log(page);
   var endpoint1 = "http://localhost/api/categories?count=10&page=";

@@ -117,63 +117,47 @@
    
     <div id="margintp" class="row container marginautos">
         <div class="col-md-6 marginautos">
-            <!-- Upload image input
-            <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
-                -->
-                <h3 class="">Editar perfil</h3>
+            <form id="guardarAvatar">
+            <h3 class="">Editar perfil</h3>
             <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
-                <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
-                
+              <input id="upload" type="file" onchange="readURL(this);" class="form-control border-0">
             </div>
-
             <!-- Uploaded image area-->
             <p class="font-italic text-white text-center">Vista previa de imagen</p>
             <div class="image-area mt-4"><img id="imageResult" src="#" alt="" class="img-fluid rounded shadow-sm mx-auto d-block"></div>
             <br>
-            <a href="#" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Guardar</a>
-
-            </div>
-        
+            <button type="submit" class="btn btn-primary btn-lg" id="uploadAvatar">Guardar</button>
+            </div> 
+          </form>
     </div>
     <div id="margintp2" class="row container">
         <div class="">
-            <form class="needs-validation" novalidate>
+            <form id="" class="needs-validation">
                 <div class="form-row">
                   <div class="col-md-4 mb-3">
-                    <label for="validationCustom01">First name</label>
-                    <input type="text" class="form-control" id="nameUserDBinsert" placeholder="First name">
+                    <label for="validationCustom01">Nombre</label>
+                    <input type="text" class="form-control" name="name" id="nameUserDBinsert" placeholder="First name">
                     
                   </div>
                   <div class="col-md-4 mb-3">
                     <label for="validationCustom02">Last name</label>
-                    <input type="text" class="form-control" id="lastNameUserDBinsert" placeholder="Last name">
+                    <input type="text" class="form-control" name="lastname" id="lastNameUserDBinsert" placeholder="Last name">
                     
                   </div>
                   <div class="col-md-4 mb-3">
                     <label for="validationCustomUsername">Username</label>
-                    <div class="input-group">
-                      <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                      </div>
-                      <input type="text" class="form-control" id="userNameDBinsert" placeholder="Username" aria-describedby="inputGroupPrepend">
+                   
+                    
+                      <input type="text" class="form-control" name="username" id="userNameDBinsert" placeholder="Username" aria-describedby="inputGroupPrepend">
                       
-                    </div>
+                    
                   </div>
                 </div>
 
-                <div class="form-group row">
-                    <label for="disabledTextInput">Correo electronico</label>
-                        <div class="input-group ">
-                          <fieldset class="tamano" disabled>
-                          <input type="text" id="emailDBinsert" class="form-control" placeholder="example@mail.com">  
-                          </fieldset>
-                          
-                        </div>
-                  </div>
                   <div class="form-group row">
                      <label for="disabledTextInput">Contraseña</label>
                         <div class="input-group ">
-                            <fieldset class="tamano" disabled>
+                            <fieldset class="tamano">
                             <input type="text" class="form-control" placeholder="Nueva contraseña">
                             </fieldset>
                             <div class="input-group-append">
@@ -186,12 +170,12 @@
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
                         <label>Describete a ti mismo</label>
-                        <textarea class="form-control" id="descripcionDB" placeholder="Cuenta lo más interesante de ti" rows="3"></textarea>
+                        <textarea class="form-control" id="descripcionDB" placeholder="Escribe lo más interesante" rows="3" name="description"></textarea>
                       </div>
                   </div>
                 </div>
                 
-                <button class="btn btn-primary" type="submit">Actualizar datos</button>
+                <button class="btn btn-primary" type="submit" id="btnActualizarPerfil">Actualizar datos</button>
               </form>
         </div>
     </div>
@@ -199,7 +183,10 @@
 
     <!-- Optional JavaScript -->
 
-    <script type="module" src="/scripts/objects/editarPerfil.js"></script>
+    <!-- <script type="module" src="/scripts/objects/editarPerfil.js"></script> -->
+      <script type="module" src="/scripts/objects/usuario/editarAvatarUsuario.js"></script>
+     <!-- <script type="module" src="/scripts/pages/EditUser.js"></script> -->
+      <script type="module" src="/scripts/objects/usuario/editarPerfilUser.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="/scripts/js/jquery3.min.js"></script>
     <script src="/scripts/js/mochilaextemporanea.js"></script>

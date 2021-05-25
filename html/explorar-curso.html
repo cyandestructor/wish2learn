@@ -8,7 +8,7 @@
     <link href="/assets/css/all.css" rel="stylesheet"> <!--load all styles -->
     
     <!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
-
+    <link rel="stylesheet" href="/assets/css/comentarios.css"> 
     <link rel="stylesheet" href="/assets/css/barranav.css"> 
     <link rel="stylesheet" href="/assets/css/ExplorarCurso.css"> 
     <!-- <link href="css/all.css" rel="stylesheet">  -->
@@ -114,8 +114,11 @@
     </nav>
     <!-- FIN BARRA NAVEGACION-->
 
-      <div class="jumbotron valoracioncurso">
-        <h3>Videos del curso</h3>
+     
+       <div class="container morado">
+        <br>
+        <h1>Videos del curso</h1>
+         <br>
       </div>
     <!-- VIDEOS DE PRUEBA -->
           <!-- Grid row -->
@@ -241,33 +244,38 @@
   </div>
   <!-- Grid column -->
 </div>
-    <!-- TERMINA VIDEOS DE PRUEBA-->
+    <!--  *********************************    TERMINA VIDEOS DE PRUEBA ******************************-->
 
     <!-- -->
     <div class="container">
-      <button type="button" class="btn btn-primary btn-lg btn-medianomorado">Comprar</button>
+    <button id="comprarCurso" type="button" class="btn btn-primary btn-lg btn-medianomorado">Comprar</button>
     <button type="button" class="btn btn-secondary btn-lg btn-mediano">Mochila</button>
-      <h2>Angular: De cero a experto</h2>
-      <p>Todo lo que necesitas saber de angular utilizando TypeScript y buenas prácticas ofrecidas por el equipo de angular.
-      </p>
+      <h2 id="titleCourse"> </h2>
+      <h5 id="descriptionCourse">
+
+      </h5>
       
-      <h5>
-        <i class="bi bi-award"></i>Fecha de la última actualizacion</h5>
+      <h5 id="fechaUltimaActualizacion"><i class="bi bi-award"></i>Fecha de la última actualizacion</h5>
         <h5>
           <i class="bi bi-award"></i>Español</h5>
           <button type="button" class="btn btn-outline-primary">Lista de deseos</button>
     <button type="button" class="btn btn-outline-secondary">Compartir</button>
     <button type="button" class="btn btn-outline-success">Regalar</button>
-
-    <p>Creado por <a href="">INSTRUCTOR</a> </p>
+    <br>
+    <br>
+    <!-- NOMBRE DEL INSTRUCTOR -->
+    <h5 id="queInstructorID">Creado por <a id="nombreInstructorCurso" href=""> </a></h5>
+    <br>
+    <h5>Categoría</h5>
+    <div id="queProductoId" style="display:none;"></div>
     <div class="card cardquote">
-      <div class="card-header">
-        Quote
+      <div id="categoriaCurso" class="card-header">
+       
       </div>
       <div class="card-body">
         <blockquote class="blockquote mb-0">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-          <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+          <p id="categoryDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          
         </blockquote>
       </div>
     </div>
@@ -291,6 +299,13 @@
 
     <!-- DESCRIPCION Y REQUISITOS -->
 
+
+    <!-- COMENTARIOS -->
+    <div id="insertarComentarios" class="col-md-8">
+       
+    </div>
+   
+    <!-- TERMINAN COMENTARIOS -->
 
     <!-- TEMARIO -->
     
@@ -393,7 +408,7 @@
     <div id="moradito" class="cuadromitad morado text-center overflow-hidden">
         <div class="container-fluid ">
         <div class="panel-group" id="accordion">
-            <div class="panel panel-default">
+           <!--  <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
@@ -410,7 +425,7 @@
             </div>
               
             </div>
-          </div> 
+          </div>  -->
           <div class="panel panel-default">
             <div class="panel-heading">
               <h4 class="panel-title">
@@ -443,24 +458,15 @@
             </div>
             <div id="collapse3" class="panel-collapse collapse">
       
-              <h3>NOMBRE DEL INSTRUCTOR</h3>
-              <p> Desarrollador web</p>
-              <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat.</div>
-              <div class="row">
-                <div class="col-md-2">
-                  <img src="/assets/images/multimedia.jpg" class="rounded img-peq" alt="Cinque Terre">
+              <h3 id="nameCompleteInstructor"> </h3>
+             
+              <div id="descriptionInstructor" class="panel-body"> </div>
+              <div class="row" style="justify-content: center;">
+                <div id="insertarAvatarInstructor" class="col-md-3">
+                 
+
                 </div>
-                <div class="col-md-10">
-                  <h6>TEXTO AQUI</h6>
-                  <h6>TEXTO AQUI</h6>
-                  <h6>TEXTO AQUI</h6>
-                  <h6>TEXTO AQUI</h6>
-                  <h6>TEXTO AQUI</h6>
-                  <h6>TEXTO AQUI</h6>
-                </div>
+                
       
                 
                 
@@ -492,146 +498,7 @@
 
 
 
-               <!-- ******************* GALERIA **************************** -->
-               <br>
-    <h3 class="container">Galería de imagenes del curso</h3>
-               <br>
-  <div class="container ">
-<div class="row">
-
-  <!-- Grid column -->
-  <div class="col-md-4 margintp">
-
-    <!--Modal: Name-->
-    <div class="modal fade" id="galleryImg1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-
-        <!--Content-->
-        <div class="modal-content">
-
-          <!--Body-->
-          <div class="modal-body mb-0 p-0">
-            
-            <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-              <!-- <iframe   class="embed-responsive-item" src="https://www.youtube.com/embed/6ZHGJzAkLJ0"  allowfullscreen></iframe>
-              Body-->
-              <img class="embed-responsive-item" src="https://images.pexels.com/photos/4974912/pexels-photo-4974912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-            </div>
-
-          </div>
-
-          <!--Footer-->
-          <div class="modal-footer justify-content-center">
-          
-
-            <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
-
-          </div>
-
-        </div>
-        <!--/.Content-->
-
-      </div>
-    </div>
-    <!--Modal: Name-->
-    <h6>Instalación de software</h6>
-    <a>
-      <img class="img-fluid z-depth-1" src="https://images.pexels.com/photos/4974912/pexels-photo-4974912.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" data-toggle="modal" data-target="#galleryImg1" alt="">
-     <!-- <img class="img-fluid z-depth-1" src="https://mdbootstrap.com/img/screens/yt/screen-video-1.jpg" alt="video"
-        data-toggle="modal" data-target="#modal1">
-      el data target es el id de la imagen
-      -->
-
-      </a>
-
-  </div> <!-- Grid column -->
-  <!-- Grid column -->
-
-  
-  <!-- Grid column -->
-  <div class=" col-md-4 margintp">
-
-    <!--Modal: Name-->
-    <div class="modal fade" id="galleryImg2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-
-        <!--Content-->
-        <div class="modal-content">
-
-          <!--Body-->
-          <div class="modal-body mb-0 p-0">
-            
-            <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-               <!--<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/wTcNtgA6gHs"
-                allowfullscreen></iframe>-->
-                <img  class="embed-responsive-item" src="https://images.pexels.com/photos/7504859/pexels-photo-7504859.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-            </div>
-
-          </div>
-
-           <!--Footer-->
-           <div class="modal-footer justify-content-center">
-            
-          <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
-
-          </div>
-
-        </div>
-        <!--/.Content-->
-
-      </div>
-    </div>
-    <!--Modal: Name-->
-    <h6>Codificación</h6>
-    <a>
-      <img class="img-fluid z-depth-1" src="https://images.pexels.com/photos/7504859/pexels-photo-7504859.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="video"
-        data-toggle="modal" data-target="#galleryImg2"></a>
-
-  </div>
-  <!-- Grid column -->
-
-  <!-- Grid column -->
-  <div class="col-md-4 margintp">
-
-    <!--Modal: Name-->
-    <div class="modal fade" id="galleryImg3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
-
-        <!--Content-->
-        <div class="modal-content">
-
-          <!--Body-->
-          <div class="modal-body mb-0 p-0">
-           
-            <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
-            
-                <img  class="embed-responsive-item" src="https://images.pexels.com/photos/325111/pexels-photo-325111.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-            </div>
-
-          </div>
-
-         <!--Footer-->
-         <div class="modal-footer justify-content-center">
-          <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Close</button>
-
-        </div>
-
-        </div>
-        <!--/.Content-->
-
-      </div>
-    </div>
-    <!--Modal: Name-->
-    <h6>Proyecto entregable</h6>
-    <a><img class="img-fluid z-depth-1" src="https://images.pexels.com/photos/325111/pexels-photo-325111.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Imagen de curso"
-        data-toggle="modal" data-target="#galleryImg3"></a>
-
-  </div>
-  <!-- Grid column -->
-</div>
-
-</div>
-     <!--GALERIA -->
+     
      
      
      <!-- CURSOS RELACIONADOS  -->
@@ -670,92 +537,20 @@
           <!--First slide-->
           <div class="carousel-item active">
     
-            <div class="row">
-              <div class="col-md-4">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
-                       alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-md-4 clearfix d-none d-md-block">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg"
-                       alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-md-4 clearfix d-none d-md-block">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
-                       alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                  </div>
-                </div>
-              </div>
+            <div class="row" id="cursosRelacionadosItem0">
+              
+
             </div>
     
           </div>
           <!--/.First slide-->
     
           <!--Second slide-->
-          <div class="carousel-item">
+          <div class="carousel-item"  id="cursosRelacionadosItem3">
     
             <div class="row">
-              <div class="col-md-4">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg"
-                       alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-md-4 clearfix d-none d-md-block">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg"
-                       alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-md-4 clearfix d-none d-md-block">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg"
-                       alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                  </div>
-                </div>
-              </div>
+              
+
             </div>
     
           </div>
@@ -764,45 +559,9 @@
           <!--Third slide-->
           <div class="carousel-item">
     
-            <div class="row">
-              <div class="col-md-4">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg"
-                       alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-md-4 clearfix d-none d-md-block">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg"
-                       alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                  </div>
-                </div>
-              </div>
-    
-              <div class="col-md-4 clearfix d-none d-md-block">
-                <div class="card mb-2">
-                  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg"
-                       alt="Card image cap">
-                  <div class="card-body">
-                    <h4 class="card-title">Card title</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                      card's content.</p>
-                    <a class="btn btn-primary">Button</a>
-                  </div>
-                </div>
-              </div>
+            <div class="row"  id="cursosRelacionadosItem6">
+              
+
             </div>
     
           </div>
@@ -863,6 +622,9 @@
 
 
     <!-- ******************* SCRIPTS **************** -->
+     <script type="module" src="/scripts/objects/cursos/cargarComentarios.js"></script>
+    <script type="module" src="/scripts/objects/cursos/getCourseExplorer.js"></script>
+    <script type="module" src="/scripts/objects/enrollment/btnComprarCurso.js"></script>
     <script src="/scripts/js/jquery3.min.js"></script>
     <script src="/scripts/js/bootstrap.min.js" ></script>
     
