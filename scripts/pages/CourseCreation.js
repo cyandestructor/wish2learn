@@ -1,9 +1,6 @@
 import Utility from '../Utility.js';
 import Course from '../objects/Course.js';
-
-const getCurrentUserId = () => {
-    return 1; // TODO: Load current user
-};
+import { getCurrentUserId } from '../objects/Session.js';
 
 const addCourseCategories = (courseId) => {
     const select = document.getElementById('categoriasDB');
