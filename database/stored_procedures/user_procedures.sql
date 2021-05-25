@@ -43,7 +43,8 @@ CREATE PROCEDURE EditUser (
 	IN account_name NVARCHAR(50),
     IN account_lastname NVARCHAR(50),
     IN user_email NVARCHAR(60),
-    IN user_description TEXT
+    IN user_description TEXT,
+    IN user_role TINYINT
 )
 BEGIN
 	UPDATE Users AS U
@@ -53,6 +54,7 @@ BEGIN
         U.account_lastname = account_lastname,
         U.user_email = user_email,
         U.user_description = user_description,
+        U.user_role = user_role,
         U.last_change_date = CURRENT_TIMESTAMP()
 	WHERE
 		U.id_user = id_user;

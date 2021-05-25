@@ -81,7 +81,7 @@
         public function editUser($user)
         {
             try {
-                $sql = 'CALL EditUser(?, ?, ?, ?, ?, ?)';
+                $sql = 'CALL EditUser(?, ?, ?, ?, ?, ?, ?)';
             
                 $statement = $this->connection->prepare($sql);
                 
@@ -91,7 +91,8 @@
                     $user['name'],
                     $user['lastname'],
                     $user['email'],
-                    $user['description']
+                    $user['description'],
+                    $user['role']
                 ]);
 
             } catch (\PDOException $e) {

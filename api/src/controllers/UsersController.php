@@ -123,7 +123,8 @@
                 'name' => array_key_exists('name', $data) ? $data['name'] : $user['name'],
                 'lastname' => array_key_exists('lastname', $data) ? $data['lastname'] : $user['lastname'],
                 'email' => array_key_exists('email', $data) ? $data['email'] : $user['email'],
-                'description' => array_key_exists('description', $data) ? $data['description'] : $user['description']
+                'description' => array_key_exists('description', $data) ? $data['description'] : $user['description'],
+                'role' => $data['role'] ?? $user['role']
             ];
             if(array_key_exists('password', $data)){
                 $editedUser['password'] = $data['password'];
@@ -138,7 +139,8 @@
                 'name' => $user['name'],
                 'lastname' => $user['lastname'],
                 'email' => $user['email'],
-                'description' => $user['description']
+                'description' => $user['description'],
+                'role' => $user['role']
             ];
 
             $result['new'] = [
@@ -147,7 +149,8 @@
                 'name' => $editedUser['name'],
                 'lastname' => $editedUser['lastname'],
                 'email' => $editedUser['email'],
-                'description' => $editedUser['description']
+                'description' => $editedUser['description'],
+                'role' => $editedUser['role']
             ];
 
             $response->getBody()->write(json_encode($result));
