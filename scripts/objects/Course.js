@@ -48,6 +48,18 @@ export default class Course extends ApiObject {
         });
     }
 
+    delete(courseId) {
+        const endpoint = `${Course.endpoint}/${courseId}`;
+
+        fetch(endpoint, {
+            method: 'DELETE',
+        }).then((response) => {
+            if (this.responseCallback) {
+                return this.responseCallback(response);
+            }
+        });
+    }
+
     setImage(image, courseId) {
         const endpoint = `${Course.endpoint}/${courseId}/image`;
 
