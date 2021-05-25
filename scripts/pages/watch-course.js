@@ -1,5 +1,6 @@
 import Course from '../objects/Course.js';
 import Lesson from '../objects/Lesson.js';
+import Resource from '../objects/Resource.js';
 import Section from '../objects/Section.js';
 
 const loadLessonEvent = (e, lessonId) => {
@@ -41,6 +42,34 @@ const createLessonAccordionItem = (lesson) => {
     </div>`;
     item.innerHTML = itemHtml;
     return item;
+};
+
+const createResourceLink = (resource) => {
+    const resourceContainer = document.createElement('li');
+    resourceContainer.classList.add('list-group-item', 'my-2');
+
+    let resourceHtml = `<a href="http://localhost${resource.link}" class="btn btn-primary" target="_blank">Recurso ${resource.id}</a>`;
+    resourceContainer.innerHTML = resourceHtml;
+    return resourceContainer;
+};
+
+const loadLessonResources = (lessonId) => {
+    const container = document.getElementById('lessonResourceContainer');
+    container.innerHTML = '';
+
+    const resource = new Resource((response) => {
+        if (response.ok) {
+            response.json().then((data) => {
+                for (let i = 0; i < data.length; i++) {
+                    const resourceData = data[i];
+                    const item = createResourceLink(resourceData);
+                    container.appendChild(item);
+                }
+            });
+        }
+    });
+
+    resource.getLessonResources(lessonId);
 };
 
 const createSectionAccordionItem = (section) => {
@@ -136,6 +165,7 @@ const setCurrentLesson = (lessonId) => {
     });
 
     lesson.getInformation(lessonId);
+    loadLessonResources(lessonId);
 };
 
 const loadCourseData = (courseData) => {

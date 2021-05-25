@@ -31,4 +31,14 @@ export default class Resource extends ApiObject {
             }
         });
     }
+
+    getLessonResources(lessonId) {
+        const endpoint = `${Resource.base}/api/lessons/${lessonId}/resources`;
+
+        fetch(endpoint).then((response) => {
+            if (this.responseCallback) {
+                return this.responseCallback(response);
+            }
+        });
+    }
 }
