@@ -180,14 +180,18 @@ const loadSectionLessons = (sectionId) => {
         if (response.ok) {
             response.json().then((data) => {
                 const container = document.getElementById(containerId);
-                let firstLesson = data[0];
-                if (firstLesson) {
-                    setCurrentLesson(firstLesson.id);
-                }
+
+                let first = true;
                 for (let i = 0; i < data.length; i++) {
                     const lessonData = data[i];
-                    const card = createLessonCard(lessonData);
-                    container.appendChild(card);
+                    if (lessonData.published) {
+                        if (first) {
+                            setCurrentLesson(lessonData.id);
+                            first = false;
+                        }
+                        const card = createLessonCard(lessonData);
+                        container.appendChild(card);
+                    }
                 }
             });
         }
@@ -204,9 +208,11 @@ const loadCourseSections = (courseId) => {
             response.json().then((data) => {
                 for (let i = 0; i < data.length; i++) {
                     let sectionData = data[i];
-                    const item = createSectionAccordionItem(sectionData);
-                    sectionContainer.appendChild(item);
-                    loadSectionLessons(sectionData.id);
+                    if (sectionData.published) {
+                        const item = createSectionAccordionItem(sectionData);
+                        sectionContainer.appendChild(item);
+                        loadSectionLessons(sectionData.id);
+                    }
                 }
             });
         }
