@@ -33,4 +33,14 @@ export default class Section extends ApiObject {
             }
         });
     }
+
+    getCourseSections(courseId) {
+        const endpoint = `${Section.base}/api/courses/${courseId}/sections`;
+
+        fetch(endpoint).then((response) => {
+            if (this.responseCallback) {
+                return this.responseCallback(response);
+            }
+        });
+    }
 }

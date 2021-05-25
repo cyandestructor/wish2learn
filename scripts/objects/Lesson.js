@@ -33,4 +33,24 @@ export default class Lesson extends ApiObject {
             }
         });
     }
+
+    getInformation(lessonId) {
+        const endpoint = `${Lesson.base}/api/lessons/${lessonId}`;
+
+        fetch(endpoint).then((response) => {
+            if (this.responseCallback) {
+                return this.responseCallback(response);
+            }
+        });
+    }
+
+    getSectionLessons(sectionId) {
+        const endpoint = `${Lesson.base}/api/sections/${sectionId}/lessons`;
+
+        fetch(endpoint).then((response) => {
+            if (this.responseCallback) {
+                return this.responseCallback(response);
+            }
+        });
+    }
 }
