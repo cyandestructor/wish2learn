@@ -25,8 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
         var obtenerPlata= document.getElementById('plataforma');
       obtenerPlata.innerHTML +=  `<a id="asignarIdInstr" class="nav-link" href="/html/plataforma-para-que-usen-instructores.html?instructor=`+ datas.id +` >Plataforma para maestros</a>
        `;
-
-
     }
 
     cargarNameDB();

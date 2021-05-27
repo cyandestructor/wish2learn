@@ -9,12 +9,7 @@ label {
     padding: 0
 }
 
-#mostrarCalificacion2{
-    display: none;
-}
-#mostrarCalificacion{
-    display: none;
-}
+
 h1 {
     font-size: 1.5em;
     margin: 10px
