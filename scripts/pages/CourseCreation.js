@@ -161,7 +161,8 @@ document.getElementById('publishCourseBtn').addEventListener('click', (e) => {
                 'publishMessage',
                 'El curso se ha publicado de forma exitosa'
             );
-            return;
+            
+             return;
         }
 
         if (response.status === 400) {
@@ -173,3 +174,21 @@ document.getElementById('publishCourseBtn').addEventListener('click', (e) => {
 
     course.edit({ 'published': true }, courseId);
 });
+
+function irAPlataforma(){
+
+  var endpointSesion = "http://localhost/api/session";
+  fetch(endpointSesion)
+  .then(response =>{
+    if(response.ok){
+                //alert("todo esta OK");
+            }
+            return response.json();
+        }) 
+  .then(datas=> { 
+    console.log(datas);
+    window.location.href = "html/plataforma-para-que-usen-instructores.html?instructor=" + datas.id;
+
+  });
+ 
+}

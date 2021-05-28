@@ -319,84 +319,10 @@
             <th scope="col">Duración</th>
           </tr>
         </thead> 
-        <tbody>
-          <tr>
-            <th scope="row">
-              
-              <ul id="menu">
-                <div class="col-md-8">
-                  <li><input type="checkbox" name="list" id="nivel1table"><label for="nivel1table">Nivel 1</label>
-                    <ul class="interior">
-                      <!--
-                          <li><input type="checkbox" name="list" id="nivel2table"><label for="nivel2table">Nivel 2</label>
-                            <ul class="interior">
-                              <li><a href="#m">Nivel 3</a></li>
-                              <li><a href="#m">Nivel 3</a></li>
-                            </ul>
-                          </li>
-                          <li><input type="checkbox" name="list" id="nivel3table"><label for="nivel2table">Nivel 2</label>
-                            <ul class="interior">
-                              <li><a href="#m">Nivel 3</a></li>
-                              <li><a href="#m">Nivel 3</a></li>
-                              <li><a href="#m">Nivel 3</a></li>
-                              <li><a href="#m">Nivel 3</a></li>
-                            </ul>
-                          </li>
-                          <li><a href="#m">Nivel 2</a></li>-->
-                    </ul>
-                  </li>
-                </div>
-              </ul>
-            </th>
-            <td><a href="#">Vista previa</a> </td>
-            <td>2:50</td>
-          </tr>
-          <tr>
-            <th scope="row">
-              <ul id="menu">
-                <div class="col-md-8">
-                  <li>
-                    <input type="checkbox" name="list" id="nivel1-2" checked="" >
-                    <label for="nivel1-2" >Nivel 1</label>
-                    <ul class="interior">
-                      <li><a href="#r">Nivel 2</a>
-                      
-                      </li>
-                      <li>
-                        <input type="checkbox" name="list" id="nivel2-3"><label for="nivel2-3">Nivel 2</label>
-                        <ul class="interior">
-                          <!--<li><a href="#r">Nivel 3</a></li>
-                          <li><a href="#r">Nivel 3</a></li> -->
-                        </ul>
-                      </li>
-                      <li><input type="checkbox" name="list" id="nivel2-4"><label for="nivel2-4">Nivel 2</label>
-                      <ul class="interior">
-                          <!-- <li><a href="#r">Nivel 3</a></li>
-                          <li><a href="#r">Nivel 3</a></li>
-                          <li><a href="#r">Nivel 3</a></li> -->
-                          </ul>
-                      </li>
-                    </ul>
-                </li>
-                </div>
-              </ul>
-            </th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-          </tr>
-          <tr>
-
-            <th scope="row">
-              <ul id="menu">
-                <div class="col-md-8"> 
-                  <li>Nivel 1</li>
-                </div>
-              </ul>
-
-            </th>
-            <td>Sin vista previa</td>
-            <td>2:00</td>
-          </tr>
+        <tbody id="insertarTemario">
+          
+          
+          
         </tbody>
       </table>
     </div>
@@ -622,6 +548,8 @@
 
 
     <!-- ******************* SCRIPTS **************** -->
+
+     <script type="module" src="/scripts/objects/cursos/obtenerSecciones.js"></script>
      <script type="module" src="/scripts/objects/cursos/cargarComentarios.js"></script>
     <script type="module" src="/scripts/objects/cursos/getCourseExplorer.js"></script>
     <script type="module" src="/scripts/objects/enrollment/btnComprarCurso.js"></script>

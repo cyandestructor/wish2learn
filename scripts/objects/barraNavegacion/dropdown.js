@@ -61,11 +61,11 @@ document.addEventListener("DOMContentLoaded", () => {
                   <li><a class="dropdown-item" href="#"> Mi aprendizaje </a></li>
                   <li><a class="dropdown-item " data-toggle="pill" onclick="activarPestanaMochila()" href="#mimochilacursos"> Mi mochila </a></li>
                   <div class="dropdown-divider"></div>
-                  <li><a class="dropdown-item" href="#"> Mensajes </a></li>
+                  <li><a class="dropdown-item" href="/html/mailbox.html"> Mensajes </a></li>
                   <li><a class="dropdown-item" href="/html/perfil.html"> Editar Perfil </a></li>
                   <div class="dropdown-divider"></div>
                   
-                  <li><a class="dropdown-item" href=""/html/resultados-busqueda.html?instructor=${datas.id}"> Plataforma para maestros</a></li>
+                  <li><a class="dropdown-item" href="/html/plataforma-para-que-usen-instructores.html?instructor=${datas.id}"> Plataforma para maestros</a></li>
                   <div class="dropdown-divider"></div>
                   <li><a class="dropdown-item" href="#"> Cerrar sesión </a></li>
                   </ul>

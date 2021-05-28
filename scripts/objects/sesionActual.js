@@ -65,12 +65,12 @@ function cargarCursosDelUser(data){
 
            insertarCursosUser.innerHTML += ` 
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-              <a href="/html/interfaz-curso-adquirido.html">
+              <a href="/html/watch-course.html?course=${datas[i].id}&user=${data.id}">
                 <div class="card-flyer">
                   <div class="text-box">
                       <div class="image-box">
-                       <!--<img src="localhost/api/courses/${data.id}/image" alt="${datas[i].title}"/>-->
-                      <img src="https://cdn.pixabay.com/photo/2018/03/30/15/11/deer-3275594_960_720.jpg" alt="" />
+                       <img src="http://localhost/api/courses/${data.id}/image" alt="${datas[i].title}" onerror="this.onerror=null;this.src='/assets/images/notUserImage.png';">
+                     <!-- <img src="https://cdn.pixabay.com/photo/2018/03/30/15/11/deer-3275594_960_720.jpg" alt="" />-->
                       </div>
                       <div class="text-container">
                       <h6 id="courseId" data-index-number="${datas[i].id}">${datas[i].title}</h6>
@@ -78,7 +78,7 @@ function cargarCursosDelUser(data){
                       <a id="instructorId" data-index-number="${datas[i].instructorId}">${datas[i].instructorName}</a>
                       <br>
                       <div class="progress">
-                      <div class="progress-bar" role="progressbar" style="width: ${datas[i].completedLessons}%;" aria-valuenow="${datas[i].completedLessons}" aria-valuemin="0" aria-valuemax="100">${datas[i].completedLessons}%</div>
+                      <div id="progressBar${datas[i].id}" class="progress-bar" role="progressbar" style="width: ${datas[i].completedLessons}%;" aria-valuenow="${datas[i].completedLessons}" aria-valuemin="0" aria-valuemax="100">${datas[i].completedLessons}%</div>
                        
                       </div>
                       <div id="meterStar${datas[i].id}">
@@ -300,7 +300,7 @@ function verInterfazAlumno(){
  var convierteInstructor = (document.getElementById("convierteInstructor").style.display = "block");
 }
 
-asignarIdInstr.addEventListener('click', function(e){  
+/*asignarIdInstr.addEventListener('click', function(e){  
   var endpointSesion = "http://localhost/api/session";
   fetch(endpointSesion)
   .then(res=> res.json())
@@ -309,7 +309,7 @@ asignarIdInstr.addEventListener('click', function(e){
 
       });
   
-});
+});*/
 
 
 /*

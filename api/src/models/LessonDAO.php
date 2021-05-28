@@ -117,7 +117,7 @@
                 $lesson->title = $row['lesson_title'];
                 $lesson->published = $row['published'];
                 $lesson->duration = $row['lesson_duration'];
-                $lesson->sectionId = $row['section_id'];
+               // $lesson->sectionId = $row['section_id'];
                 $lesson->completed = $row['lesson_completed'];
 
                 $lessons[] = $lesson;

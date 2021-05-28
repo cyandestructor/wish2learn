@@ -33,7 +33,17 @@
                               </button>
                              <button class="btn btn-outline-primary" type="button"><i class="bi bi-funnel"></i>Filtrar</button> 
                             <button class="btn btn-success" type="button"><i class="bi bi-chat-text"></i>Redactar</button>-->
-
+                            <form>
+  <div class="form-group">
+    <h5>NUEVO CHAT</h5>
+    <label for="exampleFormControlInput1">Email address</label>
+    <input type="email" name="email" class="form-control" id="usernameReceptor" placeholder="name@example.com">
+    <div id="quienEnvia">
+        
+    </div>
+    <a type="submit" id="crearMensaje" class="btn btn-success" >Enviar mensaje</a>
+  </div>
+        
         <ul class="nav nav-pills mb-3 container" id="pills-tab" role="tablist">
             <li class="nav-item">
                 <a
@@ -139,7 +149,7 @@
                 </div>
             </div>
         </div>
-
+  <script type="module" src="/scripts/objects/MensajesE/paraQuienMensaje.js"></script>
         <script type="module" src="/scripts/pages/GetChats.js"></script>
         <script src="/scripts/js/jquery3.min.js"></script>
         <script src="/scripts/js/bootstrap.min.js"></script>

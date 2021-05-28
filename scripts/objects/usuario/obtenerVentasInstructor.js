@@ -1,7 +1,7 @@
 let cuantosAlumnos=0; 
 document.addEventListener("DOMContentLoaded", () => { 
 const params = new URLSearchParams(window.location.search);
-	var queInstructor = params.get('user');
+	var queInstructor = params.get('instructor');
 
 	var endpoint = "http://localhost/api/users/"+ queInstructor +"/sales"; 
 	fetch(endpoint)
@@ -46,25 +46,30 @@ fetch(endpointCerrarSesion, {
 	})
 });
 function obtenerTodosLosCursosInstructor(queInstructor){
+	
 	var endpoint = "http://localhost/api/users/"+ queInstructor +"/courses?public=true"
 	fetch(endpoint)
 	.then(res=> res.json())
 	    .then(datas=> { 
 	    	console.log(datas);
+	    	console.log("length" + datas.length);
 	    	for (var i = 0; i < datas.length; i++){  
-
-	    	getCoursesUsers(datas[i].id);
+	    		console.log("que curso  " + datas[i].id)
+	    		var queC = datas[i].id;
+	    	getCoursesUsers(queInstructor);
+	    	console.log("ciclo for" + queC)
 	    	}
-
 	    });
 }
-function getCoursesUsers(queCurso){
+function getCoursesUsers(queInstructor){
+	console.log(queInstructor);
 
-	var endpoint = "http://localhost/api/courses/" + queCurso + "/users";
+	var endpoint = "http://localhost/api/courses/"+ queInstructor + "/users";
+
 	fetch(endpoint)
 	.then(res=> res.json())
 	.then(datas=> { 
-	   
+	   console.log(datas);
 		for (var i = 0; i < datas.length; i++){ 
 			sumarAlumnos(datas.length);
 			console.log(datas.length);
@@ -92,6 +97,9 @@ function sumarAlumnos(suma){
 	cuantosAlumnos = suma + cuantosAlumnos;
 
 	var insertaNumAlu = document.getElementById("totalAlumnos");
+	
+
 	insertaNumAlu.innerHTML = `${cuantosAlumnos}` ;
+	
 	return cuantosAlumnos;
 }

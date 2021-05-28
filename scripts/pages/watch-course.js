@@ -99,6 +99,13 @@ const createSectionAccordionItem = (section) => {
         >
             ${section.title}
         </button>
+        <div class="form-check">
+
+  <!--<input id="${section.id}" class="form-check-input" data-index-number="${section.id}" type="checkbox" value="" id="flexCheckDefault" onchange="obtenerUnaSeccion(this)"> -->
+  <label class="form-check-label" for="flexCheckDefault">
+    Default checkbox
+  </label>
+</div>
     </h2>
     <div
         id="section${section.id}Collapse"
@@ -107,12 +114,16 @@ const createSectionAccordionItem = (section) => {
         data-bs-parent="#section${section.id}Accordion"
     >
         <div class="accordion-body">
-            <div
-                class="accordion accordion-flush"
+
+            <div class="accordion accordion-flush"
                 id="section${section.id}LessonAccordion"
-            ></div>
+            >
+            <input id="${section.id}" class="form-check-input" data-index-number="${section.id}" type="checkbox" value="" id="flexCheckDefault" onchange="obtenerUnaSeccion(this)"> -->
+ 
+            </div>
+
         </div>
-    </div>`;
+           </div>`;
     item.innerHTML = itemHtml;
     return item;
 };
@@ -132,19 +143,25 @@ const createLessonCard = (lesson) => {
 
     const card = document.createElement('div');
     card.classList.add('card', 'mb-2');
-
+    /*card.innerHTML += ` <input id="${section.id}" style="display:inline-block;"  data-index-number="${section.id}" type="checkbox" value=""  onchange="obtenerUnaSeccion(this)"> 
+  `;*/
     const cardBody = document.createElement('div');
     cardBody.classList.add('card-body', 'd-grid', 'gap-2');
 
     const button = document.createElement('button');
     button.classList.add('btn');
     button.type = 'button';
+   
     button.dataset.lessonId = lesson.id;
     button.addEventListener('click', (e) => {
         loadLessonEvent(e, lesson.id);
     });
 
     const title = document.createElement('p');
+     /*var divNota = document.createElement("div");
+     divNota.innerHTML =`<input id="${section.id}" class="form-check-input" data-index-number="${section.id}" type="checkbox" value=""  onchange="obtenerUnaSeccion(this)"> 
+  `;*/
+
     title.classList.add('card-title');
     title.innerHTML = lesson.title;
     button.appendChild(title);
@@ -254,4 +271,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     course.getInformation(courseId);
+    console.log("SE ABRE PRIMERO EL WATCH");
 });
