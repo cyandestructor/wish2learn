@@ -6,13 +6,13 @@ DROP PROCEDURE IF EXISTS AddVideo $$
 CREATE PROCEDURE AddVideo (
 	IN video_address NVARCHAR(100),
     IN video_duration INT,
-    IN lesson_id INT
+    IN id_lesson INT
 )
 BEGIN
 	DELETE FROM
-		Videos AS V
+		Videos
     WHERE
-		V.lesson_id = lesson_id;
+		lesson_id = id_lesson;
 
 	INSERT INTO Videos (
 		video_address,
@@ -22,7 +22,7 @@ BEGIN
     VALUES (
 		video_address,
         video_duration,
-        lesson_id
+        id_lesson
     );
     
     SELECT LAST_INSERT_ID();
@@ -54,9 +54,9 @@ CREATE PROCEDURE DeleteVideo (
 	IN video_id INT
 )
 BEGIN
-	DELETE FROM Videos AS V
+	DELETE FROM Videos
     WHERE
-		V.id_video = video_id;
+		id_video = video_id;
 END $$
 DELIMITER ;
 

@@ -28,12 +28,12 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS DeleteResource $$
 
 CREATE PROCEDURE DeleteResource (
-	IN id_resource INT
+	IN resource_id INT
 )
 BEGIN
-	DELETE FROM Resources AS R
+	DELETE FROM Resources
     WHERE
-		R.id_resource = id_resource;
+		id_resource = resource_id;
 END $$
 DELIMITER ;
 

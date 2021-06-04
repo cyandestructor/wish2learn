@@ -43,11 +43,11 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS DeleteCategory $$
 
 CREATE PROCEDURE DeleteCategory (
-	IN id_category INT
+	IN category_id INT
 )
 BEGIN
-	DELETE FROM Categories AS C
-    WHERE C.id_category = id_category;
+	DELETE FROM Categories
+    WHERE C.id_category = category_id;
 END $$
 DELIMITER ;
 

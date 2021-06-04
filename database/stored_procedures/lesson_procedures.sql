@@ -63,11 +63,11 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS DeleteLesson $$
 
 CREATE PROCEDURE DeleteLesson (
-	IN id_lesson INT
+	IN lesson_id INT
 )
 BEGIN
-	DELETE FROM Lessons AS L
-	WHERE L.id_lesson = id_lesson;
+	DELETE FROM Lessons
+	WHERE id_lesson = lesson_id;
 END $$
 DELIMITER ;
 

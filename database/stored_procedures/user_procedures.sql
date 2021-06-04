@@ -121,9 +121,9 @@ CREATE PROCEDURE DeleteUser (
 	IN user_id INT
 )
 BEGIN
-	DELETE FROM Users AS U
+	DELETE FROM Users
     WHERE
-		U.id_user = user_id;
+		id_user = user_id;
 END $$
 DELIMITER ;
 

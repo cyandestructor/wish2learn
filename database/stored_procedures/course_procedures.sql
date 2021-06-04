@@ -113,11 +113,11 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS DeleteCourse $$
 
 CREATE PROCEDURE DeleteCourse (
-	IN id_course INT
+	IN course_id INT
 )
 BEGIN
-	DELETE FROM Courses AS C
-    WHERE C.id_course = id_course;
+	DELETE FROM Courses
+    WHERE id_course = course_id;
 END $$
 DELIMITER ;
 
@@ -421,12 +421,12 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS DeleteCourseCategory $$
 
 CREATE PROCEDURE DeleteCourseCategory (
-	IN id_course INT,
-    IN id_category INT
+	IN course_id INT,
+    IN category_id INT
 )
 BEGIN
-	DELETE FROM Courses_Categories AS CC
+	DELETE FROM Courses_Categories
     WHERE
-		CC.course_id = id_course AND CC.category_id = id_category;
+		course_id = course_id AND category_id = category_id;
 END $$
 DELIMITER ;

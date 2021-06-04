@@ -97,9 +97,9 @@ BEGIN
 		WHERE
 			C.id_comment = id_comment;
 			
-		DELETE FROM Users_Upvotes AS UU
+		DELETE FROM Users_Upvotes
 		WHERE
-			UU.comment_id = id_comment AND UU.user_id = id_user;
+			comment_id = id_comment AND user_id = id_user;
 	END IF;
 END $$
 DELIMITER ;

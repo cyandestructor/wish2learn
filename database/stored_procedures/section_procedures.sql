@@ -123,12 +123,12 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS DeleteSection $$
 
 CREATE PROCEDURE DeleteSection (
-	IN id_section INT
+	IN section_id INT
 )
 BEGIN
-	DELETE FROM Sections AS S
+	DELETE FROM Sections
     WHERE
-		S.id_section = id_section;
+		id_section = section_id;
 END $$
 DELIMITER ;
 
