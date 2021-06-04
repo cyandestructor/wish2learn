@@ -41,5 +41,5 @@ function barraprogreso() {
   let elementWidth = elementStyle.getPropertyValue("width");
 
   let element3 = document.getElementById("barraprog");
-  let element4 = (element3.style.width = "calc(" + elementWidth + " + 50px)");
+  let element4 = (element3.style.width = "calc(" + elementWidth + " + 500px)");
 }

@@ -50,6 +50,7 @@
             Explorar contenido
         </button>
 
+
         <div
             class="offcanvas offcanvas-end text-light bg-dark"
             tabindex="-1"
@@ -59,6 +60,7 @@
             aria-labelledby="courseExplorerOffcanvasLabel"
         >
             <div class="offcanvas-header">
+              <div class="">
                 <h5 id="courseExplorerOffcanvasLabel">Explorador de curso</h5>
                 <button
                     type="button"
@@ -67,6 +69,23 @@
                     aria-label="Close"
                 ></button>
             </div>
+   
+            </div>
+        <div class="action-progress-wrap">  
+          <div class="action-progress-block mb-4">
+            <h3>Get started</h3>
+            
+
+            <div class="d-flex align-items-center">
+              <div class="progress w-100">
+               
+                <div id="barraprog" class="progress-bar" role="progressbar"  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div id="porcentaje" class="ml-4">25%</div>
+            </div>
+          </div> 
+              </div> <!-- FIN DE LA BARRA PROGRESO   -->
+
             <div class="offcanvas-body">
                 <div
                     class="accordion accordion-flush"
@@ -74,9 +93,191 @@
                 ></div>
             </div>
         </div>
+        
+
     </div>
+
+
+    <script type="text/javascript">
+        
+let numeroSecciones= 0;
+document.addEventListener("DOMContentLoaded", () => { 
+console.log("SE ABRE el progreso");
+    //aqui obtengo el numero de secciones que tengo en el curso
+    const params = new URLSearchParams(window.location.search);
+    console.log(params.toString());
+    var courseId = params.get('course');
+
+        console.log(courseId);
+    
+        var endpoint = "http://localhost/api/courses/"+ courseId +"/sections";
+        fetch(endpoint)
+        .then(res=> res.json())
+        .then(datas=> { 
+            barraprogreso(datas.length);
+            
+            })
+          
+
+})
+
+  let porcentaje = 100;
+  let promedio = 0 ;
+  let promedioLecciones = 0 ;
+function barraprogreso(numSecciones) {
+     porcentaje = 100;
+     promedio = porcentaje/ numSecciones   ;
+
+  /*var div1 = document.getElementById("barraprog");
+    var vervalor = div1.getAttribute("style");*/
+
+  /*let element = document.getElementById('barraprog');
+    let elementStyle = window.getComputedStyle(element);
+    let elementWidth = elementStyle.getPropertyValue('width');
+    alert(elementWidth); 
+        var barra= document.getElementById("barraprog");
+        barra.style.cssText = 'width:0%;';
+        barraprogreso();
+    */
+
+  let element = document.getElementById("barraprog");
+  let elementStyle = window.getComputedStyle(element);
+  let elementWidth = elementStyle.getPropertyValue("width");
+
+  let element3 = document.getElementById("barraprog");
+  let element4 = (element3.style.width = "calc(" + elementWidth +")");
+ 
+}
+
+/*function sumarBarra(idInput){
+  
+  let element = document.getElementById("barraprog");
+  let elementStyle = window.getComputedStyle(element);
+  let elementWidth = elementStyle.getPropertyValue("width");
+
+  let element3 = document.getElementById("barraprog");
+  console.log(promedio);
+   console.log(elementWidth);
+   let convertirPix= promedio + "%";
+    let sumar = elementWidth + convertirPix;
+console.log(sumar);*/
+/*"calc(" + elementWidth + " + 500px)"*/
+//NO NO NO NO NO NO mover el espacio de la suma de elementWidth y convertirPix, es una regla de sintaxis
+  /*let element4 = (element3.style.width = "calc("+ elementWidth + " + " + convertirPix +")");
+ console.log(element3.style.width);
+   obtenerSecci(idInput);
+}*/
+function obtenerUnaSeccion(queSeccion){
+
+   idSeccion = queSeccion.id;
+   console.log(idSeccion);
+  //  var idSeccion = obtenerID.getAttribute("data-index-number");
+    var endpoint = "http://localhost/api/sections/" + idSeccion;
+    fetch(endpoint)
+    .then(res=> res.json())
+        .then(datas=> { 
+            console.log(datas);
+            var cuantasLecciones= datas.length;
+            obtenerLecciones(idSeccion);
+        });
+}
+/*function obtenerSecci(){
+
+       
+        console.log(courseId);
+        var insertarTemario1 = document.getElementById('insertarTemario');
+        var endpoint = "http://localhost/api/courses/" + courseId+ "/sections";
+        fetch(endpoint)
+        .then(res=> res.json())
+        .then(datas=> { 
+            console.log("obtener secciones");
+            console.log(datas);
+            for (var i = 0; i < datas.length; i++){ 
+          console.log("seccion numero ")
+          obtenerLecciones(datas[i].id);
+            }
+        });
+}*/
+
+function obtenerLecciones(idSeccion){
+   
+    console.log(idSeccion);
+    var endpoint = "http://localhost/api/sections/" + idSeccion + "/lessons";
+
+    fetch(endpoint)
+    .then(res=> res.json())
+        .then(datas=> { 
+            console.log("obteniendo lecciones");
+            console.log(datas);
+            console.log(datas[0].id);
+            if(datas.length==0){
+                promedioLecciones = promedio / 1;
+            } else{
+                 var enteroLecc = parseInt(datas.length , 10)
+            promedioLecciones = promedio / enteroLecc;
+            console.log(promedioLecciones);
+            }
+           
+            /*for (var i = 0; i < datas.length; i++){
+                              
+                
+            }*/
+         let element = document.getElementById("barraprog");
+          let elementStyle = window.getComputedStyle(element);
+          let elementWidth = elementStyle.getPropertyValue("width");
+
+          let element3 = document.getElementById("barraprog");
+          console.log(promedioLecciones);
+           console.log(elementWidth);
+           let convertirPix= promedioLecciones + "%";
+            let sumar = elementWidth + convertirPix;
+        console.log(sumar);
+        /*"calc(" + elementWidth + " + 500px)"*/
+        //NO NO NO NO NO NO mover el espacio de la suma de elementWidth y convertirPix, es una regla de sintaxis
+
+          let labelPercent = document.getElementById("porcentaje");
+          let element4 = (element3.style.width = "calc("+ elementWidth + " + " + convertirPix +")");
+          let mostrarPorcentaje= 0;
+       
+         console.log(element3.style.width);
+         guardarProgreso(datas[0].id);
+        });
+}
+
+
+function guardarProgreso(idInput){
+    const params = new URLSearchParams(window.location.search);
+    console.log(params.toString());
+    var userId = params.get('user');
+    var completed="true";
+    data = {"userId": userId , "lessonId": idInput, "completed":completed }
+
+    var endpoint="http://localhost/api/users/"+ userId +"/lessons/"+ idInput+"?completed=true";
+    fetch(endpoint,{
+    method: 'PUT',
+    body:JSON.stringify(data),
+    headers: {
+        "Content-Type": "application/json",
+      }
+    }).then(response =>{
+            if(response.ok){
+                alert("Guardado con éxito");
+            }
+           // return response.json();
+        })
+        .then(datas=> { 
+           // console.log(datas);
+          // alert('funciona')
+        });
+}
+    </script>
+
     <body>
+
+       
         <script type="module" src="/scripts/pages/watch-course.js"></script>
+
+       <!--  <script type="module" src="/scripts/objects/cursos/barraProgreso.js"></script> -->
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
             integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"

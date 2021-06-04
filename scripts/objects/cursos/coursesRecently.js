@@ -61,8 +61,9 @@ function coursesRecently(data){
                   
 	                    <div class="col-md-4">
 		                <div class="card mb-2" style="height: 100%;">
-		                  <img class="card-img-top" src="localhost/api/courses/${data[i].id}/image"
-		                       alt="Card image cap">
+		                   <img class="card-img-top" src="localhost/api/courses/${data[i].id}/image"
+		                       alt="Card image cap" onerror="this.onerror=null;this.src='/assets/images/notUserImage.png';" style="width:60px;height:60px;">
+		                 
 		                  <div class="card-body">
 		                    <h4 class="card-title">${data[i].title}</h4>
 		                     <a id="instructorId" href="http://localhost/html/perfil_user.html?instructor=${data[i].instructorId}" data-index-number="${data[i].instructorId}">${data[i].instrutorName}</a>

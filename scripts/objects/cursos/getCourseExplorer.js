@@ -20,7 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	    	titleCourse.innerHTML = datas.title;
 	    	descriptionCourse.innerHTML = datas.description;
 	    	fechaUActualizacion.innerHTML = "Fecha de la ultima actualización " + datas.lastUpdate;
-	    	queInstructor.innerHTML = datas.instrutorName;
+	    	queInstructor.innerHTML =  ` <a id="nombreInstructorCurso" href="/html/perfil_user.html?instructor=${datas.instructorId}">${datas.instrutorName}</a> 
+	    	`;
+
 	    	queCursoCompro.dataset.indexNumber = courseId;
 	    	queInstructorIdd.dataset.indexNumber = datas.instructorId;
 	    	queProductoId.dataset.indexNumber = datas.productId;
@@ -31,16 +33,19 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function getCategoryCourse(id){
-	var endpointGetCategory= "http://localhost/api/categories/" + id;
+	var endpointGetCategory= "http://localhost/api/courses/" + id + "/categories";
 	var obtenerCategoria = document.getElementById('categoriaCurso');
 	var categoryDescrip =  document.getElementById('categoryDescription');
  fetch(endpointGetCategory)
 	.then(res=> res.json())
 	    .then(datas=> { 
 	    	console.log(datas);
-	    	obtenerCategoria.innerHTML = `${datas.name}`;
-	    	categoryDescrip.innerHTML=`${datas.description}`;
-	    	cursosRelacionados(datas.name);
+	    	for (var i = 0; i < datas.length; i++){ 
+			obtenerCategoria.innerHTML = `${datas[i].name}`;
+	    	categoryDescrip.innerHTML=`${datas[i].description}`;
+	    	cursosRelacionados(datas[i].name);
+	    	}
+	    	
 	    });
 }
 
@@ -55,7 +60,7 @@ function getUserAsociadoCurso(id){
     	console.log(datas);
     	nameInstructor.innerHTML = datas.name + " " + datas.lastname;
     	if(datas.description== null){
-			descriptionInstructor.innerHTML =  ` Descripción usuario`;
+			descriptionInstructor.innerHTML =  ` Sin descripción `;
     	}else {
     		descriptionInstructor.innerHTML = datas.description;
     	}
@@ -66,8 +71,8 @@ function getUserAsociadoCurso(id){
 function obtenerAvatarInstructor(id){
 	var avatarInstructor = document.getElementById("insertarAvatarInstructor");
 	//var endpointIdUser= "http://localhost/api/users/"+ id + "/avatar "; 
-	avatarInstructor.innerHTML =  ` 
- 			<img src="http://localhost/api/users/` + id +`/avatar" class="rounded img-peq" alt="Cinque Terre">
+	avatarInstructor.innerHTML =  ` <br><br>
+ 			<img src="http://localhost/api/users/` + id +`/avatar" class="rounded img-peq" alt="Cinque Terre" onerror="this.onerror=null;this.src='/assets/images/notUserImage.png';" >
 		`;
 	/*fetch(endpointIdUser)
 	.then(res=> res.json())
