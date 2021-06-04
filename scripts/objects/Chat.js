@@ -9,6 +9,21 @@ export default class Chat extends ApiObject {
         super.setValidationErrorCallback(validationCallback);
     }
 
+    create(userId, receptorId, name) {
+        const endpoint = `${Chat.endpoint}/api/users/${userId}/chats`;
+        let chatObj = { 'receptorId': receptorId, 'name': name };
+
+        fetch(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(chatObj),
+        }).then((response) => {
+            if (this.responseCallback) {
+                return this.responseCallback(response);
+            }
+        });
+    }
+
     getUserChats(userId) {
         const endpoint = `${Chat.endpoint}/api/users/${userId}/chats`;
 
