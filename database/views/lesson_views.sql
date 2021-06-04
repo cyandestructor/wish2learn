@@ -10,7 +10,7 @@ AS
 		L.lesson_text,
 		L.published,
         V.video_address,
-		COALESCE(V.video_duration, 0) AS lesson_duration, -- TODO: CALCULATE DURATION DEPENDING OF THE WORDS
+		COALESCE(V.video_duration, textduration(L.lesson_text)) AS lesson_duration,
         L.section_id
 	FROM
 		Lessons AS L

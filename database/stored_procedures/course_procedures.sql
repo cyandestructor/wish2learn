@@ -6,7 +6,6 @@ DROP PROCEDURE IF EXISTS CreateCourse $$
 CREATE PROCEDURE CreateCourse (
     IN course_title NVARCHAR(70),
     IN course_description TEXT,
-    IN course_image MEDIUMBLOB,
     IN course_price DECIMAL(15, 2),
     IN instructor_id INT
 )
@@ -27,7 +26,6 @@ BEGIN
 	INSERT INTO Courses (
 		course_title,
 		course_description,
-		course_image,
         product_id,
 		instructor_id,
 		publication_date,
@@ -36,12 +34,13 @@ BEGIN
     VALUES (
 		course_title,
 		course_description,
-		course_image,
         product_id,
 		instructor_id,
 		CURRENT_TIMESTAMP(),
 		CURRENT_TIMESTAMP()
     );
+    
+    SELECT LAST_INSERT_ID();
 END $$
 DELIMITER ;
 
@@ -52,15 +51,17 @@ CREATE PROCEDURE EditCourse (
 	IN id_course INT,
 	IN course_title NVARCHAR(70),
     IN course_description TEXT,
-    IN course_price DECIMAL(15, 2)
+    IN course_price DECIMAL(15, 2),
+    IN published BIT
 )
 BEGIN
-	UPDATE Courses
+	UPDATE Courses AS C
     SET
-		course_title = course_title,
-		course_description = course_description
+		C.course_title = course_title,
+		C.course_description = course_description,
+        C.published = published
 	WHERE
-		id_course = id_course;
+		C.id_course = id_course;
         
 	UPDATE
 		Products AS P
@@ -78,14 +79,33 @@ DROP PROCEDURE IF EXISTS SetCourseImage $$
 
 CREATE PROCEDURE SetCourseImage (
 	IN id_course INT,
-	IN course_image MEDIUMBLOB
+	IN course_image MEDIUMBLOB,
+    IN content_type VARCHAR(50)
 )
 BEGIN
-	UPDATE Courses
+	UPDATE Courses AS C
     SET
-		course_image = course_image
+		C.course_image = course_image,
+        C.image_content_type = content_type
 	WHERE
-		id_course = id_course;
+		C.id_course = id_course;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS GetCourseImage $$
+
+CREATE PROCEDURE GetCourseImage (
+	IN id_course INT
+)
+BEGIN
+	SELECT
+		C.course_image,
+        C.image_content_type
+	FROM
+		Courses AS C
+	WHERE
+		C.id_course = id_course;
 END $$
 DELIMITER ;
 
@@ -93,11 +113,11 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS DeleteCourse $$
 
 CREATE PROCEDURE DeleteCourse (
-	IN id_course INT
+	IN course_id INT
 )
 BEGIN
 	DELETE FROM Courses
-    WHERE id_course = id_course;
+    WHERE id_course = course_id;
 END $$
 DELIMITER ;
 
@@ -110,38 +130,32 @@ CREATE PROCEDURE GetCourses (
 BEGIN
 	IF only_published = 1 THEN
 		SELECT
-			id_course,
-			course_title,
-			course_description,
-			course_image,
-			course_price,
-			instructor_id,
-            instructor_name,
-			publication_date,
-			last_update,
-            course_grade,
-            total_students,
-            published
+			CI.id_course,
+			CI.course_title,
+			CI.course_description,
+            CI.product_id,
+			CI.course_price,
+			CI.instructor_id,
+            CI.instructor_name,
+            CI.course_grade,
+            CI.published
 		FROM
-			CoursesInfo
+			CoursesInfo AS CI
 		WHERE
-			published = 1;
+			CI.published = 1;
     ELSE
 		SELECT
-			id_course,
-			course_title,
-			course_description,
-			course_image,
-			course_price,
-			instructor_id,
-            instructor_name,
-			publication_date,
-			last_update,
-			course_grade,
-            total_students,
-            published
+			CI.id_course,
+			CI.course_title,
+			CI.course_description,
+            CI.product_id,
+			CI.course_price,
+			CI.instructor_id,
+            CI.instructor_name,
+            CI.course_grade,
+            CI.published
 		FROM
-			CoursesInfo;
+			CoursesInfo AS CI;
     END IF;
 END $$
 DELIMITER ;
@@ -150,29 +164,30 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS GetTopRatedCourses $$
 
 CREATE PROCEDURE GetTopRatedCourses (
-	IN total_rows INT
+	IN total_rows INT,
+    IN row_offset INT
 )
 BEGIN
 	SELECT
-		id_course,
-		course_title,
-		course_description,
-		course_image,
-		course_price,
-		instructor_id,
-        instructor_name,
-		publication_date,
-		last_update,
-		course_grade,
-        total_students,
-		published
+		CI.id_course,
+		CI.course_title,
+		CI.course_description,
+        CI.product_id,
+		CI.course_price,
+		CI.instructor_id,
+		CI.instructor_name,
+		CI.course_grade,
+		CI.published
 	FROM
-		CoursesInfo
+		CoursesInfo AS CI
 	WHERE
-		published = 1
+		CI.published = 1
 	ORDER BY
-		course_grade, last_update DESC
-	LIMIT TOTAL_ROWS;
+		CI.course_grade DESC
+	LIMIT
+		total_rows
+    OFFSET
+		row_offset;
 END $$
 DELIMITER ;
 
@@ -180,29 +195,30 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS GetTopSellsCourses $$
 
 CREATE PROCEDURE GetTopSellsCourses (
-	IN total_rows INT
+	IN total_rows INT,
+    IN row_offset INT
 )
 BEGIN
 	SELECT
-		id_course,
-		course_title,
-		course_description,
-		course_image,
-		course_price,
-		instructor_id,
-        instructor_name,
-		publication_date,
-		last_update,
-		course_grade,
-        total_students,
-		published
+		CI.id_course,
+		CI.course_title,
+		CI.course_description,
+        CI.product_id,
+		CI.course_price,
+		CI.instructor_id,
+		CI.instructor_name,
+		CI.course_grade,
+		CI.published
 	FROM
-		CoursesInfo
+		CoursesInfo AS CI
 	WHERE
-		published = 1
+		CI.published = 1
 	ORDER BY
-		total_students, course_grade, last_update DESC
-	LIMIT TOTAL_ROWS;
+		CI.total_students DESC
+	LIMIT
+		total_rows
+	OFFSET
+		row_offset;
 END $$
 DELIMITER ;
 
@@ -210,29 +226,30 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS GetMostRecentCourses $$
 
 CREATE PROCEDURE GetMostRecentCourses (
-	IN total_rows INT
+	IN total_rows INT,
+    IN row_offset INT
 )
 BEGIN
 	SELECT
-		id_course,
-		course_title,
-		course_description,
-		course_image,
-		course_price,
-		instructor_id,
-        instructor_name,
-		publication_date,
-		last_update,
-		course_grade,
-        total_students,
-		published
+		CI.id_course,
+		CI.course_title,
+		CI.course_description,
+        CI.product_id,
+		CI.course_price,
+		CI.instructor_id,
+		CI.instructor_name,
+		CI.course_grade,
+		CI.published
 	FROM
-		CoursesInfo
+		CoursesInfo AS CI
 	WHERE
-		published = 1
+		CI.published = 1
 	ORDER BY
-		publication_date, total_students, course_grade DESC
-	LIMIT TOTAL_ROWS;
+		CI.publication_date DESC
+	LIMIT
+		total_rows
+	OFFSET
+		row_offset;
 END $$
 DELIMITER ;
 
@@ -244,22 +261,23 @@ CREATE PROCEDURE GetCourseInfo (
 )
 BEGIN
 	SELECT
-		id_course,
-		course_title,
-		course_description,
-		course_image,
-		course_price,
-		instructor_id,
-        instructor_name,
-		publication_date,
-		last_update,
-		course_grade,
-        total_students,
-        published
+		CI.id_course,
+		CI.course_title,
+		CI.course_description,
+        CI.product_id,
+		CI.course_price,
+		CI.instructor_id,
+        CI.instructor_name,
+		CI.publication_date,
+		CI.last_update,
+		CI.course_grade,
+        CI.total_students,
+        CI.total_lessons,
+        CI.published
 	FROM
-		CoursesInfo
+		CoursesInfo AS CI
 	WHERE
-		id_course = id_course;
+		CI.id_course = id_course;
 END $$
 DELIMITER ;
 
@@ -273,36 +291,34 @@ CREATE PROCEDURE GetUserCourses (
 BEGIN
 	IF only_published = 1 THEN
 		SELECT
-			id_course,
-			course_title,
-			course_description,
-			course_image,
-			course_price,
-			instructor_id,
-			publication_date,
-			last_update,
-            course_grade,
-            published
+			CI.id_course,
+			CI.course_title,
+			CI.course_description,
+            CI.product_id,
+			CI.course_price,
+			CI.instructor_id,
+            CI.instructor_name,
+            CI.course_grade,
+            CI.published
 		FROM
-			CoursesInfo
+			CoursesInfo AS CI
 		WHERE
-			instructor_id = id_user AND published = 1;
+			CI.instructor_id = id_user AND CI.published = 1;
     ELSE
 		SELECT
-			id_course,
-			course_title,
-			course_description,
-			course_image,
-			course_price,
-			instructor_id,
-			publication_date,
-			last_update,
-            course_grade,
-            published
+			CI.id_course,
+			CI.course_title,
+			CI.course_description,
+            CI.product_id,
+			CI.course_price,
+			CI.instructor_id,
+            CI.instructor_name,
+            CI.course_grade,
+            CI.published
 		FROM
-			CoursesInfo
+			CoursesInfo AS CI
 		WHERE
-			instructor_id = id_user;
+			CI.instructor_id = id_user;
     END IF;
 END $$
 DELIMITER ;
@@ -318,23 +334,15 @@ BEGIN
 		CI.id_course,
 		CI.course_title,
 		CI.course_description,
-		CI.course_image,
+        CI.product_id,
 		CI.course_price,
 		CI.instructor_id,
-        CI.instructor_name,
-		CI.publication_date,
-		CI.last_update,
+		CI.instructor_name,
 		CI.course_grade,
-        CI.total_lessons,
-		CI.published,
+		CI.total_lessons,
+        CI.published,
         UC.enroll_date,
-        (SELECT
-			COUNT(*)
-		FROM
-			Users_Lessons AS UL
-            INNER JOIN CoursesLessons AS CL ON CL.id_lesson = UL.lesson_id
-		WHERE
-			CL.id_course = CI.id_course) AS completed_lessons
+        userLessonsCompleted(UC.user_id, CI.id_course) AS completed_lessons
 	FROM
 		CoursesInfo AS CI
         INNER JOIN Users_Courses AS UC ON UC.course_id = CI.id_course
@@ -347,20 +355,20 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS SearchCourses $$
 
 CREATE PROCEDURE SearchCourses (
-	IN search_input TINYTEXT
+	IN search_input TINYTEXT,
+    IN total_rows INT,
+    IN row_offset INT
 )
 BEGIN
 	SELECT
 		CI.id_course,
 		CI.course_title,
 		CI.course_description,
-		CI.course_image,
+        CI.product_id,
 		CI.course_price,
 		CI.instructor_id,
-		CI.publication_date,
-		CI.last_update,
+		CI.instructor_name,
 		CI.course_grade,
-        CI.total_lessons,
 		CI.published
 	FROM
 		(SELECT
@@ -379,11 +387,14 @@ BEGIN
 				Courses AS C
 				INNER JOIN Users AS U ON U.id_user = C.instructor_id
 			WHERE
-				MATCH(C.course_title, U.username, U.account_name, U.account_lastname)
-                AGAINST(search_input IN NATURAL LANGUAGE MODE)) AS ids
+				MATCH(C.course_title)
+                AGAINST(search_input IN NATURAL LANGUAGE MODE) OR
+                search_input IN (U.username, U.account_name, U.account_lastname)) AS ids
 		GROUP BY
 			ids.course_id) AS results
-		INNER JOIN CoursesInfo AS CI ON CI.id_course = results.course_id;
+		INNER JOIN CoursesInfo AS CI ON CI.id_course = results.course_id
+	LIMIT total_rows
+    OFFSET row_offset;
 END $$
 DELIMITER ;
 
@@ -407,15 +418,15 @@ END $$
 DELIMITER ;
 
 DELIMITER $$
-DROP PROCEDURE IF EXISTS DeleteCategory $$
+DROP PROCEDURE IF EXISTS DeleteCourseCategory $$
 
-CREATE PROCEDURE DeleteCategory (
-	IN id_course INT,
-    IN id_category INT
+CREATE PROCEDURE DeleteCourseCategory (
+	IN course_id INT,
+    IN category_id INT
 )
 BEGIN
 	DELETE FROM Courses_Categories
     WHERE
-		id_course = id_course AND id_category = id_category;
+		course_id = course_id AND category_id = category_id;
 END $$
 DELIMITER ;

@@ -8,6 +8,7 @@ AS
 		S.section_title,
         S.course_id,
 		S.section_is_free,
+        S.product_id,
 		P.product_price AS section_price,
 		S.published
 	FROM

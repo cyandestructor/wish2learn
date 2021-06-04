@@ -33,11 +33,12 @@ CREATE TABLE Courses (
     course_title NVARCHAR(70) NOT NULL,
     course_description TEXT,
     course_image MEDIUMBLOB,
+    image_content_type VARCHAR(50),
     product_id INT NOT NULL,
     instructor_id INT NOT NULL,
     publication_date DATETIME,
     last_update DATETIME,
-    published BIT DEFAULT 1,
+    published BIT DEFAULT 0,
     
     PRIMARY KEY (id_course),
     FOREIGN KEY (product_id) REFERENCES Products (id_product),
@@ -70,7 +71,7 @@ CREATE TABLE Sections (
 CREATE TABLE Lessons (
 	id_lesson INT NOT NULL AUTO_INCREMENT,
     lesson_title NVARCHAR(50) NOT NULL,
-    content_type TINYINT,
+    content_type TINYINT, -- 1: video, 2: text and resources
     lesson_text MEDIUMTEXT,
     section_id INT NOT NULL,
     published BIT DEFAULT 1,
@@ -82,7 +83,7 @@ CREATE TABLE Lessons (
 CREATE TABLE Resources (
 	id_resource INT NOT NULL AUTO_INCREMENT,
     resource_content LONGBLOB,
-    content_type VARCHAR(50),
+    content_type VARCHAR(255),
     lesson_id INT NOT NULL,
     
     PRIMARY KEY (id_resource),
@@ -111,12 +112,24 @@ CREATE TABLE Videos (
     FOREIGN KEY (lesson_id) REFERENCES Lessons (id_lesson)
 );
 
+CREATE TABLE Chats (
+	id_chat INT NOT NULL AUTO_INCREMENT,
+    chat_name NVARCHAR(80),
+    
+    PRIMARY KEY(id_chat)
+);
+
 CREATE TABLE Messages (
 	id_message INT NOT NULL AUTO_INCREMENT,
     message_body MEDIUMTEXT,
     message_date DATETIME,
     
-    PRIMARY KEY (id_message)
+	user_sender_id INT,
+    chat_id INT NOT NULL,
+	
+    PRIMARY KEY (id_message),
+    FOREIGN KEY (user_sender_id) REFERENCES Users (id_user) ON DELETE SET NULL,
+    FOREIGN KEY (chat_id) REFERENCES Chats (id_chat) ON DELETE CASCADE
 );
 
 CREATE TABLE Reviews (
@@ -192,16 +205,14 @@ CREATE TABLE Users_Comments (
     FOREIGN KEY (lesson_id) REFERENCES Lessons (id_lesson) ON DELETE CASCADE
 );
 
-CREATE TABLE Users_Messages (
-	id_user_message INT NOT NULL AUTO_INCREMENT,
-    user_sender_id INT NOT NULL,
-    user_receptor_id INT NOT NULL,
-    message_id INT NOT NULL,
+CREATE TABLE Users_Chats (
+	id_user_chat INT NOT NULL AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    chat_id INT NOT NULL,
     
-    PRIMARY KEY (id_user_message),
-    FOREIGN KEY (message_id) REFERENCES Messages (id_message),
-    FOREIGN KEY (user_sender_id) REFERENCES Users (id_user) ON DELETE CASCADE,
-    FOREIGN KEY (user_receptor_id) REFERENCES Users (id_user) ON DELETE CASCADE
+    PRIMARY KEY (id_user_chat),
+    FOREIGN KEY (user_id) REFERENCES Users (id_user),
+    FOREIGN KEY (chat_id) REFERENCES Chats (id_chat)
 );
 
 CREATE TABLE Courses_Reviews (
@@ -237,4 +248,17 @@ CREATE TABLE Users_Upvotes (
     PRIMARY KEY (id_user_upvote),
     FOREIGN KEY (user_id) REFERENCES Users (id_user) ON DELETE CASCADE,
     FOREIGN KEY (comment_id) REFERENCES Comments (id_comment) ON DELETE CASCADE
+);
+
+CREATE TABLE Sales (
+	id_sale INT NOT NULL AUTO_INCREMENT,
+    seller_id INT NOT NULL,
+    customer_id INT,
+    product_id INT NOT NULL,
+    sale_date DATETIME,
+    
+    PRIMARY KEY (id_sale),
+    FOREIGN KEY (customer_id) REFERENCES Users (id_user) ON DELETE SET NULL,
+    FOREIGN KEY (seller_id) REFERENCES Users (id_user) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES Products (id_product) ON DELETE CASCADE
 );

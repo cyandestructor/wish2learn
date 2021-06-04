@@ -5,73 +5,45 @@ DROP PROCEDURE IF EXISTS CreateMessage $$
 
 CREATE PROCEDURE CreateMessage (
 	IN id_sender INT,
-    IN id_receptor INT,
+    IN id_chat INT,
     IN message_body MEDIUMTEXT
 )
 BEGIN
-	DECLARE message_id INT;
-    
     INSERT INTO Messages (
 		message_body,
-        message_date
+        message_date,
+        user_sender_id,
+        chat_id
     )
     VALUES (
 		message_body,
-        CURRENT_TIMESTAMP()
+        CURRENT_TIMESTAMP(),
+        id_sender,
+        id_chat
     );
     
-    SET message_id = LAST_INSERT_ID();
-    
-    INSERT INTO Users_Messages (
-		user_sender_id,
-		user_receptor_id,
-		message_id
-    )
-    VALUES (
-		id_sender,
-        id_receptor,
-        message_id
-    );
+    SELECT LAST_INSERT_ID();
 END $$
 DELIMITER ;
 
 DELIMITER $$
-DROP PROCEDURE IF EXISTS GetMessages $$
+DROP PROCEDURE IF EXISTS GetChatMessages $$
 
-CREATE PROCEDURE GetMessages (
-	IN id_sender INT,
-    IN id_receptor INT
+CREATE PROCEDURE GetChatMessages (
+	IN id_chat INT
 )
 BEGIN
 	SELECT
 		M.id_message,
 		M.message_body,
-		M.message_date
+		M.message_date,
+        COALESCE(M.user_sender_id, 0) AS sender_id,
+        COALESCE(U.username, 'User') AS sender_name,
+        M.chat_id
 	FROM
 		Messages AS M
-        INNER JOIN Users_Messages AS UM ON UM.message_id = M.id_message
+        LEFT JOIN Users AS U ON U.id_user = M.user_sender_id
 	WHERE
-		UM.id_sender = id_sender AND UM.id_receptor = id_receptor;
-END $$
-DELIMITER ;
-
-DELIMITER $$
-DROP PROCEDURE IF EXISTS GetUserChats $$
-
-CREATE PROCEDURE GetUserChats (
-	IN id_user INT
-)
-BEGIN
-	-- TODO: Check how to improve this
-	SELECT
-		user_sender_id,
-		user_receptor_id,
-        COUNT(*) AS total_messages
-	FROM
-		Users_Messages
-	WHERE
-		id_user in (user_receptor_id, user_sender_id)
-	GROUP BY
-		user_sender_id, user_receptor_id;
+		M.chat_id = id_chat;
 END $$
 DELIMITER ;

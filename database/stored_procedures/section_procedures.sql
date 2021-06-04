@@ -10,8 +10,10 @@ CREATE PROCEDURE AddSection (
 )
 BEGIN
 	DECLARE product_id INT;
+    DECLARE section_id INT;
+    DECLARE is_free BIT;
     
-    IF section_price IS NULL OR section_price <= 0 THEN
+    IF section_price IS NOT NULL AND section_price > 0 THEN
 		INSERT INTO Products (
 			product_name,
             product_price
@@ -22,26 +24,34 @@ BEGIN
         );
         
         SET product_id = LAST_INSERT_ID();
+        SET is_free = 0;
 	ELSE
 		SET product_id = NULL;
+        SET is_free = 1;
 	END IF;
     
     INSERT INTO Sections (
 		section_title,
 		course_id,
-		product_id
+		product_id,
+        section_is_free
     )
     VALUES (
 		section_title,
 		course_id,
-		product_id
+		product_id,
+        is_free
     );
     
-    UPDATE Courses
+    SET section_id = LAST_INSERT_ID();
+    
+    UPDATE Courses AS C
     SET
-		last_update = CURRENT_TIMESTAMP()
+		C.last_update = CURRENT_TIMESTAMP()
 	WHERE
-		id_course = id_course;
+		C.id_course = id_course;
+        
+	SELECT section_id;
 END $$
 DELIMITER ;
 
@@ -52,57 +62,60 @@ CREATE PROCEDURE EditSection (
 	IN id_section INT,
 	IN section_title NVARCHAR(50),
     IN course_id INT,
-    IN section_price DECIMAL(15, 2)
+    IN section_price DECIMAL(15, 2),
+    IN section_is_free BIT,
+    IN section_published BIT
 )
 BEGIN
-	UPDATE Sections
+	DECLARE product_id INT;
+
+	UPDATE Sections AS S
     SET
-		section_title = section_title,
-		course_id = course_id,
-		section_price = section_price
-	WHERE
-		id_section = id_section;
-        
-	UPDATE
-		Products AS P
-        INNER JOIN Sections AS S ON S.product_id = P.id_product
-	SET
-		P.product_title = CONCAT('Course #', course_id, ' Section: ', section_title),
-        P.product_price = section_price
+		S.section_title = section_title,
+		S.course_id = course_id,
+        S.section_is_free = section_is_free,
+        S.published = section_published
 	WHERE
 		S.id_section = id_section;
-END $$
-DELIMITER ;
-
-DELIMITER $$
-DROP PROCEDURE IF EXISTS HideSection $$
-
-CREATE PROCEDURE HideSection (
-	IN id_section INT,
-    IN hide BIT
-)
-BEGIN
-	UPDATE Sections
-    SET
-		published = hide
-	WHERE
-		id_section = id_section;
-END $$
-DELIMITER ;
-
-DELIMITER $$
-DROP PROCEDURE IF EXISTS SetSectionFree $$
-
-CREATE PROCEDURE SetSectionFree (
-	IN id_section INT,
-    IN is_free BIT
-)
-BEGIN
-	UPDATE Sections
-    SET
-		section_is_free = is_free
-	WHERE
-		id_section = id_section;
+        
+	IF NOT EXISTS (
+		SELECT
+			S.id_section
+		FROM
+			Products as P
+            INNER JOIN Sections AS S ON S.product_id = P.id_product
+		WHERE
+			S.id_section = id_section
+	) THEN
+		IF section_price > 0 THEN
+			INSERT INTO Products (
+				product_name,
+				product_price
+			)
+			VALUES (
+				CONCAT('Course #', course_id, ' Section: ', section_title),
+				section_price
+			);
+            
+            SET product_id = LAST_INSERT_ID();
+            
+            UPDATE
+				Sections AS S
+			SET
+				S.product_id = product_id
+            WHERE
+				S.id_section = id_section;
+        END IF;
+	ELSE
+        UPDATE
+			Products AS P
+			INNER JOIN Sections AS S ON S.product_id = P.id_product
+		SET
+			P.product_name = CONCAT('Course #', course_id, ' Section: ', section_title),
+			P.product_price = section_price
+		WHERE
+			S.id_section = id_section;
+    END IF;
 END $$
 DELIMITER ;
 
@@ -110,12 +123,34 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS DeleteSection $$
 
 CREATE PROCEDURE DeleteSection (
-	IN id_section INT
+	IN section_id INT
 )
 BEGIN
 	DELETE FROM Sections
     WHERE
-		id_section = id_section;
+		id_section = section_id;
+END $$
+DELIMITER ;
+
+DELIMITER $$
+DROP PROCEDURE IF EXISTS GetSection $$
+
+CREATE PROCEDURE GetSection (
+	IN id_section INT
+)
+BEGIN
+	SELECT
+		SI.id_section,
+		SI.section_title,
+		SI.section_is_free,
+        SI.product_id,
+		SI.section_price,
+		SI.published,
+        SI.course_id
+	FROM
+		SectionsInfo AS SI
+	WHERE
+		SI.id_section = id_section;
 END $$
 DELIMITER ;
 
@@ -127,15 +162,16 @@ CREATE PROCEDURE GetCourseSections (
 )
 BEGIN
 	SELECT
-		id_section,
-		section_title,
-		section_is_free,
-		section_price,
-		published
+		SI.id_section,
+		SI.section_title,
+		SI.section_is_free,
+        SI.product_id,
+		SI.section_price,
+		SI.published
 	FROM
-		SectionsInfo
+		SectionsInfo AS SI
 	WHERE
-		course_id = id_course;
+		SI.course_id = id_course;
 END $$
 DELIMITER ;
 
@@ -152,6 +188,7 @@ BEGIN
 		SI.section_title,
 		SI.section_is_free,
 		SI.section_price,
+        SI.product_id,
 		SI.published,
         EXISTS(
 			SELECT

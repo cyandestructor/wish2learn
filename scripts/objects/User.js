@@ -17,6 +17,7 @@ export default class User {
   #validationErrorCallback;
   #responseCallback;
 
+  // es una dirección que se enruta gracias al framework que te conté
   // Este es el enlace de la api que me permite hacer las operaciones con usuario
   static #endpoint = "http://localhost/api/users";
 
